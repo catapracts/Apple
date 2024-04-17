@@ -142,21 +142,20 @@
 * Service - Product_Service.java
 * Domain – Product.java
 * DTO
-  - param		
+  1. param		
    + ProductCreateParam.java
    + ProductUpdateParam.java
    + ProductDeleteParam.java
    + ProductListParam.java
    + ProductParam.java
-<br/>
 
-  - request	
+  2. request	
    + ProductListRequest.java
    + ProductCreateRequest.java
    + ProductUpdateRequest.java
 <br/>
 
-  - response	
+  3. response	
    - ProductResponse.java
    - ProductListResponse.java
    - ProductCreateResponse.java
