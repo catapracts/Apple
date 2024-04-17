@@ -4,16 +4,15 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../context/AuthProvider";
 import { HttpHeadersContext } from "../context/HttpHeadersProvider";
 
-
-function Product() {
+function Cart_Detail() {
 
 
     return (
 		<div>
-			<h2> Product입니다. </h2>
+			<h2> Cart_Detail 입니다. </h2>
 		</div>
 	);
     
     }
     
-    export default Product;
+    export default Cart_Detail;

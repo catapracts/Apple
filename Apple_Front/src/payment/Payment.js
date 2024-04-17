@@ -5,15 +5,15 @@ import { AuthContext } from "../context/AuthProvider";
 import { HttpHeadersContext } from "../context/HttpHeadersProvider";
 
 
-function Product() {
+function Payment() {
 
 
     return (
 		<div>
-			<h2> Product입니다. </h2>
+			<h2> Payment 입니다. </h2>
 		</div>
 	);
     
     }
     
-    export default Product;
+    export default Payment;
