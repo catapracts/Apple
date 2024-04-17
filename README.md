@@ -138,32 +138,28 @@ API 문서 작성
 
 # 🤓Back End
 1. Product
-  * Controller – Product_Controller.java
+ * Controller - Product_Controller.java
+ * Service - Product_Service.java
+ * Domain – Product.java
+ * DTO
+  * param		
+   * ProductCreateParam.java
+   * ProductUpdateParam.java
+   * ProductDeleteParam.java
+   * ProductListParam.java
+   * ProductParam.java
 
-  * Service - Product_Service.java
+  * request	
+   * ProductListRequest.java
+   * ProductCreateRequest.java
+   * ProductUpdateRequest.java
 
-  * Domain – Product.java
-
-  * DTO
-   * param		
-    * ProductCreateParam.java
-    * ProductUpdateParam.java
-    * ProductDeleteParam.java
-    * ProductListParam.java
-    * ProductParam.java
-
-   * request	
-    * ProductListRequest.java
-    * ProductCreateRequest.java
-    * ProductUpdateRequest.java
-
- * response	
-  * ProductResponse.java
-  * ProductListResponse.java
-  * ProductCreateResponse.java
-  * ProductUpdateResponse.java
-  * ProductDeleteResponse.java
- 
+  * response	
+   * ProductResponse.java
+   * ProductListResponse.java
+   * ProductCreateResponse.java
+   * ProductUpdateResponse.java
+   * ProductDeleteResponse.java
 * DAO - Product_Dao.java
 <br/><br/>
 
