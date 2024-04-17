@@ -256,17 +256,17 @@ DAO - PaymentDao.java, PaymentProductDao.java
 
 
 5. Common
-Config Domain
+* Config Domain
 - DatabaseConfig.java
 - SwaggerConfig.java
 - WebConfig.java
  
-JWT Domain
+* JWT Domain
 - JwtAuthenticationEntryPoint.java
 - JwtAuthenticationFilter.java
 - JwtTokenUtil.java
 
-Security Domain
+* Security Domain
 - UserDetailsImpl.java
 - UserDetailsServiceImpl.java
 - WebSecurityConfig.java
