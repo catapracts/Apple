@@ -47,22 +47,26 @@
 
 # ⚙구현 기능
 ## 회원
-### 회원가입, 회원 정보 수정, 회원 정보 삭제, 회원 정보 조회(1개, 전체)
+* 회원가입, 회원 정보 수정, 회원 정보 삭제, 회원 정보 조회(1개, 전체)
 <br/><br/>
 
 
 ## 상품
-### 상품 정보 생성, 수정, 삭제, 조회(1개, 전체)
+* 상품 정보 생성, 수정, 삭제, 조회(1개, 전체)
 <br/><br/>
 
 
 ## 장바구니
-### 장바구니 생성, 장바구니에 상품 선택(생성), 담기, 삭제, 수정, 조회(1개, 전체)
+* 장바구니 생성
+* 장바구니에 상품 선택(생성), 담기, 삭제, 수정, 조회(1개, 전체)
 <br/><br/>
 
 
 ## 결제
-### 결제 정보 생성(결제), 결제정보 삭제(환불, 기록 삭제), 결제정보 수정(배송지 등), 결제 정보 조회(1개, 전체)
+* 결제 정보 생성(결제)
+* 결제 정보 삭제(환불, 기록 삭제)
+* 결제 정보 수정(배송지 등)
+* 결제 정보 조회(1개, 전체)
 <br/><br/>
 
 
@@ -171,25 +175,25 @@
 * Service - Member_Service.java <br/><br/>
 * Domain – Member.java <br/><br/>
 
-* DTO
- 1. param
-  + MemberCreateParam.java
-  + MemberUpdateParam.java
-  + MemberDeleteParam.java
-  + MemberListParam.java
-  + MemberParam.java
+* DTO <br/><br/>
+  1. param
+   + MemberCreateParam.java
+   + MemberUpdateParam.java
+   + MemberDeleteParam.java
+   + MemberListParam.java
+   + MemberParam.java
 <br/><br/>
- 2. request	
-  + MemberListRequest.java
-  + MemberCreateRequest.java
-  + MemberRequest.java
+  2. request	
+   + MemberListRequest.java
+   + MemberCreateRequest.java
+   + MemberRequest.java
 <br/><br/>
- 3. response
-  + MemberResponse.java
-  + MemberListResponse.java
-  + MemberCreateResponse.java
-  + MemberUpdateResponse.java
-  + MemberDeleteResponse.java
+  3. response
+   + MemberResponse.java
+   + MemberListResponse.java
+   + MemberCreateResponse.java
+   + MemberUpdateResponse.java
+   + MemberDeleteResponse.java
 <br/><br/>
 * DAO - Member_Dao.java
 <br/><br/>
@@ -202,25 +206,25 @@
  
 * Domain – Cart.java, CartProduct.java <br/><br/>
  
-* DTO
- 1. param
-  + CartCreateParam.java / CartProductCreateParam.java
-  + CartUpdateParam.java / CartProductUpdateParam.java
-  + CartDeleteParam.java / CartProductDeleteParam.java
-  + CartListParam.java / CartProductListParam.java
-  + CartParam.java / CartProductParam.java
+* DTO <br/><br/>
+  1. param
+   + CartCreateParam.java / CartProductCreateParam.java
+   + CartUpdateParam.java / CartProductUpdateParam.java
+   + CartDeleteParam.java / CartProductDeleteParam.java
+   + CartListParam.java / CartProductListParam.java
+   + CartParam.java / CartProductParam.java
 <br/><br/>
- 2. request
-  + CartListRequest.java / CartProductListRequest.java
-  + CartCreateRequest.java / CartProductCreateRequest.java
-  + CartUpdateRequest.java / CartProductUpdateRequest.java
+  2. request
+   + CartListRequest.java / CartProductListRequest.java
+   + CartCreateRequest.java / CartProductCreateRequest.java
+   + CartUpdateRequest.java / CartProductUpdateRequest.java
 <br/><br/>
- 3. response
-  + CartResponse.java / CarProductResponse.java
-  + CartListResponse.java / CartProductListResponse.java
-  + CartCreateResponse.java / CartProductCreateResponse.java
-  + CartUpdateResponse.java / CartProductUpdateResponse.java
-  + CartDeleteResponse.java / CartProductDeleteResponse.java
+  3. response
+   + CartResponse.java / CarProductResponse.java
+   + CartListResponse.java / CartProductListResponse.java
+   + CartCreateResponse.java / CartProductCreateResponse.java
+   + CartUpdateResponse.java / CartProductUpdateResponse.java
+   + CartDeleteResponse.java / CartProductDeleteResponse.java
 <br/><br/> 
 * DAO - CartDao.java, CartProductDao.java
 <br/><br/>
@@ -233,25 +237,25 @@
 
 * Domain – Payment.java, PaymentProduct.java <br/><br/>
  
-* DTO
- 1. param
-  + PaymentCreateParam.java / PaymentProductCreateParam.java
-  + PaymentUpdateParam.java / PaymentProductUpdateParam.java
-  + PaymentDeleteParam.java / PaymentProductDeleteParam.java
-  + PaymentListParam.java / PaymentProductListParam.java
-  + PaymentParam.java / PaymentProductParam.java
+* DTO <br/><br/>
+  1. param
+   + PaymentCreateParam.java / PaymentProductCreateParam.java
+   + PaymentUpdateParam.java / PaymentProductUpdateParam.java
+   + PaymentDeleteParam.java / PaymentProductDeleteParam.java
+   + PaymentListParam.java / PaymentProductListParam.java
+   + PaymentParam.java / PaymentProductParam.java
 <br/><br/>
- 2. request
-  + PaymentListRequest.java / PaymentProductListRequest.java
-  + PaymentCreateRequest.java / PaymentProductCreateRequest.java
-  + PaymentUpdateRequest.java / PaymentProductUpdateRequest.java
+  2. request
+   + PaymentListRequest.java / PaymentProductListRequest.java
+   + PaymentCreateRequest.java / PaymentProductCreateRequest.java
+   + PaymentUpdateRequest.java / PaymentProductUpdateRequest.java
 <br/><br/>
- 3. response
-  + PaymentResponse.java / PaymentProductResponse.java
-  + PaymentListResponse.java / PaymentProductListResponse.java
-  + PaymentCreateResponse.java / PaymentProductCreateResponse.java
-  + PaymentUpdateResponse.java / PaymentProductUpdateResponse.java
-  + PaymentDeleteResponse.java / PaymentProductDeleteResponse.java
+  3. response
+   + PaymentResponse.java / PaymentProductResponse.java
+   + PaymentListResponse.java / PaymentProductListResponse.java
+   + PaymentCreateResponse.java / PaymentProductCreateResponse.java
+   + PaymentUpdateResponse.java / PaymentProductUpdateResponse.java
+   + PaymentDeleteResponse.java / PaymentProductDeleteResponse.java
 <br/><br/>
 * DAO - PaymentDao.java, PaymentProductDao.java
 <br/><br/>
@@ -259,21 +263,21 @@
 
 5. Common
 * Config Domain
-- DatabaseConfig.java
-- SwaggerConfig.java
-- WebConfig.java
+  - DatabaseConfig.java
+  - SwaggerConfig.java
+  - WebConfig.java
 <br/><br/>
 
  
 * JWT Domain
-- JwtAuthenticationEntryPoint.java
-- JwtAuthenticationFilter.java
-- JwtTokenUtil.java
+  - JwtAuthenticationEntryPoint.java
+  - JwtAuthenticationFilter.java
+  - JwtTokenUtil.java
 <br/><br/>
 
 
 * Security Domain
-- UserDetailsImpl.java
-- UserDetailsServiceImpl.java
-- WebSecurityConfig.java
+  - UserDetailsImpl.java
+  - UserDetailsServiceImpl.java
+  - WebSecurityConfig.java
 
