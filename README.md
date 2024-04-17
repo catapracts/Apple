@@ -165,11 +165,13 @@ API 문서 작성
 
 
 2. Member
-Controller – Member_Controller.java
-Service - Member_Service.java
-Domain – Member.java
+* Controller – Member_Controller.java
 
-DTO
+* Service - Member_Service.java
+
+* Domain – Member.java
+
+* DTO
 - param
  - MemberCreateParam.java
  - MemberUpdateParam.java
@@ -189,18 +191,18 @@ DTO
  - MemberUpdateResponse.java
  - MemberDeleteResponse.java
 
-DAO - Member_Dao.java
+* DAO - Member_Dao.java
 <br/><br/>
 
 
 3. Cart & Cart Product
-Controller – CartController.java
+* Controller – CartController.java
  
-Service - CartService.java
+* Service - CartService.java
  
-Domain – Cart.java, CartProduct.java
+* Domain – Cart.java, CartProduct.java
  
-DTO
+* DTO
 - param
  - CartCreateParam.java / CartProductCreateParam.java
  - CartUpdateParam.java / CartProductUpdateParam.java
@@ -220,18 +222,18 @@ DTO
  - CartUpdateResponse.java / CartProductUpdateResponse.java
  - CartDeleteResponse.java / CartProductDeleteResponse.java
  
-DAO - CartDao.java, CartProductDao.java
+* DAO - CartDao.java, CartProductDao.java
 <br/><br/>
 
 
 4. Payment & Payment Product
-Controller – PaymentController.java
+* Controller – PaymentController.java
 
-Service - Payment Service.java
+* Service - Payment Service.java
 
-Domain – Payment.java, PaymentProduct.java
+* Domain – Payment.java, PaymentProduct.java
  
-DTO
+* DTO
 - param
  - PaymentCreateParam.java / PaymentProductCreateParam.java
  - PaymentUpdateParam.java / PaymentProductUpdateParam.java
@@ -251,7 +253,7 @@ DTO
  - PaymentUpdateResponse.java / PaymentProductUpdateResponse.java
  - PaymentDeleteResponse.java / PaymentProductDeleteResponse.java
  
-DAO - PaymentDao.java, PaymentProductDao.java
+* DAO - PaymentDao.java, PaymentProductDao.java
 <br/><br/>
 
 
@@ -260,11 +262,15 @@ DAO - PaymentDao.java, PaymentProductDao.java
 - DatabaseConfig.java
 - SwaggerConfig.java
 - WebConfig.java
- 
+<br/><br/>
+
+ 
 * JWT Domain
 - JwtAuthenticationEntryPoint.java
 - JwtAuthenticationFilter.java
 - JwtTokenUtil.java
+<br/><br/>
+
 
 * Security Domain
 - UserDetailsImpl.java
