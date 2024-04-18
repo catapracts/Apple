@@ -10,29 +10,29 @@ import org.springframework.context.annotation.Configuration;
 //import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
-import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;			// HTTP Request에 대해 보안 설정 적용
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;	// Spring Security 설정
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
-import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.config.http.SessionCreationPolicy;		// Session 생성 정책 규정
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;	// Hash Function 이용한 비밀번호 암호화 규칙 설정
 //import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 //import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;	// 인증 형식 제출 처리
 //import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
-import org.springframework.web.cors.CorsConfiguration;
-import org.springframework.web.cors.CorsConfigurationSource;
-//import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.cors.CorsConfiguration;					// CORS 구성
+import org.springframework.web.cors.CorsConfigurationSource;			// Request에 대해 CORS 적용
+//import org.springframework.web.cors.UrlBasedCorsConfigurationSource;	// Request에 대해 CORS 적용 시 URL 형식 사용
 
 
 @EnableWebSecurity // Spring Security
 @Configuration
 public class WebSecurityConfig 
 {
-    private final JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
-    private final JwtAuthenticationFilter jwtRequestFilter;
+    private final JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;	// JWT 이용하여 인증 처리
+    private final JwtAuthenticationFilter jwtRequestFilter;					// JWT 이용하여 인증 처리
 
-    public WebSecurityConfig(
+    public WebSecurityConfig(												// Web관련 보안 설정에 JWT를 이용
         JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint,
         JwtAuthenticationFilter jwtRequestFilter) 
     {
@@ -42,7 +42,7 @@ public class WebSecurityConfig
 
 
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception 
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception 	// HTTP를 이용한 통신에 Spring Security 설정
     {
 
         http
@@ -132,7 +132,7 @@ public class WebSecurityConfig
 //    }
 
     @Bean
-    public AuthenticationManager authenticationManager(
+    public AuthenticationManager authenticationManager(		// AuthenticationManager를 이용해 인증 처리 관리
         AuthenticationConfiguration authenticationConfiguration) throws Exception 
     {
         return authenticationConfiguration.getAuthenticationManager();
