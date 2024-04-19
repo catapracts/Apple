@@ -1,20 +1,50 @@
-
+import './Footer.css';
 
 function Footer() {
 	return (
-		<footer className="py-4 bg-dark text-light footer">
-          <div className="container text-center">
-            <ul className="nav justify-content-center mb-3">
-              <li className="nav-item">
-                <a className="nav-link text-light" href="/">Top</a>
-              </li>
+		<footer className="footer_bg">
+      <div className="container">
+        <div className="px-3 div_flex">
+          <div>
+            <h3>쇼핑 및 알아보기</h3>
+            <ul>
+              <li>스토어</li>
+              <li>iPhone</li>
+              <li>장바구니</li>
             </ul>
-
-            <p>
-              <small> Footer 블락 입니다. </small>
-            </p>
           </div>
-        </footer>
+
+          <div>
+            <h3>계정</h3>
+            <ul>
+              <li>회원 정보 수정</li>
+              <li>결제 내역</li>
+              <li>배송 조회</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3>회원</h3>
+            <ul>
+              <li>회원가입</li>
+              <li>로그인</li>
+              <li>로그아웃</li>
+            </ul>
+          </div>
+        </div>
+        <hr></hr>
+        <div className="px-3"> Copyrightⓒ 2024 Apple Inc. 모든 권리 보유.</div>
+        <p />
+        <div className="px-3 div_flex">
+          <div>개인정보 처리 방침</div>
+          <div>웹 사이트 이용 약관</div>
+          <div>판매 및 환불</div>
+          <div>법적 고지</div>
+          <div>사이트 맵</div>
+        </div>
+        <p />
+      </div>
+    </footer>
 	);
 }
 

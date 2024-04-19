@@ -1,9 +1,20 @@
+import './Home.css';
 
-function Home() {
+
+const Home = () => {
 	return (
-		<div>
-			<h2> 게시판 Home 입니다. </h2>
+		<div className="main">
+			<div className="home1">
+				<h3>아이폰15</h3>
+			</div>
+			<div className="home2">
+				<h3>아이폰15Pro</h3>
+			</div>
+			<div className="home3">
+				<h3>아이폰15ProMax</h3>
+			</div>
 		</div>
+	
 	);
 }
 
