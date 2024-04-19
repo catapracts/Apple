@@ -78,6 +78,9 @@
 * DB 정규화
 * API 문서 작성 총괄
 * 형상 관리 총괄
+* BE : Member, Cart, Cart Product
+* FE : member, cart
+* API 문서 작성
 <br/><br/>
 
 
@@ -85,13 +88,6 @@
 * BE : Product
 * FE : common, product, component, admin
 * 문서화 작업 제작
-* API 문서 작성
-<br/><br/>
-
-
-## 지완기
-* BE : Member, Cart, Cart Product
-* FE : member, cart
 * API 문서 작성
 <br/><br/>
 
