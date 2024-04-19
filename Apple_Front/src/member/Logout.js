@@ -4,18 +4,18 @@ import { AuthContext } from "../context/AuthProvider";
 
 function Logout() {
 
-	const { auth, setAuth } = useContext(AuthContext);
+	const { auth, setAuth } = useContext(AuthContext);			// AuthContext라는 값을 초기값으로 가진 useContext 생성
 
-	const navigate = useNavigate();
+	const navigate = useNavigate();								// useNavigate 선언
 	
-	const logout = () => {
-		localStorage.removeItem("bbs_access_token");
-		localStorage.removeItem("id");
+	const logout = () => {										// logout이라는 함수 실행
+		localStorage.removeItem("bbs_access_token");			// localStorage에 있는 bbs_access_token이라는 값 제거
+		localStorage.removeItem("id");							// localStorage에 있는 id라는 값 제거
 
 		alert(auth + "님, 성공적으로 로그아웃 됐습니다 🔒");
-		setAuth(null);
+		setAuth(null);											// Auth값을 null로 설정 = 인증된 사용자 정보 없음
 		
-		navigate("/");
+		navigate("/");											// 메인 페이지로 이동
 	};
 
 	useEffect(() => {
