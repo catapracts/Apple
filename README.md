@@ -47,7 +47,7 @@
 
 # ⚙구현 기능
 ## 회원
-* 회원가입, 회원 정보 수정, 회원 정보 삭제, 회원 정보 조회(1개, 전체)
+* 회원가입, 회원 정보 수정(주소, 카드정보, 회원 개인 정보), 회원 정보 삭제, 회원 정보 조회(1개, 전체)
 <br/><br/>
 
 
@@ -78,8 +78,8 @@
 * DB 정규화
 * API 문서 작성 총괄
 * 형상 관리 총괄
-* BE : Member, Cart, Cart Product
-* FE : member, cart
+* BE : Member, Cart, Cart Product, Card, Address
+* FE : member, cart, card, address
 * API 문서 작성
 <br/><br/>
 
@@ -105,6 +105,8 @@
  * Logout.js(로그아웃)
  * Join.js(회원가입)
  * MyPage.js(마이페이지)
+ * Card.js
+ * Address.js
 <br/><br/>
  
  2. common
@@ -142,7 +144,7 @@
 * Controller - Product_Controller.java <br/><br/>
 * Service - Product_Service.java <br/><br/>
 * Domain – Product.java <br/><br/>
-* DTO
+* DTO <br/><br/>
   1. param		
    + ProductCreateParam.java
    + ProductUpdateParam.java
