@@ -1,8 +1,6 @@
-package com.example.phoneShopping.product.dto.param;
+package com.example.phoneShopping.product.dto.request;
 
-import com.example.phoneShopping.product.dto.request.CreateProductRequest;
-
-public class CreateProductParam {
+public class UpdateProductRequest {
 
 	// 상품 일련번호
 	private String prod_seq;
@@ -22,14 +20,6 @@ public class CreateProductParam {
 	// 재고
 	private int prod_cnt;
 	
-	public CreateProductParam(CreateProductRequest req) {
-		this.prod_seq = req.getProd_seq();
-		this.prod_name = req.getProd_name();
-		this.prod_price = req.getProd_price();
-		this.prod_hdd = req.getProd_hdd();
-		this.prod_color = req.getProd_color();
-		this.prod_cnt = req.getProd_cnt();
-	}
 	
 	public String getProd_seq() {
 		return prod_seq;
@@ -78,5 +68,5 @@ public class CreateProductParam {
 	public void setProd_cnt(int prod_cnt) {
 		this.prod_cnt = prod_cnt;
 	}
-	
+
 }

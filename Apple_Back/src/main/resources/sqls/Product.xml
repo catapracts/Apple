@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.phoneShopping.payment.dao.ProductDao">
+
+	<!-- 상품 추가 POST -->
+	<insert id="" parameterType="">
+		insert
+	</insert>
+
+	<!-- 상품 상세 GET -->
+	<select id="" parameterType="">
+		select
+	</select>
+
+	<!-- 상품 목록 GET -->
+	<select id="" parameterType="" resultType="">
+		select
+	</select>
+	
+	<!-- 상품 수정 PATCH -->
+	<update id="" parameterType="">
+		update 	
+	</update>
+	
+	<!-- 상품 삭제 DELETE -->
+	
+
+
+
+
+</mapper>
