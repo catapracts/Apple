@@ -3,11 +3,29 @@
 <mapper namespace="com.example.phoneShopping.info.dao.InfoDao">
 
 
-<select id="" parameterType="" resultType="">
-select
+<select id="findAllInfo" resultType="com.example.phoneShopping.member.domain.Info">
+SELECT * FROM INFO;
 </select>
 
 
+<select id="findByIdInfo" parameterType="int" resultType="com.example.phoneShopping.member.domain.Info">
+SELECT info_name, info_birth, info_gender, info_phone FROM INFO WHERE info_seq=#{info_seq}
+</select>
+
+
+<insert id="createInfo" parameterType="com.example.phoneShopping.member.dto.param.CreateInfoParam">
+INSERT INTO INFO(info_seq, info_name, info_birth, info_gender, info_phone) VALUES(#{info_seq}, #{info_name}, #{info_birth}, #{info_gender}, #{info_phone})
+</insert>
+
+
+<update id="updateInfo" parameterType="com.example.phoneShopping.member.dto.param.UpdateInfoParam">
+UPDATE INFO SET (info_name, info_birth, info_gender, info_phone)=(#{info_name}, #{info_birth}, #{info_gender}, #{info_phone}) WHERE info_seq=#{info_seq}
+</update>
+
+
+<delete id="deleteInfo" resultType="com.example.phoneShopping.member.domain.Member">
+DELETE FROM INFO WHERE info_seq=#{info_seq}
+</delete>
 
 
 </mapper>

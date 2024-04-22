@@ -2,7 +2,7 @@ package com.example.phoneShopping.security;
 
 import java.util.Collection; // 여러 개의 객체를 하나로 묶기 위해 Collection 사용
 import java.util.Collections; // Colleection 사용하기 위한 method들 모음
-package com.example.phoneShopping.Member.domain.Member; // Member class 사용
+import com.example.phoneShopping.member.domain.Member; // Member class 사용
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -29,13 +29,13 @@ public class UserDetailsImpl implements UserDetails
     @Override
     public String getPassword() // 가져온 회원의 PW return
     {
-        return member.getPwd();
+        return member.getMem_pw();
     }
 
     @Override
     public String getUsername() // 가져온 회원의 이름 return
     {
-        return member.getId();
+        return member.getMem_id();
     }
 
     @Override
