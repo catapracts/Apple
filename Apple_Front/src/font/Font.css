@@ -11,3 +11,10 @@
     font-weight: bold;
     src: url("./AppleSDGothicNeoEB.woff") format("woff");
 }
+
+@font-face {
+    font-family: "Apple SD Gothic Neo H";
+    font-style: normal;
+    font-weight: bolder;
+    src: url("./AppleSDGothicNeoH.woff") format("woff");
+}
