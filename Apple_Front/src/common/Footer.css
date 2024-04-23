@@ -43,3 +43,7 @@ span {
     justify-content: space-between;
     padding-top: 20px;
 }
+
+ul > a {
+    color: #1d1d1f;
+}

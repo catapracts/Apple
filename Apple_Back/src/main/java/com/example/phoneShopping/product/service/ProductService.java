@@ -26,7 +26,6 @@ public class ProductService {
 	public CreateProductResponse createProduct(CreateProductRequest req) {
 		
 		saveProduct(req);
-		authenticate(req.getProd_seq());
 		
 		return new CreateProductResponse(req.getProd_seq());
 	}
