@@ -1,7 +1,10 @@
 package com.example.phoneShopping.member.controller;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,6 +28,7 @@ public class InfoController
 {
 	private final InfoService service;
 	
+	@PreAuthorize("isAuthenticated()")
 	@PostMapping("/create")
 	public ResponseEntity<CreateInfoResponse> createInfo(@Valid @RequestBody CreateInfoRequest req)
 	{
@@ -32,6 +36,7 @@ public class InfoController
 		return ResponseEntity.ok(service.createInfo(req));
 	}
 	
+	@PreAuthorize("isAuthenticated()")
 	@GetMapping("/getAll")
 	public void findAllInfo()
 	{
@@ -39,6 +44,7 @@ public class InfoController
 		service.findAllInfo();
 	}
 	
+	@PreAuthorize("isAuthenticated()")
 	@GetMapping("/getOne")
 	public void findByIdInfo(int info_seq)
 	{
@@ -47,14 +53,16 @@ public class InfoController
 		service.findByIdInfo(info_seq);
 	}
 	
-	@PostMapping("/update")
+	@PreAuthorize("isAuthenticated()")
+	@PatchMapping(value = "/update/{info_seq}")
 	public ResponseEntity<UpdateInfoResponse> updateInfo(@Valid @RequestBody UpdateInfoRequest req)
 	{
 		System.out.println("Info 정보 수정");
 		return ResponseEntity.ok(service.updateInfo(req));
 	}
 	
-	@GetMapping("/delete")
+	@PreAuthorize("isAuthenticated()")
+	@DeleteMapping(value = "/delete/{info_seq}")
 	public void deletInfoe(int info_seq)
 	{
 		System.out.println("Info 정보 제거");
