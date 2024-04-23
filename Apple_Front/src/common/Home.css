@@ -82,6 +82,7 @@
     width: 100%;
     transform: translate(-50%, -50%);
     text-align: center;
+    
 }
 
 .homebtn2 {
@@ -111,6 +112,7 @@
     border-radius: 20px;
     margin-left: 10px;
     margin-right: 10px;
+    vertical-align: middle;
 }
 
 .btn2 {

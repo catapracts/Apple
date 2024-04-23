@@ -8,9 +8,20 @@ function Header() {
 			{/* The navigation menu */}
 			<div className="container navbar">
   				<Link to="/">Home</Link>
-  				<Link to="/">스토어</Link>
-  				<Link to="/">iphone</Link>
-  				<Link to="/">장바구니</Link>
+  				<Link to="/store">스토어</Link>
+  				<Link to="/product">iphone</Link>
+				<div class="dropdown">
+					<div className="dropdown-toggle nav_hover" id="navbarDropdown"
+						role="button" data-toggle="dropdown" aria-haspopup="true"
+						aria-expanded="false">iphone
+    				</div>
+    				<div className="dropdown-menu" aria-labelledby='navbarDropdown'>
+      					<Link className="dropdown-item" to="/">iphone 15 pro max</Link>
+      					<Link className="dropdown-item" to="/">iphone 15 pro</Link>
+      					<Link className="dropdown-item" to="/">iphone 15</Link>
+    				</div>
+				</div>
+  				<Link to="/cart">장바구니</Link>
   				<div class="dropdown">
     				<div className="dropdown-toggle nav_hover" id="navbarDropdown"
 						role="button" data-toggle="dropdown" aria-haspopup="true"

@@ -9,7 +9,7 @@ header {
     padding: 0px;
 }
 
-a {
+.navbar > a {
     color: white;
 }
 

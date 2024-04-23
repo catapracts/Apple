@@ -13,6 +13,8 @@ import Mypage from "../member/Mypage"
 import Join from "../member/Join"
 import Login from "../member/Login"
 import Logout from "../member/Logout"
+import Product from "../product/Product"
+import Product_Detail from "../product/Product_Detail"
 
 
 function Router() {
@@ -33,6 +35,8 @@ function Router() {
 				<Route path="/join" element={<Join />}></Route>
 				<Route path="/logout" element={<Logout />}></Route>
 				<Route path="/mypage" element={<Mypage />}></Route>
+				<Route path="/product" element={<Product />}></Route>
+				<Route path="/product_detail/:prod_seq" element={<Product_Detail />}></Route>
 
 			</Routes>
 	);
