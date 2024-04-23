@@ -17,17 +17,18 @@
     padding-bottom: 80px;
 }
 
-.parttitle {
+.part_title {
     padding-bottom: 20px;
 }
-.producttitle {
+
+.product_title {
     font-size: 70px !important;
     font-family: "Apple SD Gothic Neo EB";
     display: inline;
     margin-bottom: 0;
 }
 
-.productsubtitle {
+.product_subtitle {
     font-size: 23px !important;
     font-family: "Apple SD Gothic Neo EB";
     display: inline;
@@ -35,14 +36,15 @@
     margin-bottom: 0;
 }
 
-.videopart {
+.video_part {
     overflow: hidden;
     width: 100%;
     height: 600px;
     border-radius: 30px;
 }
 
-.videoitem{
+.video_item{
+    border-radius: 30px;
     position: relative;
     top: 65%;
     transform: translateY(-50%);
@@ -50,25 +52,33 @@
     width: 100%;
 }
 
-.slidepart {
+.slide_part {
     border-radius: 30px;
     position: relative;
     overflow: hidden;
 }
 
-.slidetext{
+.slide_img > img {
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+    object-fit: cover;    
+
+}
+
+.slide_text{
     position: absolute;
     top: 20px;
     left: 20px;
 }
-.slidetitle{
+.slide_title{
     font-size: 18px;
     font-family: "Apple SD Gothic Neo EB";
     color: white;
     text-align: left;
 }
 
-.slidesubtitle {
+.slide_subtitle {
     font-size: 22px;
     font-family: "Apple SD Gothic Neo EB";
     color: white;
@@ -76,37 +86,37 @@
     text-align: left;
 }
 
-.lineuppart {
+.lineup_part {
     width: 33%;
     border-radius: 30px;
     position: relative;
     overflow: hidden;
 }
 
-.lineupimg > img {
+.lineup_img > img {
     height: 220px;
 }
-.lineuptext{
-    
+
+.lineup_text{ 
     
 }
-.lineuptitle{
+.lineup_title{
     font-size: 24px;
     font-family: "Apple SD Gothic Neo EB";
     margin-top: 25px;
     margin-bottom: 30px;
 }
 
-.lineupsubtitle {
+.lineup_subtitle {
    font-size: 19px;
 }
 
-.lineupprice {
+.lineup_price {
     font-size: 20px;
     font-family: "Apple SD Gothic Neo EB";
 }
 
-.productbtn1 {
+.product_btn1 {
     width: 90px;
     height: 35px;
     border: 0;
@@ -119,7 +129,7 @@
     font-size: 14px;
 }
 
-.productbtn2 {
+.product_btn2 {
     width: 90px;
     height: 35px;
     border: 1px solid;

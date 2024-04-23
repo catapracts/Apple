@@ -29,12 +29,12 @@ public class UpdateProductParam {
 	
 	public UpdateProductParam(String prod_seq, String prod_name, int prod_price, int prod_hdd,
 								String prod_color, int prod_cnt) {
-		this.prod_seq = prod_seq();
-		this.prod_name = prod_name();
-		this.prod_price = prod_price();
-		this.prod_hdd = prod_hdd();
-		this.prod_color = prod_color();
-		this.prod_cnt = prod_cnt();
+		this.prod_seq = prod_seq;
+		this.prod_name = prod_name;
+		this.prod_price = prod_price;
+		this.prod_hdd = prod_hdd;
+		this.prod_color = prod_color;
+		this.prod_cnt = prod_cnt;
 	}
 	
 }

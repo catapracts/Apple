@@ -25,100 +25,100 @@ function Product() {
 		<div>
 			<div className="wide_container">
 				<div className="part1">
-					<div className="parttitle d-flex justify-content-between">
-						<h1 className="producttitle">iPhone</h1>
-						<p className="productsubtitle">사랑받기 위해 디자인되다.</p>
+					<div className="part_title d-flex justify-content-between">
+						<h1 className="product_title">iPhone</h1>
+						<p className="product_subtitle">사랑받기 위해 디자인되다.</p>
 					</div>
-					<div className="videopart">
+					<div className="video_part">
 						<video
-							muted autoPlay loop className="videoitem">
+							muted autoPlay loop className="video_item">
 							<source src={Video} type="video/mp4" />
 						</video>
 					</div>
 				</div>
 
 				<div className="part2">
-					<div className="parttitle d-flex justify-content-between">
-						<h1 className="producttitle">알면 알수록, iPhone</h1>
+					<div className="part_title d-flex justify-content-between">
+						<h1 className="product_title">알면 알수록, iPhone</h1>
 					</div>
 					<div className="text-center d-flex justify-content-between">
-						<div className="slidepart">
-							<div>
+						<div className="slide_part">
+							<div className="slide_img">
 								<img src={Slide1} alt="" />
 							</div>
-							<div className="slidetext">
-								<p className="slidetitle">첨단 카메라</p>
-								<p className="slidesubtitle">셀피 장인부터</p>
-								<p className="slidesubtitle">영상 제작자,</p>
-								<p className="slidesubtitle">경계 파괴자까지.</p>
+							<div className="slide_text">
+								<p className="slide_title">첨단 카메라</p>
+								<p className="slide_subtitle">셀피 장인부터</p>
+								<p className="slide_subtitle">영상 제작자,</p>
+								<p className="slide_subtitle">경계 파괴자까지.</p>
 							</div>
 						</div>
-						<div className="slidepart">
-							<div>
+						<div className="slide_part">
+							<div className="slide_img">
 								<img src={Slide2} alt="" />
 							</div>
-							<div className="slidetext">
-								<p className="slidetitle">Apple 제작 칩</p>
-								<p className="slidesubtitle">매번 실감하는 속도.</p>
+							<div className="slide_text">
+								<p className="slide_title">Apple 제작 칩</p>
+								<p className="slide_subtitle">매번 실감하는 속도.</p>
 							</div>
 						</div>
-						<div className="slidepart">
-							<div>
+						<div className="slide_part">
+							<div className="slide_img">
 								<img src={Slide3} alt="" />
 							</div>
-							<div className="slidetext">
-								<p className="slidetitle">배터리</p>
-								<p className="slidesubtitle">탁월한 배터리 사용 시간이란</p>
-								<p className="slidesubtitle">이런 것.</p>
+							<div className="slide_text">
+								<p className="slide_title">배터리</p>
+								<p className="slide_subtitle">탁월한 배터리 사용 시간이란</p>
+								<p className="slide_subtitle">이런 것.</p>
 							</div>
 						</div>
 					</div>
 				</div>
 				<div className="part3">
-					<div className="parttitle d-flex justify-content-between">
-						<h1 className="producttitle">라인업 살펴보기</h1>
+					<div className="part_title d-flex justify-content-between">
+						<h1 className="product_title">라인업 살펴보기</h1>
 					</div>
 					<div className="text-center d-flex justify-content-around">
-						<div className="lineuppart">
-							<div className="lineupimg">
+						<div className="lineup_part">
+							<div className="lineup_img">
 								<img src={lineup1} alt="" />
 							</div>
-							<div className="lineuptext">
-								<p className="lineuptitle">iPhone 15 Pro Max</p>
-								<p className="lineupsubtitle">궁극의 iPhone.</p>
-								<p className="lineupprice">￦ 1,550,000 부터</p>
+							<div className="lineup_text">
+								<p className="lineup_title">iPhone 15 Pro Max</p>
+								<p className="lineup_subtitle">궁극의 iPhone.</p>
+								<p className="lineup_price">￦ 1,550,000 부터</p>
 							</div>
 							<div>
-								<button className="productbtn1">더 알아보기</button>
-								<button className="productbtn2">구입하기</button>
+								<button className="product_btn1">더 알아보기</button>
+								<button className="product_btn2">구입하기</button>
 							</div>
 						</div>
-						<div className="lineuppart">
-							<div className="lineupimg">
+						<div className="lineup_part">
+							<div className="lineup_img">
 								<img src={lineup2} alt="" />
 							</div>
-							<div className="lineuptext">
-								<p className="lineuptitle">iPhone 15 Pro</p>
-								<p className="lineupsubtitle">막강한 성능</p>
-								<p className="lineupprice">￦ 1,250,000 부터</p>
+							<div className="lineup_text">
+								<p className="lineup_title">iPhone 15 Pro</p>
+								<p className="lineup_subtitle">막강한 성능</p>
+								<p className="lineup_price">￦ 1,250,000 부터</p>
 							</div>
 							<div>
-								<button className="productbtn1">더 알아보기</button>
-								<button className="productbtn2">구입하기</button>
+								<button className="product_btn1">더 알아보기</button>
+								<button className="product_btn2">구입하기</button>
 							</div>
 						</div>
-						<div className="lineuppart">
-							<div className="lineupimg">
+						<div className="lineup_part">
+							<div className="lineup_img">
 								<img src={lineup3} alt="" />
 							</div>
-							<div className="lineuptext">
-								<p className="lineuptitle">iPhone 15</p>
-								<p className="lineupsubtitle">여전한 놀라움.</p>
-								<p className="lineupprice">￦ 1,090,000 부터</p>
+							<div className="lineup_text">
+								<p className="lineup_title">iPhone 15</p>
+								<p className="lineup_subtitle">여전한 놀라움.</p>
+								<p className="lineup_price">￦ 1,090,000 부터</p>
 							</div>
 							<div>
-								<button className="productbtn1">더 알아보기</button>
-								<button className="productbtn2">구입하기</button>
+								<button className="product_btn1">더 알아보기</button>
+								<button className="product_btn2">구입하기</button>
 							</div>
 						</div>
 					</div>
