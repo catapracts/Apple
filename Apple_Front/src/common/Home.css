@@ -18,6 +18,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    z-index: -1;
 }
 
 .home2 > img {
@@ -38,7 +39,7 @@
 
 .hometext1 {
     position: absolute;
-    top: 20%;
+    top: 170px;
     left: 50%;
     width: 100%;
     transform: translate(-50%, -50%);
@@ -47,7 +48,7 @@
 
 .hometext2 {
     position: absolute;
-    top: 97%;
+    top: 865px;
     left: 50%;
     width: 100%;
     transform: translate(-50%, -50%);
@@ -57,26 +58,26 @@
 
 .hometext3 {
     position: absolute;
-    top: 174%;
+    top: 1560px;
     left: 50%;
     width: 100%;
     transform: translate(-50%, -50%);
     text-align: center;
 }
 
-h3 {
+.maintitle {
     font-size: 50px !important;
     font-family: "Apple SD Gothic Neo EB";
 }
 
-p {
+.mainsubtitle {
     font-size: 23px !important;
     font-family: "Apple SD Gothic Neo EB";
 }
 
 .homebtn1 {
     position: absolute;
-    top: 28%;
+    top: 250px;
     left: 50%;
     width: 100%;
     transform: translate(-50%, -50%);
@@ -85,7 +86,7 @@ p {
 
 .homebtn2 {
     position: absolute;
-    top: 105%;
+    top: 945px;
     left: 50%;
     width: 100%;
     transform: translate(-50%, -50%);
@@ -94,7 +95,7 @@ p {
 
 .homebtn3 {
     position: absolute;
-    top: 182%;
+    top: 1640px;
     left: 50%;
     width: 100%;
     transform: translate(-50%, -50%);
