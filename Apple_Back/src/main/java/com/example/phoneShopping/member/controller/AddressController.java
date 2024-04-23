@@ -1,7 +1,10 @@
 package com.example.phoneShopping.member.controller;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,6 +28,7 @@ public class AddressController
 {
 	private final AddressService service;
 	
+	@PreAuthorize("isAuthenticated()")
 	@PostMapping("/create")
 	public ResponseEntity<CreateAddressResponse> createAddress(@Valid @RequestBody CreateAddressRequest req)
 	{
@@ -32,6 +36,7 @@ public class AddressController
 		return ResponseEntity.ok(service.createAddress(req));
 	}
 	
+	@PreAuthorize("isAuthenticated()")
 	@GetMapping("/getAll")
 	public void findAllAddress()
 	{
@@ -39,6 +44,7 @@ public class AddressController
 		service.findAllAddress();
 	}
 	
+	@PreAuthorize("isAuthenticated()")
 	@GetMapping("/getOne")
 	public void findByIdAddress(int addr_seq)
 	{
@@ -47,14 +53,16 @@ public class AddressController
 		service.findByIdAddress(addr_seq);
 	}
 	
-	@PostMapping("/update")
+	@PreAuthorize("isAuthenticated()")
+	@PatchMapping(value = "/update/{addr_seq}")
 	public ResponseEntity<UpdateAddressResponse> updateAddress(@Valid @RequestBody UpdateAddressRequest req)
 	{
 		System.out.println("Address 정보 수정");
 		return ResponseEntity.ok(service.updateAddress(req));
 	}
 	
-	@GetMapping("/delete")
+	@PreAuthorize("isAuthenticated()")
+	@DeleteMapping(value = "/delete/{addr_seq}")
 	public void delete(int addr_seq)
 	{
 		System.out.println("Address 정보 제거");

@@ -8,10 +8,13 @@ import lombok.RequiredArgsConstructor;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -95,6 +98,7 @@ public class MemberController
 	}
 	
 	
+	@PreAuthorize("isAuthenticated()")
 	@GetMapping("/getAll")
 	public void findAllMember()
 	{
@@ -103,6 +107,7 @@ public class MemberController
 	}
 	
 	
+	@PreAuthorize("isAuthenticated()")
 	@GetMapping("/getOneMember")
 	public void findByIdMember(String mem_id)
 	{
@@ -111,14 +116,18 @@ public class MemberController
 		service.findByIdMember(mem_id);
 	}
 	
-	@PostMapping("/update")
+	
+	@PreAuthorize("isAuthenticated()")
+	@PatchMapping(value = "/update/{mem_seq}")
 	public ResponseEntity<UpdateMemberResponse> updateMember(@Valid @RequestBody UpdateMemberRequest req)
 	{
 		System.out.println("회원 정보 수정");
 		return ResponseEntity.ok(service.updateMember(req));
 	}
 	
-	@GetMapping("/deleteMember")
+	
+	@PreAuthorize("isAuthenticated()")
+	@DeleteMapping(value = "/delete/{mem_seq}")
 	public void delete(String mem_id)
 	{
 		System.out.println("회원 정보 제거");
