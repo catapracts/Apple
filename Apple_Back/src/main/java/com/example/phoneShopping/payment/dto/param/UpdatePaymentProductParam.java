@@ -1,5 +1,7 @@
 package com.example.phoneShopping.payment.dto.param;
 
+import com.example.phoneShopping.payment.domain.Payment;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -8,11 +10,11 @@ import lombok.Setter;
 public class UpdatePaymentProductParam {
 	private int payi_seq;	// 결제 상품 번호
 	private String product;	// 결제 상품
-	private int payment;	// 결제 내역
+	private Payment payment;	// 결제 내역
 	private int payi_price;	// 결제 가격
 	private int payi_count;	// 결제 개수
 	
-	public UpdatePaymentProductParam(int payi_seq, String product, int payment, int payi_price, int payi_count) {
+	public UpdatePaymentProductParam(int payi_seq, String product, Payment payment, int payi_price, int payi_count) {
 		super();
 		this.payi_seq=payi_seq;
 		this.product=product;
