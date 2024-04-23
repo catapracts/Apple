@@ -33,7 +33,7 @@ span {
     display: between;
 }
 
-h3 {
+.footertitle {
     font-size: 14px;
     font-weight: bold;
 }

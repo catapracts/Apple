@@ -9,8 +9,8 @@ const Home = () => {
 			<div className="home1">
 				<img src={homeimg1} alt=""/>
 				<div className="hometext1">
-					<h3>iPhone 15 Pro Max</h3>
-					<p>티타늄. 초강력. 초경량. 초프로.</p>
+					<h3 className="maintitle">iPhone 15 Pro Max</h3>
+					<p className="mainsubtitle">티타늄. 초강력. 초경량. 초프로.</p>
 				</div>
 				<div className="homebtn1">
 					<button className="btn1">더 알아보기</button>
@@ -20,8 +20,8 @@ const Home = () => {
 			<div className="home2">
 				<img src={homeimg2} alt="" />
 				<div className="hometext2">
-					<h3>iPhone 15 Pro</h3>
-					<p>티타늄. 초강력. 초경량. 초프로.</p>
+					<h3 className="maintitle">iPhone 15 Pro</h3>
+					<p className="mainsubtitle">티타늄. 초강력. 초경량. 초프로.</p>
 				</div>
 				<div className="homebtn2">
 					<button className="btn1">더 알아보기</button>
@@ -31,8 +31,8 @@ const Home = () => {
 			<div className="home3">
 				<img src={homeimg3} alt="" />
 				<div className="hometext3">
-					<h3>iPhone 15</h3>
-					<p>티타늄. 초강력. 초경량. 초프로.</p>
+					<h3 className="maintitle">iPhone 15</h3>
+					<p className="mainsubtitle">티타늄. 초강력. 초경량. 초프로.</p>
 				</div>
 				<div className="homebtn3">
 					<button className="btn1">더 알아보기</button>

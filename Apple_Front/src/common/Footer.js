@@ -6,7 +6,7 @@ function Footer() {
       <div className="container">
         <div className="px-3 div_flex">
           <div>
-            <h3>쇼핑 및 알아보기</h3>
+            <h3 className="footertitle">쇼핑 및 알아보기</h3>
             <ul>
               <li>스토어</li>
               <li>iPhone</li>
@@ -15,7 +15,7 @@ function Footer() {
           </div>
 
           <div>
-            <h3>계정</h3>
+            <h3 className="footertitle">계정</h3>
             <ul>
               <li>회원 정보 수정</li>
               <li>결제 내역</li>
@@ -24,7 +24,7 @@ function Footer() {
           </div>
 
           <div>
-            <h3>회원</h3>
+            <h3 className="footertitle">회원</h3>
             <ul>
               <li>회원가입</li>
               <li>로그인</li>
