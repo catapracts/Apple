@@ -1,5 +1,10 @@
 package com.example.phoneShopping.product.domain;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class Product {
 	
 	// 상품 일련번호

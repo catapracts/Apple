@@ -23,14 +23,14 @@ function Admin_product() {
         await axios.get("http://localhost:3306/bbs", { params: { "choice": choiceVal, "search": searchVal, "page": page } })
                 
             .then((resp) => {
-                console.log("[GetAll.js] useEffect() success :D");
+                console.log("[Admin_product.js] useEffect() success :D");
                 console.log(resp.data);
     
                 setGetAll(resp.data.getAll);
                 setTotalCnt(resp.data.pageCnt);
             })
             .catch((err) => {
-                console.log("[GetAll.js] useEffect() error :<");
+                console.log("[Admin_product.js] useEffect() error :<");
                 console.log(err);
 
             });
