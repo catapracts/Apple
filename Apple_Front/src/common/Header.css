@@ -13,6 +13,11 @@ header {
     color: white;
 }
 
+.container {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
 a:hover, .nav_hover:hover {
     text-decoration: none;
     color: #6e6e73;

@@ -3,8 +3,11 @@ import { Routes, Route } from "react-router-dom";
 import Home from "../common/Home"
 import Cart from "../cart/Cart"
 import Cart_Detail from "../cart/Cart_Detail"
-import Admin from "../admin/Admin"
-import Admin_aside from "../admin/Admin_aside"
+import Admin_product from "../admin/Admin_product"
+import Admin_product_create from "../admin/Admin_product_create"
+import Admin_product_update from "../admin/Admin_product_update"
+import Admin_payment from "../admin/Admin_payment"
+import Admin_member from "../admin/Admin_member"
 import Store from "../store/Store"
 import Store_Detail from "../store/Store_Detail"
 import Payment from "../payment/Payment"
@@ -25,8 +28,11 @@ function Router() {
 
 				<Route path="/cart" element={<Cart />}></Route>
 				<Route path="/cart_detail/:cartp_seq" element={<Cart_Detail />}></Route>
-				<Route path="/admin/" element={<Admin />}></Route>
-				<Route path="/admin_aside" element={<Admin_aside />}></Route>
+				<Route path="/admin/product" element={<Admin_product />}></Route>
+				<Route path="/admin/product_create" element={<Admin_product_create />}></Route>
+				<Route path="/admin/product_update" element={<Admin_product_update />}></Route>
+				<Route path="/admin/payment" element={<Admin_payment />}></Route>
+				<Route path="/admin/member" element={<Admin_member />}></Route>
 				<Route path="/store/" element={<Store />}></Route>
 				<Route path="/store_detail/:prod_seq" element={<Store_Detail />}></Route>
 				<Route path="/payment/" element={<Payment />}></Route>

@@ -33,6 +33,18 @@ function Header() {
       					<Link className="dropdown-item" to="/">배송 조회</Link>
     				</div>
   				</div>
+  				<div class="dropdown">
+    				<div className="dropdown-toggle nav_hover" id="navbarDropdown"
+						role="button" data-toggle="dropdown" aria-haspopup="true"
+						aria-expanded="false">관리자 페이지
+    				</div>
+    				<div className="dropdown-menu" aria-labelledby='navbarDropdown'>
+      					<Link className="dropdown-item" to="/admin/product">상품 관리</Link>
+      					<Link className="dropdown-item" to="/admin/product_create">상품 등록</Link>
+      					<Link className="dropdown-item" to="/admin/payment">결제 내역</Link>
+      					<Link className="dropdown-item" to="/admin/member">회원 관리</Link>
+    				</div>
+  				</div>
 			
 			</div>
 		</header>

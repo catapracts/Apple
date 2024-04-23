@@ -1,0 +1,11 @@
+.admin_container {
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+.admin_title {
+    font-size: 70px !important;
+    font-family: "Apple SD Gothic Neo EB";
+    display: inline;
+    
+}

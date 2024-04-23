@@ -5,7 +5,7 @@ function Footer() {
 	return (
 		<footer className="footer_bg">
       <div className="container">
-        <div className="px-3 div_flex">
+        <div className="div_flex">
           <div>
             <h3 className="footertitle">쇼핑 및 알아보기</h3>
             <ul>
@@ -34,9 +34,9 @@ function Footer() {
           </div>
         </div>
         <hr></hr>
-        <div className="px-3"> Copyrightⓒ 2024 Apple Inc. 모든 권리 보유.</div>
+        <div className=""> Copyrightⓒ 2024 Apple Inc. 모든 권리 보유.</div>
         <p />
-        <div className="px-3 div_flex">
+        <div className="div_flex">
           <div>개인정보 처리 방침</div>
           <div>웹 사이트 이용 약관</div>
           <div>판매 및 환불</div>
