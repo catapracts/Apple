@@ -108,7 +108,7 @@ public class MemberController
 	
 	
 	@PreAuthorize("isAuthenticated()")
-	@GetMapping("/getOneMember")
+	@GetMapping("/getOne/{mem_seq}")
 	public void findByIdMember(String mem_id)
 	{
 		System.out.println("회원 정보 1개 출력");
