@@ -1,7 +1,5 @@
 package com.example.phoneShopping.product.dto.param;
 
-import com.example.phoneShopping.product.dto.request.UpdateProductRequest;
-
 import lombok.Getter;
 import lombok.Setter;
 
