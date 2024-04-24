@@ -63,7 +63,7 @@ public class InfoController
 	
 	@PreAuthorize("isAuthenticated()")
 	@DeleteMapping(value = "/delete/{info_seq}")
-	public void deletInfoe(int info_seq)
+	public void deletInfo(int info_seq)
 	{
 		System.out.println("Info 정보 제거");
 		System.out.println(info_seq);

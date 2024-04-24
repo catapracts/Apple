@@ -10,6 +10,7 @@ import com.example.phoneShopping.cart.dao.CartDao;
 import com.example.phoneShopping.cart.domain.Cart;
 import com.example.phoneShopping.cart.domain.CartProduct;
 import com.example.phoneShopping.cart.dto.param.CartDetailDto;
+import com.example.phoneShopping.cart.dto.param.CartOrderDto;
 import com.example.phoneShopping.cart.dto.param.CartProductDto;
 import com.example.phoneShopping.member.dao.MemberDao;
 import com.example.phoneShopping.member.domain.Member;
@@ -31,7 +32,21 @@ public class CartService
 	private final CartDao cdao;
 	private final PaymentService service;
 	
-	public int addCart(CartProductDto cartProductDto, String mem_id)
+	
+	public String findMemberId(String mem_id)	// Member 찾기
+	{
+		Member member = mdao.findById(mem_id);
+		return member.getMem_id();
+	}
+	
+	public int findCartProductId(int cartp_seq)	// 장바구니에 담긴 상품 1개 출력
+	{
+		CartProduct cartProduct = cdao.findCartProductId(cartp_seq);
+		return cartProduct.getCartp_seq();
+	}
+	
+	
+	public int addCart(CartProductDto cartProductDto, String mem_id)	// 장바구니에 상품 추가
 	{
 		Product product = pdao.findById(cartProductDto.getCartp_seq());	// 장바구니에 넣을 아이템 불러오기
 		Member member = mdao.findById(mem_id);	// 장바구니 생성할 회원 불러오기
@@ -60,8 +75,9 @@ public class CartService
 		}
 	}
 	
+	
     @Transactional(readOnly = true)
-    public List<CartDetailDto> getCartList(String mem_id)	// 장바구니에 담긴 상품 리스트 출력
+    public List<CartDetailDto> getCartList(String mem_id)	// 장바구니에 담긴 상품 전체 출력
     {
         List<CartDetailDto> cartDetailDtoList = new ArrayList<>(); // 장바구니에 담긴 상품들 출력하기 위해 만든 ArrayList
 
@@ -79,4 +95,56 @@ public class CartService
     }
     
     
+    @Transactional(readOnly = true)
+    public boolean validateCartProduct(int cartp_seq, String mem_id) // 로그인한 사람이랑 주문한 사람이랑 동일한지 확인
+    {
+    	Member member = mdao.findById(mem_id);	// 매개변수로 받은 id값(로그인한 사람)
+    	CartProduct cartProduct = cdao.findCartProductId(cartp_seq);	// 장바구니에 담긴 상품 구분번호
+    	Member saveMember = cartProduct.getCart().getMember();	// 장바구니 생성한 id값(장바구니 주인 = 주문자)
+    	if(member.getMem_id()!=saveMember.getMem_id())	// 장바구니 생성한 id값(주문자)과 매개변수로 받은 id값(로그인한 사람)이 다르면
+    	{
+    		return false;	// 장바구니에 상품 담기 불가능
+    	}
+    	
+    	return true;	// 장바구니에 상품담는 거 가능
+    }
+    
+    
+    public void updateCartProductCount(int cartp_seq, int cnt)	// 장바구니 상품 수량 업데이트
+    {
+    	CartProduct cartProduct = cdao.findCartProductId(cartp_seq);
+    	cartProduct.updateCount(cnt);
+    }
+    
+    
+    public void deleteCartProduct(int cartp_seq)	// 장바구니에 담긴 상품 삭제
+    {
+    	CartProduct cartProduct = cdao.findCartProductId(cartp_seq);	// 삭제할 장바구니 아이템 선택
+    	cdao.deleteCartProduct(cartProduct);	//	장바구니에 담긴 상품 삭제
+    }
+    
+    
+    // 장바구니 정보 가져와서 payment랑 paymentProduct에 저장 후 장바구니의 값을 제거
+    public int paymentCartProduct(List<CartOrderDto> cartOrderDtoList, String mem_id)
+    {
+    	List<PaymentDto> paymentDtoList = new ArrayList<>(); // Payment에 저장하기 위한 ArrayList생성
+    	for(CartOrderDto cartOrderDto : cartOrderDtoList)
+    	{
+    		CartProduct cartProduct = cdao.findCartProductId(cartOrderDto.getCartp_seq());
+    		PaymentDto paymentDto = new PaymentDto();
+    		paymentDto.setProductId(cartProduct.getProduct().getProd_seq());
+    		paymentDto.setCount(cartProduct.getCartp_cnt());
+    		paymentDtoList.add(paymentDto);
+    	}
+    	
+    	int pay_seq = paymentService.pays(paymentDtoList, mem_id);
+    	
+    	for(CartOrderDto cartOrderDto : cartOrderDtoList)
+    	{
+    		CartProduct cartProduct = cdao.findCartProductId(cartOrderDto.getCartp_seq());
+    		cdao.deleteCartProduct(cartProduct);
+    	}
+    	
+    	return pay_seq;
+    }
 }

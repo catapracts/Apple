@@ -21,8 +21,8 @@ public interface CartDao
 	
 	// CartProduct관련 CRUD
 	CartProduct createCartProduct(CartProduct cart);
-	
-	
+	CartProduct findCartProductId(int cartp_seq);
+	void deleteCartProduct(CartProduct cartProduct);
 	
 	// Cart와 Cart Product는 잠시 거쳐가는 용도이므로 DB는 만들되 안에 값은 굳이 저장할 필요가 없으니 내부로직처리
 	// 1회원 : 1장바구니
