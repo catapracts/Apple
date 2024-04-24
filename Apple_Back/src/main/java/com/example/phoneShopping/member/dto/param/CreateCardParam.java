@@ -11,7 +11,7 @@ public class CreateCardParam
 {
 	private int card_seq;		// 카드 구분 번호
 	private String card_comp;	// 카드회사
-	private int card_num;		// 카드번호
+	private String card_num;		// 카드번호
 	private String card_date;	// 카드 유효기간
 	private int card_cvc;		// 카드 CVC
 	
