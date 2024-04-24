@@ -14,6 +14,7 @@ import com.example.phoneShopping.cart.dto.param.CartOrderDto;
 import com.example.phoneShopping.cart.dto.param.CartProductDto;
 import com.example.phoneShopping.member.dao.MemberDao;
 import com.example.phoneShopping.member.domain.Member;
+import com.example.phoneShopping.payment.dto.param.PaymentDto;
 import com.example.phoneShopping.payment.service.PaymentService;
 import com.example.phoneShopping.product.domain.Product;
 import com.example.phoneShopping.product.dao.ProductDao;
@@ -132,12 +133,12 @@ public class CartService
     	{
     		CartProduct cartProduct = cdao.findCartProductId(cartOrderDto.getCartp_seq());
     		PaymentDto paymentDto = new PaymentDto();
-    		paymentDto.setProductId(cartProduct.getProduct().getProd_seq());
+    		paymentDto.setProd_seq(cartProduct.getProduct().getProd_seq());
     		paymentDto.setCount(cartProduct.getCartp_cnt());
     		paymentDtoList.add(paymentDto);
     	}
     	
-    	int pay_seq = paymentService.pays(paymentDtoList, mem_id);
+    	int pay_seq = service.Payments(paymentDtoList, mem_id);
     	
     	for(CartOrderDto cartOrderDto : cartOrderDtoList)
     	{
