@@ -15,7 +15,7 @@ public class CreateCardRequest
 	private String card_comp;	// 카드회사
 	
 	@NotBlank
-	private int card_num;		// 카드번호
+	private String card_num;		// 카드번호
 	
 	@NotBlank
 	private String card_date;	// 카드 유효기간

@@ -27,6 +27,11 @@ dependencies
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	
+
+	//JUnit Test 라이브러리
+	testImplementation 'org.junit.jupiter:junit-jupiter' 
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
 	
 	// Lombok - Getter, Setter 자동 생성 tool
 	compileOnly 'org.projectlombok:lombok'
