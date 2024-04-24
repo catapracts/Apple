@@ -7,7 +7,18 @@ function Admin_member() {
                         <h1 className="admin_title">회원 관리</h1>                    
                     </div>
                     <div>
-                        회원 리스트 들어올거예요
+                        <table className="member_table">
+                            <thead>
+                                <th className="member_th">회원번호</th>
+                                <th className="member_th">회원 ID</th>
+                                <th className="member_th">회원이름</th>
+                            </thead>
+                            <tbody>
+                                <td className="member_td">내용</td>
+                                <td className="member_td">내용</td>
+                                <td className="member_td">내용</td>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>

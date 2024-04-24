@@ -3,29 +3,30 @@
 <mapper namespace="com.example.phoneShopping.payment.dao.ProductDao">
 
 	<!-- 상품 추가 POST -->
-	<insert id="" parameterType="">
-		insert
+	<insert id="createProduct" parameterType="com.example.phoneShopping.product.dto.param.CreateProductParam">
+		insert into product(prod_seq, prod_name, prod_price, prod_hdd, prod_color, prod_cnt)
+		values(#{prod_seq}, #{prod_name}, #{prod_price}, #{prod_hdd}, #{prod_color}, #{prod_cnt})
 	</insert>
 
 	<!-- 상품 상세 GET -->
-	<select id="" parameterType="">
-		select
+	<select id="findById" parameterType="String" resultType="com.example.phoneShopping.product.domain.Product">
+		select prod_seq from product where prod_seq=#{prod_seq}
 	</select>
 
 	<!-- 상품 목록 GET -->
-	<select id="" parameterType="" resultType="">
-		select
+	<select id="findAll" resultType="com.example.phoneShopping.product.domain.Product">
+		select * from product;
 	</select>
 	
 	<!-- 상품 수정 PATCH -->
-	<update id="" parameterType="">
-		update 	
+	<update id="updateProduct" parameterType="com.example.phoneShopping.product.dto.param.UpdateProductParam">
+		update product set(prod_seq, prod_name, prod_price, prod_hdd, prod_color, prod_cnt)
+		=(#{prod_seq}, #{prod_name}, #{prod_price}, #{prod_hdd}, #{prod_color}, #{prod_cnt})
 	</update>
 	
 	<!-- 상품 삭제 DELETE -->
-	
-
-
-
+	<delete id="deleteProduct" resultType="com.example.phoneShopping.product.domain.Product">
+		delete from product where prod_seq=#{prod_seq}
+	</delete>
 
 </mapper>
