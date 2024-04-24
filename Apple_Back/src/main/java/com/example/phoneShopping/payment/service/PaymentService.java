@@ -1,25 +1,24 @@
 package com.example.phoneShopping.payment.service;
 
 
-import org.springframework.http.HttpStatus;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.security.authentication.DisabledException;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.password.PasswordEncoder;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.example.phoneShopping.member.dao.MemberDao;
+import com.example.phoneShopping.member.domain.Member;
 import com.example.phoneShopping.payment.dao.PaymentDao;
-import com.example.phoneShopping.payment.dto.param.CreatePaymentParam;
-import com.example.phoneShopping.payment.dto.param.UpdatePaymentParam;
-import com.example.phoneShopping.payment.dto.request.CreatePaymentRequest;
-import com.example.phoneShopping.payment.dto.request.UpdatePaymentRequest;
-import com.example.phoneShopping.payment.dto.response.CreatePaymentResponse;
-import com.example.phoneShopping.payment.dto.response.UpdatePaymentResponse;
-import com.example.phoneShopping.payment.exception.PaymentException;
+import com.example.phoneShopping.payment.domain.Payment;
+import com.example.phoneShopping.payment.domain.PaymentProduct;
+
+import com.example.phoneShopping.payment.dto.param.PaymentDto;
+import com.example.phoneShopping.payment.dto.param.PaymentHistDto;
+
+
+import com.example.phoneShopping.product.dao.ProductDao;
+import com.example.phoneShopping.product.domain.Product;
 
 import lombok.RequiredArgsConstructor;
 
@@ -28,68 +27,97 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class PaymentService 
 {
-	private final PaymentDao dao;
+	private final PaymentDao pay_dao;
+	private final ProductDao prod_dao;
+	private final MemberDao mem_dao;
 
-
-	@Transactional
-	public CreatePaymentResponse CreatePayment(CreatePaymentRequest req)	// CreatePayment 처리 
-	{
-		createPayment(req);
-		return new CreatePaymentResponse(req.getPay_seq());
-	}
-
-	public void createPayment(CreatePaymentRequest req)	// CreatePayment method
-	{
-		// CreatePayment 생성
-		CreatePaymentParam param = new CreatePaymentParam(req.getPay_seq(), req.getMember(),
-						req.getPay_date(), req.getPay_status());
-
-		Integer result = dao.createPayment(param);
-		if (result == 0) 
-		{
-			throw new PaymentException("결제를 실패했습니다.", HttpStatus.INTERNAL_SERVER_ERROR);
-		}
-	}
 	
-	@Transactional(readOnly=true)
-	public void findAllPayment()
-	{
-		System.out.println("findAllPayment동작");
-		dao.findAll();
-	}
+    public String order(PaymentDto paymentDto, String mem_id)
+    {
+
+        Product product = prod_dao.findById(paymentDto.getProd_seq());
+        Member member = mem_dao.findById(mem_id);
+
+        List<PaymentProduct> paymentProductList = new ArrayList<>();
+        PaymentProduct paymentProduct = PaymentProduct.createPaymentProduct(product, paymentDto.getCount());
+        paymentProductList.add(paymentProduct);
+        Payment payment = Payment.createPayment(member, paymentProductList);
+        pay_dao.createPayment(payment);
+
+        return payment.getMember().getMem_id();
+    }
+
+    @Transactional(readOnly = true)
+    public List<PaymentHistDto> getPaymentList(String mem_id) 
+    {
+    	List<Payment> payments = pay_dao.findPayment(mem_id);
+        int totalCount = pay_dao.countOrder(mem_id);
+
+        List<PaymentHistDto> paymentHistDtos = new ArrayList<>();
+
+        for (Payment payment : payments) 
+        {
+        	PaymentHistDto paymentHistDto = new PaymentHistDto(payment);
+        	List<PaymentProduct> paymentProductList = payment.getPaymentProducts();
+
+        	paymentHistDtos.add(paymentHistDto);
+        }
+
+        return paymentHistDtos;
+    }
+    
+
+    @Transactional(readOnly = true)
+    public boolean validateOrder(int pay_seq, String mem_id)
+    {
+        Member curMember = mem_dao.findById(mem_id);
+        Payment payment = pay_dao.findById(pay_seq);
+        Member savedMember = payment.getMember();
+
+        if(curMember != savedMember)
+        {
+            return false;
+        }
+
+        return true;
+    }
+
+    public void cancelOrder(int pay_seq)
+    {
+    	Payment payment = pay_dao.findById(pay_seq);
+        payment.cancelPayment();
+    }
+
+    
+    // 장바구니에서 값을 읽어와서 주문 테이블에 저장하는 메소드 
+    public int Payments(List<PaymentDto> paymentDtoList, String mem_id)
+    {
+
+        Member member = mem_dao.findById(mem_id);
+        
+        // PaymentProductList 선언 : Payment : PaymentProduct 
+        List<PaymentProduct> paymentProductList = new ArrayList<>();
+
+        for (PaymentDto paymentDto : paymentDtoList) 
+        {
+        	Product product = prod_dao.findById(paymentDto.getProd_seq());
+
+        	PaymentProduct paymentProduct = PaymentProduct.createPaymentProduct(product, paymentDto.getCount());
+        	paymentProductList.add(paymentProduct);
+        }
+
+        Payment payment = Payment.createPayment(member, paymentProductList);
+        pay_dao.createPayment(payment);
+
+        return payment.getPay_seq();
+    }
+    
 	
 	@Transactional(readOnly=true)
 	public void findByIdPayment(int pay_seq)
 	{
 		System.out.println("findByIdPayment동작");
-		dao.findById(pay_seq);
+		pay_dao.findById(pay_seq);
 	}
-	
-	@Transactional
-	public UpdatePaymentResponse updatePayment(UpdatePaymentRequest req)
-	{
-		findByIdPayment(req.getPay_seq());
-		updatePaymentMethod(req);
-		return new UpdatePaymentResponse(req.getPay_seq());
-	}	
-	
-	private void updatePaymentMethod(UpdatePaymentRequest req)
-	{
-		System.out.println("updatePaymentMethod동작");
-		UpdatePaymentParam param = new UpdatePaymentParam(req.getPay_seq(), req.getMember(),
-					req.getPay_date(), req.getPay_status());
-		
-		Integer result = dao.updatePayment(param);
-		if(result==0)
-		{
-			throw new PaymentException("결제 재시작 실패", HttpStatus.INTERNAL_SERVER_ERROR);
-		}
-	}
-		
-	@Transactional
-	public void deletePayment(int pay_seq)
-	{
-		System.out.println("deletePayment동작");
-		dao.deletePayment(pay_seq);
-	}
+
 }
