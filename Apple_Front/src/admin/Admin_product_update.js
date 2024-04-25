@@ -1,3 +1,5 @@
+import Button from '../common/Button';
+
 function Admin_product_update() {
     return (
         <div>
@@ -49,8 +51,8 @@ function Admin_product_update() {
                         </table>
                     </div>
                     <div className="d-flex justify-content-center">
-                        <button className="btn1">뒤로가기</button>
-                        <button className="btn2">등록하기</button>
+                        <Button size={"default"} color={"none"} text={"뒤로가기"}></Button>
+                        <Button size={"default"} color={"blue"} text={"등록하기"}></Button>
                     </div>
                 </div>
             </div>

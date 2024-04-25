@@ -13,6 +13,7 @@ import Store_Detail from "../store/Store_Detail"
 import Payment from "../payment/Payment"
 import Payment_Detail from "../payment/Payment_Detail"
 import Mypage from "../member/Mypage"
+import Mypage_payment from "../member/Mypage_payment"
 import Join from "../member/Join"
 import Login from "../member/Login"
 import Logout from "../member/Logout"
@@ -29,8 +30,8 @@ function Router() {
 				<Route path="/cart" element={<Cart />}></Route>
 				<Route path="/cart_detail/:cartp_seq" element={<Cart_Detail />}></Route>
 				<Route path="/admin/product" element={<Admin_product />}></Route>
-				<Route path="/admin/product_create" element={<Admin_product_create />}></Route>
-				<Route path="/admin/product_update" element={<Admin_product_update />}></Route>
+				<Route path="/admin/product/create" element={<Admin_product_create />}></Route>
+				<Route path="/admin/product/update" element={<Admin_product_update />}></Route>
 				<Route path="/admin/payment" element={<Admin_payment />}></Route>
 				<Route path="/admin/member" element={<Admin_member />}></Route>
 				<Route path="/store/" element={<Store />}></Route>
@@ -41,6 +42,7 @@ function Router() {
 				<Route path="/join" element={<Join />}></Route>
 				<Route path="/logout" element={<Logout />}></Route>
 				<Route path="/mypage" element={<Mypage />}></Route>
+				<Route path="/mypage/payment" element={<Mypage_payment />}></Route>
 				<Route path="/product" element={<Product />}></Route>
 				<Route path="/product_detail/:prod_seq" element={<Product_Detail />}></Route>
 

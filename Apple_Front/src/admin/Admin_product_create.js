@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthProvider";
 import { HttpHeadersContext } from "../context/HttpHeadersProvider";
-
+import Button from '../common/Button';
 import './Admin.css';
 
 function Admin_product_create() {
@@ -11,7 +11,7 @@ function Admin_product_create() {
     // const { auth, setAuth } = useContext(AuthContext)
 	// const { headers, setHeaders } = useContext(HttpHeadersContext);
 
-	// const navigate = useNavigate();
+	const navigate = useNavigate();
 
 	// const [title, setTitle] = useState("");
 	// const [content, setContent] = useState("");
@@ -122,8 +122,9 @@ function Admin_product_create() {
                         </table>
                     </div>
                     <div className="d-flex justify-content-center">
-                        <button className="btn1">뒤로가기</button>
-                        <button className="btn2">등록하기</button>
+                        <Button size={"default"} color={"none"} text={"뒤로가기"}
+                            onClick={() => {navigate(-1)}}></Button>
+                        <Button size={"default"} color={"blue"} text={"등록하기"}></Button>
                     </div>
                 </div>
             </div>

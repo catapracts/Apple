@@ -1,4 +1,11 @@
+import { useNavigate } from "react-router-dom";
+import Button from '../common/Button';
+import './Admin.css';
+
 function Admin_payment() {
+
+    const navigate = useNavigate();
+
     return (
         <div>
             <div className="container">
@@ -23,6 +30,10 @@ function Admin_payment() {
                                 <td className="payment_td">내용</td>
                             </tbody>
                         </table>
+                    </div>
+                    <div className="d-flex justify-content-center">
+                        <Button size={"default"} color={"none"} text={"뒤로가기"}
+                            onClick={() => {navigate(-1)}}></Button>
                     </div>
                 </div>
             </div>

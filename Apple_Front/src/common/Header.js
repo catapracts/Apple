@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Logo from '../img/apple_logo_white.svg';
 
 function Header() {
+	
 	return (
 		<header className="py-4">
 			{/* The navigation menu */}
@@ -28,9 +29,8 @@ function Header() {
 						aria-expanded="false">OOO 로그인 중
     				</div>
     				<div className="dropdown-menu" aria-labelledby='navbarDropdown'>
-      					<Link className="dropdown-item" to="/">회원 정보 수정</Link>
-      					<Link className="dropdown-item" to="/">결제 내역</Link>
-      					<Link className="dropdown-item" to="/">배송 조회</Link>
+      					<Link className="dropdown-item" to="/mypage">회원 정보 수정</Link>
+      					<Link className="dropdown-item" to="/mypage/payment">결제 내역</Link>
     				</div>
   				</div>
   				<div class="dropdown">
