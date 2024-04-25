@@ -1,8 +1,8 @@
 import axios from "axios";
-import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Pagination from "react-js-pagination";
-
+import Button from '../common/Button';
+import React, { useState, useContext, useEffect } from "react";
 import './Admin.css';
 
 function Admin_product() {
@@ -14,7 +14,7 @@ function Admin_product() {
 	// const [totalCnt, setTotalCnt] = useState(0);
 
     // // Link 용 (함수) 
-    // let navigate = useNavigate();
+    let navigate = useNavigate();
 
     // /* [GET /bbs]: 게시글 목록 */
 	// const getBbsList = async (choiceVal, searchVal, page) => {
@@ -92,8 +92,9 @@ function Admin_product() {
                             onChange={changePage} /> */}
                     </div>
                     <div className="d-flex justify-content-center">
-                        <button className="btn1">뒤로가기</button>
-                        <button className="btn2">등록하기</button>
+					    <Button size={"default"} color={"none"} text={"뒤로가기"}
+                            onClick={() => {navigate(-1)}}></Button>
+                        <Button size={"default"} color={"blue"} text={"등록하기"}></Button>
                     </div>
                 </div>
             </div>

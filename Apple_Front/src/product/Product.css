@@ -53,6 +53,7 @@
 }
 
 .slide_part {
+    margin-top: 30px;
     border-radius: 30px;
     position: relative;
     overflow: hidden;
@@ -91,6 +92,7 @@
     border-radius: 30px;
     position: relative;
     overflow: hidden;
+    margin-top: 30px;
 }
 
 .lineup_img > img {
@@ -114,30 +116,4 @@
 .lineup_price {
     font-size: 20px;
     font-family: "Apple SD Gothic Neo EB";
-}
-
-.product_btn1 {
-    width: 90px;
-    height: 35px;
-    border: 0;
-    background-color: #0071e3;
-    color: white;
-    border-radius: 20px;
-    margin-left: 5px;
-    margin-right: 5px;
-    vertical-align: middle;
-    font-size: 14px;
-}
-
-.product_btn2 {
-    width: 90px;
-    height: 35px;
-    border: 1px solid;
-    border-color: #0071e3;
-    background-color: transparent;
-    color: #0071e3;
-    border-radius: 20px;
-    margin-left: 5px;
-    margin-right: 5px;
-    font-size: 14px;
 }

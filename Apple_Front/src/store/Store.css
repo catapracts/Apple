@@ -1,0 +1,65 @@
+.wide_container {
+    padding: 90px;
+}
+
+.part1 {
+    /* background-color: aquamarine; */
+    padding-bottom: 0px;
+}
+
+.store_title {
+    font-size: 70px !important;
+    font-family: "Apple SD Gothic Neo EB";
+    display: inline;
+    margin-bottom: 0;
+    padding-bottom: 20px;
+}
+
+.list_part {
+    width: 33%;
+    border-radius: 30px;
+    position: relative;
+    overflow: hidden;
+    margin-top: 30px;
+    margin: 5px;
+}
+
+.list_img > img {
+    height: 220px;
+}
+
+.list_text{ 
+    
+}
+
+.list_title{
+    font-size: 24px;
+    font-family: "Apple SD Gothic Neo EB";
+    margin-top: 25px;
+    margin-bottom: 30px;
+}
+
+.list_subtitle {
+   font-size: 19px;
+}
+
+.list_price {
+    font-size: 20px;
+    font-family: "Apple SD Gothic Neo EB";
+}
+
+.spec_img {
+    margin: 10px;
+}
+.spec_title{
+    font-size: 24px;
+    font-family: "Apple SD Gothic Neo EB";
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.spec_subtitle {
+    font-size: 13px;
+    font-family: "Apple SD Gothic Neo M";
+    margin-bottom: 1px;
+ }

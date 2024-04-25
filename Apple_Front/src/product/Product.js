@@ -4,6 +4,8 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../context/AuthProvider";
 import { HttpHeadersContext } from "../context/HttpHeadersProvider";
 import './Product.css';
+import Button from '../common/Button';
+
 import Video from '../img/product_video.mp4';
 import Slide1 from '../img/iphone_slide1.jpg';
 import Slide2 from '../img/iphone_slide2.jpg';
@@ -89,8 +91,8 @@ function Product() {
 								<p className="lineup_price">￦ 1,550,000 부터</p>
 							</div>
 							<div>
-								<button className="product_btn1">더 알아보기</button>
-								<button className="product_btn2">구입하기</button>
+								<Button size={"small"} color={"blue"}text={"더 알아보기"}></Button>
+								<Button size={"small"} color={"none"} text={"구입하기"}></Button>
 							</div>
 						</div>
 						<div className="lineup_part">
@@ -103,8 +105,8 @@ function Product() {
 								<p className="lineup_price">￦ 1,250,000 부터</p>
 							</div>
 							<div>
-								<button className="product_btn1">더 알아보기</button>
-								<button className="product_btn2">구입하기</button>
+								<Button size={"small"} color={"blue"}text={"더 알아보기"}></Button>
+								<Button size={"small"} color={"none"} text={"구입하기"}></Button>
 							</div>
 						</div>
 						<div className="lineup_part">
@@ -117,8 +119,8 @@ function Product() {
 								<p className="lineup_price">￦ 1,090,000 부터</p>
 							</div>
 							<div>
-								<button className="product_btn1">더 알아보기</button>
-								<button className="product_btn2">구입하기</button>
+								<Button size={"small"} color={"blue"}text={"더 알아보기"}></Button>
+								<Button size={"small"} color={"none"} text={"구입하기"}></Button>
 							</div>
 						</div>
 					</div>

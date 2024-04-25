@@ -18,17 +18,17 @@ function Footer() {
           <div>
             <h3 className="footertitle">계정</h3>
             <ul>
-              <li>회원 정보 수정</li>
+              <Link to="/mypage"><li>회원 정보 수정</li></Link>
+              <Link to="/login"><li>로그인</li></Link>
               <li>결제 내역</li>
-              <li>배송 조회</li>
             </ul>
           </div>
 
           <div>
             <h3 className="footertitle">회원</h3>
             <ul>
-              <li>회원가입</li>
-              <li>로그인</li>
+              <Link to="/join"><li>회원가입</li></Link>
+              <Link to="/login"><li>로그인</li></Link>
               <li>로그아웃</li>
             </ul>
           </div>
