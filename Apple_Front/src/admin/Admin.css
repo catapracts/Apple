@@ -40,13 +40,14 @@
     padding: 10px;
 }
 
-.product_table, .product_detail_table, .payment_table, .member_table {
+.product_table, .product_detail_table, .payment_table, .payment_detail_table, .member_table {
     width: 100%;
     margin-top: 20px;
     margin-bottom: 40px;
 }
 
-.product_th, .product_td, .product_detail_th, .payment_th, .payment_td, .member_th, .member_td {
+.product_th, .product_td, .product_detail_th, .payment_th, .payment_td,
+.payment_detail_th, .member_th, .member_td {
     border-top: 1px solid #dbdbdb;
     border-bottom: 1px solid #dbdbdb;
     text-align: center;
@@ -63,6 +64,15 @@
     width: 30%;
 }
 
+.payment_detail_td {
+    border-top: 1px solid #dbdbdb;
+    border-bottom: 1px solid #dbdbdb;
+    padding: 10px;
+    padding-left:
+}
+.payment_detail_th {
+    width: 30%;
+}
 .member_btn {
     width: 90px;
     height: 35px;

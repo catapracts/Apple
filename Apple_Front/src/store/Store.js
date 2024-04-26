@@ -22,125 +22,127 @@ import battery from '../img/iphone_battery_icon.png';
 
 function Store() {
 
+	const navigate = useNavigate();
 
     return (
 		<div>
 			<div className="wide_container">
-				<div className="part1">
+				<div className="store_part1">
 					<div className="store_title d-flex justify-content-between">
 						<h1 className="store_title">라인업 살펴보기</h1>
 					</div>
 					<div className="text-center d-flex justify-content-around">
-						<div className="list_part">
-							<div className="list_img">
+						<div className="store_list_part">
+							<div className="store_list_img">
 								<img src={list1} alt="" />
 							</div>
-							<div className="lineup_text">
-								<p className="lineup_title">iPhone 15 Pro Max</p>
-								<p className="lineup_subtitle">궁극의 iPhone.</p>
-								<p className="lineup_price">￦ 1,550,000 부터</p>
+							<div className="store_list_text">
+								<p className="store_list_title">iPhone 15 Pro Max</p>
+								<p className="store_list_subtitle">궁극의 iPhone.</p>
+								<p className="store_list_price">￦ 1,550,000 부터</p>
 							</div>
-							<div>
-								<Button size={"small"} color={"blue"}text={"더 알아보기"}></Button>
+							<div className="store_list_button">
+								<Button size={"small"} color={"blue"}text={"더 알아보기"}
+									onClick={() => {navigate('/store_detail/1')}}></Button>
 								<Button size={"small"} color={"none"} text={"구입하기"}></Button>
 							</div>
 							<br />
 							<hr />
 							<div>
 								<p className="store_title">17.0cm</p>
-								<p className="spec_title">Super Retina</p>
-								<p className="spec_title">XDR 디스플레이</p>
-								<p className="spec_subtitle">Promotion 기술</p>
-								<p className="spec_subtitle">상시표시형 디스플레이</p>
+								<p className="store_spec_title">Super Retina</p>
+								<p className="store_spec_title">XDR 디스플레이</p>
+								<p className="store_spec_subtitle">Promotion 기술</p>
+								<p className="store_spec_subtitle">상시표시형 디스플레이</p>
 								<br />
 							</div>
 							<div>
-								<img src={A17} className="spec_img" alt="" />
+								<img src={A17} className="store_spec_img" alt="" />
 							</div>
 							<div>
-								<p className="spec_title">A17 Pro 칩</p>
-								<p className="spec_title">6코어 GPU 탑재</p>
+								<p className="store_spec_title">A17 Pro 칩</p>
+								<p className="store_spec_title">6코어 GPU 탑재</p>
 								<br />
 							</div>
 							<div>
-								<img src={triplelens} className="spec_img" alt="" />
+								<img src={triplelens} className="store_spec_img" alt="" />
 							</div>
 							<div>
-								<p className="spec_title">첨단 듀얼 카메라 시스템</p>
-								<p className="spec_subtitle">애플 사상 가장 앞선 48MP 메인 카메라</p>
-								<p className="spec_subtitle">3배 또는 5배 망원 지원</p>
-								<p className="spec_subtitle">울트라 와이드 카메라</p>
+								<p className="store_spec_title">첨단 듀얼 카메라 시스템</p>
+								<p className="store_spec_subtitle">애플 사상 가장 앞선 48MP 메인 카메라</p>
+								<p className="store_spec_subtitle">3배 또는 5배 망원 지원</p>
+								<p className="store_spec_subtitle">울트라 와이드 카메라</p>
 								<br />
 							</div>
 							<div>
-								<img src={battery} className="spec_img" alt="" />
+								<img src={battery} className="store_spec_img" alt="" />
 							</div>
 							<div>
-								<p className="spec_title">최대 29시간 동영상 재생</p>
+								<p className="store_spec_title">최대 29시간 동영상 재생</p>
 								<br />	
 							</div>
 						</div>
 
-						<div className="list_part">
-							<div className="list_img">
+						<div className="store_list_part">
+							<div className="store_list_img">
 								<img src={list2} alt="" />
 							</div>
-							<div className="list_text">
-								<p className="list_title">iPhone 15 Pro</p>
-								<p className="list_subtitle">막강한 성능</p>
-								<p className="list_price">￦ 1,250,000 부터</p>
+							<div className="store_list_text">
+								<p className="store_list_title">iPhone 15 Pro</p>
+								<p className="store_list_subtitle">막강한 성능</p>
+								<p className="store_list_price">￦ 1,250,000 부터</p>
 							</div>
-							<div>
-								<Button size={"small"} color={"blue"}text={"더 알아보기"}></Button>
+							<div className="store_list_button">
+								<Button size={"small"} color={"blue"} text={"더 알아보기"}></Button>
 								<Button size={"small"} color={"none"} text={"구입하기"}></Button>
 							</div>
 							<br />
 							<hr />
 							<div>
 								<p className="store_title">15.5cm</p>
-								<p className="spec_title">Super Retina</p>
-								<p className="spec_title">XDR 디스플레이</p>
-								<p className="spec_subtitle">Promotion 기술</p>
-								<p className="spec_subtitle">상시표시형 디스플레이</p>
+								<p className="store_spec_title">Super Retina</p>
+								<p className="store_spec_title">XDR 디스플레이</p>
+								<p className="store_spec_subtitle">Promotion 기술</p>
+								<p className="store_spec_subtitle">상시표시형 디스플레이</p>
 								<br />
 							</div>
 							<div>
-								<img src={A17} className="spec_img" alt="" />
+								<img src={A17} className="store_spec_img" alt="" />
 							</div>
 							<div>
-								<p className="spec_title">A17 Pro 칩</p>
-								<p className="spec_title">6코어 GPU 탑재</p>
+								<p className="store_spec_title">A17 Pro 칩</p>
+								<p className="store_spec_title">6코어 GPU 탑재</p>
 								<br />
 							</div>
 							<div>
-								<img src={triplelens} className="spec_img" alt="" />
+								<img src={triplelens} className="store_spec_img" alt="" />
 							</div>
 							<div>
-								<p className="spec_title">첨단 듀얼 카메라 시스템</p>
-								<p className="spec_subtitle">애플 사상 가장 앞선 48MP 메인 카메라</p>
-								<p className="spec_subtitle">3배 또는 5배 망원 지원</p>
-								<p className="spec_subtitle">울트라 와이드 카메라</p>
+								<p className="store_spec_title">첨단 듀얼 카메라 시스템</p>
+								<p className="store_spec_subtitle">애플 사상 가장 앞선 48MP 메인 카메라</p>
+								<p className="store_spec_subtitle">3배 또는 5배 망원 지원</p>
+								<p className="store_spec_subtitle">울트라 와이드 카메라</p>
 								<br />
 							</div>
 							<div>
-								<img src={battery} className="spec_img" alt="" />
+								<img src={battery} className="store_spec_img" alt="" />
 							</div>
 							<div>
-								<p className="spec_title">최대 23시간 동영상 재생</p>
+								<p className="store_spec_title">최대 23시간 동영상 재생</p>
 								<br />
 							</div>
 						</div>
 
-						<div className="list_part">
-							<div className="list_img">
+						<div className="store_list_part">
+							<div className="store_list_img">
 								<img src={list3} alt="" />
 							</div>
-							<div className="list_text">
-								<p className="list_title">iPhone 15</p>
-								<p className="list_subtitle">여전한 놀라움.</p>
-								<p className="list_price">￦ 1,090,000 부터</p>
+							<div className="store_list_text">
+								<p className="store_list_title">iPhone 15</p>
+								<p className="store_list_subtitle">여전한 놀라움.</p>
+								<p className="store_list_price">￦ 1,090,000 부터</p>
 							</div>
-							<div>
+							<div className="store_list_button">
 								<Button size={"small"} color={"blue"}text={"더 알아보기"}></Button>
 								<Button size={"small"} color={"none"} text={"구입하기"}></Button>
 							</div>
@@ -148,35 +150,35 @@ function Store() {
 							<hr />
 							<div>
 								<p className="store_title">15.5cm</p>
-								<p className="spec_title">Super Retina</p>
-								<p className="spec_title">XDR 디스플레이</p>
-								<p className="spec_subtitle">-</p>
-								<p className="spec_subtitle">-</p>
+								<p className="store_spec_title">Super Retina</p>
+								<p className="store_spec_title">XDR 디스플레이</p>
+								<p className="store_spec_subtitle">-</p>
+								<p className="store_spec_subtitle">-</p>
 								<br />
 							</div>
 							<div>
-								<img src={A16} className="spec_img" alt="" />
+								<img src={A16} className="store_spec_img" alt="" />
 							</div>
 							<div>
-								<p className="spec_title">A16 Bionic 칩</p>
-								<p className="spec_title">5코어 GPU 탑재</p>
+								<p className="store_spec_title">A16 Bionic 칩</p>
+								<p className="store_spec_title">5코어 GPU 탑재</p>
 								<br />
 							</div>
 							<div>
-								<img src={duallens} className="spec_img" alt="" />
+								<img src={duallens} className="store_spec_img" alt="" />
 							</div>
 							<div>
-								<p className="spec_title">첨단 듀얼 카메라 시스템</p>
-								<p className="spec_subtitle">48MP 메인 카메라</p>
-								<p className="spec_subtitle">2배 망원 지원</p>
-								<p className="spec_subtitle">울트라 와이드 카메라</p>
+								<p className="store_spec_title">첨단 듀얼 카메라 시스템</p>
+								<p className="store_spec_subtitle">48MP 메인 카메라</p>
+								<p className="store_spec_subtitle">2배 망원 지원</p>
+								<p className="store_spec_subtitle">울트라 와이드 카메라</p>
 								<br />
 							</div>
 							<div>
-								<img src={battery} className="spec_img" alt="" />
+								<img src={battery} className="store_spec_img" alt="" />
 							</div>
 							<div>
-								<p className="spec_title">최대 20시간 동영상 재생</p>
+								<p className="store_spec_title">최대 20시간 동영상 재생</p>
 								<br />	
 							</div>
 						</div>

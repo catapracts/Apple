@@ -2,7 +2,7 @@
     padding: 90px;
 }
 
-.part1 {
+.store_part1 {
     /* background-color: aquamarine; */
     padding-bottom: 0px;
 }
@@ -15,7 +15,7 @@
     padding-bottom: 20px;
 }
 
-.list_part {
+.store_list_part {
     width: 33%;
     border-radius: 30px;
     position: relative;
@@ -24,42 +24,101 @@
     margin: 5px;
 }
 
-.list_img > img {
+.store_list_img > img {
     height: 220px;
 }
 
-.list_text{ 
+.store_list_text{ 
     
 }
 
-.list_title{
+.store_list_title{
     font-size: 24px;
     font-family: "Apple SD Gothic Neo EB";
     margin-top: 25px;
     margin-bottom: 30px;
 }
 
-.list_subtitle {
+.store_list_subtitle {
    font-size: 19px;
 }
 
-.list_price {
+.store_list_price {
     font-size: 20px;
     font-family: "Apple SD Gothic Neo EB";
 }
 
-.spec_img {
+.store_list_button {
+    padding-top: 10px;
+}
+
+.store_spec_img {
     margin: 10px;
 }
-.spec_title{
+
+.store_spec_title{
     font-size: 24px;
     font-family: "Apple SD Gothic Neo EB";
     margin-top: 0px;
     margin-bottom: 0px;
 }
 
-.spec_subtitle {
-    font-size: 13px;
+.store_spec_subtitle {
+    font-size: 15px;
     font-family: "Apple SD Gothic Neo M";
-    margin-bottom: 1px;
- }
+    margin-bottom: 2px;
+}
+
+.store_detail_title {
+    font-size: 50px !important;
+    font-family: "Apple SD Gothic Neo EB";
+    display: inline;
+    margin-bottom: 0;
+    padding-bottom: 20px;
+}
+
+.store_detail_subtitle {
+    font-size: 19px;
+    font-family: "Apple SD Gothic Neo EB";
+}
+
+.store_detail_part1 {
+    padding: 0;
+}
+
+.store_detail_part2 {
+    height: 500px;
+}
+
+.store_detail_left {
+    width: 60%;
+    height: 500px;
+    display: inline-block;
+    float: left;
+    position: relative;
+    background-color: aqua;
+}
+
+.store_detail_right {
+    width: 40%;
+    height: 500px;
+    display: inline-block;
+    background-color: palevioletred;
+    padding: 10px;
+}
+
+.store_detail_name {
+    background-color: #111111;
+}
+
+.store_detail_hdd {
+    background-color: #444444;
+}
+
+.store_detail_color {
+    background-color: #777777;
+}
+
+.store_detail_btn {
+    background-color: #999999;
+}

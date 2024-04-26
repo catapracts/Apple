@@ -17,7 +17,7 @@ function Header() {
 						aria-expanded="false">iphone
     				</div>
     				<div className="dropdown-menu" aria-labelledby='navbarDropdown'>
-      					<Link className="dropdown-item" to="/">iphone 15 pro max</Link>
+      					<Link className="dropdown-item" to="/product_detail/1">iphone 15 pro max</Link>
       					<Link className="dropdown-item" to="/">iphone 15 pro</Link>
       					<Link className="dropdown-item" to="/">iphone 15</Link>
     				</div>
@@ -40,7 +40,7 @@ function Header() {
     				</div>
     				<div className="dropdown-menu" aria-labelledby='navbarDropdown'>
       					<Link className="dropdown-item" to="/admin/product">상품 관리</Link>
-      					<Link className="dropdown-item" to="/admin/product_create">상품 등록</Link>
+      					<Link className="dropdown-item" to="/admin/product/create">상품 등록</Link>
       					<Link className="dropdown-item" to="/admin/payment">결제 내역</Link>
       					<Link className="dropdown-item" to="/admin/member">회원 관리</Link>
     				</div>

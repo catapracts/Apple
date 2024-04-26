@@ -7,10 +7,14 @@ import { HttpHeadersContext } from "../context/HttpHeadersProvider";
 
 function Product_Detail() {
 
+	const navigate = useNavigate();
 
     return (
 		<div>
+			<div className="wide_container">
+
 			<h2> Product_Detail 입니다. </h2>
+			</div>
 		</div>
 	);
     

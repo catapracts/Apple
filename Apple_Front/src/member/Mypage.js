@@ -26,31 +26,31 @@ function Mypage() {
 								<tr>
 									<th className="mypage_th">회원 ID</th>
 									<td className="mypage_td">
-										<input type="tex" className="mypage_form" />
+										<input type="text" className="mypage_form" />
 									</td>
 								</tr>
 								<tr>
 									<th className="mypage_th">이름</th>
 									<td className="mypage_td">
-										<input type="tex" className="mypage_form" />
+										<input type="text" className="mypage_form" />
 									</td>
 								</tr>
 								<tr>
 									<th className="mypage_th">연락처</th>
 									<td className="mypage_td">
-										<input type="tex" className="mypage_form" />
+										<input type="text" className="mypage_form" />
 									</td>
 								</tr>
 								<tr>
 									<th className="mypage_th">성별</th>
 									<td className="mypage_td">
-										<input type="tex" className="mypage_form" />
+										<input type="text" className="mypage_form" />
 									</td>
 								</tr>
 								<tr>
 									<th className="mypage_th">생년월일</th>
 									<td className="mypage_td">
-										<input type="tex" className="mypage_form" />
+										<input type="text" className="mypage_form" />
 									</td>
 								</tr>
 							</table>
