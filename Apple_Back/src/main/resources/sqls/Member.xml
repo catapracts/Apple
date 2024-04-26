@@ -1,31 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-config.dtd">
-<mapper namespace="com.example.phoneShopping.member.dao.MemberDao">
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-
-<select id="findAll" resultType="com.example.phoneShopping.member.domain.Member">
-SELECT * FROM MEMBER;
+<mapper namespace="com.example.phoneShopping.member.dao.MemberDao">	
+ 
+<select id="findAllMember" resultType="com.example.phoneShopping.member.domain.Member">
+SELECT * FROM MEMBER
 </select>
 
 
-<select id="findById" parameterType="String" resultType="com.example.phoneShopping.member.domain.Member">
-SELECT mem_id, mem_pw FROM MEMBER WHERE mem_id=#{mem_id}
+<select id="findByIdMember" parameterType="String" resultType="com.example.phoneShopping.member.domain.Member">
+SELECT * FROM MEMBER WHERE mem_id=#{mem_id}
+</select>
+
+
+<select id="findByIdSeq" parameterType="Integer" resultType="Integer">
+SELECT mem_seq FROM MEMBER WHERE mem_seq=#{mem_seq}
+</select>
+
+
+<select id="findByPw" parameterType="String" resultType="String">
+SELECT mem_pw FROM MEMBER WHERE mem_id=#{mem_id}
 </select>
 
 
 <insert id="createMember" parameterType="com.example.phoneShopping.member.dto.param.CreateMemberParam">
-INSERT INTO MEMBER(mem_seq, mem_id, mem_pw) VALUES(#{mem_seq}, #{mem_id}, #{mem_pwd})
+INSERT INTO MEMBER(mem_seq, mem_id, mem_pw) VALUES(#{mem_seq}, #{mem_id}, #{mem_pw})
 </insert>
 
 
 <update id="updateMember" parameterType="com.example.phoneShopping.member.dto.param.UpdateMemberParam">
-UPDATE MEMBER SET (mem_id, mem_pw)=(#{mem_id}, #{mem_pw})
+UPDATE MEMBER SET mem_id=#{mem_id}, mem_pw=#{mem_pw} WHERE mem_seq=#{mem_seq}
 </update>
 
 
-<delete id="deleteMember" resultType="com.example.phoneShopping.member.domain.Member">
+<delete id="deleteMember" parameterType="com.example.phoneShopping.member.domain.Member">
 DELETE FROM MEMBER WHERE mem_id=#{mem_id}
 </delete>
 
+
+<select id="isExistUserId" parameterType="String" resultType="java.lang.Integer">
+SELECT count(*) FROM member	WHERE mem_id=#{mem_id}
+</select>
 
 </mapper>

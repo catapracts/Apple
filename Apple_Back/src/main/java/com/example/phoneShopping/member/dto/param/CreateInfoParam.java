@@ -21,6 +21,6 @@ public class CreateInfoParam
 		this.info_name=req.getInfo_name();
 		this.info_birth=req.getInfo_birth();
 		this.info_gender=req.getInfo_gender();
-		this.info_phone=req.getInfo_phone();		
+		this.info_phone=req.getInfo_phone();
 	}
 }

@@ -11,7 +11,7 @@ public class PaymentHistDto
 	
 	public PaymentHistDto(Payment payment)
 	{
-		this.mem_id = payment.getMember().getMem_id();
+		this.mem_id = payment.getMember().getMemId();
 		this.date = payment.getPay_date();
 		this.status = payment.getPay_status();
 	}

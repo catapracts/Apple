@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.phoneShopping.info.dao.InfoDao">
+<mapper namespace="com.example.phoneShopping.member.dao.InfoDao">
 
 
 <select id="findAllInfo" resultType="com.example.phoneShopping.member.domain.Info">
@@ -8,22 +8,23 @@ SELECT * FROM INFO;
 </select>
 
 
-<select id="findByIdInfo" parameterType="int" resultType="com.example.phoneShopping.member.domain.Info">
-SELECT info_name, info_birth, info_gender, info_phone FROM INFO WHERE info_seq=#{info_seq}
+<select id="findByIdInfo" parameterType="Integer" resultType="com.example.phoneShopping.member.domain.Info">
+SELECT * FROM INFO WHERE info_seq=#{info_seq}
 </select>
 
 
 <insert id="createInfo" parameterType="com.example.phoneShopping.member.dto.param.CreateInfoParam">
 INSERT INTO INFO(info_seq, info_name, info_birth, info_gender, info_phone) VALUES(#{info_seq}, #{info_name}, #{info_birth}, #{info_gender}, #{info_phone})
+
 </insert>
 
 
 <update id="updateInfo" parameterType="com.example.phoneShopping.member.dto.param.UpdateInfoParam">
-UPDATE INFO SET (info_name, info_birth, info_gender, info_phone)=(#{info_name}, #{info_birth}, #{info_gender}, #{info_phone}) WHERE info_seq=#{info_seq}
+UPDATE INFO SET info_name=#{info_name}, info_birth=#{info_birth}, info_gender=#{info_gender}, info_phone=#{info_phone} WHERE info_seq=#{info_seq}
 </update>
 
 
-<delete id="deleteInfo" resultType="com.example.phoneShopping.member.domain.Member">
+<delete id="deleteInfo" parameterType="com.example.phoneShopping.member.domain.Member">
 DELETE FROM INFO WHERE info_seq=#{info_seq}
 </delete>
 

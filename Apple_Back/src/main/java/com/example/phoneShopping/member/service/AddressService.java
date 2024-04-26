@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.phoneShopping.member.dao.AddressDao;
+import com.example.phoneShopping.member.domain.Address;
 import com.example.phoneShopping.member.dto.param.CreateAddressParam;
 import com.example.phoneShopping.member.dto.param.UpdateAddressParam;
 import com.example.phoneShopping.member.dto.request.CreateAddressRequest;
@@ -45,21 +46,38 @@ public class AddressService
 	public void findAllAddress()
 	{
 		System.out.println("findAllAddress동작");
-		addressDao.findAllAddress();	
+		addressDao.findAllAddress();
+		
+		for(int i = 0; i < addressDao.findAllAddress().size(); i++)
+		{
+			System.out.println(addressDao.findAllAddress().get(i).getAddr_seq());
+			System.out.println(addressDao.findAllAddress().get(i).getAddr_zip());
+			System.out.println(addressDao.findAllAddress().get(i).getAddr_detail());
+			System.out.println("\n");
+		}
 	}
 	
 	@Transactional(readOnly=true)
-	public void findByIdAddress(int addr_seq) 
+	public Address findByIdAddress(int addr_seq) 
 	{
 		System.out.println("findByIdAddress동작");
 		addressDao.findByIdAddress(addr_seq);
+		System.out.println(addressDao.findByIdAddress(addr_seq).getAddr_seq());
+		System.out.println(addressDao.findByIdAddress(addr_seq).getAddr_zip());
+		System.out.println(addressDao.findByIdAddress(addr_seq).getAddr_detail());
+		Address address = new Address(addressDao.findByIdAddress(addr_seq).getAddr_seq(), addressDao.findByIdAddress(addr_seq).getAddr_zip(), addressDao.findByIdAddress(addr_seq).getAddr_detail());
+		return address;
 	}
 	
 	@Transactional
 	public UpdateAddressResponse updateAddress(UpdateAddressRequest req)
 	{
-		findByIdAddress(req.getAddr_seq());
-		updateAddressMethod(req);
+		Address addr = findByIdAddress(req.getAddr_seq());
+		if(req.getAddr_seq() == addr.getAddr_seq())
+		{
+			updateAddressMethod(req);
+		}
+		
 		return new UpdateAddressResponse(req.getAddr_seq());
 	}
 	
@@ -67,7 +85,7 @@ public class AddressService
 	{
 		System.out.println("updateAddress동작");
 				
-		UpdateAddressParam param = new UpdateAddressParam(req.getAddr_zip(), req.getAddr_detail());
+		UpdateAddressParam param = new UpdateAddressParam(req.getAddr_seq() ,req.getAddr_zip(), req.getAddr_detail());
 		
 		Integer result = addressDao.updateAddress(param);
 		if(result==0)
