@@ -24,7 +24,7 @@ public class UserDetailsServiceImpl implements UserDetailsService
     {
         System.out.println("UserDetailsServiceImpl loadUserByUsername " + new Date());
 
-        Member member = memberDao.findById(username);
+        Member member = memberDao.findByIdMember(username);
         if (member == null) 
         {
             throw new UsernameNotFoundException(String.format("'%s'는 존재하지 않는 사용자입니다.", username));

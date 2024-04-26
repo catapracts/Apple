@@ -21,4 +21,14 @@ public class UpdateInfoRequest
 	
 	@NotBlank
 	private String info_phone;	// 회원 전화번호
+
+	
+	public UpdateInfoRequest(int info_seq, String info_name, String info_birth, String info_gender, String info_phone)
+	{
+		this.info_seq=info_seq;
+		this.info_name=info_name;
+		this.info_birth=info_birth;
+		this.info_gender=info_gender;
+		this.info_phone=info_phone;
+	}
 }

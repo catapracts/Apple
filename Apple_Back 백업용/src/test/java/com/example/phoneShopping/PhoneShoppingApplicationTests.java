@@ -4,12 +4,10 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-public class MemberCreateTest 
-{
-	
+class PhoneShoppingApplicationTests {
+
 	@Test
-	void CreateTest()
-	{
-		
+	void contextLoads() {
 	}
+
 }

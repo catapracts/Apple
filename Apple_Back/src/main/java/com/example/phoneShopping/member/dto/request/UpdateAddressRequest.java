@@ -16,4 +16,11 @@ public class UpdateAddressRequest
 	
 	@NotBlank
 	private String addr_detail;	// 주소 상세
+	
+	public UpdateAddressRequest(int addr_seq, String addr_zip, String addr_detail)
+	{
+		this.addr_seq=addr_seq;
+		this.addr_zip=addr_zip;
+		this.addr_detail=addr_detail;
+	}
 }

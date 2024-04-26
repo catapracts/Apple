@@ -29,13 +29,13 @@ public class UserDetailsImpl implements UserDetails
     @Override
     public String getPassword() // 가져온 회원의 PW return
     {
-        return member.getMem_pw();
+        return member.getMemPw();
     }
 
     @Override
     public String getUsername() // 가져온 회원의 이름 return
     {
-        return member.getMem_id();
+        return member.getMemId();
     }
 
     @Override

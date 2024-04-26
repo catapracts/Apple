@@ -3,29 +3,6 @@
 <mapper namespace="com.example.phoneShopping.cart.dao.CartDao">
 
 
-<select id="findAllAddress" resultType="com.example.phoneShopping.member.domain.Address">
-SELECT * FROM ADDRESS
-</select>
-
-
-<select id="findByIdAddress" parameterType="String" resultType="com.example.phoneShopping.member.domain.Address">
-SELECT addr_zip, addr_detail FROM ADDRESS WHERE addr_seq=#{addr_seq}
-</select>
-
-
-<insert id="createAddress" parameterType="com.example.phoneShopping.member.dto.param.CreateAddressParam">
-INSERT INTO ADDRESS(addr_seq, addr_zip, addr_detail) VALUES(#{addr_seq}, #{addr_zip}, #{addr_detail})
-</insert>
-
-
-<update id="updateAddress" parameterType="com.example.phoneShopping.member.dto.param.UpdateAddressParam">
-UPDATE ADDRESS SET (addr_zip, addr_detail)=(#{addr_zip}, #{addr_detail}) WHERE addr_seq=#{addr_seq}
-</update>
-
-
-<delete id="deleteAddress" resultType="com.example.phoneShopping.member.domain.Address">
-DELETE FROM ADDRESS WHERE addr_seq=#{addr_seq}
-</delete>
 
 
 </mapper>

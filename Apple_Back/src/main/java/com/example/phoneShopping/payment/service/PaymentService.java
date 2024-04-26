@@ -36,7 +36,7 @@ public class PaymentService
     {
 
         Product product = prod_dao.findById(paymentDto.getProd_seq());
-        Member member = mem_dao.findById(mem_id);
+        Member member = mem_dao.findByIdMember(mem_id);
 
         List<PaymentProduct> paymentProductList = new ArrayList<>();
         PaymentProduct paymentProduct = PaymentProduct.createPaymentProduct(product, paymentDto.getCount());
@@ -44,7 +44,7 @@ public class PaymentService
         Payment payment = Payment.createPayment(member, paymentProductList);
         pay_dao.createPayment(payment);
 
-        return payment.getMember().getMem_id();
+        return payment.getMember().getMemId();
     }
 
     @Transactional(readOnly = true)
@@ -70,7 +70,7 @@ public class PaymentService
     @Transactional(readOnly = true)
     public boolean validateOrder(int pay_seq, String mem_id)
     {
-        Member curMember = mem_dao.findById(mem_id);
+        Member curMember = mem_dao.findByIdMember(mem_id);
         Payment payment = pay_dao.findById(pay_seq);
         Member savedMember = payment.getMember();
 
@@ -93,7 +93,7 @@ public class PaymentService
     public int Payments(List<PaymentDto> paymentDtoList, String mem_id)
     {
 
-        Member member = mem_dao.findById(mem_id);
+        Member member = mem_dao.findByIdMember(mem_id);
         
         // PaymentProductList 선언 : Payment : PaymentProduct 
         List<PaymentProduct> paymentProductList = new ArrayList<>();

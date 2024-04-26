@@ -15,6 +15,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.example.phoneShopping.jwt.JwtTokenUtil;
 import com.example.phoneShopping.member.dao.MemberDao;
+import com.example.phoneShopping.member.domain.Member;
 import com.example.phoneShopping.member.dto.param.CreateMemberParam;
 import com.example.phoneShopping.member.dto.param.UpdateMemberParam;
 import com.example.phoneShopping.member.dto.request.JoinRequest;
@@ -45,13 +46,17 @@ public class MemberService
 	@Transactional
 	public JoinResponse join(JoinRequest req)	// 회원가입 처리 
 	{
+		System.out.println("join동작");
 		saveMember(req);
-		authenticate(req.getMem_id(), req.getMem_pw());
+
+//		authenticate(req.getMem_id(), req.getMem_pw());
+
 		return new JoinResponse(req.getMem_id());
 	}
 
 	private void saveMember(JoinRequest req)	// 회원가입 method
 	{
+		System.out.println("saveMember동작");
 		// 아이디 중복 확인
 		isExistUserId(req.getMem_id());
 
@@ -60,9 +65,12 @@ public class MemberService
 
 		// 회원 정보 생성
 		String encodedPwd = encoder.encode(req.getMem_pw());
+		
 		CreateMemberParam param = new CreateMemberParam(req, encodedPwd);
 
 		Integer result = dao.createMember(param);
+
+		
 		if (result == 0) 
 		{
 			throw new MemberException("회원 등록을 실패했습니다.", HttpStatus.INTERNAL_SERVER_ERROR);
@@ -112,8 +120,12 @@ public class MemberService
 
 	private void checkPwd(String pwd, String checkPwd)	// 오류 정의 - 비밀번호 잘 못 입력 
 	{
+		System.out.println("pwd ==> " + pwd);
+		System.out.println("checkpwd ==> " + checkPwd);
+		
 		if (!pwd.equals(checkPwd)) 
 		{
+			System.out.println("패스워드 체크 작동됨 <======");
 			throw new MemberException("비밀번호가 일치하지 않습니다.", HttpStatus.BAD_REQUEST);
 		}
 	}
@@ -122,15 +134,52 @@ public class MemberService
 	public void findAllMember()
 	{
 		System.out.println("findAllMember동작");
-		dao.findAll();
+		dao.findAllMember();
+		
+		for(int i = 0; i<dao.findAllMember().size(); i++ )
+		{
+			System.out.println(dao.findAllMember().get(i).getMemSeq());
+			System.out.println(dao.findAllMember().get(i).getMemId());
+			System.out.println(dao.findAllMember().get(i).getMemPw());
+			System.out.println("\n");
+		}
 	}
 	
 	@Transactional(readOnly=true)
-	public void findByIdMember(String mem_id)
+	public Member findByIdMember(String mem_id)
 	{
-		System.out.println("findByIdMember동작");
-		dao.findById(mem_id);
+		System.out.println(mem_id);
+		System.out.println("findByIdMember동작1");
+		System.out.println(dao.findByIdMember(mem_id));
+		Member member = dao.findByIdMember(mem_id);
+		
+		System.out.println("member : ==> " + member);
+
+//		Member member = new Member(dao.findById(mem_id).getMem_seq(), dao.findById(mem_id).getMem_id(), dao.findById(mem_id).getMem_pw());
+		return member;
 	}
+	
+	@Transactional(readOnly=true)
+	public Integer findByIdSeq(int mem_seq)
+	{
+		System.out.println("mem_seq : "+ mem_seq);
+		System.out.println("dao.findByIdSeq(mem_seq) : "+dao.findByIdSeq(mem_seq));
+		Integer member = dao.findByIdSeq(mem_seq);
+//		Member member = new Member(dao.findById(mem_id).getMem_seq(), dao.findById(mem_id).getMem_id(), dao.findById(mem_id).getMem_pw());
+		return member;
+	}
+
+	@Transactional(readOnly=true)
+	public String findByPw(String mem_id)
+	{
+		System.out.println("mem_id : "+ mem_id);
+		System.out.println("dao.findByPw(mem_id) : "+dao.findByPw(mem_id));
+		String member = dao.findByPw(mem_id);
+//		Member member = new Member(dao.findById(mem_id).getMem_seq(), dao.findById(mem_id).getMem_id(), dao.findById(mem_id).getMem_pw());
+		return member;
+	}
+	
+	
 	
 	@Transactional
 	public UpdateMemberResponse updateMember(UpdateMemberRequest req)
@@ -143,7 +192,16 @@ public class MemberService
 	private void updateMemberMethod(UpdateMemberRequest req)
 	{
 		System.out.println("updateMemberMethod동작");
-		UpdateMemberParam param = new UpdateMemberParam(req.getMem_id(), req.getMem_pw(), req.getCheck_mem_pw());
+		// 아이디 중복 확인
+		isExistUserId(req.getMem_id());
+
+		// 패스워드 일치 확인
+		checkPwd(req.getMem_pw(), req.getCheck_mem_pw());
+
+		// 회원 정보 생성
+		String encodedPwd = encoder.encode(req.getMem_pw());
+		
+		UpdateMemberParam param = new UpdateMemberParam(req.getMem_seq(), req.getMem_id(), encodedPwd, encodedPwd);
 		
 		Integer result = dao.updateMember(param);
 		if(result==0)

@@ -22,4 +22,13 @@ public class CreateCardRequest
 	
 	@NotBlank
 	private int card_cvc;		// 카드 CVC
+	
+	public CreateCardRequest(int card_seq, String card_comp, String card_num, String card_date, int card_cvc)
+	{
+		this.card_seq=card_seq;
+		this.card_comp=card_comp;
+		this.card_num=card_num;
+		this.card_date=card_date;
+		this.card_cvc=card_cvc;
+	}
 }

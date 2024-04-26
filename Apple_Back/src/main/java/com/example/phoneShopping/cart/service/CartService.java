@@ -36,8 +36,8 @@ public class CartService
 	
 	public String findMemberId(String mem_id)	// Member 찾기
 	{
-		Member member = mdao.findById(mem_id);
-		return member.getMem_id();
+		Member member = mdao.findByIdMember(mem_id);
+		return member.getMemId();
 	}
 	
 	public int findCartProductId(int cartp_seq)	// 장바구니에 담긴 상품 1개 출력
@@ -50,10 +50,10 @@ public class CartService
 	public int addCart(CartProductDto cartProductDto, String mem_id)	// 장바구니에 상품 추가
 	{
 		Product product = pdao.findById(cartProductDto.getCartp_seq());	// 장바구니에 넣을 아이템 불러오기
-		Member member = mdao.findById(mem_id);	// 장바구니 생성할 회원 불러오기
+		Member member = mdao.findByIdMember(mem_id);	// 장바구니 생성할 회원 불러오기
 		
 		// 장바구니 생성 - 이미 장바구니 생성한 사용자면 그 사람 꺼 불러오기, 없으면 새로 생성하기
-		Cart cart = cdao.findByMemberId(member.getMem_id());	// 불러오기
+		Cart cart = cdao.findByMemberId(member.getMemId());	// 불러오기
 		if(cart == null)	// 새로 생성
 		{
 			cart = Cart.createCart(member);
@@ -82,9 +82,9 @@ public class CartService
     {
         List<CartDetailDto> cartDetailDtoList = new ArrayList<>(); // 장바구니에 담긴 상품들 출력하기 위해 만든 ArrayList
 
-        Member member = mdao.findById(mem_id);	// 회원 선택
+        Member member = mdao.findByIdMember(mem_id);	// 회원 선택
         
-        Cart cart = cdao.findByMemberId(member.getMem_id());	// 선택한 회원의 장바구니 가져오기 
+        Cart cart = cdao.findByMemberId(member.getMemId());	// 선택한 회원의 장바구니 가져오기 
         
         if(cart == null)	// 장바구니에 담긴게 없으면
         {
@@ -99,10 +99,10 @@ public class CartService
     @Transactional(readOnly = true)
     public boolean validateCartProduct(int cartp_seq, String mem_id) // 로그인한 사람이랑 주문한 사람이랑 동일한지 확인
     {
-    	Member member = mdao.findById(mem_id);	// 매개변수로 받은 id값(로그인한 사람)
+    	Member member = mdao.findByIdMember(mem_id);	// 매개변수로 받은 id값(로그인한 사람)
     	CartProduct cartProduct = cdao.findCartProductId(cartp_seq);	// 장바구니에 담긴 상품 구분번호
     	Member saveMember = cartProduct.getCart().getMember();	// 장바구니 생성한 id값(장바구니 주인 = 주문자)
-    	if(member.getMem_id()!=saveMember.getMem_id())	// 장바구니 생성한 id값(주문자)과 매개변수로 받은 id값(로그인한 사람)이 다르면
+    	if(member.getMemId()!=saveMember.getMemId())	// 장바구니 생성한 id값(주문자)과 매개변수로 받은 id값(로그인한 사람)이 다르면
     	{
     		return false;	// 장바구니에 상품 담기 불가능
     	}

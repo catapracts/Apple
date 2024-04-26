@@ -7,8 +7,8 @@ SELECT * FROM ADDRESS
 </select>
 
 
-<select id="findByIdAddress" parameterType="String" resultType="com.example.phoneShopping.member.domain.Address">
-SELECT addr_zip, addr_detail FROM ADDRESS WHERE addr_seq=#{addr_seq}
+<select id="findByIdAddress" parameterType="Integer" resultType="com.example.phoneShopping.member.domain.Address">
+SELECT * FROM ADDRESS WHERE addr_seq=#{addr_seq}
 </select>
 
 
@@ -18,11 +18,11 @@ INSERT INTO ADDRESS(addr_seq, addr_zip, addr_detail) VALUES(#{addr_seq}, #{addr_
 
 
 <update id="updateAddress" parameterType="com.example.phoneShopping.member.dto.param.UpdateAddressParam">
-UPDATE ADDRESS SET (addr_zip, addr_detail)=(#{addr_zip}, #{addr_detail}) WHERE addr_seq=#{addr_seq}
+UPDATE ADDRESS SET addr_zip=#{addr_zip}, addr_detail=#{addr_detail} WHERE addr_seq=#{addr_seq}
 </update>
 
 
-<delete id="deleteAddress" resultType="com.example.phoneShopping.member.domain.Address">
+<delete id="deleteAddress" parameterType="com.example.phoneShopping.member.domain.Address">
 DELETE FROM ADDRESS WHERE addr_seq=#{addr_seq}
 </delete>
 

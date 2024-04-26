@@ -2,11 +2,14 @@ package com.example.phoneShopping.member.dto.param;
 
 import com.example.phoneShopping.member.dto.request.JoinRequest;
 
+
 import lombok.Getter;
+
 import lombok.Setter;
 
 @Getter
 @Setter
+
 public class CreateMemberParam 
 {
 	private int mem_seq;	// 회원 구분 번호
