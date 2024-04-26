@@ -73,7 +73,7 @@ function Admin_product() {
                                 <th className="product_th col-2">재고</th>
                             </thead>
                             <tbody>
-                                <td className="product_td">내용</td>
+                            <td className="product_td"><Link to="/admin/product/update">내용</Link></td>
                                 <td className="product_td">내용</td>
                                 <td className="product_td">내용</td>
                                 <td className="product_td">내용</td>
