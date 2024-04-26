@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.phoneShopping.product.dao.HddDao">	
+ 
+<select id="findAllHdd" resultType="com.example.phoneShopping.product.domain.Hdd">
+SELECT * FROM HDD
+</select>
+
+
+<select id="findByIdHdd" parameterType="Integer" resultType="com.example.phoneShopping.product.domain.Hdd">
+SELECT * FROM HDD WHERE hdd_seq=#{hdd_seq}
+</select>
+
+
+<insert id="createHdd" parameterType="com.example.phoneShopping.product.dto.param.CreateHddParam"
+useGeneratedKeys="true" keyProperty="hdd_seq">
+INSERT INTO HDD(capacity, plus_seq) VALUES(#{capacity}, #{plus_seq})
+</insert>
+
+
+<update id="updateHdd" parameterType="com.example.phoneShopping.product.dto.param.UpdateHddParam">
+UPDATE HDD SET hdd_seq=#{hdd_seq}, capacity=#{capacity}, plus_seq=#{plus_seq} WHERE hdd_seq=#{hdd_seq}
+</update>
+
+
+<delete id="deleteHdd" parameterType="com.example.phoneShopping.product.domain.Hdd">
+DELETE FROM HDD WHERE hdd_seq=#{hdd_seq}
+</delete>
+
+
+
+</mapper>

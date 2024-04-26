@@ -44,13 +44,13 @@ public class ProductService {
 	// 상품 상세 1개
 	public void findByIdProduct(String prod_seq) {
 		System.out.println("findByIdProduct 동작");
-		dao.findById(prod_seq);
+		dao.findByIdProduct(prod_seq);
 	}
 	
 	// 상품 목록
 	public void findAllProduct() {
 		System.out.println("findAllProduct 동작");
-		dao.findAll();
+		dao.findAllProduct();
 	}
 	
 	// 상품 수정

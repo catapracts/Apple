@@ -1,5 +1,7 @@
 package com.example.phoneShopping.product.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
@@ -9,16 +11,17 @@ import com.example.phoneShopping.product.dto.param.UpdateProductParam;
 
 @Mapper
 @Repository
-public interface ProductDao {
+public interface ProductDao 
+{
 	
 	// 상품 추가
 	Integer createProduct(CreateProductParam param);
 	
 	// 상품 상세 1개
-	Product findById(String prod_seq);
+	Product findByIdProduct(String prod_seq);
 	
 	// 상품 목록
-	Product findAll();
+	List<Product> findAllProduct();
 	
 	// 상품 수정
 	Integer updateProduct(UpdateProductParam param);
