@@ -121,7 +121,7 @@ function Mypage() {
 									</td>
 								</tr>
 								<tr>
-									<th className="mypage_th">CVC</th>
+									<th className="mypage_th">CVC 번호</th>
 									<td className="mypage_td">
 										<input type="tex" className="mypage_form" />
 									</td>

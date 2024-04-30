@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Button from '../common/Button';
 import './Admin.css';
 
@@ -21,7 +21,9 @@ function Admin_member() {
                                 <th className="member_th">회원이름</th>
                             </thead>
                             <tbody>
-                                <td className="member_td">내용</td>
+                                <td className="member_td">
+                                    <Link to="/admin/member/1">내용</Link>
+                                </td>
                                 <td className="member_td">내용</td>
                                 <td className="member_td">내용</td>
                             </tbody>

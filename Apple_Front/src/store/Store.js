@@ -43,8 +43,9 @@ function Store() {
 							</div>
 							<div className="store_list_button">
 								<Button size={"small"} color={"blue"}text={"더 알아보기"}
+									onClick={() => {navigate('/product_detail/1')}}></Button>
+								<Button size={"small"} color={"none"} text={"구입하기"}
 									onClick={() => {navigate('/store_detail/1')}}></Button>
-								<Button size={"small"} color={"none"} text={"구입하기"}></Button>
 							</div>
 							<br />
 							<hr />
@@ -93,8 +94,10 @@ function Store() {
 								<p className="store_list_price">￦ 1,250,000 부터</p>
 							</div>
 							<div className="store_list_button">
-								<Button size={"small"} color={"blue"} text={"더 알아보기"}></Button>
-								<Button size={"small"} color={"none"} text={"구입하기"}></Button>
+								<Button size={"small"} color={"blue"}text={"더 알아보기"}
+									onClick={() => {navigate('/product_detail/2')}}></Button>
+								<Button size={"small"} color={"none"} text={"구입하기"}
+									onClick={() => {navigate('/store_detail/2')}}></Button>
 							</div>
 							<br />
 							<hr />
@@ -143,8 +146,10 @@ function Store() {
 								<p className="store_list_price">￦ 1,090,000 부터</p>
 							</div>
 							<div className="store_list_button">
-								<Button size={"small"} color={"blue"}text={"더 알아보기"}></Button>
-								<Button size={"small"} color={"none"} text={"구입하기"}></Button>
+								<Button size={"small"} color={"blue"}text={"더 알아보기"}
+									onClick={() => {navigate('/product_detail/3')}}></Button>
+								<Button size={"small"} color={"none"} text={"구입하기"}
+									onClick={() => {navigate('/store_detail/3')}}></Button>
 							</div>
 							<br />
 							<hr />
