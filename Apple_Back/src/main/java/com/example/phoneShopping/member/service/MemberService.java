@@ -1,6 +1,9 @@
 package com.example.phoneShopping.member.service;
 
 import lombok.RequiredArgsConstructor;
+
+import java.util.List;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -131,10 +134,10 @@ public class MemberService
 	}
 	
 	@Transactional(readOnly=true)
-	public void findAllMember()
+	public List<Member> findAllMember()
 	{
 		System.out.println("findAllMember동작");
-		dao.findAllMember();
+		List<Member> list = dao.findAllMember();
 		
 		for(int i = 0; i<dao.findAllMember().size(); i++ )
 		{
@@ -143,6 +146,8 @@ public class MemberService
 			System.out.println(dao.findAllMember().get(i).getMemPw());
 			System.out.println("\n");
 		}
+		
+		return list;
 	}
 	
 	@Transactional(readOnly=true)

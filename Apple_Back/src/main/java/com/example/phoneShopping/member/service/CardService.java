@@ -1,5 +1,7 @@
 package com.example.phoneShopping.member.service;
 
+import java.util.List;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -43,10 +45,10 @@ public class CardService
 	}
 	
 	@Transactional(readOnly=true)
-	public void findAllCard()
+	public List<Card> findAllCard()
 	{
 		System.out.println("findAllCard동작");
-		dao.findAllCard();
+		List<Card> list = dao.findAllCard();
 		
 		for(int i = 0; i<dao.findAllCard().size(); i++)
 		{
@@ -56,6 +58,8 @@ public class CardService
 			System.out.println(dao.findAllCard().get(i).getCard_date());
 			System.out.println(dao.findAllCard().get(i).getCard_cvc());
 		}
+		
+		return list;
 	}
 	
 	@Transactional(readOnly=true)

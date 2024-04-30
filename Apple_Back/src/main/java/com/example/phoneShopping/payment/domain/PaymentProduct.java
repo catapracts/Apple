@@ -20,7 +20,7 @@ public class PaymentProduct
     	PaymentProduct paymentProduct = new PaymentProduct();
     	paymentProduct.setProduct(product);
     	paymentProduct.setPayi_count(count);
-    	paymentProduct.setPayi_price(product.getProd_price());
+    	paymentProduct.setPayi_price(product.getProdPrice());
         return paymentProduct;
     }
 

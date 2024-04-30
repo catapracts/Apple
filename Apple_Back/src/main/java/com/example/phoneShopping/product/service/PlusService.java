@@ -1,6 +1,8 @@
 package com.example.phoneShopping.product.service;
 
 
+import java.util.List;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -47,10 +49,10 @@ public class PlusService
 	}
 	
 	@Transactional(readOnly=true)
-	public void findAllPlus()
+	public List<Plus> findAllPlus()
 	{
 		System.out.println("findAllPlus동작");
-		dao.findAllPlus();
+		List<Plus> list = dao.findAllPlus();
 		
 		for(int i = 0; i < dao.findAllPlus().size(); i++)
 		{
@@ -58,6 +60,8 @@ public class PlusService
 			System.out.println(dao.findAllPlus().get(i).getPrice());
 			System.out.println("\n");
 		}
+		
+		return list;
 	}
 	
 	@Transactional(readOnly=true)

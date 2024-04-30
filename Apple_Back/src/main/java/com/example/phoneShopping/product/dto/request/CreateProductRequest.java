@@ -1,11 +1,16 @@
 package com.example.phoneShopping.product.dto.request;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class CreateProductRequest {
+@NoArgsConstructor
+@AllArgsConstructor
+public class CreateProductRequest 
+{
 
 	// 상품 일련번호
 	private String prod_seq;
@@ -16,13 +21,13 @@ public class CreateProductRequest {
 	// 상품 가격
 	private int prod_price;
 	
-	// 옵션 1 : 용량
-	private int prod_hdd;
-	
-	// 옵션 2 : 색상
-	private String prod_color;
-	
 	// 재고
 	private int prod_cnt;
+	
+	// 옵션 1 : 용량 - FK
+	private int hdd_seq;
+	
+	// 옵션 2 : 색상 - FK
+	private int color_seq;
 	
 }

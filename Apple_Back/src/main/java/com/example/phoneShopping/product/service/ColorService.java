@@ -1,5 +1,7 @@
 package com.example.phoneShopping.product.service;
 
+import java.util.List;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -46,10 +48,10 @@ public class ColorService
 	}
 	
 	@Transactional(readOnly=true)
-	public void findAllColor()
+	public List<Color> findAllColor()
 	{
 		System.out.println("findAllColor동작");
-		dao.findAllColor();
+		List<Color> list = dao.findAllColor();
 		
 		for(int i = 0; i < dao.findAllColor().size(); i++)
 		{
@@ -57,6 +59,8 @@ public class ColorService
 			System.out.println(dao.findAllColor().get(i).getColor());
 			System.out.println("\n");
 		}
+		
+		return list;
 	}
 	
 	@Transactional(readOnly=true)

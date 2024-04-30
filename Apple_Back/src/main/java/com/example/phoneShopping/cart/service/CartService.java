@@ -49,7 +49,7 @@ public class CartService
 	
 	public int addCart(CartProductDto cartProductDto, String mem_id)	// 장바구니에 상품 추가
 	{
-		Product product = pdao.findById(cartProductDto.getCartp_seq());	// 장바구니에 넣을 아이템 불러오기
+		Product product = pdao.findByIdProduct(cartProductDto.getCartp_seq());	// 장바구니에 넣을 아이템 불러오기
 		Member member = mdao.findByIdMember(mem_id);	// 장바구니 생성할 회원 불러오기
 		
 		// 장바구니 생성 - 이미 장바구니 생성한 사용자면 그 사람 꺼 불러오기, 없으면 새로 생성하기
@@ -61,7 +61,7 @@ public class CartService
 		}
 		
 		// 장바구니에 상품 담기 - 있으면 갯수만 변경, 없으면 상품 추가
-		CartProduct saveCartProd = cdao.findByCartIdAndProductId(cart.getCart_seq(), product.getProd_seq());
+		CartProduct saveCartProd = cdao.findByCartIdAndProductId(cart.getCart_seq(), product.getProdSeq());
 		if(saveCartProd != null)	// 선택한 상품이 장바구니에 있으면 갯수 변경
 		{
 			saveCartProd.addCount(cartProductDto.getCartp_cnt());
@@ -133,7 +133,7 @@ public class CartService
     	{
     		CartProduct cartProduct = cdao.findCartProductId(cartOrderDto.getCartp_seq());
     		PaymentDto paymentDto = new PaymentDto();
-    		paymentDto.setProd_seq(cartProduct.getProduct().getProd_seq());
+    		paymentDto.setProd_seq(cartProduct.getProduct().getProdSeq());
     		paymentDto.setCount(cartProduct.getCartp_cnt());
     		paymentDtoList.add(paymentDto);
     	}
