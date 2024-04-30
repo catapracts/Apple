@@ -17,5 +17,9 @@ public class Member
 	private String memId;	// 회원 ID
 	private String memPw;	// 회원 PW
 	
-
+	public Member(String memId, String memPw)
+	{
+		this.memId=memId;
+		this.memPw=memPw;
+	}
 }
