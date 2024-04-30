@@ -1,26 +1,31 @@
 package com.example.phoneShopping.cart.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.phoneShopping.cart.dao.CartDao;
 import com.example.phoneShopping.cart.domain.Cart;
 import com.example.phoneShopping.cart.domain.CartProduct;
-import com.example.phoneShopping.cart.dto.param.CartDetailDto;
-import com.example.phoneShopping.cart.dto.param.CartOrderDto;
-import com.example.phoneShopping.cart.dto.param.CartProductDto;
-import com.example.phoneShopping.member.dao.MemberDao;
-import com.example.phoneShopping.member.domain.Member;
-import com.example.phoneShopping.payment.dto.param.PaymentDto;
-import com.example.phoneShopping.payment.service.PaymentService;
-import com.example.phoneShopping.product.domain.Product;
-import com.example.phoneShopping.product.dao.ProductDao;
+
+import com.example.phoneShopping.cart.dto.param.CreateCartParam;
+import com.example.phoneShopping.cart.dto.param.CreateCartProductParam;
+import com.example.phoneShopping.cart.dto.param.UpdateCartParam;
+import com.example.phoneShopping.cart.dto.param.UpdateCartProductParam;
+import com.example.phoneShopping.cart.dto.request.CreateCartProductRequest;
+import com.example.phoneShopping.cart.dto.request.CreateCartRequest;
+import com.example.phoneShopping.cart.dto.request.UpdateCartProductRequest;
+import com.example.phoneShopping.cart.dto.request.UpdateCartRequest;
+import com.example.phoneShopping.cart.dto.response.CreateCartProductResponse;
+import com.example.phoneShopping.cart.dto.response.CreateCartResponse;
+import com.example.phoneShopping.cart.dto.response.UpdateCartProductResponse;
+import com.example.phoneShopping.cart.dto.response.UpdateCartResponse;
+import com.example.phoneShopping.cart.exception.CartException;
+import com.example.phoneShopping.cart.exception.CartProductException;
 
 import lombok.RequiredArgsConstructor;
-
 
 
 @Service
@@ -28,124 +33,174 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class CartService 
 {
-	private final ProductDao pdao;
-	private final MemberDao mdao;
-	private final CartDao cdao;
-	private final PaymentService service;
+	private final CartDao dao;
 	
-	
-	public String findMemberId(String mem_id)	// Member 찾기
+	@Transactional
+	public CreateCartResponse createCart(CreateCartRequest req)
 	{
-		Member member = mdao.findByIdMember(mem_id);
-		return member.getMemId();
+		createCartMethod(req);
+		return new CreateCartResponse(req.getCartSeq());
 	}
-	
-	public int findCartProductId(int cartp_seq)	// 장바구니에 담긴 상품 1개 출력
+		
+	private void createCartMethod(CreateCartRequest req)
 	{
-		CartProduct cartProduct = cdao.findCartProductId(cartp_seq);
-		return cartProduct.getCartp_seq();
-	}
-	
-	
-	public int addCart(CartProductDto cartProductDto, String mem_id)	// 장바구니에 상품 추가
-	{
-		Product product = pdao.findByIdProduct(cartProductDto.getCartp_seq());	// 장바구니에 넣을 아이템 불러오기
-		Member member = mdao.findByIdMember(mem_id);	// 장바구니 생성할 회원 불러오기
+		System.out.println("createCart동작");
+		CreateCartParam param = new CreateCartParam(req.getCartSeq() ,req.getMemSeq());
 		
-		// 장바구니 생성 - 이미 장바구니 생성한 사용자면 그 사람 꺼 불러오기, 없으면 새로 생성하기
-		Cart cart = cdao.findByMemberId(member.getMemId());	// 불러오기
-		if(cart == null)	// 새로 생성
+		Integer result = dao.createCart(param);
+		if(result==0)
 		{
-			cart = Cart.createCart(member);
-			cdao.createCart(cart);
-		}
-		
-		// 장바구니에 상품 담기 - 있으면 갯수만 변경, 없으면 상품 추가
-		CartProduct saveCartProd = cdao.findByCartIdAndProductId(cart.getCart_seq(), product.getProdSeq());
-		if(saveCartProd != null)	// 선택한 상품이 장바구니에 있으면 갯수 변경
-		{
-			saveCartProd.addCount(cartProductDto.getCartp_cnt());
-			return saveCartProd.getCartp_seq();
-		}
-		
-		else	// 선택한 상품이 장바구니에 없으면 새로 추가
-		{
-			CartProduct cartProduct = CartProduct.createCartProduct(cart, product, cartProductDto.getCartp_cnt());
-			cdao.createCartProduct(cartProduct);
-			return cartProduct.getCartp_seq();
+			throw new CartException("Cart 등록 실패", HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
 	
+	@Transactional(readOnly=true)
+	public List<Cart> findAllCart()
+	{
+		System.out.println("findAllAddress동작");
+		List<Cart> list = dao.findAllCart();
+		
+		for(int i = 0; i < dao.findAllCart().size(); i++)
+		{
+			System.out.println(dao.findAllCart().get(i).getCartSeq());
+			System.out.println(dao.findAllCart().get(i).getMemSeq());
+			System.out.println("\n");
+		}
+		
+		return list;
+	}
 	
-    @Transactional(readOnly = true)
-    public List<CartDetailDto> getCartList(String mem_id)	// 장바구니에 담긴 상품 전체 출력
-    {
-        List<CartDetailDto> cartDetailDtoList = new ArrayList<>(); // 장바구니에 담긴 상품들 출력하기 위해 만든 ArrayList
-
-        Member member = mdao.findByIdMember(mem_id);	// 회원 선택
-        
-        Cart cart = cdao.findByMemberId(member.getMemId());	// 선택한 회원의 장바구니 가져오기 
-        
-        if(cart == null)	// 장바구니에 담긴게 없으면
-        {
-            return cartDetailDtoList;	// 빈채로 출력
-        }
-
-        cartDetailDtoList = cdao.findCartDetailDtoList(cart.getCart_seq());	// 담긴게 있으면 그대로 저장
-        return cartDetailDtoList;	// 출력
-    }
-    
-    
-    @Transactional(readOnly = true)
-    public boolean validateCartProduct(int cartp_seq, String mem_id) // 로그인한 사람이랑 주문한 사람이랑 동일한지 확인
-    {
-    	Member member = mdao.findByIdMember(mem_id);	// 매개변수로 받은 id값(로그인한 사람)
-    	CartProduct cartProduct = cdao.findCartProductId(cartp_seq);	// 장바구니에 담긴 상품 구분번호
-    	Member saveMember = cartProduct.getCart().getMember();	// 장바구니 생성한 id값(장바구니 주인 = 주문자)
-    	if(member.getMemId()!=saveMember.getMemId())	// 장바구니 생성한 id값(주문자)과 매개변수로 받은 id값(로그인한 사람)이 다르면
-    	{
-    		return false;	// 장바구니에 상품 담기 불가능
-    	}
-    	
-    	return true;	// 장바구니에 상품담는 거 가능
-    }
+	@Transactional(readOnly=true)
+	public Cart findByIdCart(int cart_seq) 
+	{
+		System.out.println("findByIdCart동작");
+		Cart cart = dao.findByIdCart(cart_seq);
+		System.out.println(cart.getCartSeq());
+		System.out.println(cart.getMemSeq());
+		return cart;
+	}
+	
+	@Transactional
+	public UpdateCartResponse updateCart(UpdateCartRequest req)
+	{
+		Cart cart = findByIdCart(req.getCartSeq());
+		if(req.getCartSeq() == cart.getCartSeq())
+		{
+			updateCartMethod(req);
+		}
+		
+		return new UpdateCartResponse(req.getCartSeq());
+	}
+	
+	private void updateCartMethod(UpdateCartRequest req)
+	{
+		System.out.println("updateCart동작");
+				
+		UpdateCartParam param = new UpdateCartParam(req.getCartSeq() ,req.getMemSeq());
+		
+		Integer result = dao.updateCart(param);
+		
+		if(result==0)
+		{
+			throw new CartException("Cart 수정 실패", HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+	
+	@Transactional
+	public void deleteCart(int cart_seq)
+	{
+		System.out.println("deleteCart동작");
+		dao.deleteCart(cart_seq);
+	}
+	
+	
+	@Transactional
+	public CreateCartProductResponse createCartProduct(CreateCartProductRequest req)
+	{
+		createCartProductMethod(req);
+		return new CreateCartProductResponse(req.getCartpSeq());
+	}
+		
+	private void createCartProductMethod(CreateCartProductRequest req)
+	{
+		System.out.println("createCartProduct동작");
+		CreateCartProductParam param = new CreateCartProductParam(req.getCartpSeq() ,req.getCartSeq(), req.getProductSeq(), req.getCartpCnt());
+		
+		Integer result = dao.createCartProduct(param);
+		
+		if(result==0)
+		{
+			throw new CartProductException("CartProduct 등록 실패", HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+	
+	@Transactional(readOnly=true)
+	public List<CartProduct> findAllCartProduct()
+	{
+		System.out.println("findAllCartProduct동작");
+		List<CartProduct> list = dao.findAllCartProduct();
+		
+		for(int i = 0; i < dao.findAllCartProduct().size(); i++)
+		{
+			System.out.println(dao.findAllCartProduct().get(i).getCartpSeq());
+			System.out.println(dao.findAllCartProduct().get(i).getCartSeq());
+			System.out.println(dao.findAllCartProduct().get(i).getProductSeq());
+			System.out.println(dao.findAllCartProduct().get(i).getCartpCnt());
+			System.out.println("\n");
+		}
+		
+		return list;
+	}
+	
+	@Transactional(readOnly=true)
+	public CartProduct findByIdCartProduct(int cartp_seq) 
+	{
+		System.out.println("findByIdCartProduct동작");
+		CartProduct cartProduct = dao.findByIdCartProduct(cartp_seq);
+		System.out.println(cartProduct.getCartpSeq());
+		System.out.println(cartProduct.getCartSeq());
+		System.out.println(cartProduct.getProductSeq());
+		System.out.println(cartProduct.getCartpCnt());
+		return cartProduct;
+	}
+	
+	@Transactional
+	public UpdateCartProductResponse updateCartProduct(UpdateCartProductRequest req)
+	{
+		CartProduct cartProduct = findByIdCartProduct(req.getCartpSeq());
+		if(req.getCartpSeq() == cartProduct.getCartpSeq())
+		{
+			updateCartProductMethod(req);
+		}
+		
+		return new UpdateCartProductResponse(req.getCartpSeq());
+	}
+	
+	private void updateCartProductMethod(UpdateCartProductRequest req)
+	{
+		System.out.println("updateCartProduct동작");
+				
+		UpdateCartProductParam param = new UpdateCartProductParam(req.getCartpSeq() ,req.getCartSeq(), req.getProductSeq(), req.getCartpCnt());
+		
+		Integer result = dao.updateCartProduct(param);
+		
+		if(result==0)
+		{
+			throw new CartProductException("CartProduct 수정 실패", HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+	
+	@Transactional
+	public void deleteCartProduct(int cartp_seq)
+	{
+		System.out.println("deleteCartProduct동작");
+		dao.deleteCartProduct(cartp_seq);
+	}
     
     
     public void updateCartProductCount(int cartp_seq, int cnt)	// 장바구니 상품 수량 업데이트
     {
-    	CartProduct cartProduct = cdao.findCartProductId(cartp_seq);
+    	CartProduct cartProduct = dao.findByIdCartProduct(cartp_seq);
     	cartProduct.updateCount(cnt);
-    }
-    
-    
-    public void deleteCartProduct(int cartp_seq)	// 장바구니에 담긴 상품 삭제
-    {
-    	CartProduct cartProduct = cdao.findCartProductId(cartp_seq);	// 삭제할 장바구니 아이템 선택
-    	cdao.deleteCartProduct(cartProduct);	//	장바구니에 담긴 상품 삭제
-    }
-    
-    
-    // 장바구니 정보 가져와서 payment랑 paymentProduct에 저장 후 장바구니의 값을 제거
-    public int paymentCartProduct(List<CartOrderDto> cartOrderDtoList, String mem_id)
-    {
-    	List<PaymentDto> paymentDtoList = new ArrayList<>(); // Payment에 저장하기 위한 ArrayList생성
-    	for(CartOrderDto cartOrderDto : cartOrderDtoList)
-    	{
-    		CartProduct cartProduct = cdao.findCartProductId(cartOrderDto.getCartp_seq());
-    		PaymentDto paymentDto = new PaymentDto();
-    		paymentDto.setProd_seq(cartProduct.getProduct().getProdSeq());
-    		paymentDto.setCount(cartProduct.getCartp_cnt());
-    		paymentDtoList.add(paymentDto);
-    	}
-    	
-    	int pay_seq = service.Payments(paymentDtoList, mem_id);
-    	
-    	for(CartOrderDto cartOrderDto : cartOrderDtoList)
-    	{
-    		CartProduct cartProduct = cdao.findCartProductId(cartOrderDto.getCartp_seq());
-    		cdao.deleteCartProduct(cartProduct);
-    	}
-    	
-    	return pay_seq;
     }
 }

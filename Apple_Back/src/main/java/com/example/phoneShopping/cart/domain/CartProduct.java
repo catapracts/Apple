@@ -1,39 +1,39 @@
 package com.example.phoneShopping.cart.domain;
 
-import com.example.phoneShopping.product.domain.Product;
-
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class CartProduct 
 {
-	private int cartp_seq;
+	private int cartpSeq;
 	
-	private Cart cart;
+	private int cartSeq;
 	
-	private Product product;
+	private String productSeq;
 	
-	private int cartp_cnt;
-	
-	public static CartProduct createCartProduct(Cart cart, Product product, int cartp_cnt)
-	{
-		CartProduct cartproduct = new CartProduct();
-		cartproduct.setCart(cart);
-		cartproduct.setProduct(product);
-		cartproduct.setCartp_cnt(cartp_cnt);
-		return cartproduct;
-	}
+	private int cartpCnt;
 	
     public void addCount(int cartp_cnt)
     {
-        this.cartp_cnt += cartp_cnt;
+        this.cartpCnt += cartp_cnt;
     }
 
     public void updateCount(int cartp_cnt)
     {
-        this.cartp_cnt = cartp_cnt;
+        this.cartpCnt = cartp_cnt;
     }	
+    
+    public CartProduct(int cartSeq, String productSeq, int cartpCnt)
+    {
+    	this.cartSeq=cartSeq;
+    	this.productSeq=productSeq;
+    	this.cartpCnt=cartpCnt;    			
+    }
 	
 }

@@ -1,4 +1,4 @@
-package com.example.phoneShopping.payment.domain;
+package com.example.phoneShopping.payment.dto.request;
 
 import java.time.LocalDateTime;
 
@@ -11,14 +11,14 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Payment 
+public class CreatePaymentRequest 
 {
 	private int paySeq;	// 결제 번호
 	private int memSeq;	// 결제자
 	private LocalDateTime payDate;	// 결제일
 	private int payStatus;	// 결제 상태
 
-	public Payment(int memSeq, LocalDateTime payDate, int payStatus)
+	public CreatePaymentRequest(int memSeq, LocalDateTime payDate, int payStatus)
 	{
 		this.memSeq=memSeq;
 		this.payDate=payDate;
