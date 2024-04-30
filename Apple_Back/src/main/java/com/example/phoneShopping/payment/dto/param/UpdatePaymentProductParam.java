@@ -1,4 +1,4 @@
-package com.example.phoneShopping.payment.domain;
+package com.example.phoneShopping.payment.dto.param;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,25 +9,11 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class PaymentProduct 
+public class UpdatePaymentProductParam 
 {
 	private int payiSeq;	// 결제 상품 번호
 	private String prodSeq;	// 결제 상품
 	private int paySeq;	// 결제 내역
 	private int payiPrice;	// 결제 가격
 	private int payiCount;	// 결제 개수
-	
-	public PaymentProduct(int paySeq, String prodSeq, int payiPrice, int payiCount)
-	{
-		this.paySeq=paySeq;
-		this.prodSeq=prodSeq;
-		this.payiPrice=payiPrice;
-		this.payiCount=payiCount;
-	}
-
-    public int getTotalPrice()
-    {
-        return payiPrice*payiCount;
-    }
-
 }

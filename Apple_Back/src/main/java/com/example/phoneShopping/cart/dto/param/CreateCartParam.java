@@ -1,4 +1,4 @@
-package com.example.phoneShopping.cart.domain;
+package com.example.phoneShopping.cart.dto.param;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,15 +9,8 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Cart 
+public class CreateCartParam 
 {
 	private int cartSeq;	// 장바구니 번호
-	
 	private int memSeq;	// 장바구니 사용하는 회원 정보
-
-    
-    public Cart(int memSeq)
-    {
-    	this.memSeq = memSeq;
-    }
 }
