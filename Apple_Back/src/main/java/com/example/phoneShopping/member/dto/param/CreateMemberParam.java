@@ -18,7 +18,6 @@ public class CreateMemberParam
 	
 	public CreateMemberParam(JoinRequest req, String encodedPwd)
 	{
-		this.mem_seq=req.getMem_seq();
 		this.mem_id=req.getMem_id();
 		this.mem_pw=encodedPwd;
 	}
