@@ -115,7 +115,7 @@ function Join() {
 									<input type="text" className="join_form" />
 								</td>
 								<td className="join_td2">
-									<Button size={"xsmall"} color={"red"}text={"중복확인"}></Button>											{/* id 값을 넣고, changeId라는 Event를 발생시킨다. -> 아이디 값이 입력한 것에 따라 바뀐다. */}
+									<Button size={"xsmall"} color={"red"} text={"중복확인"}></Button>											{/* id 값을 넣고, changeId라는 Event를 발생시킨다. -> 아이디 값이 입력한 것에 따라 바뀐다. */}
 								</td>
 							</tr>
 							<tr>

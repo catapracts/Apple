@@ -1,252 +1,176 @@
 import React from "react";
-import Cards from 'react-credit-cards';
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { useContext, useState } from "react";
 import { AuthContext } from "../context/AuthProvider";
 import { HttpHeadersContext } from "../context/HttpHeadersProvider";
 import './Payment.css';
+import Button from '../common/Button';
+import iphone15 from '../img/iphone_iphone15.png';
 
-import { makeStyles } from "@material-ui/core/styles";
-import Stepper from "@material-ui/core/Stepper";
-import Step from "@material-ui/core/Step";
-import StepLabel from "@material-ui/core/StepLabel";
-import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
-import Grid from "@material-ui/core/Grid";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
-import IconButton from "@material-ui/core/IconButton";
-import Avatar from "@material-ui/core/Avatar";
 
-import Payment_form1 from "./Payment_form1";
-import Payment_form2 from "./Payment_form2";
-import Payment_form3 from "./Payment_form3";
-import Payment_form4 from "./Payment_form4";
+function Payment () {
 
-const useStyles = makeStyles((theme) => ({
-	root: {
-	  width: "100%",
-	  justifyContent: "center",
-	  height: "50vw",
-	},
-	actions: {
-	  display: "flex",
-	  justifyContent: "center",
-	  alignItems: "center",
-	},
-	button: {
-	  marginRight: theme.spacing(1),
-	},
-	instructions: {
-	  marginTop: theme.spacing(1),
-	  marginBottom: theme.spacing(1),
-	},
-	stepper: {
-	  iconColor: "#2E3B55",
-	},
-  }));
-
-function getSteps() {
-	return ["Enter Details", "Payment Mode", "Payment", "Order Confirmed"];
-}
-
-function getStepContent(step) {
-	switch (step) {
-		case 0:
-			return <Payment_form1 />;
-		case 1:
-			return <Payment_form2 />;
-		case 2:
-			return <Payment_form3 />;
-		case 3:
-			return <Payment_form4 />;
-		default:
-			return "Unknown step";
-	}
-}
-
-export default function Payment() {
-
-	const classes = useStyles();
-  const [activeStep, setActiveStep] = React.useState(0);
-  const [skipped, setSkipped] = React.useState(new Set());
-  const steps = getSteps();
-
-  const isStepOptional = (step) => {
-    return step === 1;
-  };
-
-  const isStepSkipped = (step) => {
-    return skipped.has(step);
-  };
-
-  const handleNext = () => {
-    let newSkipped = skipped;
-    if (isStepSkipped(activeStep)) {
-      newSkipped = new Set(newSkipped.values());
-      newSkipped.delete(activeStep);
-    }
-
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
-    setSkipped(newSkipped);
-  };
-
-  const handleBack = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 1);
-  };
-
-  const handleSkip = () => {
-    if (!isStepOptional(activeStep)) {
-      // You probably want to guard against something like this,
-      // it should never occur unless someone's actively trying to break something.
-      throw new Error("You can't skip a step that isn't optional.");
-    }
-
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
-    setSkipped((prevSkipped) => {
-      const newSkipped = new Set(prevSkipped.values());
-      newSkipped.add(activeStep);
-      return newSkipped;
-    });
-  };
-
-  const handleReset = () => {
-    setActiveStep(0);
-  };
+  const navigate = useNavigate();
 
   return (
-    <div className={classes.root}>
-      <Grid container direction="row" justify="center" alignItems="center">
-        <Grid item xs={12}>
-          <AppBar position="static" style={{ background: "#2E3B55" }}>
-            <Toolbar>
-              <img
-                src="https://nikhilsahu.me/favicon.png"
-                alt="logo"
-                style={{ height: 30 }}
-                className={classes.logo}
-              />
-              <Typography
-                variant="h6"
-                style={{
-                  flexGrow: 1,
-                  textAlign: "center",
-                  paddingRight: "30px",
-                }}
-              >
-                N Pay
-              </Typography>
-              <IconButton
-                edge="end"
-                color="inherit"
-                style={{ alignSelf: "end" }}
-              >
-                <Avatar>NS</Avatar>
-              </IconButton>
-            </Toolbar>
-          </AppBar>
-        </Grid>
-        <Grid item xs={6}>
-          <Card variant="outlined" style={{ marginTop: "5%" }}>
-            <CardContent>
-              <Grid
-                container
-                direction="row"
-                justify="center"
-                alignItems="center"
-              >
-                <Grid item xs={12}>
-                  <AppBar
-                    position="static"
-                    style={{ background: "#2E3B55", alignItems: "center" }}
-                  >
-                    <Toolbar>
-                      <img
-                        src="https://nikhilsahu.me/favicon.png"
-                        style={{ height: 30 }}
-                        alt="logo"
-                        className={classes.logo}
-                      />
-                    </Toolbar>
-                  </AppBar>
-                </Grid>
-                <Grid item xs={12}>
-                  <Stepper activeStep={activeStep} className={classes.stepper}>
-                    {steps.map((label, index) => {
-                      const stepProps = {};
-                      const labelProps = {};
-                      if (isStepOptional(index)) {
-                        labelProps.optional = (
-                          <Typography variant="caption"></Typography>
-                        );
-                      }
-                      if (isStepSkipped(index)) {
-                        stepProps.completed = false;
-                      }
-                      return (
-                        <Step key={label} {...stepProps}>
-                          <StepLabel {...labelProps}>{label}</StepLabel>
-                        </Step>
-                      );
-                    })}
-                  </Stepper>
-                </Grid>
-                <Grid item xs={12}>
-                  <div className={classes.actions}>
-                    {activeStep === steps.length ? (
-                      <div>
-                        <Typography
-                          className={classes.instructions}
-                        ></Typography>
-                        <Button
-                          onClick={handleReset}
-                          className={classes.button}
-                        >
-                          Reset
-                        </Button>
-                      </div>
-                    ) : (
-                      <div>
-                        <Typography
-                          className={classes.instructions}
-                          style={{ height: "350px" }}
-                        >
-                          {getStepContent(activeStep)}
-                          <br />
-                        </Typography>
-                        <div className={classes.actions}>
-                          <Button
-                            disabled={activeStep === 0}
-                            onClick={handleBack}
-                            className={classes.button}
-                          >
-                            Back
-                          </Button>
+    <div>
+      <div className="container">
+        <div className="payment_part">
 
-                          <Button
-                            variant="contained"
-                            style={{ background: "#2E3B55", color: "#ffffff" }}
-                            onClick={handleNext}
-                            className={classes.button}
-                          >
-                            {activeStep === steps.length - 1
-                              ? "Finish"
-                              : "Next"}
-                          </Button>
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                </Grid>
-              </Grid>
-            </CardContent>
-          </Card>
-        </Grid>
-      </Grid>
+          <div className="payment_part_title">
+            <h1 className="payment_title">결제하기</h1>
+          </div>
+
+          <div>
+            <div className="payment_part_img">
+              <img src={iphone15} alt="" />
+            </div>
+            <div className="payment_part1">
+              <div className="d-flex justify-content-between">
+                <h1 className="payment_part1_title">iPhone 15 256GB 옐로</h1>
+                <h1 className="payment_part1_subtitle">1개</h1>
+              </div>
+              <hr />
+              <div>
+                <p className="payment_part1_1">위 제품의 예상 수령 일자를 확인해보세요.</p>
+                <p className="payment_part1_2">오늘 날짜 +2일</p>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div className="payment_part_img">
+              <img src={iphone15} alt="" />
+            </div>
+            <div className="payment_part1">
+              <div className="d-flex justify-content-between">
+                <h1 className="payment_part1_title">iPhone 15 256GB 옐로</h1>
+                <h1 className="payment_part1_subtitle">1개</h1>
+              </div>
+              <hr />
+              <div>
+                <p className="payment_part1_1">위 제품의 예상 수령 일자를 확인해보세요.</p>
+                <p className="payment_part1_2">오늘 날짜 +2일</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="payment_part2">
+            <div>
+              <h1 className="payment_part2_title">주문자 정보</h1>
+            </div>
+            <div>
+              <table className="payment_part2_table">
+                <tr>
+                  <th className="payment_part2_th">회원 ID</th>
+                  <td className="payment_part2_td">회원 ID</td>
+                </tr>
+                <tr>
+                  <th className="payment_part2_th">이름</th>
+                  <td className="payment_part2_td">이름</td>
+                </tr>
+                <tr>
+                  <th className="payment_part2_th">연락처</th>
+                  <td className="payment_part2_td">연락처</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+
+          <div className="payment_part2">
+            <div>
+              <h1 className="payment_part2_title">결제 정보</h1>
+            </div>
+            <div>
+              <table className="payment_part2_table">
+                <tr>
+                  <th className="payment_part2_th">이름</th>
+                  <td className="payment_part2_td">
+                    <input type="text" className="payment_form" />
+                  </td>
+                </tr>
+                <tr>
+                  <th className="payment_part2_th">카드사</th>
+                  <td className="payment_part2_td">
+                    <input type="text" className="payment_form" />
+                  </td>
+                </tr>
+                <tr>
+                  <th className="payment_part2_th">카드 번호</th>
+                  <td className="payment_part2_td">
+                    <input type="text" className="payment_form" />
+                  </td>
+                </tr>
+                <tr>
+                  <th className="payment_part2_th">카드 유효 기간</th>
+                  <td className="payment_part2_td">
+                    <input type="text" className="payment_form" />
+                  </td>
+                </tr>
+                <tr>
+                  <th className="payment_part2_th">CVC 번호</th>
+                  <td className="payment_part2_td">
+                    <input type="text" className="payment_form" />
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+
+          <div className="payment_part2">
+            <div>
+              <h1 className="payment_part2_title">배송지 정보</h1>
+            </div>
+            <div>
+              <table className="payment_part2_table">
+                <tr>
+                  <th className="payment_part2_th">이름</th>
+                  <td className="payment_part2_td">
+                    <input type="text" className="payment_form" />
+                  </td>
+                </tr>
+                <tr>
+                  <th className="payment_part2_th">연락처</th>
+                  <td className="payment_part2_td">
+                    <input type="text" className="payment_form" />
+                  </td>
+                </tr>
+                <tr>
+                  <th className="payment_part2_th">우편번호</th>
+                  <td className="payment_part2_td">
+                    <input type="text" className="payment_form" />
+                  </td>
+                </tr>
+                <tr>
+                  <th className="payment_part2_th">주소</th>
+                  <td className="payment_part2_td">
+                    <input type="text" className="payment_form" />
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          
+          <div className="payment_part3">
+            <hr />
+            <div className="payment_part3_1">
+              <span className="payment_total_title">총 주문 금액</span>
+              <span className="payment_total_price">￦ 1,250,000</span>
+            </div>
+            <div className="payment_part3_2">
+              <Button size={"default"} color={"none"} text={"뒤로가기"}
+                onClick={() => {navigate(-1)}}></Button>
+              <Button size={"default"} color={"blue"} text={"결제하기"}
+                onClick={() => {navigate('/payment_success')}}></Button>
+            </div>
+          </div>
+
+        </div>
+      </div>
     </div>
   );
-    
-    }
+}
+
+export default Payment;

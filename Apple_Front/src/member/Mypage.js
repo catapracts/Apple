@@ -72,19 +72,19 @@ function Mypage() {
 								<tr>
 									<th className="mypage_th">연락처</th>
 									<td className="mypage_td">
-										<input type="tex" className="mypage_form" />
+										<input type="text" className="mypage_form" />
 									</td>
 								</tr>
 								<tr>
 									<th className="mypage_th">우편번호</th>
 									<td className="mypage_td">
-										<input type="tex" className="mypage_form" />
+										<input type="text" className="mypage_form" />
 									</td>
 								</tr>
 								<tr>
 									<th className="mypage_th">주소</th>
 									<td className="mypage_td">
-										<input type="tex" className="mypage_form" />
+										<input type="text" className="mypage_form" />
 									</td>
 								</tr>
 							</table>
@@ -100,30 +100,30 @@ function Mypage() {
 								<tr>
 									<th className="mypage_th">이름</th>
 									<td className="mypage_td">
-										<input type="tex" className="mypage_form" />
+										<input type="text" className="mypage_form" />
 									</td>
 								</tr>
 								<tr>
 									<th className="mypage_th">카드사</th>									<td className="mypage_td">
-										<input type="tex" className="mypage_form" />
+										<input type="text" className="mypage_form" />
 									</td>
 								</tr>
 								<tr>
 									<th className="mypage_th">카드 번호</th>
 									<td className="mypage_td">
-										<input type="tex" className="mypage_form" />
+										<input type="text" className="mypage_form" />
 									</td>
 								</tr>
 								<tr>
 									<th className="mypage_th">카드 유효 기간</th>
 									<td className="mypage_td">
-										<input type="tex" className="mypage_form" />
+										<input type="text" className="mypage_form" />
 									</td>
 								</tr>
 								<tr>
 									<th className="mypage_th">CVC 번호</th>
 									<td className="mypage_td">
-										<input type="tex" className="mypage_form" />
+										<input type="text" className="mypage_form" />
 									</td>
 								</tr>
 							</table>
