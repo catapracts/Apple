@@ -21,9 +21,9 @@ const Home = () => {
 				</div>
 				<div className="homebtn1">
 					<Button size={"default"} color={"blue"}text={"더 알아보기"}
-						onClick={() => {navigate('/product')}}></Button>
+						onClick={() => {navigate('/product_detail/1')}}></Button>
 					<Button size={"default"} color={"none"} text={"구입하기"}
-						onClick={() => {navigate('/product')}}></Button>
+						onClick={() => {navigate('/store_detail/1')}}></Button>
 				</div>
 			</div>
 			<div className="home2">
@@ -34,9 +34,9 @@ const Home = () => {
 				</div>
 				<div className="homebtn2">
 					<Button size={"default"} color={"blue"}text={"더 알아보기"}
-						onClick={() => {navigate('/product')}}></Button>
+						onClick={() => {navigate('/product_detail/2')}}></Button>
 					<Button size={"default"} color={"none"} text={"구입하기"}
-						onClick={() => {navigate('/product')}}></Button>
+						onClick={() => {navigate('/store_detail/2')}}></Button>
 				</div>
 			</div>
 			<div className="home3">
@@ -47,9 +47,9 @@ const Home = () => {
 				</div>
 				<div className="homebtn3">
 					<Button size={"default"} color={"blue"}text={"더 알아보기"}
-						onClick={() => {navigate('/product')}}></Button>
+						onClick={() => {navigate('/product_detail/3')}}></Button>
 					<Button size={"default"} color={"none"} text={"구입하기"}
-						onClick={() => {navigate('/product')}}></Button>
+						onClick={() => {navigate('/store_detail/3')}}></Button>
 				</div>
 			</div>
 		</div>

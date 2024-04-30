@@ -81,9 +81,9 @@ function Store_Detail_1() {
                         </div>
                         <div className="store_detail_btn d-flex justify-content-center">
                             <Button size={"default"} color={"none"}text={"카트에 담기"}
-                                onClick={() => {navigate('/product')}}></Button>
+                                onClick={() => {navigate('/cart')}}></Button>
                             <Button size={"default"} color={"blue"}text={"결제하기"}
-                                onClick={() => {navigate('/product')}}></Button>
+                                onClick={() => {navigate('/payment')}}></Button>
                         </div>
                     </div>
                 </div>

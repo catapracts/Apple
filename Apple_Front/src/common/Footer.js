@@ -20,7 +20,7 @@ function Footer() {
             <ul>
               <Link to="/mypage"><li>회원 정보 수정</li></Link>
               <Link to="/login"><li>로그인</li></Link>
-              <li>결제 내역</li>
+              <Link to="/mypage/payment"><li>결제 내역</li></Link>
             </ul>
           </div>
 
