@@ -18,8 +18,8 @@ function Header() {
     				</div>
     				<div className="dropdown-menu" aria-labelledby='navbarDropdown'>
       					<Link className="dropdown-item" to="/product_detail/1">iphone 15 pro max</Link>
-      					<Link className="dropdown-item" to="/">iphone 15 pro</Link>
-      					<Link className="dropdown-item" to="/">iphone 15</Link>
+      					<Link className="dropdown-item" to="/product_detail/2">iphone 15 pro</Link>
+      					<Link className="dropdown-item" to="/product_detail/3">iphone 15</Link>
     				</div>
 				</div>
   				<Link to="/cart">장바구니</Link>

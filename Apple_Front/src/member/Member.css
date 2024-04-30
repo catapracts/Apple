@@ -122,15 +122,33 @@
     padding: 10px;
 }
 
-.mypage_payment_table {
+.mypage_payment_table, .mypage_payment_detail_table {
     width: 100%;
     margin-top: 20px;
     margin-bottom: 40px;
 }
 
-.mypage_payment_th, .mypage_payment_td {
+.mypage_payment_th, .mypage_payment_td, .mypage_payment_detail_th {
     border-top: 1px solid #dbdbdb;
     border-bottom: 1px solid #dbdbdb;
     text-align: center;
     padding: 10px;
 }
+
+.mypage_payment_detail_td {
+    border-top: 1px solid #dbdbdb;
+    border-bottom: 1px solid #dbdbdb;
+    padding: 10px;
+}
+
+.mypage_payment_detail_part {
+    height: 100%;
+}
+
+.mypage_payment_detail_part1, .mypage_payment_detail_part2, .mypage_payment_detail_part3 {
+    width: 45%;
+    margin: 5px;
+    padding-bottom: 30px;
+    display: inline-block;
+}
+

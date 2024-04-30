@@ -73,7 +73,9 @@ function Admin_product() {
                                 <th className="product_th col-2">재고</th>
                             </thead>
                             <tbody>
-                            <td className="product_td"><Link to="/admin/product/update">내용</Link></td>
+                            <td className="product_td">
+                                <Link to="/admin/product/update">내용</Link>
+                            </td>
                                 <td className="product_td">내용</td>
                                 <td className="product_td">내용</td>
                                 <td className="product_td">내용</td>
@@ -94,7 +96,8 @@ function Admin_product() {
                     <div className="d-flex justify-content-center">
 					    <Button size={"default"} color={"none"} text={"뒤로가기"}
                             onClick={() => {navigate(-1)}}></Button>
-                        <Button size={"default"} color={"blue"} text={"등록하기"}></Button>
+                        <Button size={"default"} color={"blue"} text={"등록하기"}
+                            onClick={() => {navigate('/admin/product/create')}}></Button>
                     </div>
                 </div>
             </div>

@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Button from '../common/Button';
 import './Member.css';
 
@@ -23,7 +23,7 @@ function Mypage_payment() {
                                 <th className="mypage_payment_th col-2">결제일</th>
                             </thead>
                             <tbody>
-                                <td className="mypage_payment_td">내용</td>
+                                <td className="mypage_payment_td"><Link to="/mypage/payment_detail/1">내용</Link></td>
                                 <td className="mypage_payment_td">내용</td>
                                 <td className="mypage_payment_td">내용</td>
                                 <td className="mypage_payment_td">내용</td>
