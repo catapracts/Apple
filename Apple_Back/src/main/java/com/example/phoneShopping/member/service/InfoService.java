@@ -1,5 +1,7 @@
 package com.example.phoneShopping.member.service;
 
+import java.util.List;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -7,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.example.phoneShopping.member.dao.AddressDao;
 import com.example.phoneShopping.member.dao.InfoDao;
 import com.example.phoneShopping.member.domain.Address;
+import com.example.phoneShopping.member.domain.Info;
 import com.example.phoneShopping.member.dto.param.CreateInfoParam;
 import com.example.phoneShopping.member.dto.param.UpdateInfoParam;
 import com.example.phoneShopping.member.dto.request.CreateInfoRequest;
@@ -54,10 +57,10 @@ public class InfoService
 	}
 	
 	@Transactional(readOnly=true)
-	public void findAllInfo()
+	public List<Info> findAllInfo()
 	{
 		System.out.println("findAllInfo동작");
-		dao.findAllInfo();
+		List<Info> list = dao.findAllInfo();
 		for(int i = 0; i < dao.findAllInfo().size(); i++)
 		{
 			System.out.println(dao.findAllInfo().get(i).getInfo_seq());
@@ -67,6 +70,8 @@ public class InfoService
 			System.out.println(dao.findAllInfo().get(i).getInfo_phone());
 			System.out.println("\n");
 		}
+		
+		return list;
 	}
 	
 	@Transactional(readOnly=true)

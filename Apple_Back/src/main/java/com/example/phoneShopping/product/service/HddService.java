@@ -1,5 +1,7 @@
 package com.example.phoneShopping.product.service;
 
+import java.util.List;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -46,10 +48,10 @@ public class HddService
 	}
 	
 	@Transactional(readOnly=true)
-	public void findAllHdd()
+	public List<Hdd> findAllHdd()
 	{
 		System.out.println("findAllHdd동작");
-		dao.findAllHdd();
+		List<Hdd> list = dao.findAllHdd();
 		
 		for(int i = 0; i < dao.findAllHdd().size(); i++)
 		{
@@ -58,6 +60,8 @@ public class HddService
 			System.out.println(dao.findAllHdd().get(i).getPlus_seq());
 			System.out.println("\n");
 		}
+		
+		return list;
 	}
 	
 	@Transactional(readOnly=true)

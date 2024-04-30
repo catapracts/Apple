@@ -9,7 +9,8 @@ public class CreateProductResponse {
 
 	private String prod_seq;
 	
-	public CreateProductResponse(String prod_seq) {
+	public CreateProductResponse(String prod_seq) 
+	{
 		this.prod_seq = prod_seq;
 	}
 	

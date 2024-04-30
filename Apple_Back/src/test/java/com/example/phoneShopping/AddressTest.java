@@ -60,17 +60,16 @@ public class AddressTest
 	}
 	
 	
-	//@Test
+	@Test
 	void getAll() 
 	{
 		service.findAllAddress();
 	}
 	
-	//@Test
+	@Test
 	void getOne()
 	{
 		service.findByIdAddress(1);
 	}
-	
-	
+
 }

@@ -1,5 +1,7 @@
 package com.example.phoneShopping.member.service;
 
+import java.util.List;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -43,10 +45,10 @@ public class AddressService
 	}
 	
 	@Transactional(readOnly=true)
-	public void findAllAddress()
+	public List<Address> findAllAddress()
 	{
 		System.out.println("findAllAddress동작");
-		addressDao.findAllAddress();
+		List<Address> list = addressDao.findAllAddress();
 		
 		for(int i = 0; i < addressDao.findAllAddress().size(); i++)
 		{
@@ -55,6 +57,8 @@ public class AddressService
 			System.out.println(addressDao.findAllAddress().get(i).getAddr_detail());
 			System.out.println("\n");
 		}
+		
+		return list;
 	}
 	
 	@Transactional(readOnly=true)

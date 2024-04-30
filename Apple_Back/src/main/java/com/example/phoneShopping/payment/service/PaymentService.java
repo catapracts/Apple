@@ -35,7 +35,7 @@ public class PaymentService
     public String order(PaymentDto paymentDto, String mem_id)
     {
 
-        Product product = prod_dao.findById(paymentDto.getProd_seq());
+        Product product = prod_dao.findByIdProduct(paymentDto.getProd_seq());
         Member member = mem_dao.findByIdMember(mem_id);
 
         List<PaymentProduct> paymentProductList = new ArrayList<>();
@@ -100,7 +100,7 @@ public class PaymentService
 
         for (PaymentDto paymentDto : paymentDtoList) 
         {
-        	Product product = prod_dao.findById(paymentDto.getProd_seq());
+        	Product product = prod_dao.findByIdProduct(paymentDto.getProd_seq());
 
         	PaymentProduct paymentProduct = PaymentProduct.createPaymentProduct(product, paymentDto.getCount());
         	paymentProductList.add(paymentProduct);

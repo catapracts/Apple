@@ -14,7 +14,7 @@ public class PaymentProductDto
 	{
 		this.payi_count = paymentProduct.getPayi_count();
 		this.payi_price = paymentProduct.getPayi_price();
-		this.prod_name = paymentProduct.getProduct().getProd_name();
+		this.prod_name = paymentProduct.getProduct().getProdName();
 	}
 	
 	private String prod_name;	// 결제 상품 이름
