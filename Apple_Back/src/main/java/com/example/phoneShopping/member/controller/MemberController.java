@@ -1,6 +1,8 @@
 package com.example.phoneShopping.member.controller;
 
 import java.util.Date;
+import java.util.List;
+
 import jakarta.validation.Valid;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -15,15 +17,18 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.phoneShopping.member.domain.Member;
 import com.example.phoneShopping.member.dto.request.JoinRequest;
 import com.example.phoneShopping.member.dto.request.LoginRequest;
 import com.example.phoneShopping.member.dto.request.UpdateMemberRequest;
+import com.example.phoneShopping.member.dto.response.DeleteMemberResponse;
 import com.example.phoneShopping.member.dto.response.JoinResponse;
 import com.example.phoneShopping.member.dto.response.LoginResponse;
 import com.example.phoneShopping.member.dto.response.UpdateMemberResponse;
@@ -100,38 +105,42 @@ public class MemberController
 	
 	@PreAuthorize("isAuthenticated()")
 	@GetMapping("/getAll")
-	public void findAllMember()
+	public List<Member> findAllMember()
 	{
 		System.out.println("회원 정보 전체 출력");
-		service.findAllMember();
+		return service.findAllMember();
 	}
 	
 	
 	@PreAuthorize("isAuthenticated()")
-	@GetMapping("/getOne/{mem_seq}")
-	public void findByIdMember(String mem_id)
+	@GetMapping("/{memId}")
+	public Member findByIdMember(@PathVariable(value = "memId") String mem_id)
 	{
 		System.out.println("회원 정보 1개 출력");
 		System.out.println(mem_id);
-		service.findByIdMember(mem_id);
+		return service.findByIdMember(mem_id);
 	}
 	
 	
 	@PreAuthorize("isAuthenticated()")
-	@PatchMapping(value = "/update/{mem_seq}")
+	@PatchMapping("/{memId}")
 	public ResponseEntity<UpdateMemberResponse> updateMember(@Valid @RequestBody UpdateMemberRequest req)
 	{
 		System.out.println("회원 정보 수정");
+		System.out.println(req.getMem_id());
+		System.out.println(req.getMem_pw());
+		System.out.println(req.getCheck_mem_pw());
+		
 		return ResponseEntity.ok(service.updateMember(req));
 	}
 	
 	
 	@PreAuthorize("isAuthenticated()")
-	@DeleteMapping(value = "/delete/{mem_seq}")
-	public void delete(String mem_id)
+	@DeleteMapping("/{memId}")
+	public ResponseEntity<DeleteMemberResponse> delete(@PathVariable(value = "memId") String memId)
 	{
 		System.out.println("회원 정보 제거");
-		System.out.println("mem_id");
-		service.deleteMember(mem_id);
+		System.out.println(memId);
+		return ResponseEntity.ok(service.deleteMember(memId));
 	}	
 }
