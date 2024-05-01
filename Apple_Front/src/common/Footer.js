@@ -29,7 +29,8 @@ function Footer() {
             <ul>
               <Link to="/join"><li>회원가입</li></Link>
               <Link to="/login"><li>로그인</li></Link>
-              <li>로그아웃</li>
+              <Link to="/logout"><li>로그아웃</li></Link>
+              <Link to="/TestFindAll"><li>회원 전체 조회 실험</li></Link>
             </ul>
           </div>
         </div>
