@@ -80,19 +80,12 @@
     padding: 10px;
 }
 
-.mypage_part1 {
+.mypage_part1, .mypage_part2, .mypage_part3, .mypage_part4 {
     /* background-color: aquamarine; */
+    width: 45%;
     padding-bottom: 30px;
-}
-
-.mypage_part2 {
-    /* background-color: darkgrey; */
-    padding-bottom: 30px;
-}
-
-.mypage_part3 {
-    /* background-color: lightgray; */
-    padding-bottom: 30px;
+    margin: 5px;
+    display: inline-block;
 }
 
 .mypage_table {
@@ -104,14 +97,18 @@
 }
 
 .mypage_th {
+    width: 30%;
     padding: 20px 10px 10px 0px;
     text-align: center;
-    width: 10%;
+    border-top: 1px solid #dbdbdb;
+    border-bottom: 1px solid #dbdbdb;
 }
 
 .mypage_td {
-    width: 50%;
+    width: 65%;
     padding-right: 15px;
+    border-top: 1px solid #dbdbdb;
+    border-bottom: 1px solid #dbdbdb;
 }
 
 .mypage_form {

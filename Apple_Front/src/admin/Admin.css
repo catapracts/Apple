@@ -94,13 +94,13 @@
     font-size: 23px !important;
     font-family: "Apple SD Gothic Neo EB";
     margin-top: 30px;
-    margin-bottom: 0;
+    margin-bottom: 20px;
 }
 
 .admin_member_part {
     height: 100%;
 }
-.admin_member_part1, .admin_member_part2, .admin_member_part3 {
+.admin_member_part1, .admin_member_part2, .admin_member_part3, .admin_member_part4 {
     width: 45%;
     padding-bottom: 30px;
     margin: 5px;
@@ -116,16 +116,17 @@
 .admin_member_th {
     padding: 20px 10px 10px 0px;
     text-align: center;
-    width: 10%;
+    width: 30%;
     border-top: 1px solid #dbdbdb;
     border-bottom: 1px solid #dbdbdb;
 }
 
 .admin_member_td {
-    width: 50%;
+    width: 65%;
     padding-right: 15px;
     border-top: 1px solid #dbdbdb;
     border-bottom: 1px solid #dbdbdb;
+    padding-left: 10px;
 }
 
 .admin_member_form {
