@@ -10,53 +10,55 @@ import './Member.css';
 
 function Login() {
 
-	// const { auth, setAuth } = useContext(AuthContext);				// 초기값이 AuthContext(user의 정보가 있는 파일)인 useContext생성
-	// const { headers, setHeaders } = useContext(HttpHeadersContext);	// 초기값이 HttpHeadersContext(user의 JWT가 있는 파일)인 useContext생성
+	const { auth, setAuth } = useContext(AuthContext);				// 초기값이 AuthContext(user의 정보가 있는 파일)인 useContext생성
+	const { headers, setHeaders } = useContext(HttpHeadersContext);	// 초기값이 HttpHeadersContext(user의 JWT가 있는 파일)인 useContext생성
 
 	const navigate = useNavigate();		// useNavigate를 사용하기 위해 선언 -> 페이지 이동할 때, 사용
 
-	// const [id, setId] = useState("");
-	// const [pwd, setPwd] = useState("");	// Login에 사용할 변수들 선언
+	const [mem_id, setMem_id] = useState("");
+	const [mem_pw, setMem_pw] = useState("");	// Login에 사용할 변수들 선언
 
-	// const changeId = (event) => {		// Client에서 id입력하면, 입력한 값 저장
-	// 	setId(event.target.value);
-	// }
+	const changeId = (event) => {		// Client에서 id입력하면, 입력한 값 저장
+		setMem_id(event.target.value);
+	}
 
-	// const changePwd = (event) => {		// Client에서 pwd입력하면, 입력한 값 저장
-	// 	setPwd(event.target.value);
-	// }
+	const changePwd = (event) => {		// Client에서 pwd입력하면, 입력한 값 저장
+		setMem_pw(event.target.value);
+	}
 
-	// const login = async () => {
+	const login = async () => {
 
-	// 	const req = {					// login에 사용할 data들을 하나의 객체로 만든 것
-	// 		id: id,
-	// 		pwd: pwd
-	// 	}
+		const req = {					// login에 사용할 data들을 하나의 객체로 만든 것
+			mem_id: mem_id,
+			mem_pw: mem_pw
+		}
 
-	// 	await axios.post("http://localhost:3000/user/login", req)	// Server에 만든 객체를 전달해서 login method 처리
-	// 	.then((resp) => {											// Login 성공 시 출력
-	// 		console.log("[Login.js] login() success :D");
-	// 		console.log(resp.data);
+		await axios.post("http://localhost:3000/user/login", req)	// Server에 만든 객체를 전달해서 login method 처리
+		.then((resp) => {											// Login 성공 시 출력
+			console.log("[Login.js] login() success :D");
+			console.log(resp.data);
 
-	// 			alert(resp.data.id + "님, 성공적으로 로그인 되었습니다 🔐");
+				alert(resp.data.mem_id + "님, 성공적으로 로그인 되었습니다 🔐");
+				console.log(resp.data.mem_id);
+				console.log(resp.data.memId);
 
-	// 			// JWT 토큰 저장
-	// 			localStorage.setItem("bbs_access_token", resp.data.jwt);
-	// 			localStorage.setItem("id", resp.data.id);
+				// JWT 토큰 저장
+				localStorage.setItem("apple_access_token", resp.data.jwt);
+				localStorage.setItem("mem_id", resp.data.mem_id);
 
-	// 			setAuth(resp.data.id); // 사용자 인증 정보(아이디 저장)
-	// 			setHeaders({"Authorization": `Bearer ${resp.data.jwt}`}); // 헤더 Authorization 필드 저장
+				setAuth(resp.data.mem_id); // 사용자 인증 정보(아이디 저장)
+				setHeaders({"Authorization": `Bearer ${resp.data.jwt}`}); // 헤더 Authorization 필드 저장
 
-	// 			navigate("/bbslist");
+				navigate("/");
 			
 
-	// 	}).catch((err) => {											// Login 실패 시 출력
-	// 		console.log("[Login.js] login() error :<");
-	// 		console.log(err);
+		}).catch((err) => {											// Login 실패 시 출력
+			console.log("[Login.js] login() error :<");
+			console.log(err);
 
-	// 		alert("⚠️ " + err.response.data);
-	// 	});
-	// }
+			alert("⚠️ " + err.response.data);
+		});
+	}
 
 	return (
 		<div>
@@ -70,13 +72,13 @@ function Login() {
 							<tr className="login_tr">
 								<th className="login_th">아이디</th>
 								<td className="login_td">
-									<input type="text" className="login_form" />	{/* id 값을 넣고, changeId라는 Event를 발생시킨다. */}
+									<input type="text" className="login_form" onChange={changeId} />	{/* id 값을 넣고, changeId라는 Event를 발생시킨다. */}
 								</td>
 							</tr>
 							<tr className="login_tr">
 								<th className="login_th">비밀번호</th>
 								<td className="login_td">
-									<input type="password" className="login_form" />	{/* pwd 값을 넣고, changePwd라는 Event를 발생시킨다. */}
+									<input type="password" className="login_form" onChange={changePwd}/>	{/* pwd 값을 넣고, changePwd라는 Event를 발생시킨다. */}
 								</td>
 							</tr>
 							</table>
@@ -84,7 +86,7 @@ function Login() {
 					<div className="d-flex justify-content-center">
 						<Button size={"default"} color={"none"} text={"회원가입"}
 							onClick={() => {navigate('/join')}}></Button>	
-                        <Button size={"default"} color={"blue"} text={"로그인"}></Button>	{/*값을 전부 입력하고 버튼을 누르면, login이라는 함수를 실행한다.*/}
+                        <Button size={"default"} color={"blue"} text={"로그인"} onClick={login}></Button>	{/*값을 전부 입력하고 버튼을 누르면, login이라는 함수를 실행한다.*/}
 					</div>
 				</div>
 			</div>

@@ -9,8 +9,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class UpdateMemberResponse 
+public class DeleteMemberResponse 
 {
-	private int updatedRecordCount;
-
+	private int deleteRecordCount;
 }

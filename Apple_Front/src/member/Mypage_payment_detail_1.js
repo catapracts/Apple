@@ -126,8 +126,6 @@ function Mypage_payment_detail_1() {
                     <div className="d-flex justify-content-center">
                         <Button size={"default"} color={"none"} text={"뒤로가기"}
                             onClick={() => {navigate(-1)}}></Button>
-                        <Button size={"default"} color={"blue"} text={"홈으로"}
-                            onClick={() => {navigate('/')}}></Button>
                     </div>
                 </div>
             </div>

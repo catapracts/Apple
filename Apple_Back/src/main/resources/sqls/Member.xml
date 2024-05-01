@@ -31,7 +31,7 @@ INSERT INTO MEMBER(mem_seq, mem_id, mem_pw) VALUES(#{mem_seq}, #{mem_id}, #{mem_
 
 
 <update id="updateMember" parameterType="com.example.phoneShopping.member.dto.param.UpdateMemberParam">
-UPDATE MEMBER SET mem_id=#{mem_id}, mem_pw=#{mem_pw} WHERE mem_seq=#{mem_seq}
+UPDATE MEMBER SET mem_pw=#{mem_pw} WHERE mem_id=#{mem_id}
 </update>
 
 

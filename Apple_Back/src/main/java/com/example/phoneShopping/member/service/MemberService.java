@@ -24,6 +24,7 @@ import com.example.phoneShopping.member.dto.param.UpdateMemberParam;
 import com.example.phoneShopping.member.dto.request.JoinRequest;
 import com.example.phoneShopping.member.dto.request.LoginRequest;
 import com.example.phoneShopping.member.dto.request.UpdateMemberRequest;
+import com.example.phoneShopping.member.dto.response.DeleteMemberResponse;
 import com.example.phoneShopping.member.dto.response.JoinResponse;
 import com.example.phoneShopping.member.dto.response.LoginResponse;
 import com.example.phoneShopping.member.dto.response.UpdateMemberResponse;
@@ -190,36 +191,39 @@ public class MemberService
 	public UpdateMemberResponse updateMember(UpdateMemberRequest req)
 	{
 		findByIdMember(req.getMem_id());
-		updateMemberMethod(req);
-		return new UpdateMemberResponse(req.getMem_seq());
+		return new UpdateMemberResponse(updateMemberMethod(req));
 	}	
 	
-	private void updateMemberMethod(UpdateMemberRequest req)
+	private Integer updateMemberMethod(UpdateMemberRequest req)
 	{
 		System.out.println("updateMemberMethod동작");
-		// 아이디 중복 확인
-		isExistUserId(req.getMem_id());
+
 
 		// 패스워드 일치 확인
 		checkPwd(req.getMem_pw(), req.getCheck_mem_pw());
 
 		// 회원 정보 생성
 		String encodedPwd = encoder.encode(req.getMem_pw());
-		
-		UpdateMemberParam param = new UpdateMemberParam(req.getMem_seq(), req.getMem_id(), encodedPwd, encodedPwd);
+		System.out.println("pw인코딩 완료");
+		UpdateMemberParam param = new UpdateMemberParam(req.getMem_id(), encodedPwd, encodedPwd);
 		
 		Integer result = dao.updateMember(param);
+		System.out.println("수정 완료");
+		System.out.println(result);
 		if(result==0)
 		{
 			throw new MemberException("회원 수정 실패", HttpStatus.INTERNAL_SERVER_ERROR);
 		}
+		
+		return result;
 	}
 		
 	@Transactional
-	public void deleteMember(String mem_id)
+	public DeleteMemberResponse deleteMember(String mem_id)
 	{
 		System.out.println("deleteMember동작");
-		dao.deleteMember(mem_id);
+		int number = dao.deleteMember(mem_id);
+		return new DeleteMemberResponse(number);
 	}
 	
 }
