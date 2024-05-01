@@ -1,9 +1,38 @@
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+import { useState, useEffect} from "react";
+
 import './Header.css';
-import { Link } from 'react-router-dom';
 import Logo from '../img/apple_logo_white.svg';
 
 function Header() {
+
+	const [memberList, setMemberList] = useState([]);
+	const [memId, setMemId] = useState("");
+
+	const navigate = useNavigate();	
 	
+
+	/* 회원 전체 조회 */
+	const getAll = async () => {
+
+		await axios.get("http://localhost:3000/user/getAll")
+			.then((resp) => {											// 회원가입 성공 시 출력
+				console.log("[TestFindAll.js] getAll() success :D");
+				
+                console.log(resp.data);
+                setMemberList(resp.data);
+
+			}).catch((err) => {											// 회원가입 실패 시 출력
+				console.log("[TestFindAll.js] getAll() error :<");
+				console.log(err);
+			});
+	}
+
+    useEffect(() => {
+		getAll();
+	}, []);
+
 	return (
 		<header className="py-4">
 			{/* The navigation menu */}
@@ -29,7 +58,7 @@ function Header() {
 						aria-expanded="false">OOO 로그인 중
     				</div>
     				<div className="dropdown-menu" aria-labelledby='navbarDropdown'>
-      					<Link className="dropdown-item" to="/mypage">회원 정보 수정</Link>
+      					{/* <Link className="dropdown-item" to={ {pathname: `/mypage/${member.memId}` }}>회원 정보 수정</Link> */}
       					<Link className="dropdown-item" to="/mypage/payment">결제 내역</Link>
     				</div>
   				</div>
