@@ -1,26 +1,29 @@
 package com.example.phoneShopping.member.dto.request;
 
 import jakarta.validation.constraints.NotBlank;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class CreateAddressRequest 
 {
 	@NotBlank
-	private int addr_seq;	// 주소 구분 번호
+	private int addrSeq;	// 주소 구분 번호
 	
 	@NotBlank
-	private String addr_zip;	// 주소 우편번호
+	private String addrZip;	// 주소 우편번호
 	
 	@NotBlank
-	private String addr_detail;	// 주소 상세
+	private String addrDetail;	// 주소 상세
 	
-	public CreateAddressRequest(int addr_seq, String addr_zip, String addr_detail)
+	public CreateAddressRequest(String addrZip, String addrDetail)
 	{
-		this.addr_seq=addr_seq;
-		this.addr_zip=addr_zip;
-		this.addr_detail=addr_detail;
+		this.addrZip=addrZip;
+		this.addrDetail=addrDetail;
 	}
 }

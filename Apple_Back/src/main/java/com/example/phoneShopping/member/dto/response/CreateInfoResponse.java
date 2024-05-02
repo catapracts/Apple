@@ -1,16 +1,15 @@
 package com.example.phoneShopping.member.dto.response;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class CreateInfoResponse 
 {
-	private int info_seq;
-	
-	public CreateInfoResponse(int info_seq)
-	{
-		this.info_seq=info_seq;
-	}
+	private int infoSeq;
 }

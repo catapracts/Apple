@@ -1,18 +1,23 @@
 package com.example.phoneShopping.member.controller;
 
+import java.util.List;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.phoneShopping.member.domain.Address;
 import com.example.phoneShopping.member.dto.request.CreateAddressRequest;
 import com.example.phoneShopping.member.dto.request.UpdateAddressRequest;
 import com.example.phoneShopping.member.dto.response.CreateAddressResponse;
+import com.example.phoneShopping.member.dto.response.DeleteAddressResponse;
 import com.example.phoneShopping.member.dto.response.UpdateAddressResponse;
 import com.example.phoneShopping.member.service.AddressService;
 
@@ -38,23 +43,23 @@ public class AddressController
 	
 	@PreAuthorize("isAuthenticated()")
 	@GetMapping("/getAll")
-	public void findAllAddress()
+	public List<Address> findAllAddress()
 	{
 		System.out.println("Address 정보 전체 출력");
-		service.findAllAddress();
+		return service.findAllAddress();
 	}
 	
 	@PreAuthorize("isAuthenticated()")
-	@GetMapping("/getOne")
-	public void findByIdAddress(int addr_seq)
+	@GetMapping("/{addrSeq}")
+	public Address findByIdAddress(@PathVariable(value = "addrSeq") int addrSeq)
 	{
 		System.out.println("Address 정보 1개 출력");
-		System.out.println(addr_seq);
-		service.findByIdAddress(addr_seq);
+		System.out.println(addrSeq);
+		return service.findByIdAddress(addrSeq);
 	}
 	
 	@PreAuthorize("isAuthenticated()")
-	@PatchMapping(value = "/update/{addr_seq}")
+	@PatchMapping("/{addrSeq}")
 	public ResponseEntity<UpdateAddressResponse> updateAddress(@Valid @RequestBody UpdateAddressRequest req)
 	{
 		System.out.println("Address 정보 수정");
@@ -62,11 +67,11 @@ public class AddressController
 	}
 	
 	@PreAuthorize("isAuthenticated()")
-	@DeleteMapping(value = "/delete/{addr_seq}")
-	public void delete(int addr_seq)
+	@DeleteMapping("/{addrSeq}")
+	public ResponseEntity<DeleteAddressResponse> delete(@PathVariable(value = "addrSeq") int addrSeq)
 	{
 		System.out.println("Address 정보 제거");
-		System.out.println(addr_seq);
-		service.deleteAddress(addr_seq);
+		System.out.println(addrSeq);
+		return ResponseEntity.ok(service.deleteAddress(addrSeq));
 	}
 }

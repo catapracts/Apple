@@ -11,5 +11,5 @@ import lombok.Setter;
 @AllArgsConstructor
 public class UpdateCartResponse 
 {
-	private int cartSeq;
+	private int updatedRecordCount;
 }

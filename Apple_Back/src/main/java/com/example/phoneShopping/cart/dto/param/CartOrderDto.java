@@ -8,6 +8,6 @@ import lombok.Setter;
 @Setter
 public class CartOrderDto
 {
-	private int cartp_seq;
+	private int cartpSeq;
 	private List<CartOrderDto> cartOrderDtoList;
 }

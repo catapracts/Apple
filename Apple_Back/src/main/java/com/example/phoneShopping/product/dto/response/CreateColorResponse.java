@@ -11,5 +11,5 @@ import lombok.Setter;
 @NoArgsConstructor
 public class CreateColorResponse 
 {
-	int color_seq;	// Color 구분
+	int colorSeq;	// Color 구분
 }

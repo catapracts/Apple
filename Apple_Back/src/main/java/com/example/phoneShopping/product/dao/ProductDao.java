@@ -14,14 +14,14 @@ import com.example.phoneShopping.product.dto.param.UpdateProductParam;
 public interface ProductDao 
 {
 	
-	// 상품 추가
-	Integer createProduct(CreateProductParam param);
-	
 	// 상품 상세 1개
 	Product findByIdProduct(String prod_seq);
 	
 	// 상품 목록
 	List<Product> findAllProduct();
+
+	// 상품 추가
+	Integer createProduct(CreateProductParam param);
 	
 	// 상품 수정
 	Integer updateProduct(UpdateProductParam param);

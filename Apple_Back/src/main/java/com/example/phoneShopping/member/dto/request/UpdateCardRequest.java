@@ -1,34 +1,37 @@
 package com.example.phoneShopping.member.dto.request;
 
 import jakarta.validation.constraints.NotBlank;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class UpdateCardRequest 
 {
 	@NotBlank
-	private int card_seq;		// 카드 구분 번호
+	private int cardSeq;		// 카드 구분 번호
 	
 	@NotBlank
-	private String card_comp;	// 카드회사
+	private String cardComp;	// 카드회사
 	
 	@NotBlank
-	private String card_num;		// 카드번호
+	private String cardNum;		// 카드번호
 	
 	@NotBlank
-	private String card_date;	// 카드 유효기간
+	private String cardDate;	// 카드 유효기간
 	
 	@NotBlank
-	private int card_cvc;		// 카드 CVC
+	private int cardCvc;		// 카드 CVC
 	
-	public UpdateCardRequest(int card_seq, String card_comp, String card_num, String card_date, int card_cvc)
+	public UpdateCardRequest(String cardComp, String cardNum, String cardDate, int cardCvc)
 	{
-		this.card_seq=card_seq;
-		this.card_comp=card_comp;
-		this.card_num=card_num;
-		this.card_date=card_date;
-		this.card_cvc=card_cvc;		
+		this.cardComp=cardComp;
+		this.cardNum=cardNum;
+		this.cardDate=cardDate;
+		this.cardCvc=cardCvc;
 	}
 }

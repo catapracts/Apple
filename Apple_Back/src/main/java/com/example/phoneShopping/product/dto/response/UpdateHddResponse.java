@@ -11,5 +11,5 @@ import lombok.Setter;
 @NoArgsConstructor
 public class UpdateHddResponse 
 {
-	int hdd_seq;	// HDD 구분
+	private int updatedRecordCount;
 }

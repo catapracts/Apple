@@ -13,4 +13,9 @@ public class UpdateCartRequest
 {
 	private int cartSeq;	// 장바구니 번호
 	private int memSeq;	// 장바구니 사용하는 회원 정보
+	
+	public UpdateCartRequest(int memSeq)
+	{
+		this.memSeq=memSeq;
+	}
 }

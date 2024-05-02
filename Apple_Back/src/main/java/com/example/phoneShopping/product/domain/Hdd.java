@@ -11,13 +11,13 @@ import lombok.Setter;
 @NoArgsConstructor
 public class Hdd 
 {
-	int hdd_seq;	// HDD 구분
+	int hddSeq;	// HDD 구분
 	int capacity;	// HDD 용량
-	int plus_seq;	// HDD용량에 따른 추가 금액
+	int plusSeq;	// HDD용량에 따른 추가 금액
 	
-	public Hdd(int capacity, int plus_seq)
+	public Hdd(int capacity, int plusSeq)
 	{
 		this.capacity=capacity;
-		this.plus_seq=plus_seq;
+		this.plusSeq=plusSeq;
 	}
 }

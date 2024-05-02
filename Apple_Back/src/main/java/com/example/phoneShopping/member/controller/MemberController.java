@@ -114,11 +114,11 @@ public class MemberController
 	
 	@PreAuthorize("isAuthenticated()")
 	@GetMapping("/{memId}")
-	public Member findByIdMember(@PathVariable(value = "memId") String mem_id)
+	public Member findByIdMember(@PathVariable(value = "memId") String memId)
 	{
 		System.out.println("회원 정보 1개 출력");
-		System.out.println(mem_id);
-		return service.findByIdMember(mem_id);
+		System.out.println(memId);
+		return service.findByIdMember(memId);
 	}
 	
 	
@@ -127,9 +127,9 @@ public class MemberController
 	public ResponseEntity<UpdateMemberResponse> updateMember(@Valid @RequestBody UpdateMemberRequest req)
 	{
 		System.out.println("회원 정보 수정");
-		System.out.println(req.getMem_id());
-		System.out.println(req.getMem_pw());
-		System.out.println(req.getCheck_mem_pw());
+		System.out.println(req.getMemId());
+		System.out.println(req.getMemPw());
+		System.out.println(req.getCheckMemPw());
 		
 		return ResponseEntity.ok(service.updateMember(req));
 	}

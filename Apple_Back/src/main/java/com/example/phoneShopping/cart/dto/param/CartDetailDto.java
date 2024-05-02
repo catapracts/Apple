@@ -7,19 +7,19 @@ import lombok.Setter;
 @Setter
 public class CartDetailDto 
 {
-    private String cartp_seq; //장바구니 상품 아이디
+    private String cartpSeq; //장바구니 상품 아이디
 
-    private String prod_name; //상품명
+    private String prodName; //상품명
 
     private int price; //상품 금액
 
     private int cnt; //수량
 
 
-    public CartDetailDto(String cartp_seq, String prod_name, int price, int cnt)
+    public CartDetailDto(String cartpSeq, String prodName, int price, int cnt)
     {
-        this.cartp_seq = cartp_seq;
-        this.prod_name = prod_name;
+        this.cartpSeq = cartpSeq;
+        this.prodName = prodName;
         this.price = price;
         this.cnt = cnt;
     }

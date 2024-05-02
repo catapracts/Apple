@@ -13,6 +13,7 @@ import com.example.phoneShopping.member.dto.param.UpdateAddressParam;
 import com.example.phoneShopping.member.dto.request.CreateAddressRequest;
 import com.example.phoneShopping.member.dto.request.UpdateAddressRequest;
 import com.example.phoneShopping.member.dto.response.CreateAddressResponse;
+import com.example.phoneShopping.member.dto.response.DeleteAddressResponse;
 import com.example.phoneShopping.member.dto.response.UpdateAddressResponse;
 import com.example.phoneShopping.member.exception.AddressException;
 
@@ -29,7 +30,7 @@ public class AddressService
 	public CreateAddressResponse createAddress(CreateAddressRequest req)
 	{
 		createAddressMethod(req);
-		return new CreateAddressResponse(req.getAddr_seq());
+		return new CreateAddressResponse(req.getAddrSeq());
 	}
 		
 	private void createAddressMethod(CreateAddressRequest req)
@@ -52,9 +53,9 @@ public class AddressService
 		
 		for(int i = 0; i < addressDao.findAllAddress().size(); i++)
 		{
-			System.out.println(addressDao.findAllAddress().get(i).getAddr_seq());
-			System.out.println(addressDao.findAllAddress().get(i).getAddr_zip());
-			System.out.println(addressDao.findAllAddress().get(i).getAddr_detail());
+			System.out.println(addressDao.findAllAddress().get(i).getAddrSeq());
+			System.out.println(addressDao.findAllAddress().get(i).getAddrZip());
+			System.out.println(addressDao.findAllAddress().get(i).getAddrDetail());
 			System.out.println("\n");
 		}
 		
@@ -62,46 +63,45 @@ public class AddressService
 	}
 	
 	@Transactional(readOnly=true)
-	public Address findByIdAddress(int addr_seq) 
+	public Address findByIdAddress(int addrSeq) 
 	{
 		System.out.println("findByIdAddress동작");
-		addressDao.findByIdAddress(addr_seq);
-		System.out.println(addressDao.findByIdAddress(addr_seq).getAddr_seq());
-		System.out.println(addressDao.findByIdAddress(addr_seq).getAddr_zip());
-		System.out.println(addressDao.findByIdAddress(addr_seq).getAddr_detail());
-		Address address = new Address(addressDao.findByIdAddress(addr_seq).getAddr_seq(), addressDao.findByIdAddress(addr_seq).getAddr_zip(), addressDao.findByIdAddress(addr_seq).getAddr_detail());
+		addressDao.findByIdAddress(addrSeq);
+		System.out.println(addressDao.findByIdAddress(addrSeq).getAddrSeq());
+		System.out.println(addressDao.findByIdAddress(addrSeq).getAddrZip());
+		System.out.println(addressDao.findByIdAddress(addrSeq).getAddrDetail());
+		Address address = new Address(addressDao.findByIdAddress(addrSeq).getAddrSeq(), addressDao.findByIdAddress(addrSeq).getAddrZip(), addressDao.findByIdAddress(addrSeq).getAddrDetail());
 		return address;
 	}
 	
 	@Transactional
 	public UpdateAddressResponse updateAddress(UpdateAddressRequest req)
 	{
-		Address addr = findByIdAddress(req.getAddr_seq());
-		if(req.getAddr_seq() == addr.getAddr_seq())
-		{
-			updateAddressMethod(req);
-		}
-		
-		return new UpdateAddressResponse(req.getAddr_seq());
+		findByIdAddress(req.getAddrSeq());
+		return new UpdateAddressResponse(updateAddressMethod(req));
 	}
 	
-	private void updateAddressMethod(UpdateAddressRequest req)
+	private Integer updateAddressMethod(UpdateAddressRequest req)
 	{
 		System.out.println("updateAddress동작");
 				
-		UpdateAddressParam param = new UpdateAddressParam(req.getAddr_seq() ,req.getAddr_zip(), req.getAddr_detail());
+		UpdateAddressParam param = new UpdateAddressParam(req.getAddrSeq() ,req.getAddrZip(), req.getAddrDetail());
 		
 		Integer result = addressDao.updateAddress(param);
+		
 		if(result==0)
 		{
 			throw new AddressException("카드 수정 실패", HttpStatus.INTERNAL_SERVER_ERROR);
 		}
+		
+		return result;
 	}
 	
 	@Transactional
-	public void deleteAddress(int addr_seq)
+	public DeleteAddressResponse deleteAddress(int addrSeq)
 	{
 		System.out.println("deleteAddress동작");
-		addressDao.deleteAddress(addr_seq);
+		int number = addressDao.deleteAddress(addrSeq);
+		return new DeleteAddressResponse(number);
 	}
 }

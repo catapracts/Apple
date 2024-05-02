@@ -1,20 +1,23 @@
 package com.example.phoneShopping.member.dto.param;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class UpdateAddressParam 
 {
-	private int addr_seq;
-	private String addr_zip;
-	private String addr_detail;
+	private int addrSeq;
+	private String addrZip;
+	private String addrDetail;
 	
-	public UpdateAddressParam(int addr_seq, String addr_zip, String addr_detail)
+	public UpdateAddressParam(String addr_zip, String addr_detail)
 	{
-		this.addr_seq=addr_seq;
-		this.addr_zip=addr_zip;
-		this.addr_detail=addr_detail;
+		this.addrZip=addr_zip;
+		this.addrDetail=addr_detail;
 	}
 }

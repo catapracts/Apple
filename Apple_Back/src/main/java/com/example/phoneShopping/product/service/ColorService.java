@@ -13,6 +13,7 @@ import com.example.phoneShopping.product.dto.param.UpdateColorParam;
 import com.example.phoneShopping.product.dto.request.CreateColorRequest;
 import com.example.phoneShopping.product.dto.request.UpdateColorRequest;
 import com.example.phoneShopping.product.dto.response.CreateColorResponse;
+import com.example.phoneShopping.product.dto.response.DeleteColorResponse;
 import com.example.phoneShopping.product.dto.response.UpdateColorResponse;
 import com.example.phoneShopping.product.exception.ColorException;
 
@@ -31,13 +32,13 @@ public class ColorService
 	public CreateColorResponse createColor(CreateColorRequest req)
 	{
 		createColorMethod(req);
-		return new CreateColorResponse(req.getColor_seq());
+		return new CreateColorResponse(req.getColorSeq());
 	}
 		
 	private void createColorMethod(CreateColorRequest req)
 	{
 		System.out.println("createColor동작");
-		CreateColorParam param = new CreateColorParam(req.getColor_seq(), req.getColor());
+		CreateColorParam param = new CreateColorParam(req.getColorSeq(), req.getColor());
 		
 		Integer result = dao.createColor(param);
 		
@@ -55,7 +56,7 @@ public class ColorService
 		
 		for(int i = 0; i < dao.findAllColor().size(); i++)
 		{
-			System.out.println(dao.findAllColor().get(i).getColor_seq());
+			System.out.println(dao.findAllColor().get(i).getColorSeq());
 			System.out.println(dao.findAllColor().get(i).getColor());
 			System.out.println("\n");
 		}
@@ -68,7 +69,7 @@ public class ColorService
 	{
 		System.out.println("findByIdColor동작");
 		dao.findByIdColor(color_seq);
-		System.out.println(dao.findByIdColor(color_seq).getColor_seq());
+		System.out.println(dao.findByIdColor(color_seq).getColorSeq());
 		System.out.println(dao.findByIdColor(color_seq).getColor());
 		return dao.findByIdColor(color_seq);
 	}
@@ -76,15 +77,15 @@ public class ColorService
 	@Transactional
 	public UpdateColorResponse updateColor(UpdateColorRequest req)
 	{
-		updateColorMethod(req);		
-		return new UpdateColorResponse(req.getColor_seq());
+		findByIdColor(req.getColorSeq());
+		return new UpdateColorResponse(updateColorMethod(req));
 	}
 	
-	private void updateColorMethod(UpdateColorRequest req)
+	private Integer updateColorMethod(UpdateColorRequest req)
 	{
 		System.out.println("updateColor동작");
 				
-		UpdateColorParam param = new UpdateColorParam(req.getColor_seq(), req.getColor());
+		UpdateColorParam param = new UpdateColorParam(req.getColorSeq(), req.getColor());
 		
 		Integer result = dao.updateColor(param);
 		
@@ -92,12 +93,15 @@ public class ColorService
 		{
 			throw new ColorException("Color 수정 실패", HttpStatus.INTERNAL_SERVER_ERROR);
 		}
+		
+		return result;
 	}
 	
 	@Transactional
-	public void deleteColor(int color_seq)
+	public DeleteColorResponse deleteColor(int color_seq)
 	{
 		System.out.println("deleteColor동작");
-		dao.deleteColor(color_seq);
+		int number = dao.deleteColor(color_seq);
+		return new DeleteColorResponse(number);
 	}
 }

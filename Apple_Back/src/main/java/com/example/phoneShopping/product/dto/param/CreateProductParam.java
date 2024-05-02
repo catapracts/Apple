@@ -2,39 +2,43 @@ package com.example.phoneShopping.product.dto.param;
 
 import com.example.phoneShopping.product.dto.request.CreateProductRequest;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class CreateProductParam {
+@AllArgsConstructor
+@NoArgsConstructor
+public class CreateProductParam 
+{
 
 	// 상품 일련번호
-	private String prod_seq;
+	private String prodSeq;
 	
 	// 상품 이름
-	private String prod_name;
+	private String prodName;
 	
 	// 상품 가격
-	private int prod_price;
+	private int prodPrice;
 	
 	// 재고
-	private int prod_cnt;
+	private int prodCnt;
 	
 	// 옵션 1 : 용량 - FK
-	private int hdd_seq;
+	private int hddSeq;
 	
 	// 옵션 2 : 색상 - FK
-	private int color_seq;
+	private int colorSeq;
 	
 	public CreateProductParam(CreateProductRequest req) 
 	{
-		this.prod_seq = req.getProd_seq();
-		this.prod_name = req.getProd_name();
-		this.prod_price = req.getProd_price();
-		this.hdd_seq = req.getHdd_seq();
-		this.color_seq = req.getColor_seq();
-		this.prod_cnt = req.getProd_cnt();
+		this.prodName = req.getProdName();
+		this.prodPrice = req.getProdPrice();
+		this.prodCnt = req.getProdCnt();
+		this.hddSeq = req.getHddSeq();
+		this.colorSeq = req.getColorSeq();
 	}
 	
 }

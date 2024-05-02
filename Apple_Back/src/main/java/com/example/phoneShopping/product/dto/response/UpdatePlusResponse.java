@@ -11,5 +11,5 @@ import lombok.Setter;
 @NoArgsConstructor
 public class UpdatePlusResponse 
 {
-	int plus_seq;	// 용량별 추가금액 구분
+	private int updatedRecordCount;
 }

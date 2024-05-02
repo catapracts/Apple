@@ -19,14 +19,14 @@ public class CartProduct
 	
 	private int cartpCnt;
 	
-    public void addCount(int cartp_cnt)
+    public void addCount(int cartpCnt)
     {
-        this.cartpCnt += cartp_cnt;
+        this.cartpCnt += cartpCnt;
     }
 
-    public void updateCount(int cartp_cnt)
+    public void updateCount(int cartpCnt)
     {
-        this.cartpCnt = cartp_cnt;
+        this.cartpCnt = cartpCnt;
     }	
     
     public CartProduct(int cartSeq, String productSeq, int cartpCnt)
