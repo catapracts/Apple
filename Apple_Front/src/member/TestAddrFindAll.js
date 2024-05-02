@@ -4,31 +4,31 @@ import { useState, useEffect} from "react";
 import Button from '../common/Button';
 import './Member.css';
 
-function Admin_member() {
-    const [memberList, setMemberList] = useState([]);
-	const [memId, setMemId] = useState("");
+function TestAddrFindAll() {
+    const [addrList, setAddrList] = useState([]);
+	const [addrSeq, setAddrSeq] = useState("");
 
 	const navigate = useNavigate();	
 
 
-	const changeId = (event) => {	
-		setMemId(event.target.value);
+	const changeSeq = (event) => {	
+		setAddrSeq(event.target.value);
 	}
 
 
 
-    /* 회원 전체 조회 */
+    /* 주소 전체 조회 */
 	const getAll = async () => {
 
-		await axios.get("http://localhost:3000/user/getAll")
+		await axios.get("http://localhost:3000/address/getAll")
 			.then((resp) => {											// 회원가입 성공 시 출력
-				console.log("[TestFindAll.js] getAll() success :D");
+				console.log("[TestAddrFindAll.js] getAll() success :D");
 				
                 console.log(resp.data);
-                setMemberList(resp.data);
+                setAddrList(resp.data);
 
 			}).catch((err) => {											// 회원가입 실패 시 출력
-				console.log("[TestFindAll.js] getAll() error :<");
+				console.log("[TestAddrFindAll.js] getAll() error :<");
 				console.log(err);
 			});
 	}
@@ -39,23 +39,23 @@ function Admin_member() {
 
 
     /* 회원 삭제 */
-    const deleteMember = async () => {
+    const deleteAddress = async () => {
 
-		const req = { memId: memId}	
+		const req = { addrSeq: addrSeq}	
 
-		await axios.delete(`http://localhost:3000/user/${memId}`, req)	
+		await axios.delete(`http://localhost:3000/address/${addrSeq}`, req)	
 			.then((resp) => {									
-				console.log("[TestFindAll.js] delete() success :D");
+				console.log("[TestAddrFindAll.js] delete() success :D");
 				console.log(resp.data);
 
                 if (resp.data.deleteRecordCount === 1) {
-                    alert("회원을 성공적으로 삭제했습니다 :D");
+                    alert("주소를 성공적으로 삭제했습니다 :D");
                     navigate("/");
                 }
 
 			}).catch((err) => {	
                 console.log("req=> " , req)	;
-				console.log("[TestFindAll.js] delete() error :<");
+				console.log("[TestAddrFindAll.js] delete() error :<");
 				console.log(err);
 
 				const resp = err.response;
@@ -72,20 +72,20 @@ function Admin_member() {
             <div className="container">
                 <div className="admin_container">
                     <div>
-                        <h1 className="admin_title">회원 관리</h1>                    
+                        <h1 className="admin_title">주소 관리</h1>                    
                     </div>
                     <div>
                         <table className="member_table">
                             <thead>
-                                <th className="member_th">회원번호</th>
-                                <th className="member_th">회원 ID</th>
-                                <th className="member_th">회원이름</th>
+                                <th className="member_th">구분 번호</th>
+                                <th className="member_th">우편 번호</th>
+                                <th className="member_th">상세 주소</th>
                             </thead>
                             <tbody>
                                 { 
-                                    memberList.map( function(member, idx) {
+                                    addrList.map( function(address, idx) {
                                         return(
-                                            <TableRow obj={member} key={idx} cnt={idx + 1} />
+                                            <TableRow obj={address} key={idx} cnt={idx + 1} />
                                         )
                                     })
                                  }
@@ -93,18 +93,19 @@ function Admin_member() {
                         </table>
 
                         <div>
-                            <input type="text" onChange={changeId}></input>
-                            <Button size={"default"} color={"none"} text={"삭제"} onClick={deleteMember}/>
+                            <input type="text" onChange={changeSeq}></input>
+                            <Button size={"default"} color={"none"} text={"삭제"} onClick={deleteAddress}/>
                         </div>
+
+                        <div>
+                            <Link to="/TestAddrCreate"><li>회원가입</li></Link>
+                        </div>
+
                     </div>
                     <div className="d-flex justify-content-center">
                         <Button size={"default"} color={"none"} text={"뒤로가기"}
                             onClick={() => {navigate(-1)}}></Button>
                     </div>
-
-                    <Link className="btn btn-outline-secondary"  to="/TestAddrFindAll"> 주소 정보 설정</Link>
-
-                    <Link className="btn btn-outline-secondary"  to="/TestInfoFindAll"> 회원 정보 설정</Link>
 
                 </div>
             </div>
@@ -114,26 +115,23 @@ function Admin_member() {
 
 /* 글 목록 테이블 행 컴포넌트 */
 function TableRow(props) {
-	const member = props.obj;
+	const address = props.obj;
 
 	return (
 			<tr>
 					{
 						<>
-							<td >
-								{member.memSeq}
-							</td>
-
                             <td>
-                                <Link to={{ pathname: `/TestgetOne/${member.memId}` }}>
-                                <span className="underline bbs-title" >{member.memId}</span>
+                                <Link to={{ pathname: `/TestAddrGetOne/${address.addrSeq}` }}>
+                                <span className="underline bbs-title" >{address.addrSeq}</span>
                                 </Link>
                             </td>
-                            <td>{member.memPw}</td>
+                            <td>{address.addrZip}</td>
+                            <td>{address.addrDetail}</td>
 						</>
 					}			
 			</tr>
 	);
 }
 
-export default Admin_member;
+export default TestAddrFindAll;

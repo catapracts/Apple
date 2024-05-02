@@ -16,38 +16,38 @@ function TestUpdate() {
 	const { member } = location.state;
 	//const { member } = useState(location.state?.data);
 
-	const [mem_id, setMem_id] = useState(member.mem_id);
-	const [mem_pw, setMem_pw] = useState(member.mem_pw);
-	const [check_mem_pw, setCheck_mem_pw] = useState(member.check_mem_pw);
+	const [memId, setMemId] = useState(member.memId);
+	const [memPw, setMemPw] = useState(member.memPw);
+	const [checkMemPw, setCheckMemPw] = useState(member.checkMemPw);
 
 
 	const changePwd = (event) => {
-		setMem_pw(event.target.value);
+		setMemPw(event.target.value);
 	}
 
 	const changeCheckPwd = (event) => {
-		setCheck_mem_pw(event.target.value);
+		setCheckMemPw(event.target.value);
 	}
 
 	const updateMember = async () => {
 
 
 		const req = {
-			mem_id : mem_id,
-			mem_pw : mem_pw, 
-			check_mem_pw : check_mem_pw
+			memId : memId,
+			memPw : memPw, 
+			checkMemPw : checkMemPw
 		}
 
 		console.log(`Header 값 : ${headers.Authorization}`); 
 		console.log(member);
-		await axios.patch(`http://localhost:3000/user/${member.mem_id}`, req, {headers: headers})
+		await axios.patch(`http://localhost:3000/user/${member.memId}`, req, {headers: headers})
 		.then((resp) => {
 			console.log("[TestUpdate.js] updateMember() success :D");
 			console.log(resp.data);
 
 			if (resp.data.updatedRecordCount == 1) {
 				alert("회원 정보를 성공적으로 수정했습니다 :D");
-				navigate(`/TestgetOne/${member.mem_id}`); // 글 상세로 이동
+				navigate(`/TestgetOne/${member.memId}`); // 글 상세로 이동
 			}
 
 		})
@@ -76,14 +76,14 @@ function TestUpdate() {
 								<tr>
 									<th className="mypage_th">회원 구분 번호</th>
 									<td className="mypage_td">
-										{member.mem_seq}
+										{member.memSeq}
 									</td>
 								</tr>
 
 								<tr>
 									<th className="mypage_th">회원 ID</th>
 									<td className="mypage_td">
-										{member.mem_id}
+										{member.memId}
 									</td>
 								</tr>
 

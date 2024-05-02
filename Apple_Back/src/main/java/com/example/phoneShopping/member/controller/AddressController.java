@@ -22,7 +22,6 @@ import com.example.phoneShopping.member.dto.response.UpdateAddressResponse;
 import com.example.phoneShopping.member.service.AddressService;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
 @Tag(name = "AddressController", description = "주소 API")

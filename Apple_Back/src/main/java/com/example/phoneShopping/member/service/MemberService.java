@@ -156,14 +156,11 @@ public class MemberService
 	public Member findByIdMember(String memId)
 	{
 		System.out.println(memId);
-		System.out.println("findByIdMember동작1");
+		System.out.println("findByIdMember동작");
 		System.out.println(dao.findByIdMember(memId));
-		Member member = dao.findByIdMember(memId);
-		
-		System.out.println("member : ==> " + member);
 
 //		Member member = new Member(dao.findById(mem_id).getMem_seq(), dao.findById(mem_id).getMem_id(), dao.findById(mem_id).getMem_pw());
-		return member;
+		return dao.findByIdMember(memId);
 	}
 	
 	@Transactional(readOnly=true)

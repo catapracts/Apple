@@ -35,7 +35,7 @@ public class InfoController
 	
 	@PreAuthorize("isAuthenticated()")
 	@PostMapping("/create")
-	public ResponseEntity<CreateInfoResponse> createInfo(@Valid @RequestBody CreateInfoRequest req)
+	public ResponseEntity<CreateInfoResponse> createInfo(@RequestBody CreateInfoRequest req)
 	{
 		System.out.println("Info 정보 생성");
 		return ResponseEntity.ok(service.createInfo(req));
@@ -60,7 +60,7 @@ public class InfoController
 	
 	@PreAuthorize("isAuthenticated()")
 	@PatchMapping("/{infoSeq}")
-	public ResponseEntity<UpdateInfoResponse> updateInfo(@Valid @RequestBody UpdateInfoRequest req)
+	public ResponseEntity<UpdateInfoResponse> updateInfo(@RequestBody UpdateInfoRequest req)
 	{
 		System.out.println("Info 정보 수정");
 		return ResponseEntity.ok(service.updateInfo(req));
@@ -68,7 +68,7 @@ public class InfoController
 	
 	@PreAuthorize("isAuthenticated()")
 	@DeleteMapping("/{infoSeq}")
-	public ResponseEntity<DeleteInfoResponse> deletInfo( @PathVariable(value = "infoSeq") int infoSeq)
+	public ResponseEntity<DeleteInfoResponse> deletInfo(@PathVariable(value = "infoSeq") int infoSeq)
 	{
 		System.out.println("Info 정보 제거");
 		System.out.println(infoSeq);
