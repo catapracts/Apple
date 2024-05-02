@@ -9,12 +9,30 @@ import Logo from '../img/apple_logo_white.svg';
 
 function Header() {
 
-	
+	// const { auth, setAuth } = useContext(AuthContext);
+	const [member, setMember] = useState("");
 	const [memId, setMemId] = useState("");
 
 	const navigate = useNavigate();	
 
-	
+	// /* 회원 1개 조회 */
+	// const getOne = async () => {
+
+	// 	await axios.get(`http://localhost:3000/user/${memId}`, {params : {memId : auth ? auth : ""}})
+	// 		.then((resp) => {
+	// 			console.log("[TestgetOne.js] getOne() success :D");
+    //             console.log(resp.data);
+    //             setMember(resp.data)
+
+	// 		}).catch((err) => {	
+	// 			console.log("[TestgetOne.js] getOne() error :<");
+	// 			console.log(err);
+	// 		});
+	// }
+
+    // useEffect(() => {
+	// 	getOne();
+	// }, []);
 
 	return (
 		<header className="py-4">
@@ -37,10 +55,10 @@ function Header() {
   				<div class="dropdown">
     				<div className="dropdown-toggle nav_hover" id="navbarDropdown"
 						role="button" data-toggle="dropdown" aria-haspopup="true"
-						aria-expanded="false">{} 로그인 중
+						aria-expanded="false"> 로그인 중
     				</div>
     				<div className="dropdown-menu" aria-labelledby='navbarDropdown'>
-      					<Link className="dropdown-item" to="/mypage">회원 정보 수정</Link>
+      					<Link className="dropdown-item" to="/mypage" >회원 정보 수정</Link>
       					<Link className="dropdown-item" to="/mypage/payment">결제 내역</Link>
     				</div>
   				</div>

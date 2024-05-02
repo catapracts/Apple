@@ -68,6 +68,7 @@ function Admin_member() {
 }
 
 function TableRow(props) {
+    
 	const member = props.obj;
 
 	return (

@@ -52,6 +52,7 @@ function Admin_member_detail() {
                     <div>
                         <h1 className="admin_title">회원 관리</h1>                    
                     </div>
+                    
                     <div className="admin_member_part">
                         <div className="admin_member_part1">
                             <div>
@@ -189,7 +190,7 @@ function Admin_member_detail() {
                             </div>
                         </div>
                     </div>
-                    
+
                     <div className="d-flex justify-content-center">
                         <Button size={"default"} color={"none"} text={"뒤로가기"}
                             onClick={() => {navigate(-1)}}></Button>
