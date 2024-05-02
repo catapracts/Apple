@@ -58,7 +58,7 @@ function Router() {
 				<Route path="/TestFindAll" element={<TestFindAll />}></Route>
 				<Route path="/TestgetOne/:memId" element={<TestgetOne />}></Route>
 				<Route path="/TestUpdate/:memId" element={<TestUpdate />}></Route>
-				<Route path="/mypage/:memId" element={<Mypage />}></Route>
+				<Route path="/mypage" element={<Mypage />}></Route>
 				<Route path="/mypage/payment" element={<Mypage_payment />}></Route>
 				<Route path="/mypage/payment_detail/1" element={<Mypage_payment_detail_1 />}></Route>
 				<Route path="/product" element={<Product />}></Route>
