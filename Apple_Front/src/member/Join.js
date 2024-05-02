@@ -123,7 +123,9 @@ function Join() {
 						<Button size={"default"} color={"blue"} text={"가입하기"} onClick={join}></Button>		{/* 값을 전부 입력하고 버튼을 누르면, join이라는 함수를 실행한다. */}
 					</div>
 				</div>
+
 			</div>
+
 		</div>
 	);
 }

@@ -15,22 +15,22 @@ function Login() {
 
 	const navigate = useNavigate();		// useNavigate를 사용하기 위해 선언 -> 페이지 이동할 때, 사용
 
-	const [mem_id, setMem_id] = useState("");
-	const [mem_pw, setMem_pw] = useState("");	// Login에 사용할 변수들 선언
+	const [memId, setMemId] = useState("");
+	const [memPw, setMemPw] = useState("");	// Login에 사용할 변수들 선언
 
 	const changeId = (event) => {		// Client에서 id입력하면, 입력한 값 저장
-		setMem_id(event.target.value);
+		setMemId(event.target.value);
 	}
 
 	const changePwd = (event) => {		// Client에서 pwd입력하면, 입력한 값 저장
-		setMem_pw(event.target.value);
+		setMemPw(event.target.value);
 	}
 
 	const login = async () => {
 
 		const req = {					// login에 사용할 data들을 하나의 객체로 만든 것
-			mem_id: mem_id,
-			mem_pw: mem_pw
+			memId: memId,
+			memPw: memPw
 		}
 
 		await axios.post("http://localhost:3000/user/login", req)	// Server에 만든 객체를 전달해서 login method 처리
@@ -38,15 +38,14 @@ function Login() {
 			console.log("[Login.js] login() success :D");
 			console.log(resp.data);
 
-				alert(resp.data.mem_id + "님, 성공적으로 로그인 되었습니다 🔐");
-				console.log(resp.data.mem_id);
+				alert(resp.data.memId + "님, 성공적으로 로그인 되었습니다 🔐");
 				console.log(resp.data.memId);
 
 				// JWT 토큰 저장
 				localStorage.setItem("apple_access_token", resp.data.jwt);
-				localStorage.setItem("mem_id", resp.data.mem_id);
+				localStorage.setItem("mem_id", resp.data.memId);
 
-				setAuth(resp.data.mem_id); // 사용자 인증 정보(아이디 저장)
+				setAuth(resp.data.memId); // 사용자 인증 정보(아이디 저장)
 				setHeaders({"Authorization": `Bearer ${resp.data.jwt}`}); // 헤더 Authorization 필드 저장
 
 				navigate("/");

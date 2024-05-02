@@ -6,25 +6,25 @@ import './Member.css';
 import { AuthContext } from "../context/AuthProvider";
 import TestUpdate from "./TestUpdate";
 
-function TestgetOne() {
+function TestAddrGetOne() {
 
     const { auth, setAuth } = useContext(AuthContext)
-    const [member, setMember] = useState({});
-    const {memId} = useParams();
+    const [address, setAddress] = useState({});
+    const {addrSeq} = useParams();
 
 	const navigate = useNavigate();			// useNavigate를 사용하기 위해 선언 -> 페이지 이동할 때, 사용
 
     /* 회원 1개 조회 */
 	const getOne = async () => {
 
-		await axios.get(`http://localhost:3000/user/${memId}`, {params : {memId : auth ? auth : ""}})
+		await axios.get(`http://localhost:3000/address/${addrSeq}`, {params : {addrSeq : auth ? auth : ""}})
 			.then((resp) => {
-				console.log("[TestgetOne.js] getOne() success :D");
+				console.log("[TestAddrGetOne.js] getOne() success :D");
                 console.log(resp.data);
-                setMember(resp.data)
+                setAddress(resp.data)
 
 			}).catch((err) => {	
-				console.log("[TestgetOne.js] getOne() error :<");
+				console.log("[TestAddrGetOne.js] getOne() error :<");
 				console.log(err);
 			});
 	}
@@ -33,15 +33,15 @@ function TestgetOne() {
 		getOne();
 	}, []);
 
-	const updateMember = {
-		memSeq : member.memSeq,
-		memId : member.memId,
-		memPw : member.memPw
+	const updateAddress = {
+		addrSeq : address.addrSeq,
+		addrZip : address.addrZip,
+		addrDetail : address.addrDetail
 	}	
 
     const moveUpdate = (event) => {
-        navigate(`/TestUpdate/${memId}`, {
-			state : {data : member}
+        navigate(`/TestAddrUpdate/${addrSeq}`, {
+			state : {data : address}
 		});
     }
 
@@ -51,7 +51,7 @@ function TestgetOne() {
 			<div className="container">
 				<div className="mypage_container">
 					<div>
-						<h1 className="mypage_title">마이페이지</h1>
+						<h1 className="mypage_title">주소 상세페이지</h1>
 					</div>
 					<div className="mypage_part1">
 						<div>
@@ -61,23 +61,23 @@ function TestgetOne() {
 							<table className="mypage_table">
 
                                 <tr>
-									<th className="mypage_th">회원 구분 번호</th>
+									<th className="mypage_th">주소 구분 번호</th>
 									<td className="mypage_td">
-                                        <span>{member.memSeq}</span>
+                                        <span>{address.addrSeq}</span>
 									</td>
 								</tr>
 
 								<tr>
-									<th className="mypage_th">회원 ID</th>
+									<th className="mypage_th">우편 번호</th>
 									<td className="mypage_td">
-                                        <span>{member.memId}</span>
+                                        <span>{address.addrZip}</span>
 									</td>
 								</tr>
 
 								<tr>
-									<th className="mypage_th">비밀번호</th>
+									<th className="mypage_th">상세 주소</th>
 									<td className="mypage_td">
-                                        <span>{member.memPw}</span>
+                                        <span>{address.addrDetail}</span>
 									</td>
 								</tr>
 
@@ -89,7 +89,7 @@ function TestgetOne() {
 					    <Button size={"default"} color={"none"} text={"뒤로가기"}
 							onClick={() => {navigate(-1)}}></Button>
 
-						<Link className="btn btn-outline-secondary"  to="/TestUpdate/${mem_id}" state={{ member: updateMember }}> 수정</Link>
+						<Link className="btn btn-outline-secondary"  to="/TestAddrUpdate/${addrSeq}" state={{ address: updateAddress }}> 수정</Link>
 					</div>
 				</div>
 			</div>
@@ -98,4 +98,4 @@ function TestgetOne() {
     
     }
     
-    export default TestgetOne;
+    export default TestAddrGetOne;
