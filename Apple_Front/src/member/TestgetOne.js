@@ -96,6 +96,6 @@ function TestgetOne() {
 		</div>
 	);
     
-    }
+}
     
-    export default TestgetOne;
+export default TestgetOne;
