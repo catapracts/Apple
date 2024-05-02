@@ -1,16 +1,15 @@
 package com.example.phoneShopping.member.dto.response;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class CreateCardResponse 
 {
-	private int card_seq;
-	
-	public CreateCardResponse(int card_seq)
-	{
-		this.card_seq=card_seq;
-	}
+	private int cardSeq;
 }

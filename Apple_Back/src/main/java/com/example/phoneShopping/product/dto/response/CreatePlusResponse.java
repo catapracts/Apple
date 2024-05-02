@@ -11,5 +11,5 @@ import lombok.Setter;
 @NoArgsConstructor
 public class CreatePlusResponse 
 {
-	int plus_seq;	// 용량별 추가금액 구분
+	int plusSeq;	// 용량별 추가금액 구분
 }

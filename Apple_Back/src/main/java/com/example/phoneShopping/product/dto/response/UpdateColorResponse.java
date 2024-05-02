@@ -11,5 +11,5 @@ import lombok.Setter;
 @NoArgsConstructor
 public class UpdateColorResponse 
 {
-	int color_seq;	// Color 구분
+	private int updatedRecordCount;
 }

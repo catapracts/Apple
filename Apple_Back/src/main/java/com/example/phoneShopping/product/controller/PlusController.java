@@ -1,18 +1,23 @@
 package com.example.phoneShopping.product.controller;
 
+import java.util.List;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.phoneShopping.product.domain.Plus;
 import com.example.phoneShopping.product.dto.request.CreatePlusRequest;
 import com.example.phoneShopping.product.dto.request.UpdatePlusRequest;
 import com.example.phoneShopping.product.dto.response.CreatePlusResponse;
+import com.example.phoneShopping.product.dto.response.DeletePlusResponse;
 import com.example.phoneShopping.product.dto.response.UpdatePlusResponse;
 import com.example.phoneShopping.product.service.PlusService;
 
@@ -38,23 +43,23 @@ public class PlusController
 	
 	@PreAuthorize("isAuthenticated()")
 	@GetMapping("/getAll")
-	public void findAllPlus()
+	public List<Plus> findAllPlus()
 	{
 		System.out.println("Plus 정보 전체 출력");
-		service.findAllPlus();
+		return service.findAllPlus();
 	}
 	
 	@PreAuthorize("isAuthenticated()")
-	@GetMapping("/getOne")
-	public void findByIdPlus(int plus_seq)
+	@GetMapping("/{plusSeq}")
+	public Plus findByIdPlus(@PathVariable(value = "plusSeq") int plusSeq)
 	{
 		System.out.println("Plus 정보 1개 출력");
-		System.out.println(plus_seq);
-		service.findByIdPlus(plus_seq);
+		System.out.println(plusSeq);
+		return service.findByIdPlus(plusSeq);
 	}
 	
 	@PreAuthorize("isAuthenticated()")
-	@PatchMapping(value = "/update/{plus_seq}")
+	@PatchMapping("/{plusSeq}")
 	public ResponseEntity<UpdatePlusResponse> updatePlus(@Valid @RequestBody UpdatePlusRequest req)
 	{
 		System.out.println("Plus 정보 수정");
@@ -62,11 +67,11 @@ public class PlusController
 	}
 	
 	@PreAuthorize("isAuthenticated()")
-	@DeleteMapping(value = "/delete/{plus_seq}")
-	public void deletePlus(int plus_seq)
+	@DeleteMapping("/{plusSeq}")
+	public ResponseEntity<DeletePlusResponse> deletePlus(@PathVariable(value = "plusSeq") int plusSeq)
 	{
 		System.out.println("Plus 정보 제거");
-		System.out.println(plus_seq);
-		service.deletePlus(plus_seq);
+		System.out.println(plusSeq);
+		return ResponseEntity.ok(service.deletePlus(plusSeq));
 	}
 }

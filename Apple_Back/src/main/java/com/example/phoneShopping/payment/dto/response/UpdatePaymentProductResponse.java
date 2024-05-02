@@ -11,5 +11,5 @@ import lombok.Setter;
 @AllArgsConstructor
 public class UpdatePaymentProductResponse 
 {
-	private int payiSeq;	// 결제 상품 번호
+	private int updatedRecordCount;
 }

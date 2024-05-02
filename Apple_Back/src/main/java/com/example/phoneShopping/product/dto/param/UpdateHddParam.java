@@ -11,7 +11,13 @@ import lombok.Setter;
 @NoArgsConstructor
 public class UpdateHddParam 
 {
-	int hdd_seq;	// HDD 구분
+	int hddSeq;	// HDD 구분
 	int capacity;	// HDD 용량
-	int plus_seq;	// HDD용량에 따른 추가 금액
+	int plusSeq;	// HDD용량에 따른 추가 금액
+	
+	public UpdateHddParam(int capacity, int plusSeq)
+	{
+		this.capacity = capacity;
+		this.plusSeq = plusSeq;
+	}
 }

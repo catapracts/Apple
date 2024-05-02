@@ -2,25 +2,28 @@ package com.example.phoneShopping.member.dto.param;
 
 import com.example.phoneShopping.member.dto.request.CreateCardRequest;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class CreateCardParam 
 {
-	private int card_seq;		// 카드 구분 번호
-	private String card_comp;	// 카드회사
-	private String card_num;		// 카드번호
-	private String card_date;	// 카드 유효기간
-	private int card_cvc;		// 카드 CVC
+	private int cardSeq;		// 카드 구분 번호
+	private String cardComp;	// 카드회사
+	private String cardNum;		// 카드번호
+	private String cardDate;	// 카드 유효기간
+	private int cardCvc;		// 카드 CVC
 	
 	public CreateCardParam(CreateCardRequest req)
 	{
-		this.card_seq=req.getCard_seq();
-		this.card_comp=req.getCard_comp();
-		this.card_num=req.getCard_num();
-		this.card_date=req.getCard_date();
-		this.card_cvc=req.getCard_cvc();
+		this.cardComp=req.getCardComp();
+		this.cardNum=req.getCardNum();
+		this.cardDate=req.getCardDate();
+		this.cardCvc=req.getCardCvc();
 	}
 }

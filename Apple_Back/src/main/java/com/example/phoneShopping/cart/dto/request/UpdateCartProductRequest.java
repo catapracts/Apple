@@ -15,4 +15,11 @@ public class UpdateCartProductRequest
 	private int cartSeq;
 	private String productSeq;
 	private int cartpCnt;
+	
+	public UpdateCartProductRequest(int cartSeq, String productSeq, int cartpCnt)
+	{
+		this.cartSeq=cartSeq;
+		this.productSeq=productSeq;
+		this.cartpCnt=cartpCnt;
+	}
 }

@@ -13,12 +13,11 @@ import lombok.Setter;
 public class UpdateMemberRequest 
 {
 	@NotBlank
-	private String mem_id;	// 회원 ID
+	private String memId;	// 회원 ID
 	
 	@NotBlank
-	private String mem_pw;	// 회원 PW
+	private String memPw;	// 회원 PW
 	
 	@NotBlank
-	private String check_mem_pw;	// 회원 PW
-
+	private String checkMemPw;	// 회원 PW
 }

@@ -1,16 +1,15 @@
 package com.example.phoneShopping.member.dto.response;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class CreateAddressResponse 
 {
-	private int addr_seq;
-	
-	public CreateAddressResponse(int addr_seq)
-	{
-		this.addr_seq=addr_seq;
-	}
+	private int addrSeq;
 }

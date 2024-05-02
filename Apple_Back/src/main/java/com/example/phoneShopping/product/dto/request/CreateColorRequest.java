@@ -11,7 +11,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class CreateColorRequest 
 {
-	int color_seq;	// Color 구분
+	int colorSeq;	// Color 구분
 	String color;	// Color
 	
 	public CreateColorRequest(String color)

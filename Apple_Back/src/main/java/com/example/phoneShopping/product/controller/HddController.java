@@ -1,18 +1,23 @@
 package com.example.phoneShopping.product.controller;
 
+import java.util.List;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.phoneShopping.product.domain.Hdd;
 import com.example.phoneShopping.product.dto.request.CreateHddRequest;
 import com.example.phoneShopping.product.dto.request.UpdateHddRequest;
 import com.example.phoneShopping.product.dto.response.CreateHddResponse;
+import com.example.phoneShopping.product.dto.response.DeleteHddResponse;
 import com.example.phoneShopping.product.dto.response.UpdateHddResponse;
 import com.example.phoneShopping.product.service.HddService;
 
@@ -38,23 +43,23 @@ public class HddController
 	
 	@PreAuthorize("isAuthenticated()")
 	@GetMapping("/getAll")
-	public void findAllHdd()
+	public List<Hdd> findAllHdd()
 	{
 		System.out.println("Hdd 정보 전체 출력");
-		service.findAllHdd();
+		return service.findAllHdd();
 	}
 	
 	@PreAuthorize("isAuthenticated()")
-	@GetMapping("/getOne")
-	public void findByIdHdd(int hdd_seq)
+	@GetMapping("/{hddSeq}")
+	public Hdd findByIdHdd(@PathVariable(value = "hddSeq") int hddSeq)
 	{
 		System.out.println("Hdd 정보 1개 출력");
-		System.out.println(hdd_seq);
-		service.findByIdHdd(hdd_seq);
+		System.out.println(hddSeq);
+		return service.findByIdHdd(hddSeq);
 	}
 	
 	@PreAuthorize("isAuthenticated()")
-	@PatchMapping(value = "/update/{hdd_seq}")
+	@PatchMapping("/{hddSeq}")
 	public ResponseEntity<UpdateHddResponse> updateHdd(@Valid @RequestBody UpdateHddRequest req)
 	{
 		System.out.println("Hdd 정보 수정");
@@ -62,11 +67,11 @@ public class HddController
 	}
 	
 	@PreAuthorize("isAuthenticated()")
-	@DeleteMapping(value = "/delete/{hdd_seq}")
-	public void deleteHdd(int hdd_seq)
+	@DeleteMapping("/{hddSeq}")
+	public ResponseEntity<DeleteHddResponse> deleteHdd(@PathVariable(value = "hddSeq") int hddSeq)
 	{
 		System.out.println("Hdd 정보 제거");
-		System.out.println(hdd_seq);
-		service.deleteHdd(hdd_seq);
+		System.out.println(hddSeq);
+		return ResponseEntity.ok(service.deleteHdd(hddSeq));
 	}
 }

@@ -11,6 +11,11 @@ import lombok.Setter;
 @NoArgsConstructor
 public class UpdateColorParam 
 {
-	int color_seq;	// Color 구분
+	int colorSeq;	// Color 구분
 	String color;	// Color
+	
+	public UpdateColorParam(String color)
+	{
+		this.color = color;
+	}
 }

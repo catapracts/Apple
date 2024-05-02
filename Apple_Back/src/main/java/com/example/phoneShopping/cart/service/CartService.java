@@ -20,6 +20,8 @@ import com.example.phoneShopping.cart.dto.request.UpdateCartProductRequest;
 import com.example.phoneShopping.cart.dto.request.UpdateCartRequest;
 import com.example.phoneShopping.cart.dto.response.CreateCartProductResponse;
 import com.example.phoneShopping.cart.dto.response.CreateCartResponse;
+import com.example.phoneShopping.cart.dto.response.DeleteCartProductResponse;
+import com.example.phoneShopping.cart.dto.response.DeleteCartResponse;
 import com.example.phoneShopping.cart.dto.response.UpdateCartProductResponse;
 import com.example.phoneShopping.cart.dto.response.UpdateCartResponse;
 import com.example.phoneShopping.cart.exception.CartException;
@@ -83,16 +85,11 @@ public class CartService
 	@Transactional
 	public UpdateCartResponse updateCart(UpdateCartRequest req)
 	{
-		Cart cart = findByIdCart(req.getCartSeq());
-		if(req.getCartSeq() == cart.getCartSeq())
-		{
-			updateCartMethod(req);
-		}
-		
-		return new UpdateCartResponse(req.getCartSeq());
+		findByIdCart(req.getCartSeq());
+		return new UpdateCartResponse(updateCartMethod(req));
 	}
 	
-	private void updateCartMethod(UpdateCartRequest req)
+	private Integer updateCartMethod(UpdateCartRequest req)
 	{
 		System.out.println("updateCart동작");
 				
@@ -104,13 +101,16 @@ public class CartService
 		{
 			throw new CartException("Cart 수정 실패", HttpStatus.INTERNAL_SERVER_ERROR);
 		}
+		
+		return result;
 	}
 	
 	@Transactional
-	public void deleteCart(int cart_seq)
+	public DeleteCartResponse deleteCart(int cart_seq)
 	{
 		System.out.println("deleteCart동작");
-		dao.deleteCart(cart_seq);
+		int number = dao.deleteCart(cart_seq);
+		return new DeleteCartResponse(number);
 	}
 	
 	
@@ -167,16 +167,11 @@ public class CartService
 	@Transactional
 	public UpdateCartProductResponse updateCartProduct(UpdateCartProductRequest req)
 	{
-		CartProduct cartProduct = findByIdCartProduct(req.getCartpSeq());
-		if(req.getCartpSeq() == cartProduct.getCartpSeq())
-		{
-			updateCartProductMethod(req);
-		}
-		
-		return new UpdateCartProductResponse(req.getCartpSeq());
+		findByIdCartProduct(req.getCartpSeq());
+		return new UpdateCartProductResponse(updateCartProductMethod(req));
 	}
 	
-	private void updateCartProductMethod(UpdateCartProductRequest req)
+	private Integer updateCartProductMethod(UpdateCartProductRequest req)
 	{
 		System.out.println("updateCartProduct동작");
 				
@@ -188,13 +183,16 @@ public class CartService
 		{
 			throw new CartProductException("CartProduct 수정 실패", HttpStatus.INTERNAL_SERVER_ERROR);
 		}
+		
+		return result;
 	}
 	
 	@Transactional
-	public void deleteCartProduct(int cartp_seq)
+	public DeleteCartProductResponse deleteCartProduct(int cartp_seq)
 	{
 		System.out.println("deleteCartProduct동작");
-		dao.deleteCartProduct(cartp_seq);
+		int number = dao.deleteCartProduct(cartp_seq);
+		return new DeleteCartProductResponse(number);		
 	}
     
     

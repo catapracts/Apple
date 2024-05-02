@@ -11,5 +11,5 @@ import lombok.Setter;
 @NoArgsConstructor
 public class CreateHddResponse 
 {
-	int hdd_seq;	// HDD 구분
+	int hddSeq;	// HDD 구분
 }

@@ -11,6 +11,11 @@ import lombok.Setter;
 @NoArgsConstructor
 public class UpdatePlusRequest 
 {
-	int plus_seq;	// 용량별 추가금액 구분
+	int plusSeq;	// 용량별 추가금액 구분
 	int price;		// 추가 금액
+	
+	public UpdatePlusRequest(int price)
+	{
+		this.price=price;
+	}
 }

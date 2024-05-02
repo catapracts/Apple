@@ -6,15 +6,16 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.example.phoneShopping.member.dao.AddressDao;
+//import com.example.phoneShopping.member.dao.AddressDao;
 import com.example.phoneShopping.member.dao.InfoDao;
-import com.example.phoneShopping.member.domain.Address;
+//import com.example.phoneShopping.member.domain.Address;
 import com.example.phoneShopping.member.domain.Info;
 import com.example.phoneShopping.member.dto.param.CreateInfoParam;
 import com.example.phoneShopping.member.dto.param.UpdateInfoParam;
 import com.example.phoneShopping.member.dto.request.CreateInfoRequest;
 import com.example.phoneShopping.member.dto.request.UpdateInfoRequest;
 import com.example.phoneShopping.member.dto.response.CreateInfoResponse;
+import com.example.phoneShopping.member.dto.response.DeleteInfoResponse;
 import com.example.phoneShopping.member.dto.response.UpdateInfoResponse;
 import com.example.phoneShopping.member.exception.InfoException;
 
@@ -26,23 +27,23 @@ import lombok.RequiredArgsConstructor;
 public class InfoService 
 {
 	private final InfoDao dao;
-	private final AddressDao a_dao;
+	//private final AddressDao a_dao;
 	
 	@Transactional
 	public CreateInfoResponse createInfo(CreateInfoRequest req)
 	{
 		createInfoMethod(req);
-		return new CreateInfoResponse(req.getInfo_seq());
+		return new CreateInfoResponse(req.getInfoSeq());
 	}
 		
 	private void createInfoMethod(CreateInfoRequest req)
 	{
 		System.out.println("createAddress동작");
-		System.out.println(req.getInfo_seq());
-		System.out.println(req.getInfo_name());
-		System.out.println(req.getInfo_birth());
-		System.out.println(req.getInfo_gender());
-		System.out.println(req.getInfo_phone());
+		System.out.println(req.getInfoSeq());
+		System.out.println(req.getInfoName());
+		System.out.println(req.getInfoBirth());
+		System.out.println(req.getInfoGender());
+		System.out.println(req.getInfoPhone());
 		
 		System.out.println("\n\n");
 		CreateInfoParam param = new CreateInfoParam(req);
@@ -63,11 +64,11 @@ public class InfoService
 		List<Info> list = dao.findAllInfo();
 		for(int i = 0; i < dao.findAllInfo().size(); i++)
 		{
-			System.out.println(dao.findAllInfo().get(i).getInfo_seq());
-			System.out.println(dao.findAllInfo().get(i).getInfo_name());
-			System.out.println(dao.findAllInfo().get(i).getInfo_gender());
-			System.out.println(dao.findAllInfo().get(i).getInfo_birth());
-			System.out.println(dao.findAllInfo().get(i).getInfo_phone());
+			System.out.println(dao.findAllInfo().get(i).getInfoSeq());
+			System.out.println(dao.findAllInfo().get(i).getInfoName());
+			System.out.println(dao.findAllInfo().get(i).getInfoGender());
+			System.out.println(dao.findAllInfo().get(i).getInfoBirth());
+			System.out.println(dao.findAllInfo().get(i).getInfoPhone());
 			System.out.println("\n");
 		}
 		
@@ -75,30 +76,30 @@ public class InfoService
 	}
 	
 	@Transactional(readOnly=true)
-	public void findByIdInfo(int info_seq) 
+	public Info findByIdInfo(int infoSeq) 
 	{
 		System.out.println("findByIdInfo동작");
-		dao.findByIdInfo(info_seq);
-		System.out.println(dao.findByIdInfo(info_seq).getInfo_seq());
-		System.out.println(dao.findByIdInfo(info_seq).getInfo_name());
-		System.out.println(dao.findByIdInfo(info_seq).getInfo_gender());
-		System.out.println(dao.findByIdInfo(info_seq).getInfo_birth());
-		System.out.println(dao.findByIdInfo(info_seq).getInfo_phone());
+		System.out.println(dao.findByIdInfo(infoSeq).getInfoSeq());
+		System.out.println(dao.findByIdInfo(infoSeq).getInfoName());
+		System.out.println(dao.findByIdInfo(infoSeq).getInfoGender());
+		System.out.println(dao.findByIdInfo(infoSeq).getInfoBirth());
+		System.out.println(dao.findByIdInfo(infoSeq).getInfoPhone());
+		return dao.findByIdInfo(infoSeq);
 	}
 	
 	@Transactional
 	public UpdateInfoResponse updateInfo(UpdateInfoRequest req)
 	{
-		findByIdInfo(req.getInfo_seq());
+		findByIdInfo(req.getInfoSeq());
 		updateInfoMethod(req);
-		return new UpdateInfoResponse(req.getInfo_seq());
+		return new UpdateInfoResponse(updateInfoMethod(req));
 	}
 	
-	private void updateInfoMethod(UpdateInfoRequest req)
+	private Integer updateInfoMethod(UpdateInfoRequest req)
 	{
 		System.out.println("updateInfo동작");
 				
-		UpdateInfoParam param = new UpdateInfoParam(req.getInfo_seq(), req.getInfo_name(), req.getInfo_birth(), req.getInfo_gender(), req.getInfo_phone());
+		UpdateInfoParam param = new UpdateInfoParam(req.getInfoSeq(), req.getInfoName(), req.getInfoBirth(), req.getInfoGender(), req.getInfoPhone());
 		
 		Integer result = dao.updateInfo(param);
 		
@@ -106,12 +107,15 @@ public class InfoService
 		{
 			throw new InfoException("Info 수정 실패", HttpStatus.INTERNAL_SERVER_ERROR);
 		}
+		
+		return result;
 	}
 	
 	@Transactional
-	public void deleteInfo(int info_seq)
+	public DeleteInfoResponse deleteInfo(int infoSeq)
 	{
 		System.out.println("deleteInfo동작");
-		dao.deleteInfo(info_seq);
+		int number = dao.deleteInfo(infoSeq);
+		return new DeleteInfoResponse(number);
 	}	
 }

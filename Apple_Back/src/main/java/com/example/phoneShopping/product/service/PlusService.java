@@ -14,6 +14,7 @@ import com.example.phoneShopping.product.dto.param.UpdatePlusParam;
 import com.example.phoneShopping.product.dto.request.CreatePlusRequest;
 import com.example.phoneShopping.product.dto.request.UpdatePlusRequest;
 import com.example.phoneShopping.product.dto.response.CreatePlusResponse;
+import com.example.phoneShopping.product.dto.response.DeletePlusResponse;
 import com.example.phoneShopping.product.dto.response.UpdatePlusResponse;
 import com.example.phoneShopping.product.exception.PlusException;
 
@@ -32,13 +33,13 @@ public class PlusService
 	public CreatePlusResponse createPlus(CreatePlusRequest req)
 	{
 		createPlusMethod(req);
-		return new CreatePlusResponse(req.getPlus_seq());
+		return new CreatePlusResponse(req.getPlusSeq());
 	}
 		
 	private void createPlusMethod(CreatePlusRequest req)
 	{
 		System.out.println("createPlus동작");
-		CreatePlusParam param = new CreatePlusParam(req.getPlus_seq(), req.getPrice());
+		CreatePlusParam param = new CreatePlusParam(req.getPlusSeq(), req.getPrice());
 		
 		Integer result = dao.createPlus(param);
 		
@@ -56,7 +57,7 @@ public class PlusService
 		
 		for(int i = 0; i < dao.findAllPlus().size(); i++)
 		{
-			System.out.println(dao.findAllPlus().get(i).getPlus_seq());
+			System.out.println(dao.findAllPlus().get(i).getPlusSeq());
 			System.out.println(dao.findAllPlus().get(i).getPrice());
 			System.out.println("\n");
 		}
@@ -69,7 +70,7 @@ public class PlusService
 	{
 		System.out.println("findByIdPlus동작");
 		dao.findByIdPlus(plus_seq);
-		System.out.println(dao.findByIdPlus(plus_seq).getPlus_seq());
+		System.out.println(dao.findByIdPlus(plus_seq).getPlusSeq());
 		System.out.println(dao.findByIdPlus(plus_seq).getPrice());
 		return dao.findByIdPlus(plus_seq);
 	}
@@ -77,15 +78,15 @@ public class PlusService
 	@Transactional
 	public UpdatePlusResponse updatePlus(UpdatePlusRequest req)
 	{
-		updatePlusMethod(req);		
-		return new UpdatePlusResponse(req.getPlus_seq());
+		findByIdPlus(req.getPlusSeq());
+		return new UpdatePlusResponse(updatePlusMethod(req));
 	}
 	
-	private void updatePlusMethod(UpdatePlusRequest req)
+	private Integer updatePlusMethod(UpdatePlusRequest req)
 	{
 		System.out.println("updatePlus동작");
 				
-		UpdatePlusParam param = new UpdatePlusParam(req.getPlus_seq(), req.getPrice());
+		UpdatePlusParam param = new UpdatePlusParam(req.getPlusSeq(), req.getPrice());
 		
 		Integer result = dao.updatePlus(param);
 		
@@ -93,12 +94,15 @@ public class PlusService
 		{
 			throw new PlusException("Plus 수정 실패", HttpStatus.INTERNAL_SERVER_ERROR);
 		}
+		
+		return result;
 	}
 	
 	@Transactional
-	public void deletePlus(int plus_seq)
+	public DeletePlusResponse deletePlus(int plus_seq)
 	{
 		System.out.println("deletePlus동작");
-		dao.deletePlus(plus_seq);
+		int number = dao.deletePlus(plus_seq);
+		return new DeletePlusResponse(number);
 	}
 }

@@ -55,20 +55,20 @@ public class MemberService
 
 //		authenticate(req.getMem_id(), req.getMem_pw());
 
-		return new JoinResponse(req.getMem_id());
+		return new JoinResponse(req.getMemId());
 	}
 
 	private void saveMember(JoinRequest req)	// 회원가입 method
 	{
 		System.out.println("saveMember동작");
 		// 아이디 중복 확인
-		isExistUserId(req.getMem_id());
+		isExistUserId(req.getMemId());
 
 		// 패스워드 일치 확인
-		checkPwd(req.getMem_pw(), req.getCheck_mem_pw());
+		checkPwd(req.getMemPw(), req.getCheckMemPw());
 
 		// 회원 정보 생성
-		String encodedPwd = encoder.encode(req.getMem_pw());
+		String encodedPwd = encoder.encode(req.getMemPw());
 		
 		CreateMemberParam param = new CreateMemberParam(req, encodedPwd);
 
@@ -83,15 +83,15 @@ public class MemberService
 
 	public LoginResponse login(LoginRequest req)	// 로그인 성공 시 응답 
 	{
-		authenticate(req.getMem_id(), req.getMem_pw());
+		authenticate(req.getMemId(), req.getMemPw());
 
-		final UserDetails userDetails = userDetailsService.loadUserByUsername(req.getMem_id());
+		final UserDetails userDetails = userDetailsService.loadUserByUsername(req.getMemId());
 		final String token = jwtTokenUtil.generateToken(userDetails);
 
 		System.out.println("인증 성공 토큰 출력 : " + token);
-		System.out.println("아이디 출력 : " + req.getMem_id());
+		System.out.println("아이디 출력 : " + req.getMemId());
 			
-		return new LoginResponse(token, req.getMem_id());
+		return new LoginResponse(token, req.getMemId());
 	}
 
 	
@@ -116,6 +116,7 @@ public class MemberService
 	private void isExistUserId(String id)	// 오류 정의 - 이미 존재하는 아이디 
 	{
 		Integer result = dao.isExistUserId(id);
+		
 		if (result == 1) 
 		{
 			throw new MemberException("이미 사용중인 아이디입니다.", HttpStatus.BAD_REQUEST);
@@ -152,12 +153,12 @@ public class MemberService
 	}
 	
 	@Transactional(readOnly=true)
-	public Member findByIdMember(String mem_id)
+	public Member findByIdMember(String memId)
 	{
-		System.out.println(mem_id);
+		System.out.println(memId);
 		System.out.println("findByIdMember동작1");
-		System.out.println(dao.findByIdMember(mem_id));
-		Member member = dao.findByIdMember(mem_id);
+		System.out.println(dao.findByIdMember(memId));
+		Member member = dao.findByIdMember(memId);
 		
 		System.out.println("member : ==> " + member);
 
@@ -166,23 +167,21 @@ public class MemberService
 	}
 	
 	@Transactional(readOnly=true)
-	public Integer findByIdSeq(int mem_seq)
+	public Integer findByIdSeq(int memSeq)
 	{
-		System.out.println("mem_seq : "+ mem_seq);
-		System.out.println("dao.findByIdSeq(mem_seq) : "+dao.findByIdSeq(mem_seq));
-		Integer member = dao.findByIdSeq(mem_seq);
+		System.out.println("mem_seq : "+ memSeq);
+		System.out.println("dao.findByIdSeq(memSeq) : "+dao.findByIdSeq(memSeq));
+		return dao.findByIdSeq(memSeq);
 //		Member member = new Member(dao.findById(mem_id).getMem_seq(), dao.findById(mem_id).getMem_id(), dao.findById(mem_id).getMem_pw());
-		return member;
 	}
 
 	@Transactional(readOnly=true)
-	public String findByPw(String mem_id)
+	public String findByPw(String memId)
 	{
-		System.out.println("mem_id : "+ mem_id);
-		System.out.println("dao.findByPw(mem_id) : "+dao.findByPw(mem_id));
-		String member = dao.findByPw(mem_id);
+		System.out.println("memId : "+ memId);
+		System.out.println("dao.findByPw(memId) : "+dao.findByPw(memId));
+		return dao.findByPw(memId);
 //		Member member = new Member(dao.findById(mem_id).getMem_seq(), dao.findById(mem_id).getMem_id(), dao.findById(mem_id).getMem_pw());
-		return member;
 	}
 	
 	
@@ -190,7 +189,7 @@ public class MemberService
 	@Transactional
 	public UpdateMemberResponse updateMember(UpdateMemberRequest req)
 	{
-		findByIdMember(req.getMem_id());
+		findByIdMember(req.getMemId());
 		return new UpdateMemberResponse(updateMemberMethod(req));
 	}	
 	
@@ -200,15 +199,15 @@ public class MemberService
 
 
 		// 패스워드 일치 확인
-		checkPwd(req.getMem_pw(), req.getCheck_mem_pw());
+		checkPwd(req.getMemPw(), req.getCheckMemPw());
 
 		// 회원 정보 생성
-		String encodedPwd = encoder.encode(req.getMem_pw());
-		System.out.println("pw인코딩 완료");
-		UpdateMemberParam param = new UpdateMemberParam(req.getMem_id(), encodedPwd, encodedPwd);
+		String encodedPwd = encoder.encode(req.getMemPw());
+		//System.out.println("pw인코딩 완료");
+		UpdateMemberParam param = new UpdateMemberParam(req.getMemId(), encodedPwd, encodedPwd);
 		
 		Integer result = dao.updateMember(param);
-		System.out.println("수정 완료");
+		//System.out.println("수정 완료");
 		System.out.println(result);
 		if(result==0)
 		{
@@ -219,10 +218,10 @@ public class MemberService
 	}
 		
 	@Transactional
-	public DeleteMemberResponse deleteMember(String mem_id)
+	public DeleteMemberResponse deleteMember(String memId)
 	{
 		System.out.println("deleteMember동작");
-		int number = dao.deleteMember(mem_id);
+		int number = dao.deleteMember(memId);
 		return new DeleteMemberResponse(number);
 	}
 	

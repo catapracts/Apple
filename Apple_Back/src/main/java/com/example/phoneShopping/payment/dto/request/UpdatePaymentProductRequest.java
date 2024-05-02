@@ -24,4 +24,9 @@ public class UpdatePaymentProductRequest
 		this.payiPrice=payiPrice;
 		this.payiCount=payiCount;
 	}
+	
+    public int getTotalPrice()
+    {
+        return payiPrice*payiCount;
+    }
 }

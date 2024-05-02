@@ -11,21 +11,21 @@ import lombok.Setter;
 @NoArgsConstructor
 public class UpdateMemberParam 
 {
-	private int mem_seq;	// 회원 구분 번호
-	private String mem_id;	// 회원 ID
-	private String mem_pw;	// 회원 PW
-	private String check_mem_pw;	// 회원 PW
+	private int memSeq;	// 회원 구분 번호
+	private String memId;	// 회원 ID
+	private String memPw;	// 회원 PW
+	private String checkMemPw;	// 회원 PW
 	
-	public UpdateMemberParam(String mem_id, String mem_pw, String check_mem_pw)
+	public UpdateMemberParam(String memId, String memPw, String checkMemPw)
 	{
-		this.mem_id=mem_id;
-		this.mem_pw=mem_pw;
-		this.check_mem_pw=check_mem_pw;
+		this.memId=memId;
+		this.memPw=memPw;
+		this.checkMemPw=checkMemPw;
 	}
 	
-	public UpdateMemberParam(String mem_pw, String check_mem_pw)
+	public UpdateMemberParam(String memPw, String checkMemPw)
 	{
-		this.mem_pw=mem_pw;
-		this.check_mem_pw=check_mem_pw;
+		this.memPw=memPw;
+		this.checkMemPw=checkMemPw;
 	}
 }

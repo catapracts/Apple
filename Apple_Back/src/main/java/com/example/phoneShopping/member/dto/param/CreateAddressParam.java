@@ -2,21 +2,24 @@ package com.example.phoneShopping.member.dto.param;
 
 import com.example.phoneShopping.member.dto.request.CreateAddressRequest;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class CreateAddressParam 
 {
-	private int addr_seq;
-	private String addr_zip;
-	private String addr_detail;
+	private int addrSeq;
+	private String addrZip;
+	private String addrDetail;
 	
 	public CreateAddressParam(CreateAddressRequest req)
 	{
-		this.addr_seq=req.getAddr_seq();
-		this.addr_zip=req.getAddr_zip();
-		this.addr_detail=req.getAddr_detail();
+		this.addrZip=req.getAddrZip();
+		this.addrDetail=req.getAddrDetail();
 	}
 }

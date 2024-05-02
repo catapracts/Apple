@@ -17,4 +17,11 @@ public class CreatePaymentParam
 	private int memSeq;	// 결제자
 	private LocalDateTime payDate;	// 결제일
 	private int payStatus;	// 결제 상태
+	
+	public CreatePaymentParam(int memSeq, LocalDateTime payDate, int payStatus)
+	{
+		this.memSeq=memSeq;
+		this.payDate=payDate;
+		this.payStatus=payStatus;
+	}
 }

@@ -1,24 +1,30 @@
 package com.example.phoneShopping.cart.controller;
 
 
+import java.util.List;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
-
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.phoneShopping.cart.domain.Cart;
+import com.example.phoneShopping.cart.domain.CartProduct;
 import com.example.phoneShopping.cart.dto.request.CreateCartProductRequest;
 import com.example.phoneShopping.cart.dto.request.CreateCartRequest;
 import com.example.phoneShopping.cart.dto.request.UpdateCartProductRequest;
 import com.example.phoneShopping.cart.dto.request.UpdateCartRequest;
 import com.example.phoneShopping.cart.dto.response.CreateCartProductResponse;
 import com.example.phoneShopping.cart.dto.response.CreateCartResponse;
+import com.example.phoneShopping.cart.dto.response.DeleteCartProductResponse;
+import com.example.phoneShopping.cart.dto.response.DeleteCartResponse;
 import com.example.phoneShopping.cart.dto.response.UpdateCartProductResponse;
 import com.example.phoneShopping.cart.dto.response.UpdateCartResponse;
 import com.example.phoneShopping.cart.service.CartService;
@@ -37,7 +43,7 @@ public class CartController
 	private final CartService service;
 	
 	@PreAuthorize("isAuthenticated()")
-	@PostMapping("/createCart")
+	@PostMapping("/create")
 	public ResponseEntity<CreateCartResponse> createCart(@Valid @RequestBody CreateCartRequest req)
 	{
 		System.out.println("Cart 정보 생성");
@@ -45,24 +51,24 @@ public class CartController
 	}
 	
 	@PreAuthorize("isAuthenticated()")
-	@GetMapping("/getAllCart")
-	public void findAllCart()
+	@GetMapping("/getAll")
+	public List<Cart> findAllCart()
 	{
 		System.out.println("Cart 정보 전체 출력");
-		service.findAllCart();
+		return service.findAllCart();
 	}
 	
 	@PreAuthorize("isAuthenticated()")
-	@GetMapping("/getOneCart")
-	public void findByIdCart(int cart_seq)
+	@GetMapping("/{cartSeq}")
+	public Cart findByIdCart(@PathVariable(value = "cartSeq") int cartSeq)
 	{
 		System.out.println("Cart 정보 1개 출력");
-		System.out.println(cart_seq);
-		service.findByIdCart(cart_seq);
+		System.out.println(cartSeq);
+		return service.findByIdCart(cartSeq);
 	}
 	
 	@PreAuthorize("isAuthenticated()")
-	@PatchMapping(value = "/updateCart/{cart_seq}")
+	@PatchMapping("/{cartSeq}")
 	public ResponseEntity<UpdateCartResponse> updateCart(@Valid @RequestBody UpdateCartRequest req)
 	{
 		System.out.println("Cart 정보 수정");
@@ -70,12 +76,12 @@ public class CartController
 	}
 	
 	@PreAuthorize("isAuthenticated()")
-	@DeleteMapping(value = "/deleteCart/{cartSeq}")
-	public void deleteCart(int cart_seq)
+	@DeleteMapping("/{cartSeq}")
+	public ResponseEntity<DeleteCartResponse> deleteCart(@PathVariable(value = "cartSeq") int cartSeq)
 	{
 		System.out.println("Cart 정보 제거");
-		System.out.println(cart_seq);
-		service.deleteCart(cart_seq);
+		System.out.println(cartSeq);
+		return ResponseEntity.ok(service.deleteCart(cartSeq));
 	}
 	
 	@PreAuthorize("isAuthenticated()")
@@ -88,23 +94,23 @@ public class CartController
 	
 	@PreAuthorize("isAuthenticated()")
 	@GetMapping("/getAllCartProduct")
-	public void findAllCartProduct()
+	public List<CartProduct> findAllCartProduct()
 	{
 		System.out.println("CartProduct 정보 전체 출력");
-		service.findAllCartProduct();
+		return service.findAllCartProduct();
 	}
 	
 	@PreAuthorize("isAuthenticated()")
-	@GetMapping("/getOneCartProduct")
-	public void findByIdCartProduct(int cartp_seq)
+	@GetMapping("/{cartpSeq}")
+	public CartProduct findByIdCartProduct(@PathVariable(value = "cartpSeq") int cartpSeq)
 	{
 		System.out.println("CartProduct 정보 1개 출력");
-		System.out.println(cartp_seq);
-		service.findByIdCartProduct(cartp_seq);
+		System.out.println(cartpSeq);
+		return service.findByIdCartProduct(cartpSeq);
 	}
 	
 	@PreAuthorize("isAuthenticated()")
-	@PatchMapping(value = "/updateCartProduct/{cartpSeq}")
+	@PatchMapping("/{cartpSeq}")
 	public ResponseEntity<UpdateCartProductResponse> updateCartProduct(@Valid @RequestBody UpdateCartProductRequest req)
 	{
 		System.out.println("CartProduct 정보 수정");
@@ -112,11 +118,11 @@ public class CartController
 	}
 	
 	@PreAuthorize("isAuthenticated()")
-	@DeleteMapping(value = "/deleteCartProduct/{cartpSeq}")
-	public void deleteCartProduct(int cartp_seq)
+	@DeleteMapping("/{cartpSeq}")
+	public ResponseEntity<DeleteCartProductResponse> deleteCartProduct(@PathVariable(value = "cartpSeq") int cartpSeq)
 	{
 		System.out.println("CartProduct 정보 제거");
-		System.out.println(cartp_seq);
-		service.deleteCart(cartp_seq);
+		System.out.println(cartpSeq);
+		return ResponseEntity.ok(service.deleteCartProduct(cartpSeq));
 	}
 }

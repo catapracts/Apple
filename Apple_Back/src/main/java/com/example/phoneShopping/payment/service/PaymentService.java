@@ -19,14 +19,14 @@ import com.example.phoneShopping.payment.dto.request.UpdatePaymentProductRequest
 import com.example.phoneShopping.payment.dto.request.UpdatePaymentRequest;
 import com.example.phoneShopping.payment.dto.response.CreatePaymentProductResponse;
 import com.example.phoneShopping.payment.dto.response.CreatePaymentResponse;
+import com.example.phoneShopping.payment.dto.response.DeletePaymentProductResponse;
+import com.example.phoneShopping.payment.dto.response.DeletePaymentResponse;
 import com.example.phoneShopping.payment.dto.response.UpdatePaymentProductResponse;
 import com.example.phoneShopping.payment.dto.response.UpdatePaymentResponse;
 import com.example.phoneShopping.payment.exception.PaymentException;
 import com.example.phoneShopping.payment.exception.PaymentProductException;
 
 import lombok.RequiredArgsConstructor;
-
-
 
 
 @Service
@@ -74,30 +74,21 @@ public class PaymentService
 	}
 	
 	@Transactional(readOnly=true)
-	public Payment findByIdPayment(int pay_seq) 
+	public Payment findByIdPayment(int paySeq) 
 	{
 		System.out.println("findByIdPayment동작");
-		Payment payment = dao.findByIdPayment(pay_seq);
-		System.out.println(payment.getPaySeq());
-		System.out.println(payment.getMemSeq());
-		System.out.println(payment.getPayDate());
-		System.out.println(payment.getPayStatus());
-		return payment;
+
+		return dao.findByIdPayment(paySeq);
 	}
 	
 	@Transactional
 	public UpdatePaymentResponse updatePayment(UpdatePaymentRequest req)
 	{
-		Payment cart = findByIdPayment(req.getPaySeq());
-		if(req.getPaySeq() == cart.getPaySeq())
-		{
-			updatePaymentMethod(req);
-		}
-		
-		return new UpdatePaymentResponse(req.getPaySeq());
+		findByIdPayment(req.getPaySeq());		
+		return new UpdatePaymentResponse(updatePaymentMethod(req));
 	}
 	
-	private void updatePaymentMethod(UpdatePaymentRequest req)
+	private Integer updatePaymentMethod(UpdatePaymentRequest req)
 	{
 		System.out.println("updatePayment동작");
 				
@@ -109,13 +100,16 @@ public class PaymentService
 		{
 			throw new PaymentException("Payment 수정 실패", HttpStatus.INTERNAL_SERVER_ERROR);
 		}
+		
+		return result;
 	}
 	
 	@Transactional
-	public void deletePayment(int pay_seq)
+	public DeletePaymentResponse deletePayment(int paySeq)
 	{
 		System.out.println("deletePayment동작");
-		dao.deletePayment(pay_seq);
+		int number = dao.deletePayment(paySeq);
+		return new DeletePaymentResponse(number);
 	}
 	
 	
@@ -162,28 +156,19 @@ public class PaymentService
 	public PaymentProduct findByIdPaymentProduct(int payiSeq) 
 	{
 		System.out.println("findByIdPaymentProduct동작");
-		PaymentProduct paymentProduct = dao.findByIdPaymentProduct(payiSeq);
-		System.out.println(paymentProduct.getPayiSeq());
-		System.out.println(paymentProduct.getProdSeq());
-		System.out.println(paymentProduct.getPaySeq());
-		System.out.println(paymentProduct.getPayiPrice());
-		System.out.println(paymentProduct.getPayiCount());
-		return paymentProduct;
+		
+		return dao.findByIdPaymentProduct(payiSeq);
 	}
 	
 	@Transactional
 	public UpdatePaymentProductResponse updatePaymentProduct(UpdatePaymentProductRequest req)
 	{
-		PaymentProduct paymentProduct = findByIdPaymentProduct(req.getPayiSeq());
-		if(req.getPayiSeq() == paymentProduct.getPayiSeq())
-		{
-			updatePaymentProductMethod(req);
-		}
+		findByIdPaymentProduct(req.getPayiSeq());
 		
-		return new UpdatePaymentProductResponse(req.getPayiSeq());
+		return new UpdatePaymentProductResponse(updatePaymentProductMethod(req));
 	}
 	
-	private void updatePaymentProductMethod(UpdatePaymentProductRequest req)
+	private Integer updatePaymentProductMethod(UpdatePaymentProductRequest req)
 	{
 		System.out.println("updatePaymentProduct동작");
 				
@@ -195,12 +180,15 @@ public class PaymentService
 		{
 			throw new PaymentProductException("PaymentProduct 수정 실패", HttpStatus.INTERNAL_SERVER_ERROR);
 		}
+		
+		return result;
 	}
 	
 	@Transactional
-	public void deletePaymentProduct(int payiSeq)
+	public DeletePaymentProductResponse deletePaymentProduct(int payiSeq)
 	{
 		System.out.println("deletePaymentProduct동작");
-		dao.deletePaymentProduct(payiSeq);
+		int number = dao.deletePaymentProduct(payiSeq);
+		return new DeletePaymentProductResponse(number);
 	}
 }

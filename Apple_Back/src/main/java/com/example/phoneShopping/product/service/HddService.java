@@ -13,6 +13,7 @@ import com.example.phoneShopping.product.dto.param.UpdateHddParam;
 import com.example.phoneShopping.product.dto.request.CreateHddRequest;
 import com.example.phoneShopping.product.dto.request.UpdateHddRequest;
 import com.example.phoneShopping.product.dto.response.CreateHddResponse;
+import com.example.phoneShopping.product.dto.response.DeleteHddResponse;
 import com.example.phoneShopping.product.dto.response.UpdateHddResponse;
 import com.example.phoneShopping.product.exception.HddException;
 
@@ -31,13 +32,13 @@ public class HddService
 	public CreateHddResponse createHdd(CreateHddRequest req)
 	{
 		createHddMethod(req);
-		return new CreateHddResponse(req.getHdd_seq());
+		return new CreateHddResponse(req.getHddSeq());
 	}
 		
 	private void createHddMethod(CreateHddRequest req)
 	{
 		System.out.println("createHdd동작");
-		CreateHddParam param = new CreateHddParam(req.getHdd_seq(), req.getCapacity(), req.getPlus_seq());
+		CreateHddParam param = new CreateHddParam(req.getHddSeq(), req.getCapacity(), req.getPlusSeq());
 		
 		Integer result = dao.createHdd(param);
 		
@@ -55,9 +56,9 @@ public class HddService
 		
 		for(int i = 0; i < dao.findAllHdd().size(); i++)
 		{
-			System.out.println(dao.findAllHdd().get(i).getHdd_seq());
+			System.out.println(dao.findAllHdd().get(i).getHddSeq());
 			System.out.println(dao.findAllHdd().get(i).getCapacity());
-			System.out.println(dao.findAllHdd().get(i).getPlus_seq());
+			System.out.println(dao.findAllHdd().get(i).getPlusSeq());
 			System.out.println("\n");
 		}
 		
@@ -69,24 +70,24 @@ public class HddService
 	{
 		System.out.println("findByIdHdd동작");
 		dao.findByIdHdd(hdd_seq);
-		System.out.println(dao.findByIdHdd(hdd_seq).getHdd_seq());
+		System.out.println(dao.findByIdHdd(hdd_seq).getHddSeq());
 		System.out.println(dao.findByIdHdd(hdd_seq).getCapacity());
-		System.out.println(dao.findByIdHdd(hdd_seq).getPlus_seq());
+		System.out.println(dao.findByIdHdd(hdd_seq).getPlusSeq());
 		return dao.findByIdHdd(hdd_seq);
 	}
 	
 	@Transactional
 	public UpdateHddResponse updateHdd(UpdateHddRequest req)
 	{
-		updateHddMethod(req);		
-		return new UpdateHddResponse(req.getHdd_seq());
+		findByIdHdd(req.getHddSeq());
+		return new UpdateHddResponse(updateHddMethod(req));
 	}
 	
-	private void updateHddMethod(UpdateHddRequest req)
+	private Integer updateHddMethod(UpdateHddRequest req)
 	{
 		System.out.println("updateHdd동작");
 				
-		UpdateHddParam param = new UpdateHddParam(req.getHdd_seq(), req.getCapacity(), req.getPlus_seq());
+		UpdateHddParam param = new UpdateHddParam(req.getHddSeq(), req.getCapacity(), req.getPlusSeq());
 		
 		Integer result = dao.updateHdd(param);
 		
@@ -94,12 +95,15 @@ public class HddService
 		{
 			throw new HddException("Color 수정 실패", HttpStatus.INTERNAL_SERVER_ERROR);
 		}
+		
+		return result;
 	}
 	
 	@Transactional
-	public void deleteHdd(int hdd_seq)
+	public DeleteHddResponse deleteHdd(int hddSeq)
 	{
 		System.out.println("deleteHdd동작");
-		dao.deleteHdd(hdd_seq);
+		int number = dao.deleteHdd(hddSeq);
+		return new DeleteHddResponse(number);
 	}
 }

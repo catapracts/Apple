@@ -1,18 +1,23 @@
 package com.example.phoneShopping.product.controller;
 
+import java.util.List;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.phoneShopping.product.domain.Color;
 import com.example.phoneShopping.product.dto.request.CreateColorRequest;
 import com.example.phoneShopping.product.dto.request.UpdateColorRequest;
 import com.example.phoneShopping.product.dto.response.CreateColorResponse;
+import com.example.phoneShopping.product.dto.response.DeleteColorResponse;
 import com.example.phoneShopping.product.dto.response.UpdateColorResponse;
 import com.example.phoneShopping.product.service.ColorService;
 
@@ -38,23 +43,23 @@ public class ColorController
 	
 	@PreAuthorize("isAuthenticated()")
 	@GetMapping("/getAll")
-	public void findAllColor()
+	public List<Color> findAllColor()
 	{
 		System.out.println("Color 정보 전체 출력");
-		service.findAllColor();
+		return service.findAllColor();
 	}
 	
 	@PreAuthorize("isAuthenticated()")
-	@GetMapping("/getOne")
-	public void findByIdColor(int color_seq)
+	@GetMapping("/{colorSeq}")
+	public Color findByIdColor(@PathVariable(value = "colorSeq") int colorSeq)
 	{
 		System.out.println("color 정보 1개 출력");
-		System.out.println(color_seq);
-		service.findByIdColor(color_seq);
+		System.out.println(colorSeq);
+		return service.findByIdColor(colorSeq);
 	}
 	
 	@PreAuthorize("isAuthenticated()")
-	@PatchMapping(value = "/update/{color_seq}")
+	@PatchMapping("/{colorSeq}")
 	public ResponseEntity<UpdateColorResponse> updateColor(@Valid @RequestBody UpdateColorRequest req)
 	{
 		System.out.println("Color 정보 수정");
@@ -62,11 +67,11 @@ public class ColorController
 	}
 	
 	@PreAuthorize("isAuthenticated()")
-	@DeleteMapping(value = "/delete/{color_seq}")
-	public void deleteColor(int color_seq)
+	@DeleteMapping("/{colorSeq}")
+	public ResponseEntity<DeleteColorResponse> deleteColor(@PathVariable(value = "colorSeq") int colorSeq)
 	{
 		System.out.println("Color 정보 제거");
-		System.out.println(color_seq);
-		service.deleteColor(color_seq);
+		System.out.println(colorSeq);
+		return ResponseEntity.ok(service.deleteColor(colorSeq));
 	}
 }
