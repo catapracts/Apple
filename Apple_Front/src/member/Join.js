@@ -8,29 +8,29 @@ import './Member.css';
 
 function Join() {
 
-	const [mem_id, setMem_id] = useState("");
-	const [mem_pw, setMem_pw] = useState("");
-	const [check_mem_pw, setCheck_mem_pw] = useState("");	// 각 변수들을 선언만 하고 초기값은 없는 상태
+	const [memId, setMemId] = useState("");
+	const [memPw, setMemPw] = useState("");
+	const [checkMemPw, setCheckMemPw] = useState("");	// 각 변수들을 선언만 하고 초기값은 없는 상태
 
 	const navigate = useNavigate();			// useNavigate를 사용하기 위해 선언 -> 페이지 이동할 때, 사용
 
 	const changeId = (event) => {			// Client에서 id입력하면, 입력한 값 저장
-		setMem_id(event.target.value);
+		setMemId(event.target.value);
 	}
 
 	const changePwd = (event) => {			// Client에서 pwd입력하면, 입력한 값 저장
-		setMem_pw(event.target.value);
+		setMemPw(event.target.value);
 	}
 
 	const changeCheckPwd = (event) => {		// Client에서 checkpwd입력하면, 입력한 값 저장
-		setCheck_mem_pw(event.target.value);
+		setCheckMemPw(event.target.value);
 	}
 
 
 	// /* 아이디 중복 체크 */
 	const checkIdDuplicate = async () => {
 
-		await axios.get("http://localhost:3000/user", { params: { id: mem_id } })	// axios를 이용해 server로부터 id값 가지고 와서 중복된 id인지 확인
+		await axios.get("http://localhost:3000/user", { params: { id: memId } })	// axios를 이용해 server로부터 id값 가지고 와서 중복된 id인지 확인
 			.then((resp) => {
 				console.log("[Join.js] checkIdDuplicate() success :D");
 				console.log(resp.data);
@@ -56,9 +56,9 @@ function Join() {
 	const join = async () => {
 
 		const req = {													// req라는 이름의 변수를 객체 형식으로 사용
-			mem_id: mem_id,
-			mem_pw: mem_pw,
-			check_mem_pw: check_mem_pw
+			memId: memId,
+			memPw: memPw,
+			checkMemPw: checkMemPw
 		}
 
 		await axios.post("http://localhost:3000/user/join", req)		// req라는 객체를 서버에 전달해서 회원가입 진행
