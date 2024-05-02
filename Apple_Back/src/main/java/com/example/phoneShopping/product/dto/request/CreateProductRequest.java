@@ -30,13 +30,4 @@ public class CreateProductRequest
 	// 옵션 2 : 색상 - FK
 	private int colorSeq;
 	
-	public CreateProductRequest(String prodName, int prodPrice, int prodCnt, int hddSeq, int colorSeq)
-	{
-		this.prodName = prodName;
-		this.prodPrice = prodPrice;
-		this.prodCnt = prodCnt;
-		this.hddSeq = hddSeq;
-		this.colorSeq = colorSeq;
-	}
-	
 }

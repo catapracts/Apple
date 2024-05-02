@@ -15,9 +15,9 @@ public class UpdateAddressParam
 	private String addrZip;
 	private String addrDetail;
 	
-	public UpdateAddressParam(String addr_zip, String addr_detail)
+	public UpdateAddressParam(String addrZip, String addrDetail)
 	{
-		this.addrZip=addr_zip;
-		this.addrDetail=addr_detail;
+		this.addrZip=addrZip;
+		this.addrDetail=addrDetail;
 	}
 }

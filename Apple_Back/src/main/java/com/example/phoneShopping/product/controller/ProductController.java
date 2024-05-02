@@ -44,7 +44,7 @@ public class ProductController {
 	// 상품 상세 1개
 	@PreAuthorize("isAuthenticated()")
 	@GetMapping("/getOne/{prodSeq}")
-	public Product findByIdProduct(@PathVariable(value = "prodSeq") String prodSeq) 
+	public Product findByIdProduct(@PathVariable(value = "prodSeq")String prodSeq) 
 	{
 		System.out.println("상품 정보 1개 출력");
 		System.out.println(prodSeq);

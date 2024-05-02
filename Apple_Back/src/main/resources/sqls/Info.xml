@@ -9,23 +9,23 @@ SELECT * FROM INFO;
 
 
 <select id="findByIdInfo" parameterType="Integer" resultType="com.example.phoneShopping.member.domain.Info">
-SELECT * FROM INFO WHERE info_seq=#{info_seq}
+SELECT * FROM INFO WHERE info_seq=#{infoSeq}
 </select>
 
 
 <insert id="createInfo" parameterType="com.example.phoneShopping.member.dto.param.CreateInfoParam">
-INSERT INTO INFO(info_seq, info_name, info_birth, info_gender, info_phone) VALUES(#{info_seq}, #{info_name}, #{info_birth}, #{info_gender}, #{info_phone})
+INSERT INTO INFO(info_name, info_birth, info_gender, info_phone) VALUES(#{infoName}, #{infoBirth}, #{infoGender}, #{infoPhone})
 
 </insert>
 
 
 <update id="updateInfo" parameterType="com.example.phoneShopping.member.dto.param.UpdateInfoParam">
-UPDATE INFO SET info_name=#{info_name}, info_birth=#{info_birth}, info_gender=#{info_gender}, info_phone=#{info_phone} WHERE info_seq=#{info_seq}
+UPDATE INFO SET info_name=#{infoName}, info_birth=#{infoBirth}, info_gender=#{infoGender}, info_phone=#{infoPhone} WHERE info_seq=#{infoSeq}
 </update>
 
 
 <delete id="deleteInfo" parameterType="com.example.phoneShopping.member.domain.Member">
-DELETE FROM INFO WHERE info_seq=#{info_seq}
+DELETE FROM INFO WHERE info_seq=#{infoSeq}
 </delete>
 
 

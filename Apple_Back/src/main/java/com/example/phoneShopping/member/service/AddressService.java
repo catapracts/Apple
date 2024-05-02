@@ -85,10 +85,10 @@ public class AddressService
 	{
 		System.out.println("updateAddress동작");
 				
-		UpdateAddressParam param = new UpdateAddressParam(req.getAddrSeq() ,req.getAddrZip(), req.getAddrDetail());
+		UpdateAddressParam param = new UpdateAddressParam(req.getAddrSeq(), req.getAddrZip(), req.getAddrDetail());
 		
 		Integer result = addressDao.updateAddress(param);
-		
+		System.out.println(result);
 		if(result==0)
 		{
 			throw new AddressException("카드 수정 실패", HttpStatus.INTERNAL_SERVER_ERROR);

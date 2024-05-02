@@ -1,5 +1,7 @@
 package com.example.phoneShopping.product.dto.param;
 
+
+import com.example.phoneShopping.product.dto.request.UpdateProductRequest;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -28,13 +30,14 @@ public class UpdateProductParam
 	
 	// 옵션 2 : 색상 - FK
 	private int colorSeq;
-	
-	public UpdateProductParam(String prodName, int prodPrice, int prodCnt, int hddSeq, int colorSeq)
+
+	public UpdateProductParam(UpdateProductRequest req) 
 	{
-		this.prodName = prodName;
-		this.prodPrice = prodPrice;
-		this.prodCnt = prodCnt;
-		this.hddSeq = hddSeq;
-		this.colorSeq = colorSeq;
+		this.prodSeq = req.getProdSeq();
+		this.prodName = req.getProdName();
+		this.prodPrice = req.getProdPrice();
+		this.prodCnt = req.getProdCnt();
+		this.hddSeq = req.getHddSeq();
+		this.colorSeq = req.getColorSeq();
 	}
 }

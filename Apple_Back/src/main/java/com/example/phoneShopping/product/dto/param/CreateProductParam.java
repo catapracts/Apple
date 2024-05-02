@@ -31,9 +31,10 @@ public class CreateProductParam
 	
 	// 옵션 2 : 색상 - FK
 	private int colorSeq;
-	
+
 	public CreateProductParam(CreateProductRequest req) 
 	{
+		this.prodSeq = req.getProdSeq();
 		this.prodName = req.getProdName();
 		this.prodPrice = req.getProdPrice();
 		this.prodCnt = req.getProdCnt();
