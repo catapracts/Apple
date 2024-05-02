@@ -27,7 +27,7 @@ import lombok.RequiredArgsConstructor;
 
 @Tag(name = "PlusController", description = "추가 금액 API")
 @RestController
-@RequestMapping("/plus")
+@RequestMapping("/admin/plus")
 @RequiredArgsConstructor
 public class PlusController 
 {
