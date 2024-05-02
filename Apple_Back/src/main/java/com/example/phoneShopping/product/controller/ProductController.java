@@ -23,7 +23,7 @@ import com.example.phoneShopping.product.service.ProductService;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("/product")
+@RequestMapping("/admin/product")
 @RequiredArgsConstructor
 public class ProductController {
 

@@ -27,7 +27,7 @@ import lombok.RequiredArgsConstructor;
 
 @Tag(name = "ColorController", description = "Color API")
 @RestController
-@RequestMapping("/color")
+@RequestMapping("/admin/color")
 @RequiredArgsConstructor
 public class ColorController 
 {

@@ -4,8 +4,8 @@
 
 <!-- 상품 추가 POST -->
 <insert id="createProduct" parameterType="com.example.phoneShopping.product.dto.param.CreateProductParam">
-insert into product(prod_seq, prod_name, prod_price, prod_hdd, prod_color, prod_cnt)
-values(#{prodSeq}, #{prodName}, #{prodPrice}, #{prodHdd}, #{prodColor}, #{prodCnt})
+insert into product(prodSeq, prodName, prodPrice, prodCnt, hddSeq, colorSeq)
+values(#{prodSeq}, #{prodName}, #{prodPrice}, #{prodCnt}, #{hddSeq}, #{colorSeq})
 </insert>
 
 <!-- 상품 상세 GET -->
@@ -21,7 +21,7 @@ select * from product;
 <!-- 상품 수정 PATCH -->
 <update id="updateProduct" parameterType="com.example.phoneShopping.product.dto.param.UpdateProductParam">
 update product set(prod_seq, prod_name, prod_price, prod_hdd, prod_color, prod_cnt)
-=(#{prodSeq}, #{prodName}, #{prodPrice}, #{prodHdd}, #{prodColor}, #{prodCnt})
+=(#{prodSeq}, #{prodName}, #{prodPrice}, #{hddSeq}, #{colorSeq}, #{prodCnt})
 </update>
 	
 <!-- 상품 삭제 DELETE -->
