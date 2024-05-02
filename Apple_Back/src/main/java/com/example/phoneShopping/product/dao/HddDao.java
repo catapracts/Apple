@@ -15,8 +15,8 @@ import com.example.phoneShopping.product.dto.param.UpdateHddParam;
 public interface HddDao 
 {
 	List<Hdd> findAllHdd();				// Hdd 정보 전체 조회
-	Hdd findByIdHdd(int hdd_seq);		// id(seq)로 Hdd 정보 찾기(특정 1개)
+	Hdd findByIdHdd(int hddSeq);		// id(seq)로 Hdd 정보 찾기(특정 1개)
 	Integer createHdd(CreateHddParam param);	// Hdd 정보 생성
 	Integer updateHdd(UpdateHddParam param);	// Hdd 정보 수정
-	Integer deleteHdd(int hdd_seq);			// Hdd 정보 삭제
+	Integer deleteHdd(int hddSeq);			// Hdd 정보 삭제
 }

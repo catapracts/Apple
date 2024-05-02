@@ -27,7 +27,7 @@ import lombok.RequiredArgsConstructor;
 
 @Tag(name = "HddController", description = "Hdd API")
 @RestController
-@RequestMapping("/hdd")
+@RequestMapping("/admin/hdd")
 @RequiredArgsConstructor
 public class HddController 
 {

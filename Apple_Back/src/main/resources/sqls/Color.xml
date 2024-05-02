@@ -11,7 +11,7 @@ SELECT * FROM COLOR
 
 
 <select id="findByIdColor" parameterType="Integer" resultType="com.example.phoneShopping.product.domain.Color">
-SELECT * FROM COLOR WHERE color_seq=#{colorSeq}
+SELECT * FROM COLOR WHERE colorSeq=#{colorSeq}
 </select>
 
 
@@ -21,12 +21,12 @@ INSERT INTO COLOR(color) VALUES(#{color})
 
 
 <update id="updateColor" parameterType="com.example.phoneShopping.product.dto.param.UpdateColorParam">
-UPDATE COLOR SET color=#{color} WHERE color_seq=#{colorSeq}
+UPDATE COLOR SET color=#{color} WHERE colorSeq=#{colorSeq}
 </update>
 
 
 <delete id="deleteColor" parameterType="com.example.phoneShopping.product.domain.Color">
-DELETE FROM COLOR WHERE color_seq=#{colorSeq}
+DELETE FROM COLOR WHERE colorSeq=#{colorSeq}
 </delete>
 
 

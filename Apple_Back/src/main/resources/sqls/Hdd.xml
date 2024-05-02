@@ -11,23 +11,23 @@ SELECT * FROM HDD
 
 
 <select id="findByIdHdd" parameterType="Integer" resultType="com.example.phoneShopping.product.domain.Hdd">
-SELECT * FROM HDD WHERE hdd_seq=#{hddSeq}
+SELECT * FROM HDD WHERE hddSeq=#{hddSeq}
 </select>
 
 
 <insert id="createHdd" parameterType="com.example.phoneShopping.product.dto.param.CreateHddParam"
 useGeneratedKeys="true" keyProperty="hdd_seq">
-INSERT INTO HDD(capacity, plus_seq) VALUES(#{capacity}, #{plusSeq})
+INSERT INTO HDD(capacity, plusSeq) VALUES(#{capacity}, #{plusSeq})
 </insert>
 
 
 <update id="updateHdd" parameterType="com.example.phoneShopping.product.dto.param.UpdateHddParam">
-UPDATE HDD SET capacity=#{capacity}, plusSeq=#{plusSeq} WHERE hdd_seq=#{hddSeq}
+UPDATE HDD SET capacity=#{capacity}, plusSeq=#{plusSeq} WHERE hddSeq=#{hddSeq}
 </update>
 
 
 <delete id="deleteHdd" parameterType="com.example.phoneShopping.product.domain.Hdd">
-DELETE FROM HDD WHERE hdd_seq=#{hddSeq}
+DELETE FROM HDD WHERE hddSeq=#{hddSeq}
 </delete>
 
 

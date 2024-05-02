@@ -15,7 +15,7 @@ public interface ProductDao
 {
 	
 	// 상품 상세 1개
-	Product findByIdProduct(String prod_seq);
+	Product findByIdProduct(String prodSeq);
 	
 	// 상품 목록
 	List<Product> findAllProduct();
@@ -27,6 +27,6 @@ public interface ProductDao
 	Integer updateProduct(UpdateProductParam param);
 	
 	// 상품 삭제
-	Integer deleteProduct(String prod_seq);
+	Integer deleteProduct(String prodSeq);
 	
 }

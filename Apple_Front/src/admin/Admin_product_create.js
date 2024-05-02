@@ -64,7 +64,7 @@ function Admin_product_create() {
             console.log(resp.data);
 
             alert ("새로운 상품을 성공적으로 등록했습니다");
-            navigate ('/admin/product/create');     // 상품 등록 창으로 이동
+            navigate ("/admin/product/create");     // 상품 등록 창으로 이동
         })
         .catch ((err) => {
             console.log("[Admin_product_create.js] createProduct() error");
@@ -87,7 +87,7 @@ function Admin_product_create() {
             console.log(resp.data);
 
             alert ("새로운 상품을 성공적으로 등록했습니다");
-            navigate ('/admin/product/create');     // 상품 등록 창으로 이동
+            navigate ("/admin/product/create");     // 상품 등록 창으로 이동
         })
         .catch ((err) => {
             console.log("[Admin_product_create.js] createHdd() error");
@@ -131,7 +131,7 @@ function Admin_product_create() {
             console.log(resp.data);
 
             alert ("새로운 상품을 성공적으로 등록했습니다");
-            navigate (0);     // 상품 등록 창으로 이동
+            navigate ("/admin/product/create");     // 상품 등록 창으로 이동
         })
         .catch ((err) => {
             console.log("[Admin_product_create.js] createPlus() error");
@@ -213,19 +213,19 @@ function Admin_product_create() {
                                     <tr className="create_tr">
                                         <th className="create_th">HDD 용량</th>
                                         <td className="create_td">
-                                            <input type="text" className="create_form"></input>
+                                            <input type="text" className="create_form" onClick={changeCapacity}></input>
                                         </td>
                                     </tr>
                                     <tr className="create_tr">
                                         <th className="create_th">추가 금액 번호</th>
                                         <td className="create_td">
-                                            <input type="text" className="create_form"></input>
+                                            <input type="text" className="create_form" onClick={changePlusSeq}></input>
                                         </td>
                                     </tr>
                                 </table>
                             </div>
                             <div className="d-flex justify-content-center">
-                                <Button size={"default"} color={"blue"} text={"등록하기"}></Button>
+                                <Button size={"default"} color={"blue"} text={"등록하기"} onClick={createHdd}></Button>
                             </div>
                         </div>  
                     </div>
@@ -259,13 +259,13 @@ function Admin_product_create() {
                                     <tr className="create_tr">
                                         <th className="create_th">추가 금액</th>
                                         <td className="create_td">
-                                            <input type="text" className="create_form"></input>
+                                            <input type="text" className="create_form" onChange={changePrice}></input>
                                         </td>
                                     </tr>
                                 </table>
                             </div>
                             <div className="d-flex justify-content-center">
-                                <Button size={"default"} color={"blue"} text={"등록하기"}></Button>
+                                <Button size={"default"} color={"blue"} text={"등록하기"} onClick={createPlus}></Button>
                             </div>
                         </div>                     
                     </div>
