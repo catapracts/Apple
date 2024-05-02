@@ -33,4 +33,6 @@ public class Product
 	// 옵션 2 : 색상 - FK
 //	private int color_seq;
 	private int colorSeq;
+	
+	
 }

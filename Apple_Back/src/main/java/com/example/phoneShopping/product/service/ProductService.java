@@ -91,7 +91,7 @@ public class ProductService
 	private Integer updateProductMethod(UpdateProductRequest req) 
 	{
 		System.out.println("updateProduct 동작");
-		UpdateProductParam param = new UpdateProductParam(req.getProdName(), req.getProdCnt(),
+		UpdateProductParam param = new UpdateProductParam(req.getProdSeq(), req.getProdName(), req.getProdCnt(),
 					req.getProdPrice(), req.getHddSeq(), req.getColorSeq());
 		
 		System.out.println(param.getProdSeq());

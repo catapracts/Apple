@@ -11,7 +11,6 @@ import lombok.Setter;
 @AllArgsConstructor
 public class UpdateProductRequest 
 {
-
 	// 상품 일련번호
 	private String prodSeq;
 	
@@ -29,13 +28,5 @@ public class UpdateProductRequest
 	
 	// 옵션 2 : 색상 - FK
 	private int colorSeq;
-	
-	public UpdateProductRequest(String prodName, int prodPrice, int prodCnt, int hddSeq, int colorSeq)
-	{
-		this.prodName = prodName;
-		this.prodPrice = prodPrice;
-		this.prodCnt = prodCnt;
-		this.hddSeq = hddSeq;
-		this.colorSeq = colorSeq;
-	}
+
 }

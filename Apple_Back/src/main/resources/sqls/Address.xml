@@ -8,24 +8,22 @@ SELECT * FROM ADDRESS
 
 
 <select id="findByIdAddress" parameterType="Integer" resultType="com.example.phoneShopping.member.domain.Address">
-SELECT * FROM ADDRESS WHERE addr_seq=#{addr_seq}
+SELECT * FROM ADDRESS WHERE addr_seq=#{addrSeq}
 </select>
 
 
 <insert id="createAddress" parameterType="com.example.phoneShopping.member.dto.param.CreateAddressParam">
-INSERT INTO ADDRESS(addr_seq, addr_zip, addr_detail) VALUES(#{addr_seq}, #{addr_zip}, #{addr_detail})
+INSERT INTO ADDRESS(addr_zip, addr_detail) VALUES(#{addrZip}, #{addrDetail})
 </insert>
 
 
 <update id="updateAddress" parameterType="com.example.phoneShopping.member.dto.param.UpdateAddressParam">
-UPDATE ADDRESS SET addr_zip=#{addr_zip}, addr_detail=#{addr_detail} WHERE addr_seq=#{addr_seq}
+UPDATE ADDRESS SET addr_zip=#{addrZip}, addr_detail=#{addrDetail} WHERE addr_seq=#{addrSeq}
 </update>
 
 
 <delete id="deleteAddress" parameterType="com.example.phoneShopping.member.domain.Address">
-DELETE FROM ADDRESS WHERE addr_seq=#{addr_seq}
+DELETE FROM ADDRESS WHERE addr_seq=#{addrSeq}
 </delete>
-
-
 
 </mapper>

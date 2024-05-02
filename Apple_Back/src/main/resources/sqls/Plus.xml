@@ -11,7 +11,7 @@ SELECT * FROM PLUS
 
 
 <select id="findByIdPlus" parameterType="Integer" resultType="com.example.phoneShopping.product.domain.Plus">
-SELECT * FROM PLUS WHERE plus_seq=#{plus_seq}
+SELECT * FROM PLUS WHERE plus_seq=#{plusSeq}
 </select>
 
 
@@ -21,12 +21,12 @@ INSERT INTO PLUS(price) VALUES(#{price})
 
 
 <update id="updatePlus" parameterType="com.example.phoneShopping.product.dto.param.UpdatePlusParam">
-UPDATE PLUS SET plus_seq=#{plus_seq}, price=#{price} WHERE plus_seq=#{plus_seq}
+UPDATE PLUS SET price=#{price} WHERE plus_seq=#{plusSeq}
 </update>
 
 
 <delete id="deletePlus" parameterType="com.example.phoneShopping.product.domain.Plus">
-DELETE FROM PLUS WHERE plus_seq=#{plus_seq}
+DELETE FROM PLUS WHERE plus_seq=#{plusSeq}
 </delete>
 
 

@@ -35,9 +35,12 @@ public class AddressController
 	
 	@PreAuthorize("isAuthenticated()")
 	@PostMapping("/create")
-	public ResponseEntity<CreateAddressResponse> createAddress(@Valid @RequestBody CreateAddressRequest req)
+	public ResponseEntity<CreateAddressResponse> createAddress(@RequestBody CreateAddressRequest req)
 	{
 		System.out.println("Address 정보 생성");
+		System.out.println(req.getAddrSeq());
+		System.out.println(req.getAddrZip());
+		System.out.println(req.getAddrDetail());
 		return ResponseEntity.ok(service.createAddress(req));
 	}
 	
@@ -60,9 +63,10 @@ public class AddressController
 	
 	@PreAuthorize("isAuthenticated()")
 	@PatchMapping("/{addrSeq}")
-	public ResponseEntity<UpdateAddressResponse> updateAddress(@Valid @RequestBody UpdateAddressRequest req)
+	public ResponseEntity<UpdateAddressResponse> updateAddress(@RequestBody UpdateAddressRequest req)
 	{
 		System.out.println("Address 정보 수정");
+		
 		return ResponseEntity.ok(service.updateAddress(req));
 	}
 	
