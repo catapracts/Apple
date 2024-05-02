@@ -90,6 +90,7 @@ function TestgetOne() {
 							onClick={() => {navigate(-1)}}></Button>
 
 						<Link className="btn btn-outline-secondary"  to="/TestUpdate/${mem_id}" state={{ member: updateMember }}> 수정</Link>
+						<Link className="btn btn-outline-secondary"  to="/mypage/${mem_id}" state={{ member: getOne }}> 마이페이지</Link>
 					</div>
 				</div>
 			</div>

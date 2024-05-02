@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Link, useParams, useNavigate } from "react-router-dom";
+import { Link, useParams, useNavigate, useLocation } from "react-router-dom";
 import { useState, useEffect, useContext} from "react";
 import { AuthContext } from "../context/AuthProvider";
 import { HttpHeadersContext } from "../context/HttpHeadersProvider";
@@ -7,30 +7,35 @@ import Button from '../common/Button';
 import './Member.css';
 
 function Mypage() {
-	const { auth, setAuth } = useContext(AuthContext)
-    const [member, setMember] = useState([]);
-    const {memId} = useParams();
+	// const { headers, setHeaders } = useContext(HttpHeadersContext);
+	// const { auth, setAuth } = useContext(AuthContext);
+ 
+    // const {memId} = useParams();
+
+	// const location = useLocation();
+	// const { member } = location.state;
+
 
 	const navigate = useNavigate();	
 
-	/* 회원 1개 조회 */
-	const getOne = async () => {
+	// /* 회원 1개 조회 */
+	// const getOne = async () => {
 
-		await axios.get(`http://localhost:3000/user/${memId}`, {params : {memId : auth ? auth : ""}})
-			.then((resp) => {
-				console.log("[TestgetOne.js] getOne() success :D");
-                console.log(resp.data);
-                setMember(resp.data)
+	// 	await axios.get(`http://localhost:3000/user/${memId}`, {params : {memId : auth ? auth : ""}})
+	// 		.then((resp) => {
+	// 			console.log("[TestgetOne.js] getOne() success :D");
+    //             console.log(resp.data);
+           
 
-			}).catch((err) => {	
-				console.log("[TestgetOne.js] getOne() error :<");
-				console.log(err);
-			});
-	}
+	// 		}).catch((err) => {	
+	// 			console.log("[TestgetOne.js] getOne() error :<");
+	// 			console.log(err);
+	// 		});
+	// }
 
-    useEffect(() => {
-		getOne();
-	}, []);
+    // useEffect(() => {
+	// 	getOne();
+	// }, []);
 
     return (
 		<div>
@@ -49,19 +54,19 @@ function Mypage() {
 								<tr>
 									<th className="mypage_th">회원 번호</th>
 									<td className="mypage_td">
-										<span>{member.memSeq}</span>
+										{/* <span>{member.memSeq}</span> */}
 									</td>
 								</tr>
 								<tr>
 									<th className="mypage_th">회원 ID</th>
 									<td className="mypage_td">
-										<span>{member.memId}</span>
+										{/* <span>{member.memId}</span> */}
 									</td>
 								</tr>
 								<tr>
 									<th className="mypage_th">비밀번호</th>
 									<td className="mypage_td">
-										<span>{member.memPw}</span>
+										{/* <span>{member.memPw}</span> */}
 									</td>
 								</tr>
 							</table>

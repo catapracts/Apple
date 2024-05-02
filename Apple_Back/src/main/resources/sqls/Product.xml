@@ -4,8 +4,8 @@
 
 	<!-- 상품 추가 POST -->
 	<insert id="createProduct" parameterType="com.example.phoneShopping.product.dto.param.CreateProductParam">
-		insert into product(prod_seq, prod_name, prod_price, prod_hdd, prod_color, prod_cnt)
-		values(#{prod_seq}, #{prod_name}, #{prod_price}, #{prod_hdd}, #{prod_color}, #{prod_cnt})
+		insert into product(prod_seq, prod_name, prod_price, prodCnt, hddSeq, colorSeq)
+		values(#{prod_seq}, #{prod_name}, #{prod_price}, #{prodCnt}, #{hddSeq}, #{colorSeq})
 	</insert>
 
 	<!-- 상품 상세 GET -->

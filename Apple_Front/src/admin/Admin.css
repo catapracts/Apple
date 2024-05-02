@@ -9,6 +9,21 @@
     display: inline;
 }
 
+.admin_product_part1, .admin_product_part2, .admin_product_part3, .admin_product_part4 {
+    width: 100%;
+    padding-bottom: 30px;
+    margin: 5px;
+    display: inline-block;    
+    /* background-color: #dbdbdb; */
+}
+
+.admin_product_subtitle {
+    font-size: 23px !important;
+    font-family: "Apple SD Gothic Neo EB";
+    margin-top: 30px;
+    margin-bottom: 0;
+}
+
 .create_table {
     width: 100%;
     margin-top: 20px;
