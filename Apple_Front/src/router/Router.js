@@ -9,7 +9,6 @@ import Admin_payment from "../admin/Admin_payment"
 import Admin_payment_detail from "../admin/Admin_payment_detail"
 import Admin_member from "../admin/Admin_member"
 import Admin_member_detail from "../admin/Admin_member_detail"
-import Admin_member_detail_1 from "../admin/Admin_member_detail_1"
 import Store from "../store/Store"
 import Store_Detail_1 from "../store/Store_Detail_1"
 import Store_Detail_2 from "../store/Store_Detail_2"
@@ -29,6 +28,7 @@ import Product from "../product/Product"
 import Product_Detail_1 from "../product/Product_Detail_1"
 import Product_Detail_2 from "../product/Product_Detail_2"
 import Product_Detail_3 from "../product/Product_Detail_3"
+import TestFindAllPayment from "../payment/TestFindAllPayment"
 
 
 function Router() {
@@ -44,8 +44,7 @@ function Router() {
 				<Route path="/admin/payment" element={<Admin_payment />}></Route>
 				<Route path="/admin/payment/1" element={<Admin_payment_detail />}></Route>
 				<Route path="/admin/member" element={<Admin_member />}></Route>
-				<Route path="/admin/member/:memId" element={<Admin_member_detail />}></Route>
-				<Route path="/admin/member/1" element={<Admin_member_detail_1 />}></Route>
+				<Route path="/admin/member/1" element={<Admin_member_detail />}></Route>
 				<Route path="/store/" element={<Store />}></Route>
 				<Route path="/store_detail/1" element={<Store_Detail_1 />}></Route>
 				<Route path="/store_detail/2" element={<Store_Detail_2 />}></Route>
@@ -65,6 +64,7 @@ function Router() {
 				<Route path="/product_detail/1" element={<Product_Detail_1 />}></Route>
 				<Route path="/product_detail/2" element={<Product_Detail_2 />}></Route>
 				<Route path="/product_detail/3" element={<Product_Detail_3 />}></Route>
+				<Route path="/TestFindAllPayment" element={<TestFindAllPayment />}></Route>
 
 			</Routes>
 	);
