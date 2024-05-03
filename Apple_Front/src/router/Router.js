@@ -44,6 +44,12 @@ import TestInfoGetOne from "../member/TestInfoGetOne"
 import TestInfoUpdate from "../member/TestInfoUpdate"
 
 
+import TestCardFindAll from "../member/TestCardFindAll"
+import TestCardCreate from "../member/TestCardCreate"
+import TestCardGetOne from "../member/TestCardGetOne"
+import TestCardUpdate from "../member/TestCardUpdate"
+
+
 import Product from "../product/Product"
 
 import Product_Detail_1 from "../product/Product_Detail_1"
@@ -91,19 +97,28 @@ function Router() {
 				<Route path="/TestgetOne/:memId" element={<TestgetOne />}></Route>
 				<Route path="/TestUpdate/:memId" element={<TestUpdate />}></Route>
 
+
 				<Route path="/TestFindAll" element={<TestFindAll />}></Route>
 				<Route path="/TestgetOne/:memId" element={<TestgetOne />}></Route>
 				<Route path="/TestUpdate/:memId" element={<TestUpdate />}></Route>
+
 
 				<Route path="/TestAddrFindAll" element={<TestAddrFindAll />}></Route>
 				<Route path="/TestAddrCreate" element={<TestAddrCreate />}></Route>
 				<Route path="/TestAddrGetOne/:addrSeq" element={<TestAddrGetOne />}></Route>
 				<Route path="/TestAddrUpdate/:addrSeq" element={<TestAddrUpdate />}></Route>
 
+
 				<Route path="/TestInfoFindAll" element={<TestInfoFindAll />}></Route>
 				<Route path="/TestInfoCreate" element={<TestInfoCreate />}></Route>
 				<Route path="/TestInfoGetOne/:infoSeq" element={<TestInfoGetOne />}></Route>
 				<Route path="/TestInfoUpdate/:infoSeq" element={<TestInfoUpdate />}></Route>
+
+
+				<Route path="/TestCardFindAll" element={<TestCardFindAll />}></Route>
+				<Route path="/TestCardCreate" element={<TestCardCreate />}></Route>
+				<Route path="/TestCardGetOne/:cardSeq" element={<TestCardGetOne />}></Route>
+				<Route path="/TestCardUpdate/:cardSeq" element={<TestCardUpdate />}></Route>
 
 			</Routes>
 	);
