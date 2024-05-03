@@ -106,6 +106,8 @@ function Admin_member() {
 
                     <Link className="btn btn-outline-secondary"  to="/TestInfoFindAll"> 회원 정보 설정</Link>
 
+                    <Link className="btn btn-outline-secondary"  to="/TestCardFindAll"> 카드 정보 설정</Link>
+
                 </div>
             </div>
         </div>

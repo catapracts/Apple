@@ -35,7 +35,7 @@ public class CardController
 	
 	@PreAuthorize("isAuthenticated()")
 	@PostMapping("/create")
-	public ResponseEntity<CreateCardResponse> createCard(@Valid @RequestBody CreateCardRequest req)
+	public ResponseEntity<CreateCardResponse> createCard(@RequestBody CreateCardRequest req)
 	{
 		System.out.println("Card 정보 생성");
 		return ResponseEntity.ok(service.createCard(req));
@@ -51,7 +51,7 @@ public class CardController
 	
 	@PreAuthorize("isAuthenticated()")
 	@GetMapping("/{cardSeq}")
-	public Card findByIdCard(int cardSeq)
+	public Card findByIdCard(@PathVariable(value = "cardSeq") int cardSeq)
 	{
 		System.out.println("Card 정보 1개 출력");
 		System.out.println(cardSeq);
@@ -60,7 +60,7 @@ public class CardController
 	
 	@PreAuthorize("isAuthenticated()")
 	@PatchMapping("/{cardSeq}")
-	public ResponseEntity<UpdateCardResponse> updateCard(@Valid @RequestBody UpdateCardRequest req)
+	public ResponseEntity<UpdateCardResponse> updateCard(@RequestBody UpdateCardRequest req)
 	{
 		System.out.println("Card 정보 수정");
 		return ResponseEntity.ok(service.updateCard(req));

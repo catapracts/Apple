@@ -51,7 +51,7 @@ public class InfoController
 	
 	@PreAuthorize("isAuthenticated()")
 	@GetMapping("/{infoSeq}")
-	public Info findByIdInfo(int infoSeq)
+	public Info findByIdInfo(@PathVariable(value = "infoSeq") int infoSeq)
 	{
 		System.out.println("Info 정보 1개 출력");
 		System.out.println(infoSeq);

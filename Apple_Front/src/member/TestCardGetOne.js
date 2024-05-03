@@ -6,25 +6,25 @@ import './Member.css';
 import { AuthContext } from "../context/AuthProvider";
 import TestUpdate from "./TestUpdate";
 
-function TestInfoGetOne() {
+function TestAddrGetOne() {
 
     const { auth, setAuth } = useContext(AuthContext)
-    const [Info, setInfo] = useState({});
-    const {infoSeq} = useParams();
+    const [card, setCard] = useState({});
+    const {cardSeq} = useParams();
 
-	const navigate = useNavigate();
+	const navigate = useNavigate();			// useNavigate를 사용하기 위해 선언 -> 페이지 이동할 때, 사용
 
-    /* 회원 정보 1개 조회 */
+    /* 회원 1개 조회 */
 	const getOne = async () => {
 
-		await axios.get(`http://localhost:3000/info/${infoSeq}`, {params : {infoSeq : auth ? auth : ""}})
+		await axios.get(`http://localhost:3000/card/${cardSeq}`, {params : {cardSeq : auth ? auth : ""}})
 			.then((resp) => {
-				console.log("[TestInfoGetOne.js] getOne() success :D");
+				console.log("[TestCardGetOne.js] getOne() success :D");
                 console.log(resp.data);
-                setInfo(resp.data)
+                setCard(resp.data)
 
 			}).catch((err) => {	
-				console.log("[TestInfoGetOne.js] getOne() error :<");
+				console.log("[TestCardGetOne.js] getOne() error :<");
 				console.log(err);
 			});
 	}
@@ -33,17 +33,17 @@ function TestInfoGetOne() {
 		getOne();
 	}, []);
 
-	const updateInfo = {
-		infoSeq : Info.infoSeq,
-		infoName : Info.infoName,
-		infoBirth : Info.infoBirth,
-        infoGender : Info.infoGender,
-        infoPhone : Info.infoPhone
+	const updateCard = {
+		cardSeq : card.cardSeq,
+		cardComp : card.cardComp,
+		cardNum : card.cardNum,
+        cardDate : card.cardDate,
+        cardCvc : card.cardCvc
 	}	
 
     const moveUpdate = (event) => {
-        navigate(`/TestInfoUpdate/${infoSeq}`, {
-			state : {data : Info}
+        navigate(`/TestCardUpdate/${cardSeq}`, {
+			state : {data : card}
 		});
     }
 
@@ -53,7 +53,7 @@ function TestInfoGetOne() {
 			<div className="container">
 				<div className="mypage_container">
 					<div>
-						<h1 className="mypage_title">회원 정보 상세페이지</h1>
+						<h1 className="mypage_title">카드 상세페이지</h1>
 					</div>
 					<div className="mypage_part1">
 						<div>
@@ -63,37 +63,37 @@ function TestInfoGetOne() {
 							<table className="mypage_table">
 
                                 <tr>
-									<th className="mypage_th">회원 구분 번호</th>
+									<th className="mypage_th">카드 구분 번호</th>
 									<td className="mypage_td">
-                                        <span>{Info.infoSeq}</span>
+                                        <span>{card.cardSeq}</span>
 									</td>
 								</tr>
 
 								<tr>
-									<th className="mypage_th">회원 이름</th>
+									<th className="mypage_th">카드사</th>
 									<td className="mypage_td">
-                                        <span>{Info.infoName}</span>
-									</td>
-								</tr>
-
-								<tr>
-									<th className="mypage_th">회원 생일</th>
-									<td className="mypage_td">
-                                        <span>{Info.infoBirth}</span>
+                                        <span>{card.cardComp}</span>
 									</td>
 								</tr>
 
                                 <tr>
-									<th className="mypage_th">회원 성별</th>
+									<th className="mypage_th">카드 번호</th>
 									<td className="mypage_td">
-                                        <span>{Info.infoGender}</span>
+                                        <span>{card.cardNum}</span>
 									</td>
 								</tr>
 
                                 <tr>
-									<th className="mypage_th">회원 전화번호</th>
+									<th className="mypage_th">카드 날짜</th>
 									<td className="mypage_td">
-                                        <span>{Info.infoPhone}</span>
+                                        <span>{card.cardDate}</span>
+									</td>
+								</tr>
+
+                                <tr>
+									<th className="mypage_th">카드 CVC 번호</th>
+									<td className="mypage_td">
+                                        <span>{card.cardCvc}</span>
 									</td>
 								</tr>
 
@@ -105,7 +105,7 @@ function TestInfoGetOne() {
 					    <Button size={"default"} color={"none"} text={"뒤로가기"}
 							onClick={() => {navigate(-1)}}></Button>
 
-						<Link className="btn btn-outline-secondary"  to="/TestInfoUpdate/${infoSeq}" state={{ info : updateInfo }}> 수정</Link>
+						<Link className="btn btn-outline-secondary"  to="/TestCardUpdate/${cardSeq}" state={{ card : updateCard }}> 수정</Link>
 					</div>
 				</div>
 			</div>
@@ -114,4 +114,4 @@ function TestInfoGetOne() {
     
     }
     
-    export default TestInfoGetOne;
+    export default TestAddrGetOne;
