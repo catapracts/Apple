@@ -1,10 +1,9 @@
-import { Link, useParams, useNavigate, useLocation } from "react-router-dom";
+import {useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect, useContext} from "react";
 import Button from '../common/Button';
 import './Member.css';
-import { AuthContext } from "../context/AuthProvider";
-import { HttpHeadersContext } from "../context/HttpHeadersProvider";
+
 
 function TestAddrUpdate() {
 	

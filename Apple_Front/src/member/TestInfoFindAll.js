@@ -50,7 +50,7 @@ function TestInfoFindAll() {
 
                 if (resp.data.deleteRecordCount === 1) {
                     alert("개인정보를 성공적으로 삭제했습니다 :D");
-                    navigate("/TestInfoFindAll");
+                    navigate("/");
                 }
 
 			}).catch((err) => {	
