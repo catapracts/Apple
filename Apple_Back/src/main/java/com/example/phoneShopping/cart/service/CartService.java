@@ -73,10 +73,10 @@ public class CartService
 	}
 	
 	@Transactional(readOnly=true)
-	public Cart findByIdCart(int cart_seq) 
+	public Cart findByIdCart(int cartSeq) 
 	{
 		System.out.println("findByIdCart동작");
-		Cart cart = dao.findByIdCart(cart_seq);
+		Cart cart = dao.findByIdCart(cartSeq);
 		System.out.println(cart.getCartSeq());
 		System.out.println(cart.getMemSeq());
 		return cart;
@@ -106,10 +106,10 @@ public class CartService
 	}
 	
 	@Transactional
-	public DeleteCartResponse deleteCart(int cart_seq)
+	public DeleteCartResponse deleteCart(int cartSeq)
 	{
 		System.out.println("deleteCart동작");
-		int number = dao.deleteCart(cart_seq);
+		int number = dao.deleteCart(cartSeq);
 		return new DeleteCartResponse(number);
 	}
 	
@@ -124,7 +124,7 @@ public class CartService
 	private void createCartProductMethod(CreateCartProductRequest req)
 	{
 		System.out.println("createCartProduct동작");
-		CreateCartProductParam param = new CreateCartProductParam(req.getCartpSeq() ,req.getCartSeq(), req.getProductSeq(), req.getCartpCnt());
+		CreateCartProductParam param = new CreateCartProductParam(req.getCartpSeq() ,req.getCartSeq(), req.getProdSeq(), req.getCartpCnt());
 		
 		Integer result = dao.createCartProduct(param);
 		
@@ -144,7 +144,7 @@ public class CartService
 		{
 			System.out.println(dao.findAllCartProduct().get(i).getCartpSeq());
 			System.out.println(dao.findAllCartProduct().get(i).getCartSeq());
-			System.out.println(dao.findAllCartProduct().get(i).getProductSeq());
+			System.out.println(dao.findAllCartProduct().get(i).getProdSeq());
 			System.out.println(dao.findAllCartProduct().get(i).getCartpCnt());
 			System.out.println("\n");
 		}
@@ -153,13 +153,13 @@ public class CartService
 	}
 	
 	@Transactional(readOnly=true)
-	public CartProduct findByIdCartProduct(int cartp_seq) 
+	public CartProduct findByIdCartProduct(int cartpSeq) 
 	{
 		System.out.println("findByIdCartProduct동작");
-		CartProduct cartProduct = dao.findByIdCartProduct(cartp_seq);
+		CartProduct cartProduct = dao.findByIdCartProduct(cartpSeq);
 		System.out.println(cartProduct.getCartpSeq());
 		System.out.println(cartProduct.getCartSeq());
-		System.out.println(cartProduct.getProductSeq());
+		System.out.println(cartProduct.getProdSeq());
 		System.out.println(cartProduct.getCartpCnt());
 		return cartProduct;
 	}
@@ -175,7 +175,7 @@ public class CartService
 	{
 		System.out.println("updateCartProduct동작");
 				
-		UpdateCartProductParam param = new UpdateCartProductParam(req.getCartpSeq() ,req.getCartSeq(), req.getProductSeq(), req.getCartpCnt());
+		UpdateCartProductParam param = new UpdateCartProductParam(req.getCartpSeq() ,req.getCartSeq(), req.getProdSeq(), req.getCartpCnt());
 		
 		Integer result = dao.updateCartProduct(param);
 		
@@ -188,17 +188,17 @@ public class CartService
 	}
 	
 	@Transactional
-	public DeleteCartProductResponse deleteCartProduct(int cartp_seq)
+	public DeleteCartProductResponse deleteCartProduct(int cartpSeq)
 	{
 		System.out.println("deleteCartProduct동작");
-		int number = dao.deleteCartProduct(cartp_seq);
+		int number = dao.deleteCartProduct(cartpSeq);
 		return new DeleteCartProductResponse(number);		
 	}
     
     
-    public void updateCartProductCount(int cartp_seq, int cnt)	// 장바구니 상품 수량 업데이트
+    public void updateCartProductCount(int cartpSeq, int cnt)	// 장바구니 상품 수량 업데이트
     {
-    	CartProduct cartProduct = dao.findByIdCartProduct(cartp_seq);
+    	CartProduct cartProduct = dao.findByIdCartProduct(cartpSeq);
     	cartProduct.updateCount(cnt);
     }
 }
