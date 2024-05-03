@@ -38,12 +38,12 @@ SELECT * FROM CARTPRODUCT WHERE cartp_seq=#{cartpSeq}
 
 
 <insert id="createCartProduct" parameterType="com.example.phoneShopping.cart.dto.param.CreateCartProductParam">
-INSERT INTO CARTPRODUCT(cart_seq, prod_seq, cartp_cnt) VALUES(#{cartSeq}, #{productSeq}, #{cartpCnt})
+INSERT INTO CARTPRODUCT(cart_seq, prod_Seq, cartp_cnt) VALUES(#{cartSeq}, #{prodSeq}, #{cartpCnt})
 </insert>
 
 
 <update id="updateCartProduct" parameterType="com.example.phoneShopping.cart.dto.param.UpdateCartProductParam">
-UPDATE CARTPRODUCT SET cart_seq=#{cartSeq}, prod_seq=#{productSeq}, cartp_cnt=#{cartpCnt} WHERE cartp_seq=#{cartpSeq}
+UPDATE CARTPRODUCT SET cart_seq=#{cartSeq}, prod_Seq=#{prodSeq}, cartp_cnt=#{cartpCnt} WHERE cartp_seq=#{cartpSeq}
 </update>
 
 

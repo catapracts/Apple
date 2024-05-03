@@ -13,13 +13,13 @@ public class CreateCartProductRequest
 {
 	private int cartpSeq;
 	private int cartSeq;
-	private String productSeq;
+	private String prodSeq;
 	private int cartpCnt;
 	
-	public CreateCartProductRequest(int cartSeq, String productSeq, int cartpCnt)
+	public CreateCartProductRequest(int cartSeq, String prodSeq, int cartpCnt)
 	{
 		this.cartSeq=cartSeq;
-		this.productSeq=productSeq;
+		this.prodSeq=prodSeq;
 		this.cartpCnt=cartpCnt;
 	}
 }

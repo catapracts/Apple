@@ -15,7 +15,7 @@ public class CartProduct
 	
 	private int cartSeq;
 	
-	private String productSeq;
+	private String prodSeq;
 	
 	private int cartpCnt;
 	
@@ -29,10 +29,10 @@ public class CartProduct
         this.cartpCnt = cartpCnt;
     }	
     
-    public CartProduct(int cartSeq, String productSeq, int cartpCnt)
+    public CartProduct(int cartSeq, String prodSeq, int cartpCnt)
     {
     	this.cartSeq=cartSeq;
-    	this.productSeq=productSeq;
+    	this.prodSeq=prodSeq;
     	this.cartpCnt=cartpCnt;    			
     }
 	

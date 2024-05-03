@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import { AuthContext } from "../context/AuthProvider";
 import { HttpHeadersContext } from "../context/HttpHeadersProvider";
@@ -23,6 +23,10 @@ function Cart() {
 						<Button size={"large"} color={"blue"} text={"결제"}
 							onClick={() => {navigate('/payment')}}></Button>
 						<p />
+
+						<Link to="/TestCartFindAll"><li>카트 실험</li></Link>
+						<Link to="/TestCartProductFindAll"><li>카트 상품 실험</li></Link>
+
 					</div>
 				</div>
 				<hr />

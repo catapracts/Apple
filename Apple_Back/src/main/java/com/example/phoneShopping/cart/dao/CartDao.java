@@ -29,7 +29,7 @@ public interface CartDao
 	
 	
 	// CartProduct관련 CRUD
-	CartProduct findByIdCartProduct(int cartp_seq);
+	CartProduct findByIdCartProduct(int cartpSeq);
 	List<CartProduct> findAllCartProduct();
 	Integer createCartProduct(CreateCartProductParam param);
 	Integer updateCartProduct(UpdateCartProductParam param);	// Cart 정보 수정
@@ -44,13 +44,13 @@ public interface CartDao
 	
 	// 장바구니에 어떤 아이템이 들어있는지 가져오기 - 1개
 	//select * from CartItem where cart_id =? and item_id = ?
-	CartProduct findByCartIdAndProductId(int cart_seq, String prod_seq);
+	CartProduct findByCartIdAndProductId(int cartSeq, String prodSeq);
 	
 	// 장바구니에 어떤 아이템이 들어있는지 가져오기 - 전체
     /*
 select new com.example.phoneShopping.cart.CartDetailDto(cp.cart_seq, p.prod_seq, p.price, cp.cnt)
 from CartProduct cp join cp.Product p where cp.cart.cart_seq = :cart_seq - ANSI Join
     */
-	List<CartDetailDto> findCartDetailDtoList(@Param("cart_seq") int cart_seq);
+	List<CartDetailDto> findCartDetailDtoList(@Param("cartSeq") int cartSeq);
 
 }

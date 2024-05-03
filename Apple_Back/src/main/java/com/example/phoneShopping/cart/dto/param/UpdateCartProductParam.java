@@ -13,6 +13,6 @@ public class UpdateCartProductParam
 {
 	private int cartpSeq;
 	private int cartSeq;
-	private String productSeq;
+	private String prodSeq;
 	private int cartpCnt;
 }
