@@ -5,7 +5,7 @@ import { AuthContext } from "../context/AuthProvider";
 import { HttpHeadersContext } from "../context/HttpHeadersProvider";
 
 import './Header.css';
-import Logo from '../img/apple_logo_white.svg';
+import Logo from '../img/apple_logo_white.png';
 
 function Header() {
 
@@ -37,7 +37,7 @@ function Header() {
 	return (
 		<header className="py-4">
 			<div className="container navbar">
-  				<Link to="/"><img src={Logo} alt="" /></Link>
+  				<Link to="/"><img src={Logo} alt="" className="headerLogo"/></Link>
   				<Link to="/store">스토어</Link>
   				<Link to="/product">iphone</Link>
 				<div class="dropdown">
