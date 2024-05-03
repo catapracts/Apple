@@ -2,43 +2,50 @@ import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import Button from "../common/Button";
-import "./Member.css";
+import "./Payment.css";
 
-function TestAddrCreate() {
-    const [addrZip, setAddrZip] = useState("");
-    const [addrDetail, setAddrDetail] = useState("");
+function TestCreatePayment() {
+    const [memSeq, setMemSeq] = useState("");
+    const [payDate, setPayDate] = useState("");
+    const [payStatus, setPayStatus] = useState("");
 
     const navigate = useNavigate(); // useNavigate를 사용하기 위해 선언 -> 페이지 이동할 때, 사용
 
-    const changeZip = (event) => {
+    const changeSeq = (event) => {
         // Client에서 id입력하면, 입력한 값 저장
-        setAddrZip(event.target.value);
+        setMemSeq(event.target.value);
     };
 
-    const changeDetail = (event) => {
+    const changeDate = (event) => {
         // Client에서 pwd입력하면, 입력한 값 저장
-        setAddrDetail(event.target.value);
+        setPayDate(event.target.value);
+    };
+
+    const changeStatus = (event) => {
+        // Client에서 pwd입력하면, 입력한 값 저장
+        setPayStatus(event.target.value);
     };
 
     /* 주소 정보 생성 */
-    const createAddress = async () => {
+    const createPayment = async () => {
         const req = {
             // req라는 이름의 변수를 객체 형식으로 사용
-            addrZip: addrZip,
-            addrDetail: addrDetail,
+            memSeq: memSeq,
+            payDate: payDate,
+            payStatus: payStatus,
         };
 
         await axios
-            .post("http://localhost:3000/address/create", req) // req라는 객체를 서버에 전달해서 회원가입 진행
+            .post("http://localhost:3000/payment/create", req) // req라는 객체를 서버에 전달해서 회원가입 진행
             .then((resp) => {
                 // 회원가입 성공 시 출력
-                console.log("[TestAddrCreate.js] addrCreate() success :D");
+                console.log("[TestCreatePayment.js] payCreate() success :D");
                 console.log(resp.data);
-                navigate("/TestAddrFindAll");
+                navigate("/TestFindAllPayment");
             })
             .catch((err) => {
                 // 회원가입 실패 시 출력
-                console.log("[TestAddrCreate.js] addrCreate() error :<");
+                console.log("[TestCreatePayment.js] payCreate() error :<");
                 console.log(err);
 
                 const resp = err.response;
@@ -53,27 +60,37 @@ function TestAddrCreate() {
             <div className="container">
                 <div className="member_container">
                     <div>
-                        <h1 className="member_title">주소 등록</h1>
+                        <h1 className="member_title">결제 등록</h1>
                     </div>
                     <div className="d-flex justify-content-center">
                         <table className="join_table">
                             <tr>
-                                <th className="join_th">우편 번호</th>
+                                <th className="join_th">결제자</th>
                                 <td className="join_td">
                                     <input
                                         type="text"
                                         className="join_form"
-                                        onChange={changeZip}
+                                        onChange={changeSeq}
                                     />
                                 </td>
                             </tr>
                             <tr>
-                                <th className="join_th">상세 주소</th>
+                                <th className="join_th">결제일</th>
                                 <td className="join_td">
                                     <input
                                         type="text"
                                         className="join_form"
-                                        onChange={changeDetail}
+                                        onChange={changeDate}
+                                    />
+                                </td>
+                            </tr>
+                            <tr>
+                                <th className="join_th">결제 상태</th>
+                                <td className="join_td">
+                                    <input
+                                        type="text"
+                                        className="join_form"
+                                        onChange={changeStatus}
                                     />
                                 </td>
                             </tr>
@@ -92,8 +109,8 @@ function TestAddrCreate() {
                         <Button
                             size={"default"}
                             color={"blue"}
-                            text={"가입하기"}
-                            onClick={createAddress}
+                            text={"등록하기"}
+                            onClick={createPayment}
                         ></Button>
                     </div>
                 </div>
@@ -102,4 +119,4 @@ function TestAddrCreate() {
     );
 }
 
-export default TestAddrCreate; // Join component를 외부의 다른 component가 사용할 수 있도록 설정
+export default TestCreatePayment;

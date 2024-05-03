@@ -39,6 +39,7 @@ function Header() {
 			<div className="container navbar">
   				<Link to="/"><img src={Logo} alt="" className="headerLogo"/></Link>
   				<Link to="/store">스토어</Link>
+  				<Link to="/payment_test">결제</Link>
   				<Link to="/product">iphone</Link>
 				<div class="dropdown">
 					<div className="dropdown-toggle nav_hover" id="navbarDropdown"
