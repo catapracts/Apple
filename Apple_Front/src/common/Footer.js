@@ -1,7 +1,15 @@
-import './Footer.css';
+import { useState, useContext } from "react";
+import { AuthContext } from "../context/AuthProvider";
 import { Link } from 'react-router-dom';
 
+import './Footer.css';
+
 function Footer() {
+
+	const { auth, setAuth } = useContext(AuthContext);
+
+  console.log ("auth 정보 : " , auth);
+
 	return (
 		<footer className="footer_bg">
       <div className="container">
@@ -27,9 +35,17 @@ function Footer() {
           <div>
             <h3 className="footertitle">회원</h3>
             <ul>
-              <Link to="/join"><li>회원가입</li></Link>
-              <Link to="/login"><li>로그인</li></Link>
-              <Link to="/logout"><li>로그아웃</li></Link>
+              {
+                (auth) ?
+                  <>
+                    <Link to="/logout"><li>로그아웃</li></Link>
+                  </>
+                  :
+                  <>
+                    <Link to="/join"><li>회원가입</li></Link>
+                    <Link to="/login"><li>로그인</li></Link>
+                  </>
+              }
               <Link to="/TestFindAll"><li>회원 전체 조회 실험</li></Link>
             </ul>
           </div>
