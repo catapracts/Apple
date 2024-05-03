@@ -29,6 +29,7 @@ import Store_Detail_3 from "../store/Store_Detail_3"
 
 import Payment from "../payment/Payment"
 import Payment_test from "../payment/Payment_test"
+import Payment_success from "../payment/Payment_success"
 
 import Mypage from "../member/Mypage"
 import Mypage_payment from "../member/Mypage_payment"
@@ -99,6 +100,7 @@ function Router() {
 				<Route path="/store_detail/3" element={<Store_Detail_3 />}></Route>
 				<Route path="/payment/" element={<Payment />}></Route>
 				<Route path="/payment_test" element={<Payment_test />}></Route>
+				<Route path="/payment/success" element={<Payment_success />}></Route>
 
 
 				<Route path="/mypage" element={<Mypage />}></Route>

@@ -57,8 +57,34 @@ function Payment_test() {
         setProdSeq(event.target.value);
     };
 
+    // DB Product
+    const [product, setProduct] = useState("");
+    const [prodSeq1, setProdSeq1] = useState(cartProduct.prodSeq);
+    const [prodName, setProdName] = useState("");
+    const [prodPrice, setProdPrice] = useState("");
+    const [hddSeq, setHddSeq] = useState("");
+
+    const changeProdName = (event) => {
+        setProdName(event.target.value);
+    };
+
+    // DB Color
+    const [color, setColor] = useState("");
+    const [colorSeq, setColorSeq] = useState("");
+    const [color1, setColor1] = useState("");
+
     // DB PaymentProduct
     const [paymentProduct, setPaymentProduct] = useState("");
+
+    // DB CreatePayment
+    const [memSeq, setMemSeq] = useState("");
+    const [payDate, setPayDate] = useState("");
+    const [payStatus, setPayStatus] = useState("");
+
+    // DB CreatePaymentProduct
+    const [paySeq, setPaySeq] = useState("");
+    const [payiPrice, setPayiPrice] = useState("");
+    const [payiCount, setPayiCount] = useState("");
 
     const createAddress = async () => {
         const req = {
@@ -115,13 +141,104 @@ function Payment_test() {
         await axios
             .get(`http://localhost:3000/cart/getOneCartProduct/${1}`)
             .then((resp) => {
-                console.log("[Payment_test.js] findByIdCart() success :D");
+                console.log(
+                    "[Payment_test.js] findByIdCartProduct() success :D"
+                );
                 console.log(resp.data);
                 setCartProduct(resp.data);
             })
             .catch((err) => {
-                console.log("[Payment_test.js] findByIdCart() error :<");
+                console.log("[Payment_test.js] findByIdCartProduct() error :<");
                 console.log(err);
+            });
+    };
+
+    /* 프로덕트 1개 조회 */
+    const findByIdProduct = async () => {
+        await axios
+            .get(`http://localhost:3000/admin/product/getOne/${"i15b256"}`)
+            .then((resp) => {
+                console.log("[Payment_test.js] findByIdProduct() success :D");
+                console.log(resp.data);
+                setProduct(resp.data);
+            })
+            .catch((err) => {
+                console.log("[Payment_test.js] findByIdProduct() error :<");
+                console.log(err);
+            });
+    };
+
+    /* 컬러1개 조회 */
+    const findByIdColor = async () => {
+        await axios
+            .get(`http://localhost:3000/admin/color/getOne/${1}`)
+            .then((resp) => {
+                console.log("[Payment_test.js] findByIdColor() success :D");
+                console.log(resp.data);
+                setColor(resp.data);
+            })
+            .catch((err) => {
+                console.log("[Payment_test.js] findByIdColor() error :<");
+                console.log(err);
+            });
+    };
+
+    /* CreatePayment */ 
+    const createPayment = async () => {
+        const req = {
+            // req라는 이름의 변수를 객체 형식으로 사용
+            memSeq: memSeq,
+            payDate: payDate,
+            payStatus: payStatus,
+        };
+
+        await axios
+            .post("http://localhost:3000/payment/create", req) // req라는 객체를 서버에 전달해서 회원가입 진행
+            .then((resp) => {
+                // 회원가입 성공 시 출력
+                console.log("[Payment_test.js] payCreate() success :D");
+                console.log(resp.data);
+                navigate("/Payment_success");
+            })
+            .catch((err) => {
+                // 회원가입 실패 시 출력
+                console.log("[Payment_test.js] payCreate() error :<");
+                console.log(err);
+
+                const resp = err.response;
+                if (resp.status == 400) {
+                    alert(resp.data);
+                }
+            });
+    };
+
+    /* CreatePaymentProduct */ 
+    const createPaymentProduct = async () => {
+        const req = {
+            // req라는 이름의 변수를 객체 형식으로 사용
+            prodSeq: memSeq,
+            paySeq: payDate,
+            payiPrice: payStatus,
+            payiCount: payiCount,
+        };
+
+        await axios
+            .post("http://localhost:3000/payment/createPaymentProduct", req) // req라는 객체를 서버에 전달해서 회원가입 진행
+            .then((resp) => {
+                
+                console.log("[Payment_test.js] payCreateProduct() success :D");
+                console.log(resp.data);
+                navigate("/Payment_success");
+            })
+            .catch((err) => {
+                
+                console.log("[Payment_test.js] payCreateProduct() error :<");
+                console.log(err);
+
+                const resp = err.response;
+                if (resp.status == 400) {
+                    alert(resp.data);
+                }
             });
     };
 
@@ -135,10 +252,18 @@ function Payment_test() {
 
     useEffect(() => {
         findByIdCartProduct();
+        findByIdProduct();
+        findByIdColor();
     }, []);
+
+    // const total = (event) => {
+    //     product.prodCnt * product.prodPrice;
+    // };
 
     return (
         <div>
+
+            
             <div className="container">
                 <div className="payment_part">
                     <div className="payment_part_title">
@@ -151,43 +276,41 @@ function Payment_test() {
                         </div>
                         <div className="payment_part1">
                             <div className="d-flex justify-content-between">
-                                <h1 className="payment_part1_title">
-                                    iPhone 15 256GB 옐로
-                                    {cartProduct.prodSeq}
-                                </h1>
-                                <h1 className="payment_part1_subtitle">1개</h1>
+                                
+                                <div>
+                                    <h1 className="payment_part1_title">
+                                        {product.prodName}
+                                    </h1> &nbsp;
+                                    <h1 className="payment_part1_title">
+                                        {color.color}
+                                    </h1> &nbsp;
+                                    <h1 className="payment_part1_title unvisible"
+                                        onchange={changeProdSeq}>
+                                        {product.prodSeq}
+                                    </h1>
+                                </div>
+                                    <h1 className="payment_part1_subtitle">
+                                        {product.prodCnt}개
+                                    </h1>    
                             </div>
                             <hr />
-                            <div>
-                                <p className="payment_part1_1">
-                                    위 제품의 예상 수령 일자를 확인해보세요.
-                                </p>
-                                <p className="payment_part1_2">
-                                    오늘 날짜 +2일
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <div className="payment_part_img">
-                            <img src={iphone15} alt="" />
-                        </div>
-                        <div className="payment_part1">
                             <div className="d-flex justify-content-between">
-                                <h1 className="payment_part1_title">
-                                    iPhone 15 256GB 옐로
-                                </h1>
-                                <h1 className="payment_part1_subtitle">1개</h1>
-                            </div>
-                            <hr />
-                            <div>
-                                <p className="payment_part1_1">
-                                    위 제품의 예상 수령 일자를 확인해보세요.
-                                </p>
-                                <p className="payment_part1_2">
-                                    오늘 날짜 +2일
-                                </p>
+                                <div>
+                                    <div>
+                                        <p className="payment_part1_1">
+                                            위 제품의 예상 수령 일자를
+                                            확인해보세요.
+                                        </p>
+                                        <p className="payment_part1_2">
+                                            오늘 날짜 +2일
+                                        </p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p className="payment_part1_title">
+                                        {product.prodPrice} &nbsp;원
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -349,7 +472,7 @@ function Payment_test() {
                                 총 주문 금액
                             </span>
                             <span className="payment_total_price">
-                                ￦ 1,250,000
+                                ￦&nbsp; {product.prodPrice}
                             </span>
                         </div>
                         <div className="payment_part3_2">
@@ -373,6 +496,7 @@ function Payment_test() {
                     </div>
                 </div>
             </div>
+
         </div>
     );
 }
