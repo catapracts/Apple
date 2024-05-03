@@ -78,7 +78,7 @@
 * DB 정규화
 * API 문서 작성 총괄
 * 형상 관리 총괄
-* BE : Member Domain, Payment관련 Domain(Payment, Payment Product), Cart관련 Domain(Cart, Cart Product) 구현 / Spring 개발환경 구현
+* BE : Member관련 Domain(Member, Address, Info, Card), Cart관련 Domain(Cart, Cart Product) 구현 / Spring 개발환경 구현
 * FE : Member Domain, Cart관련 Domain, Payment관련 Domain 간 FE/BE연동 / JWT, 보안 인증 구현
 * ERD, 프로젝트 기획 가이드 초안 제작, Domain별 API문서 제작
 <br/><br/>
@@ -88,14 +88,14 @@
 * BE : Product관련 Domain(Product, Hdd, Color, Plus) 구현
 * FE : Front 디자인 전체, Product관련 Domain간 FE/BE연동
 * 문서화 작업 제작(발표 PPT)
-* API 문서 작성
+* Product관련 API 문서 작성
 <br/><br/>
 
 
 ## 김기백
-* BE : Member관련 Domain(Address, Info, Card) 구현
-* FE : Member관련 Domain간 FE/BE연동
-* API 문서 작성
+* BE : Payment관련 Domain(Payment, Payment Product) 구현
+* FE : Payment관련 Domain간 FE/BE연동
+* Payment관련 API 문서 작성
 <br/><br/>
 
 
