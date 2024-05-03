@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
@@ -44,6 +44,21 @@ function Payment_test() {
     const changeCardCvc = (event) => {
         setCardCvc(event.target.value);
     };
+
+    // DB CartProduct
+    const [cartProduct, setCartProduct] = useState("");
+    const [cartSeq, setCartSeq] = useState("");
+    const [prodSeq, setProdSeq] = useState("");
+    const [cartpCnt, setCartpCnt] = useState("");
+
+    const { cartpSeq } = useParams();
+
+    const changeProdSeq = (event) => {
+        setProdSeq(event.target.value);
+    };
+
+    // DB PaymentProduct
+    const [paymentProduct, setPaymentProduct] = useState("");
 
     const createAddress = async () => {
         const req = {
@@ -95,12 +110,31 @@ function Payment_test() {
             });
     };
 
+    /* 카트프로덕트 1개 조회 */
+    const findByIdCartProduct = async () => {
+        await axios
+            .get(`http://localhost:3000/cart/getOneCartProduct/${1}`)
+            .then((resp) => {
+                console.log("[Payment_test.js] findByIdCart() success :D");
+                console.log(resp.data);
+                setCartProduct(resp.data);
+            })
+            .catch((err) => {
+                console.log("[Payment_test.js] findByIdCart() error :<");
+                console.log(err);
+            });
+    };
+
     // 해당 부분 관리자만 가능하게 해야함
     useEffect(() => {
         if (!auth) {
             alert("로그인 한 사용자만 게시글을 작성할 수 있습니다!");
             navigate(-1);
         }
+    }, []);
+
+    useEffect(() => {
+        findByIdCartProduct();
     }, []);
 
     return (
@@ -119,6 +153,7 @@ function Payment_test() {
                             <div className="d-flex justify-content-between">
                                 <h1 className="payment_part1_title">
                                     iPhone 15 256GB 옐로
+                                    {cartProduct.prodSeq}
                                 </h1>
                                 <h1 className="payment_part1_subtitle">1개</h1>
                             </div>

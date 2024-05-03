@@ -33,7 +33,7 @@ SELECT * FROM CARTPRODUCT
 
 
 <select id="findByIdCartProduct" parameterType="Integer" resultType="com.example.phoneShopping.cart.domain.CartProduct">
-SELECT * FROM CARTPRODUCT WHERE cartp_seq=#{cartpSeq}
+SELECT * FROM CARTPRODUCT WHERE cartpSeq=#{cartpSeq}
 </select>
 
 
