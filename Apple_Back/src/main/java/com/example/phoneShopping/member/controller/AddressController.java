@@ -21,10 +21,11 @@ import com.example.phoneShopping.member.dto.response.DeleteAddressResponse;
 import com.example.phoneShopping.member.dto.response.UpdateAddressResponse;
 import com.example.phoneShopping.member.service.AddressService;
 
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 
-@Tag(name = "AddressController", description = "주소 API")
+@Tag(name = "AddressController", description = "주소 정보 API")
 @RestController
 @RequestMapping("/address")
 @RequiredArgsConstructor
@@ -32,6 +33,7 @@ public class AddressController
 {
 	private final AddressService service;
 	
+	@Operation(summary = "createAddress() - 주소 정보 생성 API ", description = "주소 정보를 생성하여 DB에 값을 저장하는 API")
 	@PreAuthorize("isAuthenticated()")
 	@PostMapping("/create")
 	public ResponseEntity<CreateAddressResponse> createAddress(@RequestBody CreateAddressRequest req)

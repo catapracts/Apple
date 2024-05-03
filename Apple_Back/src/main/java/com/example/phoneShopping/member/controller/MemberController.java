@@ -35,7 +35,7 @@ import com.example.phoneShopping.member.dto.response.UpdateMemberResponse;
 import com.example.phoneShopping.member.exception.MemberException;
 import com.example.phoneShopping.member.service.MemberService;
 
-@Tag(name = "MemberController", description = "회원 API")
+@Tag(name = "MemberController", description = "계정 정보 API")
 @RestController
 @RequestMapping("/user")
 @RequiredArgsConstructor
