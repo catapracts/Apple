@@ -4,12 +4,12 @@
 
 
 # 📑목차
-* [개발 환경](#-개발-환경)
-* [사용 언어](#-사용-언어)
-* [구현 기능](#-구현-기능)
-* [개발 인원](#-개발-인원)
-* [Front End](#-Front-End)
-* [Back End](#-Back-End)
+* [개발 환경](#개발-환경)
+* [사용 언어](#사용-언어)
+* [구현 기능](#구현-기능)
+* [개발 인원](#개발-인원)
+* [Front End](#Front-End)
+* [Back End](#Back-End)
 <br/><br/>
 
 
@@ -78,23 +78,23 @@
 * DB 정규화
 * API 문서 작성 총괄
 * 형상 관리 총괄
-* BE : Member, Cart, Cart Product, Card, Address
-* FE : member, cart, card, address
-* API 문서 작성
+* BE : Member Domain, Payment관련 Domain(Payment, Payment Product), Cart관련 Domain(Cart, Cart Product) 구현 / Spring 개발환경 구현
+* FE : Member Domain, Cart관련 Domain, Payment관련 Domain 간 FE/BE연동 / JWT, 보안 인증 구현
+* ERD, 프로젝트 기획 가이드 초안 제작, Domain별 API문서 제작
 <br/><br/>
 
 
 ## 제지운
-* BE : Product
-* FE : common, product, component, admin
-* 문서화 작업 제작
+* BE : Product관련 Domain(Product, Hdd, Color, Plus) 구현
+* FE : Front 디자인 전체, Product관련 Domain간 FE/BE연동
+* 문서화 작업 제작(발표 PPT)
 * API 문서 작성
 <br/><br/>
 
 
 ## 김기백
-* BE : Payment, Payment Product
-* FE : store
+* BE : Member관련 Domain(Address, Info, Card) 구현
+* FE : Member관련 Domain간 FE/BE연동
 * API 문서 작성
 <br/><br/>
 
