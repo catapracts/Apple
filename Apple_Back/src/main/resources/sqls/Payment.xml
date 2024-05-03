@@ -8,22 +8,22 @@ SELECT * FROM PAYMENT
 
 
 <select id="findByIdPayment" parameterType="Integer" resultType="com.example.phoneShopping.payment.domain.Payment">
-SELECT * FROM PAYMENT WHERE pay_seq=#{paySeq}
+SELECT * FROM PAYMENT WHERE paySeq=#{paySeq}
 </select>
 
 
 <insert id="createPayment" parameterType="com.example.phoneShopping.payment.dto.param.CreatePaymentParam">
-INSERT INTO PAYMENT(mem_seq, pay_date, pay_status) VALUES(#{memSeq}, #{payDate}, #{payStatus})
+INSERT INTO PAYMENT(memSeq, payDate, payStatus) VALUES(#{memSeq}, #{payDate}, #{payStatus})
 </insert>
 
 
 <update id="updatePayment" parameterType="com.example.phoneShopping.payment.dto.param.UpdatePaymentParam">
-UPDATE PAYMENT SET mem_seq=#{memSeq}, pay_date=#{payDate}, pay_status=#{payStatus} WHERE pay_seq=#{paySeq}
+UPDATE PAYMENT SET memSeq=#{memSeq}, payDate=#{payDate}, payStatus=#{payStatus} WHERE paySeq=#{paySeq}
 </update>
 
 
 <delete id="deletePayment" parameterType="com.example.phoneShopping.payment.domain.Payment">
-DELETE FROM PAYMENT WHERE pay_seq=#{paySeq}
+DELETE FROM PAYMENT WHERE paySeq=#{paySeq}
 </delete>
 
 
@@ -33,22 +33,22 @@ SELECT * FROM PAYMENTPRODUCT
 
 
 <select id="findByIdPaymentProduct" parameterType="Integer" resultType="com.example.phoneShopping.payment.domain.PaymentProduct">
-SELECT * FROM PAYMENTPRODUCT WHERE payi_seq=#{payiSeq}
+SELECT * FROM PAYMENTPRODUCT WHERE payiSeq=#{payiSeq}
 </select>
 
 
 <insert id="createPaymentProduct" parameterType="com.example.phoneShopping.payment.dto.param.CreatePaymentProductParam">
-INSERT INTO PAYMENTPRODUCT(payi_seq, pay_seq, prod_seq, payi_price, payi_cnt) VALUES(#{payiSeq}, #{paySeq}, #{prodSeq}, #{payiPrice}, #{payiCount})
+INSERT INTO PAYMENTPRODUCT(payiSeq, paySeq, prodSeq, payiPrice, payiCnt) VALUES(#{payiSeq}, #{paySeq}, #{prodSeq}, #{payiPrice}, #{payiCount})
 </insert>
 
 
 <update id="updatePaymentProduct" parameterType="com.example.phoneShopping.payment.dto.param.UpdatePaymentProductParam">
-UPDATE PAYMENTPRODUCT SET pay_seq=#{paySeq}, prod_seq=#{prodSeq}, payi_price=#{payiPrice}, payi_cnt=#{payiCount} WHERE payi_seq=#{payiSeq}
+UPDATE PAYMENTPRODUCT SET paySeq=#{paySeq}, prodSeq=#{prodSeq}, payiPrice=#{payiPrice}, payiCnt=#{payiCount} WHERE payiSeq=#{payiSeq}
 </update>
 
 
 <delete id="deletePaymentProduct" parameterType="com.example.phoneShopping.payment.domain.PaymentProduct">
-DELETE FROM PAYMENTPRODUCT WHERE payi_seq=#{payiSeq}
+DELETE FROM PAYMENTPRODUCT WHERE payiSeq=#{payiSeq}
 </delete>
 
 

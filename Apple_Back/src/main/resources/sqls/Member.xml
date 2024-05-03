@@ -11,37 +11,37 @@ SELECT * FROM MEMBER
 
 
 <select id="findByIdMember" parameterType="String" resultType="com.example.phoneShopping.member.domain.Member">
-SELECT * FROM MEMBER WHERE mem_id=#{memId}
+SELECT * FROM MEMBER WHERE memId=#{memId}
 </select>
 
 
 <select id="findByIdSeq" parameterType="Integer" resultType="Integer">
-SELECT mem_seq FROM MEMBER WHERE mem_seq=#{memSeq}
+SELECT mem_seq FROM MEMBER WHERE memSeq=#{memSeq}
 </select>
 
 
 <select id="findByPw" parameterType="String" resultType="String">
-SELECT mem_pw FROM MEMBER WHERE mem_id=#{memId}
+SELECT mem_pw FROM MEMBER WHERE memId=#{memId}
 </select>
 
 
 <insert id="createMember" parameterType="com.example.phoneShopping.member.dto.param.CreateMemberParam">
-INSERT INTO MEMBER(mem_id, mem_pw) VALUES(#{memId}, #{memPw})
+INSERT INTO MEMBER(memId, memPw) VALUES(#{memId}, #{memPw})
 </insert>
 
 
 <update id="updateMember" parameterType="com.example.phoneShopping.member.dto.param.UpdateMemberParam">
-UPDATE MEMBER SET mem_pw=#{memPw} WHERE mem_id=#{memId}
+UPDATE MEMBER SET memPw=#{memPw} WHERE memId=#{memId}
 </update>
 
 
 <delete id="deleteMember" parameterType="com.example.phoneShopping.member.domain.Member">
-DELETE FROM MEMBER WHERE mem_id=#{memId}
+DELETE FROM MEMBER WHERE memId=#{memId}
 </delete>
 
 
 <select id="isExistUserId" parameterType="String" resultType="java.lang.Integer">
-SELECT count(*) FROM member	WHERE mem_id=#{memId}
+SELECT count(*) FROM member	WHERE memId=#{memId}
 </select>
 
 </mapper>
