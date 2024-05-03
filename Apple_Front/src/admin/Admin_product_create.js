@@ -279,7 +279,7 @@ function Admin_product_create() {
                                             <input
                                                 type="text"
                                                 className="create_form"
-                                                onClick={changeCapacity}
+                                                onChange={changeCapacity}
                                             ></input>
                                         </td>
                                     </tr>
@@ -291,7 +291,7 @@ function Admin_product_create() {
                                             <input
                                                 type="text"
                                                 className="create_form"
-                                                onClick={changePlusSeq}
+                                                onChange={changePlusSeq}
                                             ></input>
                                         </td>
                                     </tr>

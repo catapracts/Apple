@@ -11,5 +11,5 @@ import lombok.Setter;
 @NoArgsConstructor
 public class CreateAddressResponse 
 {
-	private int addrSeq;
+	int addrSeq;
 }

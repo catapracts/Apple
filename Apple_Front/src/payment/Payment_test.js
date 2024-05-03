@@ -2,7 +2,7 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../context/AuthProvider";
 import { HttpHeadersContext } from "../context/HttpHeadersProvider";
 import "./Payment.css";
@@ -16,39 +16,39 @@ function Payment_test() {
     const navigate = useNavigate();
 
     // DB Address
-    const [addr_zip, setAddr_Zip] = useState("");
-    const [addr_detail, setAddr_Detail] = useState("");
+    const [addrZip, setAddrZip] = useState("");
+    const [addrDetail, setAddrDetail] = useState("");
 
-    const changeAddr_Zip = (event) => {
-        setAddr_Zip(event.target.value);
+    const changeAddrZip = (event) => {
+        setAddrZip(event.target.value);
     };
-    const changeAddr_Detail = (event) => {
-        setAddr_Detail(event.target.value);
+    const changeAddrDetail = (event) => {
+        setAddrDetail(event.target.value);
     };
 
     // DB Card
-    const [card_comp, setCard_comp] = useState("");
-    const [card_num, setCard_num] = useState("");
-    const [card_date, setCard_date] = useState("");
-    const [card_cvc, setCard_cvc] = useState("");
+    const [cardComp, setCardComp] = useState("");
+    const [cardNum, setCardNum] = useState("");
+    const [cardDate, setCardDate] = useState("");
+    const [cardCvc, setCardCvc] = useState("");
 
-    const changeCard_comp = (event) => {
-        setCard_comp(event.target.value);
+    const changeCardComp = (event) => {
+        setCardComp(event.target.value);
     };
-    const changeCard_num = (event) => {
-        setCard_num(event.target.value);
+    const changeCardNum = (event) => {
+        setCardNum(event.target.value);
     };
-    const changeCard_date = (event) => {
-        setCard_date(event.target.value);
+    const changeCardDate = (event) => {
+        setCardDate(event.target.value);
     };
-    const changeCard_cvc = (event) => {
-        setCard_cvc(event.target.value);
+    const changeCardCvc = (event) => {
+        setCardCvc(event.target.value);
     };
 
     const createAddress = async () => {
         const req = {
-            addr_zip: addr_zip,
-            addr_detail: addr_detail,
+            addrZip: addrZip,
+            addrDetail: addrDetail,
         };
 
         console.log(`Header 값 : ${headers.Authorization}`);
@@ -72,10 +72,10 @@ function Payment_test() {
 
     const createCard = async () => {
         const req = {
-            card_comp: card_comp,
-            card_num: card_num,
-            card_date: card_date,
-            card_cvc: card_cvc,
+            cardComp: cardComp,
+            cardNum: cardNum,
+            cardDate: cardDate,
+            cardCvc: cardCvc,
         };
 
         await axios
@@ -94,6 +94,14 @@ function Payment_test() {
                 console.log(err);
             });
     };
+
+    // 해당 부분 관리자만 가능하게 해야함
+    useEffect(() => {
+        if (!auth) {
+            alert("로그인 한 사용자만 게시글을 작성할 수 있습니다!");
+            navigate(-1);
+        }
+    }, []);
 
     return (
         <div>
@@ -202,7 +210,7 @@ function Payment_test() {
                                             <input
                                                 type="text"
                                                 className="payment_form"
-                                                onChange={changeCard_comp}
+                                                onChange={changeCardComp}
                                             />
                                         </td>
                                     </tr>
@@ -214,7 +222,7 @@ function Payment_test() {
                                             <input
                                                 type="text"
                                                 className="payment_form"
-                                                onChange={changeCard_num}
+                                                onChange={changeCardNum}
                                             />
                                         </td>
                                     </tr>
@@ -226,7 +234,7 @@ function Payment_test() {
                                             <input
                                                 type="text"
                                                 className="payment_form"
-                                                onChange={changeCard_date}
+                                                onChange={changeCardDate}
                                             />
                                         </td>
                                     </tr>
@@ -238,7 +246,7 @@ function Payment_test() {
                                             <input
                                                 type="text"
                                                 className="payment_form"
-                                                onChange={changeCard_cvc}
+                                                onChange={changeCardCvc}
                                             />
                                         </td>
                                     </tr>
@@ -270,7 +278,7 @@ function Payment_test() {
                                             <input
                                                 type="text"
                                                 className="payment_form"
-                                                onClick={changeAddr_Zip}
+                                                onChange={changeAddrZip}
                                             />
                                         </td>
                                     </tr>
@@ -282,7 +290,7 @@ function Payment_test() {
                                             <input
                                                 type="text"
                                                 className="payment_form"
-                                                onClick={changeAddr_Detail}
+                                                onChange={changeAddrDetail}
                                             />
                                         </td>
                                     </tr>
@@ -293,9 +301,7 @@ function Payment_test() {
                                     size={"default"}
                                     color={"blue"}
                                     text={"등록하기"}
-                                    onClick={() => {
-                                        navigate("/product_detail/1");
-                                    }}
+                                    onClick={createAddress}
                                 ></Button>
                             </div>
                         </div>

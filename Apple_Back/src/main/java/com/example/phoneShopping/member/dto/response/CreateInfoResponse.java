@@ -11,5 +11,5 @@ import lombok.Setter;
 @NoArgsConstructor
 public class CreateInfoResponse 
 {
-	private int infoSeq;
+	int infoSeq;
 }
