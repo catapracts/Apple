@@ -1,15 +1,14 @@
 import { BrowserRouter } from "react-router-dom";
 
-import Header from "./common/Header"
-import Main from "./common/Main"
-import Footer from "./common/Footer"
+import Header from "./common/Header";
+import Main from "./common/Main";
+import Footer from "./common/Footer";
 import ScrollToTop from "./context/ScrollToTop";
-import AuthProvider from "./context/AuthProvider"
-import HttpHeadersProvider from "./context/HttpHeadersProvider";  // 여기까지가 페이지에 구성할 Component들 불러오기
-
-
+import AuthProvider from "./context/AuthProvider";
+import HttpHeadersProvider from "./context/HttpHeadersProvider"; // 여기까지가 페이지에 구성할 Component들 불러오기
 
 function App() {
+
 
   return (
     <div>
@@ -26,6 +25,7 @@ function App() {
       </BrowserRouter>
     </div>
   );
+
 }
 
 export default App;

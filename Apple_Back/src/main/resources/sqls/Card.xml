@@ -8,22 +8,22 @@ SELECT * FROM CARD;
 
 
 <select id="findByIdCard" parameterType="int" resultType="com.example.phoneShopping.member.domain.Card">
-SELECT * FROM CARD WHERE card_seq=#{cardSeq}
+SELECT * FROM CARD WHERE cardSeq=#{cardSeq}
 </select>
 
 
 <insert id="createCard" parameterType="com.example.phoneShopping.member.dto.param.CreateCardParam">
-INSERT INTO CARD(card_comp, card_num, card_date, card_cvc) VALUES(#{cardComp}, #{cardNum}, #{cardDate}, #{cardCvc})
+INSERT INTO CARD(cardComp, cardNum, cardDate, cardCvc) VALUES(#{cardComp}, #{cardNum}, #{cardDate}, #{cardCvc})
 </insert>
 
 
 <update id="updateCard" parameterType="com.example.phoneShopping.member.dto.param.UpdateCardParam">
-UPDATE CARD SET card_comp= #{cardComp}, card_num=#{cardNum}, card_date=#{cardDate}, card_cvc=#{cardCvc} WHERE card_seq=#{cardSeq}
+UPDATE CARD SET cardComp= #{cardComp}, cardNum=#{cardNum}, cardDate=#{cardDate}, cardCvc=#{cardCvc} WHERE cardSeq=#{cardSeq}
 </update>
 
 
 <delete id="deleteCard" parameterType="com.example.phoneShopping.member.domain.Card">
-DELETE FROM CARD WHERE card_seq=#{cardSeq}
+DELETE FROM CARD WHERE cardSeq=#{cardSeq}
 </delete>
 
 </mapper>
