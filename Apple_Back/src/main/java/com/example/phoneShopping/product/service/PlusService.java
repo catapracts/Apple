@@ -66,13 +66,13 @@ public class PlusService
 	}
 	
 	@Transactional(readOnly=true)
-	public Plus findByIdPlus(int plus_seq) 
+	public Plus findByIdPlus(int plusSeq) 
 	{
 		System.out.println("findByIdPlus동작");
-		dao.findByIdPlus(plus_seq);
-		System.out.println(dao.findByIdPlus(plus_seq).getPlusSeq());
-		System.out.println(dao.findByIdPlus(plus_seq).getPrice());
-		return dao.findByIdPlus(plus_seq);
+		dao.findByIdPlus(plusSeq);
+		System.out.println(dao.findByIdPlus(plusSeq).getPlusSeq());
+		System.out.println(dao.findByIdPlus(plusSeq).getPrice());
+		return dao.findByIdPlus(plusSeq);
 	}
 	
 	@Transactional
@@ -99,10 +99,14 @@ public class PlusService
 	}
 	
 	@Transactional
-	public DeletePlusResponse deletePlus(int plus_seq)
+	public DeletePlusResponse deletePlus(int plusSeq)
 	{
 		System.out.println("deletePlus동작");
-		int number = dao.deletePlus(plus_seq);
+		int number = dao.deletePlus(plusSeq);
+		if(number == 0)
+		{
+			System.out.println("삭제 실패, 정보가 존재하지 않습니다.");
+		}
 		return new DeletePlusResponse(number);
 	}
 }

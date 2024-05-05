@@ -33,7 +33,6 @@ public class UpdateProductParam
 
 	public UpdateProductParam(UpdateProductRequest req) 
 	{
-		this.prodSeq = req.getProdSeq();
 		this.prodName = req.getProdName();
 		this.prodPrice = req.getProdPrice();
 		this.prodCnt = req.getProdCnt();
