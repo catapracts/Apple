@@ -1,6 +1,5 @@
 package com.example.phoneShopping.cart.controller;
 
-
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
@@ -40,7 +39,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 
 import lombok.RequiredArgsConstructor;
 
-@Tag(name = "CartController", description = "Cart & Cart Product API")
+@Tag(name = "Cart & Cart Product Controller", description = "장바구니 & 장바구니 상품 API")
 @RestController
 @RequestMapping("/cart")
 @RequiredArgsConstructor

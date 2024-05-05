@@ -104,6 +104,10 @@ public class ProductService
 	{
 		System.out.println("deleteProduct 동작");
 		int number = dao.deleteProduct(prod_seq);
+		if(number == 0)
+		{
+			System.out.println("삭제 실패, 정보가 존재하지 않습니다.");
+		}
 		return new DeleteProductResponse(number);
 	}
 }
