@@ -11,5 +11,5 @@ import lombok.Setter;
 @NoArgsConstructor
 public class DeletePlusResponse 
 {
-	private int deleteRecordCount;
+	private int deletePlus;
 }

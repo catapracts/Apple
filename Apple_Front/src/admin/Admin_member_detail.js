@@ -9,29 +9,80 @@ import "./Admin.css";
 function Admin_member_detail() {
     const { auth, setAuth } = useContext(AuthContext);
     const [member, setMember] = useState({});
+    const [info, setInfo] = useState([]);
+    const [address, setAddress] = useState([]);
+    const [card, setCard] = useState([]);
     const { memId } = useParams();
 
     const navigate = useNavigate();
 
     /* 회원 1개 조회 */
-    const getOne = async () => {
+    const findByIdMember = async () => {
         await axios
             .get(`http://localhost:3000/user/${memId}`, {
                 params: { memId: auth ? auth : "" },
             })
             .then((resp) => {
-                console.log("[TestgetOne.js] getOne() success :D");
+                console.log("[Admin_member_detail.js] findByIdMember() success :D");
                 console.log(resp.data);
                 setMember(resp.data);
             })
             .catch((err) => {
-                console.log("[TestgetOne.js] getOne() error :<");
+                console.log("[Admin_member_detail.js] findByIdMember() error :<");
                 console.log(err);
             });
     };
 
+    /* Info 1개 조회 */
+	const findByIdInfo = async () => {
+
+		await axios.get(`http://localhost:3000/info/${1}`, {params : {memId : auth ? auth : ""}})
+			.then((resp) => {
+				console.log("[Mypage.js] findByIdInfo() success :D");
+                console.log(resp.data);
+                setInfo(resp.data)
+
+			}).catch((err) => {	
+				console.log("[Mypage.js] findByIdInfo() error :<");
+				console.log(err);
+			});
+	}
+
+	/* Address 1개 조회 */
+	const findByIdAddress = async () => {
+
+		await axios.get(`http://localhost:3000/address/${1}`, {params : {memId : auth ? auth : ""}})
+			.then((resp) => {
+				console.log("[Mypage.js] findByIdAddress() success :D");
+                console.log(resp.data);
+                setAddress(resp.data)
+
+			}).catch((err) => {	
+				console.log("[Mypage.js] findByIdAddress() error :<");
+				console.log(err);
+			});
+	}
+
+	/* Address 1개 조회 */
+	const findByIdCard = async () => {
+
+		await axios.get(`http://localhost:3000/card/${1}`, {params : {memId : auth ? auth : ""}})
+			.then((resp) => {
+				console.log("[Mypage.js] findByIdCard() success :D");
+                console.log(resp.data);
+                setCard(resp.data)
+
+			}).catch((err) => {	
+				console.log("[Mypage.js] findByIdCard() error :<");
+				console.log(err);
+			});
+	}
+
     useEffect(() => {
-        getOne();
+        findByIdMember();
+        findByIdInfo();
+		findByIdAddress();
+		findByIdCard();
     }, []);
 
     const updateMember = {
@@ -54,8 +105,8 @@ function Admin_member_detail() {
                         <h1 className="admin_title">회원 관리</h1>
                     </div>
 
-                    <div className="admin_member_part">
-                        <div className="admin_member_part1">
+                    <div className="d-flex justify-content-between">
+                        <div className="admin_member_part1 col-6">
                             <div>
                                 <h1 className="admin_member_title">계정</h1>
                             </div>
@@ -77,19 +128,19 @@ function Admin_member_detail() {
                                             <span>{member.memId}</span>
                                         </td>
                                     </tr>
-                                    <tr>
+                                    {/* <tr>
                                         <th className="admin_member_th">
                                             비밀번호
                                         </th>
                                         <td className="admin_member_td">
                                             <span>{member.memPw}</span>
                                         </td>
-                                    </tr>
+                                    </tr> */}
                                 </table>
                             </div>
                         </div>
 
-                        <div className="admin_member_part2">
+                        <div className="admin_member_part2 col-6">
                             <div>
                                 <h1 className="admin_member_title">
                                     회원 정보
@@ -102,32 +153,7 @@ function Admin_member_detail() {
                                             이름
                                         </th>
                                         <td className="admin_member_td">
-                                            <input
-                                                type="text"
-                                                className="admin_member_form"
-                                            />
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th className="admin_member_th">
-                                            연락처
-                                        </th>
-                                        <td className="admin_member_td">
-                                            <input
-                                                type="text"
-                                                className="admin_member_form"
-                                            />
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th className="admin_member_th">
-                                            성별
-                                        </th>
-                                        <td className="admin_member_td">
-                                            <input
-                                                type="text"
-                                                className="admin_member_form"
-                                            />
+                                            <span className="mypage_view">{info.infoName}</span>
                                         </td>
                                     </tr>
                                     <tr>
@@ -135,17 +161,31 @@ function Admin_member_detail() {
                                             생년월일
                                         </th>
                                         <td className="admin_member_td">
-                                            <input
-                                                type="text"
-                                                className="admin_member_form"
-                                            />
+                                            <span className="mypage_view">{info.infoBirth}</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th className="admin_member_th">
+                                            성별
+                                        </th>
+                                        <td className="admin_member_td">
+                                            <span className="mypage_view">{info.infoGender}</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th className="admin_member_th">
+                                            연락처
+                                        </th>
+                                        <td className="admin_member_td">
+                                            <span className="mypage_view">{info.infoPhone}</span>
                                         </td>
                                     </tr>
                                 </table>
                             </div>
                         </div>
-
-                        <div className="admin_member_part3">
+                    </div>
+                    <div className="d-flex justify-content-between">
+                        <div className="admin_member_part3 col-6">
                             <div>
                                 <h1 className="admin_member_title">
                                     배송지 관리
@@ -158,10 +198,7 @@ function Admin_member_detail() {
                                             이름
                                         </th>
                                         <td className="admin_member_td">
-                                            <input
-                                                type="text"
-                                                className="admin_member_form"
-                                            />
+                                            <span className="mypage_view">{info.infoName}</span>
                                         </td>
                                     </tr>
                                     <tr>
@@ -169,10 +206,7 @@ function Admin_member_detail() {
                                             연락처
                                         </th>
                                         <td className="admin_member_td">
-                                            <input
-                                                type="text"
-                                                className="admin_member_form"
-                                            />
+                                            <span className="mypage_view">{info.infoPhone}</span>
                                         </td>
                                     </tr>
                                     <tr>
@@ -180,10 +214,7 @@ function Admin_member_detail() {
                                             우편번호
                                         </th>
                                         <td className="admin_member_td">
-                                            <input
-                                                type="text"
-                                                className="admin_member_form"
-                                            />
+                                            <span className="mypage_view">{address.addrZip}</span>
                                         </td>
                                     </tr>
                                     <tr>
@@ -191,17 +222,14 @@ function Admin_member_detail() {
                                             주소
                                         </th>
                                         <td className="admin_member_td">
-                                            <input
-                                                type="text"
-                                                className="admin_member_form"
-                                            />
+                                            <span className="mypage_view">{address.addrDetail}</span>
                                         </td>
                                     </tr>
                                 </table>
                             </div>
                         </div>
 
-                        <div className="admin_member_part4">
+                        <div className="admin_member_part4 col-6">
                             <div>
                                 <h1 className="admin_member_title">
                                     결제 관리
@@ -214,10 +242,7 @@ function Admin_member_detail() {
                                             이름
                                         </th>
                                         <td className="admin_member_td">
-                                            <input
-                                                type="text"
-                                                className="admin_member_form"
-                                            />
+                                            <span className="mypage_view">{info.infoName}</span>
                                         </td>
                                     </tr>
                                     <tr>
@@ -225,10 +250,7 @@ function Admin_member_detail() {
                                             카드사
                                         </th>
                                         <td className="admin_member_td">
-                                            <input
-                                                type="text"
-                                                className="admin_member_form"
-                                            />
+                                            <span className="mypage_view">{card.cardComp}</span>
                                         </td>
                                     </tr>
                                     <tr>
@@ -236,10 +258,7 @@ function Admin_member_detail() {
                                             카드 번호
                                         </th>
                                         <td className="admin_member_td">
-                                            <input
-                                                type="text"
-                                                className="admin_member_form"
-                                            />
+                                            <span className="mypage_view">{card.cardNum}</span>
                                         </td>
                                     </tr>
                                     <tr>
@@ -247,10 +266,7 @@ function Admin_member_detail() {
                                             카드 유효 기간
                                         </th>
                                         <td className="admin_member_td">
-                                            <input
-                                                type="text"
-                                                className="admin_member_form"
-                                            />
+                                            <span className="mypage_view">{card.cardDate}</span>
                                         </td>
                                     </tr>
                                     <tr>
@@ -258,10 +274,7 @@ function Admin_member_detail() {
                                             CVC 번호
                                         </th>
                                         <td className="admin_member_td">
-                                            <input
-                                                type="text"
-                                                className="admin_member_form"
-                                            />
+                                            <span className="mypage_view">{card.cardCvc}</span>
                                         </td>
                                     </tr>
                                 </table>
@@ -277,11 +290,6 @@ function Admin_member_detail() {
                             onClick={() => {
                                 navigate(-1);
                             }}
-                        ></Button>
-                        <Button
-                            size={"default"}
-                            color={"blue"}
-                            text={"수정하기"}
                         ></Button>
                     </div>
                 </div>

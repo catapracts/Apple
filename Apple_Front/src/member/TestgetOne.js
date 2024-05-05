@@ -86,10 +86,12 @@ function TestgetOne() {
 					</div>
 
 					<div className="d-flex justify-content-center">
-					    <Button size={"default"} color={"none"} text={"뒤로가기"}
+					    <Button size={"default"} color={"none"}text={"뒤로가기"}
 							onClick={() => {navigate(-1)}}></Button>
 
-						<Link className="btn btn-outline-secondary"  to="/TestUpdate/${mem_id}" state={{ member: updateMember }}> 수정</Link>
+						<Link className="btn btn-outline-secondary"
+							to="/TestUpdate/${mem_id}"
+							state={{ member: updateMember }}> 수정</Link>
 					</div>
 				</div>
 			</div>

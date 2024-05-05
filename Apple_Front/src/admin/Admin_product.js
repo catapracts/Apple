@@ -1,21 +1,28 @@
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useParams, useLocation, useNavigate } from "react-router-dom";
 import Pagination from "react-js-pagination";
 import Button from '../common/Button';
 import React, { useState, useContext, useEffect } from "react";
+import { AuthContext } from "../context/AuthProvider";
+
 import './Admin.css';
 
 function Admin_product() {
     
+    const [product, setProduct] = useState([]);
+
     const [productList, setProductList] = useState([]);
     const [hddList, setHddList] = useState([]);
     const [colorList, setColorList] = useState([]);
     const [plusList, setPlusList] = useState([]);
 
     const [prodSeq, setProdSeq] = useState("");
+    const [prodName, setProdName] = useState("");
+    const [prodPrice, setProdPrice] = useState("");
+    const [prodCnt, setProdCnt] = useState("");
     const [hddSeq, setHddSeq] = useState("");
     const [colorSeq, setColorSeq] = useState("");
-    const [PlusSeq, setPlusSeq] = useState("");
+    const [plusSeq, setPlusSeq] = useState("");
 
     // const [getAll] = useState([]);
 
@@ -24,7 +31,7 @@ function Admin_product() {
 	// const [totalCnt, setTotalCnt] = useState(0);
 
     // // Link 용 (함수) 
-    let navigate = useNavigate();
+    const navigate = useNavigate();
 
     /* product 전체 조회 */
 	const getAllProduct = async () => {
@@ -41,10 +48,6 @@ function Admin_product() {
 				console.log(err);
 			});
 	}
-
-    useEffect(() => {
-		getAllProduct();
-	}, []);
     
     /* hdd 전체 조회 */
 	const getAllHdd = async () => {
@@ -62,10 +65,6 @@ function Admin_product() {
 			});
 	}
 
-    useEffect(() => {
-		getAllHdd();
-	}, []);
-
     /* color 전체 조회 */
 	const getAllColor = async () => {
 
@@ -81,10 +80,6 @@ function Admin_product() {
 				console.log(err);
 			});
 	}
-
-    useEffect(() => {
-		getAllColor();
-	}, []);
 
     /* plus 전체 조회 */
 	const getAllPlus = async () => {
@@ -103,22 +98,24 @@ function Admin_product() {
 	}
 
     useEffect(() => {
+        getAllProduct();
+		getAllHdd();
+		getAllColor();
 		getAllPlus();
 	}, []);
-    
-    //     const changeChoice = (event) => { setChoiceVal(event.target.value); }
-    //     const changeSearch = (event) => { setSearchVal(event.target.value); }
-    //     const search = () => {
-    //         console.log("[BbsList.js searchBtn()] choiceVal=" + choiceVal + ", searchVal=" + searchVal);
-    
-    //         navigate("/bbslist");
-    //         getBbsList(choiceVal, searchVal, 1);
-    //     }
-    
-    //     const changePage = (page) => {
-    //         setPage(page);
-    //         getBbsList(choiceVal, searchVal, page);
-    //     }
+
+    const updateProduct = {
+        prodSeq: product.prodSeq,
+        prodName: product.prodName,
+        prodPrice: product.prodPrice,
+        prodCnt: product.prodCnt,
+        hddSeq: product.hddSeq,
+        colorSeq: product.colorSeq
+    }
+
+    const moveupdateProduct = (event) => {
+        navigate(`/admin/product/update/:${prodSeq}`, {state: {data: product}});
+    }
 
     return (
         <div>
@@ -213,6 +210,9 @@ function Admin_product() {
 
                     <div>
                         <div>
+                            <h1 className="admin_product_subtitle">Product</h1>
+                        </div>
+                        <div>
                             <table className="product_table">
                                 <thead>
                                     <th className="product_th col-2">모델명</th>
@@ -273,7 +273,7 @@ function TableRow_hdd(props) {
             {
             <>
                 <td className="product_td">
-                    <Link to={{ pathname: `/admin/hdd/${hdd.hddSeq}`}}>
+                    <Link to={{ pathname: `/admin/hdd/update/${hdd.hddSeq}`}}>
                         <span className="">{hdd.hddSeq}</span>
                     </Link>
                 </td>
@@ -294,7 +294,7 @@ function TableRow_color(props) {
             {
             <>
                 <td className="product_td">
-                    <Link to={{ pathname: `/admin/color/${color.colorSeq}`}}>
+                    <Link to={{ pathname: `/admin/color/update/${color.colorSeq}`}}>
                         <span className="">{color.colorSeq}</span>
                     </Link>
                 </td>
@@ -314,7 +314,7 @@ function TableRow_plus(props) {
             {
             <>
                 <td className="product_td">
-                    <Link to={{ pathname: `/admin/plus/${plus.plusSeq}`}}>
+                    <Link to={{ pathname: `/admin/plus/update/${plus.plusSeq}`}}>
                         <span className="">{plus.plusSeq}</span>
                     </Link>
                 </td>
@@ -334,7 +334,7 @@ function TableRow_prod(props) {
             {
             <>
                 <td className="product_td">
-                    <Link to={{ pathname: `/admin/product/${product.prodSeq}`}}>
+                    <Link to={{ pathname: `/admin/product/getOne/${product.prodSeq}` }}>
                         <span className="">{product.prodSeq}</span>
                     </Link>
                 </td>

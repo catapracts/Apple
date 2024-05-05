@@ -81,7 +81,7 @@ function TableRow(props) {
 
                             <td className="member_td">
                                 <Link to={{ pathname: `/admin/member/${member.memId}` }}>
-                                <span className="underline bbs-title" >{member.memId}</span>
+                                    <span className="underline bbs-title" >{member.memId}</span>
                                 </Link>
                             </td>
                             <td className="member_td">{member.memPw}</td>
