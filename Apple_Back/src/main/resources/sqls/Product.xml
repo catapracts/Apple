@@ -10,7 +10,7 @@ values(#{prodSeq}, #{prodName}, #{prodPrice}, #{prodCnt}, #{hddSeq}, #{colorSeq}
 
 <!-- 상품 상세 GET -->
 <select id="findByIdProduct" parameterType="String" resultType="com.example.phoneShopping.product.domain.Product">
-select prodSeq from product where prodSeq=#{prodSeq}
+select * from product where prodSeq=#{prodSeq}
 </select>
 
 <!-- 상품 목록 GET -->

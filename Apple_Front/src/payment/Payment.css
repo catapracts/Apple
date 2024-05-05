@@ -1,3 +1,7 @@
+.unvisible {
+    visibility: hidden;
+}
+
 .payment_part, .payment_success_part{
     margin-top: 90px;
 }

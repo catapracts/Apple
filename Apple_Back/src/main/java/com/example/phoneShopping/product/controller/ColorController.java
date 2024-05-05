@@ -50,7 +50,7 @@ public class ColorController
 	}
 	
 	@PreAuthorize("isAuthenticated()")
-	@GetMapping("/{colorSeq}")
+	@GetMapping("/getOne/{colorSeq}")
 	public Color findByIdColor(@PathVariable(value = "colorSeq") int colorSeq)
 	{
 		System.out.println("color 정보 1개 출력");
