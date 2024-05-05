@@ -50,7 +50,7 @@ public class PlusController
 	}
 	
 	@PreAuthorize("isAuthenticated()")
-	@GetMapping("/{plusSeq}")
+	@GetMapping("/getOne/{plusSeq}")
 	public Plus findByIdPlus(@PathVariable(value = "plusSeq") int plusSeq)
 	{
 		System.out.println("Plus 정보 1개 출력");
@@ -59,7 +59,7 @@ public class PlusController
 	}
 	
 	@PreAuthorize("isAuthenticated()")
-	@PatchMapping("/{plusSeq}")
+	@PatchMapping("/update/{plusSeq}")
 	public ResponseEntity<UpdatePlusResponse> updatePlus(@Valid @RequestBody UpdatePlusRequest req)
 	{
 		System.out.println("Plus 정보 수정");
@@ -67,7 +67,7 @@ public class PlusController
 	}
 	
 	@PreAuthorize("isAuthenticated()")
-	@DeleteMapping("/{plusSeq}")
+	@DeleteMapping("/delete/{plusSeq}")
 	public ResponseEntity<DeletePlusResponse> deletePlus(@PathVariable(value = "plusSeq") int plusSeq)
 	{
 		System.out.println("Plus 정보 제거");

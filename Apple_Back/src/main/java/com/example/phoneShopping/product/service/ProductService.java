@@ -27,6 +27,7 @@ public class ProductService
 	private final ProductDao dao;
 	
 	// 상품 추가
+	@Transactional
 	public CreateProductResponse createProduct(CreateProductRequest req) 
 	{
 		saveProduct(req);
@@ -48,15 +49,18 @@ public class ProductService
 	
 	
 	// 상품 상세 1개
+	@Transactional
 	public Product findByIdProduct(String prodSeq) 
 	{
 		System.out.println("findByIdProduct 동작");
+		dao.findByIdProduct(prodSeq);
 		
 		return dao.findByIdProduct(prodSeq);
 	}
 	
 	
 	// 상품 목록
+	@Transactional
 	public List<Product> findAllProduct() 
 	{
 		System.out.println("findAllProduct 동작");
@@ -72,6 +76,7 @@ public class ProductService
 	
 	
 	// 상품 수정
+	@Transactional
 	public UpdateProductResponse updateProduct(UpdateProductRequest req) 
 	{
 		findByIdProduct(req.getProdSeq());
@@ -100,6 +105,7 @@ public class ProductService
 	}
 	
 	// 상품 삭제
+	@Transactional
 	public DeleteProductResponse deleteProduct(String prod_seq) 
 	{
 		System.out.println("deleteProduct 동작");

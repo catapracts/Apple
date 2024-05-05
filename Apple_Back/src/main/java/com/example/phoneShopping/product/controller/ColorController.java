@@ -59,7 +59,7 @@ public class ColorController
 	}
 	
 	@PreAuthorize("isAuthenticated()")
-	@PatchMapping("/{colorSeq}")
+	@PatchMapping("/update/{colorSeq}")
 	public ResponseEntity<UpdateColorResponse> updateColor(@Valid @RequestBody UpdateColorRequest req)
 	{
 		System.out.println("Color 정보 수정");
@@ -67,7 +67,7 @@ public class ColorController
 	}
 	
 	@PreAuthorize("isAuthenticated()")
-	@DeleteMapping("/{colorSeq}")
+	@DeleteMapping("/delete/{colorSeq}")
 	public ResponseEntity<DeleteColorResponse> deleteColor(@PathVariable(value = "colorSeq") int colorSeq)
 	{
 		System.out.println("Color 정보 제거");

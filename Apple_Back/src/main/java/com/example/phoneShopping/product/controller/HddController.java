@@ -50,7 +50,7 @@ public class HddController
 	}
 	
 	@PreAuthorize("isAuthenticated()")
-	@GetMapping("/{hddSeq}")
+	@GetMapping("/getOne/{hddSeq}")
 	public Hdd findByIdHdd(@PathVariable(value = "hddSeq") int hddSeq)
 	{
 		System.out.println("Hdd 정보 1개 출력");
@@ -59,7 +59,7 @@ public class HddController
 	}
 	
 	@PreAuthorize("isAuthenticated()")
-	@PatchMapping("/{hddSeq}")
+	@PatchMapping("/update/{hddSeq}")
 	public ResponseEntity<UpdateHddResponse> updateHdd(@Valid @RequestBody UpdateHddRequest req)
 	{
 		System.out.println("Hdd 정보 수정");
@@ -67,7 +67,7 @@ public class HddController
 	}
 	
 	@PreAuthorize("isAuthenticated()")
-	@DeleteMapping("/{hddSeq}")
+	@DeleteMapping("/delete/{hddSeq}")
 	public ResponseEntity<DeleteHddResponse> deleteHdd(@PathVariable(value = "hddSeq") int hddSeq)
 	{
 		System.out.println("Hdd 정보 제거");

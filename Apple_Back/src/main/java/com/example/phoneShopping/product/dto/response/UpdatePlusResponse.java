@@ -11,5 +11,5 @@ import lombok.Setter;
 @NoArgsConstructor
 public class UpdatePlusResponse 
 {
-	private int updatedPlus;
+	private int updatePlus;
 }

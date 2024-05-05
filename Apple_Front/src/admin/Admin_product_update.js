@@ -9,6 +9,8 @@ import Button from '../common/Button';
 
 function Admin_product_update() {
    
+    const { headers, setHeaders } = useContext(HttpHeadersContext);
+	const { auth, setAuth } = useContext(AuthContext);
     const navigate = useNavigate();
 
     const location = useLocation();
@@ -37,11 +39,11 @@ function Admin_product_update() {
             prodPrice: prodPrice,
             prodCnt: prodCnt,
             hddSeq: hddSeq,
-            colorSeq: colorSeq,
-        };
+            colorSeq: colorSeq
+        }
 
         await axios
-            .patch(`http://localhost:3000/admin/product/update/${product.prodSeq}`, req)
+            .patch(`http://localhost:3000/admin/product/update/${product.prodSeq}`, req, {headers: headers})
             .then((resp) => {
                 console.log("[Admin_product_updqte.js] updateProduct() success :D");
                 console.log(resp.data);

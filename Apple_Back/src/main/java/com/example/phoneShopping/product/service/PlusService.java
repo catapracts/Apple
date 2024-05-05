@@ -65,14 +65,13 @@ public class PlusService
 		return list;
 	}
 	
-	@Transactional(readOnly=true)
-	public Plus findByIdPlus(int plus_seq) 
+	@Transactional
+	public Plus findByIdPlus(int plusSeq) 
 	{
 		System.out.println("findByIdPlus동작");
-		dao.findByIdPlus(plus_seq);
-		System.out.println(dao.findByIdPlus(plus_seq).getPlusSeq());
-		System.out.println(dao.findByIdPlus(plus_seq).getPrice());
-		return dao.findByIdPlus(plus_seq);
+		dao.findByIdPlus(plusSeq);
+
+		return dao.findByIdPlus(plusSeq);
 	}
 	
 	@Transactional
@@ -99,10 +98,10 @@ public class PlusService
 	}
 	
 	@Transactional
-	public DeletePlusResponse deletePlus(int plus_seq)
+	public DeletePlusResponse deletePlus(int plusSeq)
 	{
 		System.out.println("deletePlus동작");
-		int number = dao.deletePlus(plus_seq);
+		int number = dao.deletePlus(plusSeq);
 		return new DeletePlusResponse(number);
 	}
 }

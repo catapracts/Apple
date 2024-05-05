@@ -17,12 +17,6 @@ function Admin_product() {
     const [plusList, setPlusList] = useState([]);
 
     const [prodSeq, setProdSeq] = useState("");
-    const [prodName, setProdName] = useState("");
-    const [prodPrice, setProdPrice] = useState("");
-    const [prodCnt, setProdCnt] = useState("");
-    const [hddSeq, setHddSeq] = useState("");
-    const [colorSeq, setColorSeq] = useState("");
-    const [plusSeq, setPlusSeq] = useState("");
 
     // const [getAll] = useState([]);
 
@@ -273,7 +267,7 @@ function TableRow_hdd(props) {
             {
             <>
                 <td className="product_td">
-                    <Link to={{ pathname: `/admin/hdd/update/${hdd.hddSeq}`}}>
+                    <Link to={{ pathname: `/admin/hdd/getOne/${hdd.hddSeq}`}}>
                         <span className="">{hdd.hddSeq}</span>
                     </Link>
                 </td>
@@ -294,7 +288,7 @@ function TableRow_color(props) {
             {
             <>
                 <td className="product_td">
-                    <Link to={{ pathname: `/admin/color/update/${color.colorSeq}`}}>
+                    <Link to={{ pathname: `/admin/color/getOne/${color.colorSeq}`}}>
                         <span className="">{color.colorSeq}</span>
                     </Link>
                 </td>
@@ -314,7 +308,7 @@ function TableRow_plus(props) {
             {
             <>
                 <td className="product_td">
-                    <Link to={{ pathname: `/admin/plus/update/${plus.plusSeq}`}}>
+                    <Link to={{ pathname: `/admin/plus/getOne/${plus.plusSeq}`}}>
                         <span className="">{plus.plusSeq}</span>
                     </Link>
                 </td>

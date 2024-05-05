@@ -145,9 +145,6 @@ function Mypage() {
 									</tr>
 								</table>
 							</div>
-							<div className="d-flex justify-content-center">
-								<Button size={"default"} color={"blue"}text={"등록하기"}></Button>
-							</div>
 						</div>
 					</div>
 
@@ -184,9 +181,6 @@ function Mypage() {
 									</tr>
 								</table>
 							</div>
-							<div className="d-flex justify-content-center">
-								<Button size={"default"} color={"blue"}text={"등록하기"}></Button>
-							</div>
 						</div>
 
 						<div className="mypage_part4 col-6">
@@ -213,7 +207,7 @@ function Mypage() {
 										</td>
 									</tr>
 									<tr>
-										<th className="mypage_th">카드 유효 기간</th>
+										<th className="mypage_th">유효 기간</th>
 										<td className="mypage_td">
 											<span className="mypage_view">{card.cardDate}</span>
 										</td>
@@ -226,11 +220,9 @@ function Mypage() {
 									</tr>
 								</table>
 							</div>
-							<div className="d-flex justify-content-center">
-								<Button size={"default"} color={"blue"}text={"등록하기"}></Button>
-							</div>
 						</div>
 					</div>
+					<p />
 					<div className="d-flex justify-content-center">
 					    <Button size={"default"} color={"none"} text={"뒤로가기"}
 							onClick={() => {navigate(-1)}}></Button>

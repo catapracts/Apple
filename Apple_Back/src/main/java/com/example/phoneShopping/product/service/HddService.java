@@ -65,15 +65,13 @@ public class HddService
 		return list;
 	}
 	
-	@Transactional(readOnly=true)
-	public Hdd findByIdHdd(int hdd_seq) 
+	@Transactional
+	public Hdd findByIdHdd(int hddSeq) 
 	{
 		System.out.println("findByIdHdd동작");
-		dao.findByIdHdd(hdd_seq);
-		System.out.println(dao.findByIdHdd(hdd_seq).getHddSeq());
-		System.out.println(dao.findByIdHdd(hdd_seq).getCapacity());
-		System.out.println(dao.findByIdHdd(hdd_seq).getPlusSeq());
-		return dao.findByIdHdd(hdd_seq);
+		dao.findByIdHdd(hddSeq);
+
+		return dao.findByIdHdd(hddSeq);
 	}
 	
 	@Transactional

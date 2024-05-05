@@ -11,5 +11,5 @@ import lombok.Setter;
 @NoArgsConstructor
 public class UpdateHddResponse 
 {
-	private int updatedHdd;
+	private int updateHdd;
 }

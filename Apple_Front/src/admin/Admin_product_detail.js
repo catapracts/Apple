@@ -9,12 +9,8 @@ import Button from '../common/Button';
 function Admin_product_detail() {
 
     const { auth, setAuth } = useContext(AuthContext)
-
     const [product, setProduct] = useState({});
-    
-    const {prodSeq} = useParams();  
-
-    
+    const {prodSeq} = useParams();
 
     const navigate = useNavigate();
 
@@ -70,7 +66,7 @@ function Admin_product_detail() {
                                     <tr className="create_tr">
                                         <th className="create_th">상품 모델명</th>
                                         <td className="create_td">
-                                            <span>{prodSeq}</span>
+                                            <span>{product.prodSeq}</span>
                                         </td>
                                     </tr>
                                     <tr className="create_tr">
@@ -110,8 +106,8 @@ function Admin_product_detail() {
                     <div className="d-flex justify-content-center">
                         <Button size={"default"} color={"none"} text={"뒤로가기"}></Button>
                         <Link to="/admin/product/update/${prodSeq}"
-                            state={{ product: updateProduct}}>
-                            <Button size={"default"} color={"blue"} text={"수정하기"}></Button>
+                            state={{ product: updateProduct}} >
+                            <Button size={"default"} color={"blue"} text={"수정하기"} ></Button>
                         </Link>
                     </div>
                 </div>

@@ -17,8 +17,11 @@ import Admin_product from "../admin/Admin_product"
 import Admin_product_detail from "../admin/Admin_product_detail"
 import Admin_product_create from "../admin/Admin_product_create"
 import Admin_product_update from "../admin/Admin_product_update"
+import Admin_hdd_detail from "../admin/Admin_hdd_detail"
 import Admin_hdd_update from "../admin/Admin_hdd_update"
+import Admin_color_detail from "../admin/Admin_color_detail"
 import Admin_color_update from "../admin/Admin_color_update"
+import Admin_plus_detail from "../admin/Admin_plus_detail"
 import Admin_plus_update from "../admin/Admin_plus_update"
 
 import Admin_payment from "../admin/Admin_payment"
@@ -94,8 +97,11 @@ function Router() {
 				<Route path="/admin/product/create" element={<Admin_product_create />}></Route>
 				<Route path="/admin/product/getOne/:prodSeq" element={<Admin_product_detail />}></Route>
 				<Route path="/admin/product/update/:prodSeq" element={<Admin_product_update />}></Route>
+				<Route path="/admin/hdd/getOne/:hddSeq" element={<Admin_hdd_detail />}></Route>
 				<Route path="/admin/hdd/update/:hddSeq" element={<Admin_hdd_update />}></Route>
+				<Route path="/admin/color/getOne/:colorSeq" element={<Admin_color_detail />}></Route>
 				<Route path="/admin/color/update/:colorSeq" element={<Admin_color_update />}></Route>
+				<Route path="/admin/plus/getOne/:plusSeq" element={<Admin_plus_detail />}></Route>
 				<Route path="/admin/plus/update/:plusSeq" element={<Admin_plus_update />}></Route>
 
 				<Route path="/admin/payment" element={<Admin_payment />}></Route>
