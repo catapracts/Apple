@@ -4,7 +4,7 @@ export const AuthContext = createContext(); // AuthContext라는 이름으로 cr
 
 function AuthProvider({ children }) {	// AuthProvider라는 Component가 어떻게 동작할지 명시 - 이 때, children prop을 사용한다.
 
-	const [auth, setAuth] = useState(localStorage.getItem("mem_id"));	// localStorage.getItem("id")를 초기값으로 사용하고, 상수형식으로 auth와 setAuth함수를 useState를 사용하여 만든다.
+	const [auth, setAuth] = useState(localStorage.getItem("memId"));	// localStorage.getItem("id")를 초기값으로 사용하고, 상수형식으로 auth와 setAuth함수를 useState를 사용하여 만든다.
 
 	const value = {auth, setAuth };	// value라는 변수에 아까 생성한 auth와 setAuth를 객체형식으로 저장한다.
 
