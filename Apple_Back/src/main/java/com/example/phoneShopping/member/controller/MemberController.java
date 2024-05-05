@@ -128,7 +128,7 @@ public class MemberController
 	
 	
 	@Operation(summary = "findAllMember() - 계정 정보 전체 조회 API ", 
-			description = "전체 계정 정보를 조회하는 method DB안에 저장된 member table의 모든 값을 불러온다.")
+			description = "전체 계정 정보를 조회하는 method로 DB안에 저장된 member table의 모든 값을 불러온다.")
 	@ApiResponses(value = {
 			@ApiResponse(responseCode = "200", description="findAllMember성공"),
 			@ApiResponse(responseCode = "500", description="findAllMember실패, 정보를 불러오는데 오류가 발생했습니다.")

@@ -105,6 +105,10 @@ public class CardService
 	{
 		System.out.println("deleteCard동작");
 		int number = dao.deleteCard(cardSeq);
+		if(number == 0)
+		{
+			System.out.println("삭제 실패, 정보가 존재하지 않습니다.");
+		}
 		return new DeleteCardResponse(number);
 	}
 }

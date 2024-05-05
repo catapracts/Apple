@@ -116,6 +116,10 @@ public class InfoService
 	{
 		System.out.println("deleteInfo동작");
 		int number = dao.deleteInfo(infoSeq);
+		if(number == 0)
+		{
+			System.out.println("삭제 실패, 정보가 존재하지 않습니다.");
+		}
 		return new DeleteInfoResponse(number);
 	}	
 }

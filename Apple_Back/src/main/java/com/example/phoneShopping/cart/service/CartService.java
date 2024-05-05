@@ -110,6 +110,10 @@ public class CartService
 	{
 		System.out.println("deleteCart동작");
 		int number = dao.deleteCart(cartSeq);
+		if(number == 0)
+		{
+			System.out.println("삭제 실패, 정보가 존재하지 않습니다.");
+		}		
 		return new DeleteCartResponse(number);
 	}
 	
@@ -192,6 +196,10 @@ public class CartService
 	{
 		System.out.println("deleteCartProduct동작");
 		int number = dao.deleteCartProduct(cartpSeq);
+		if(number == 0)
+		{
+			System.out.println("삭제 실패, 정보가 존재하지 않습니다.");
+		}
 		return new DeleteCartProductResponse(number);		
 	}
     
