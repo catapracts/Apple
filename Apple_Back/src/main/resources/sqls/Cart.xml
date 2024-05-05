@@ -43,7 +43,7 @@ INSERT INTO CARTPRODUCT(cartSeq, prodSeq, cartpCnt) VALUES(#{cartSeq}, #{prodSeq
 
 
 <update id="updateCartProduct" parameterType="com.example.phoneShopping.cart.dto.param.UpdateCartProductParam">
-UPDATE CARTPRODUCT SET cartSeq=#{cartSeq}, prodSeq=#{prodSeq}, cartpCnt=#{cartpCnt} WHERE cartp_seq=#{cartpSeq}
+UPDATE CARTPRODUCT SET cartSeq=#{cartSeq}, prodSeq=#{prodSeq}, cartpCnt=#{cartpCnt} WHERE cartpSeq=#{cartpSeq}
 </update>
 
 

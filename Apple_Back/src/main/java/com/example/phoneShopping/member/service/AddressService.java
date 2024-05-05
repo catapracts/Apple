@@ -102,6 +102,10 @@ public class AddressService
 	{
 		System.out.println("deleteAddress동작");
 		int number = addressDao.deleteAddress(addrSeq);
+		if(number == 0)
+		{
+			System.out.println("삭제 실패, 정보가 존재하지 않습니다.");
+		}
 		return new DeleteAddressResponse(number);
 	}
 }
