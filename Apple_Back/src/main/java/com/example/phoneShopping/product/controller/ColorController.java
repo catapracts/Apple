@@ -96,8 +96,9 @@ public class ColorController
 			@ApiResponse(responseCode = "405", description="수정 실패, 모든 정보를 입력했는지 확인하세요")
 	})
 	@PreAuthorize("isAuthenticated()")
-	@PatchMapping("/{colorSeq}")
+	@PatchMapping("/update/{colorSeq}")
 	public ResponseEntity<UpdateColorResponse> updateColor(@RequestBody UpdateColorRequest req)
+
 	{
 		System.out.println("Color 정보 수정");
 		return ResponseEntity.ok(service.updateColor(req));
@@ -111,7 +112,7 @@ public class ColorController
 			@ApiResponse(responseCode = "405", description="삭제 실패, 다시 입력해주세요")
 	})
 	@PreAuthorize("isAuthenticated()")
-	@DeleteMapping("/{colorSeq}")
+	@DeleteMapping("/delete/{colorSeq}")
 	public ResponseEntity<DeleteColorResponse> deleteColor(
 			@Parameter(name = "colorSeq", description = "특정 색깔 정보 삭제에 사용할 ID값", example = "6", required = true)
 			@PathVariable(value = "colorSeq") int colorSeq)

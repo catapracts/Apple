@@ -11,5 +11,5 @@ import lombok.Setter;
 @NoArgsConstructor
 public class UpdateColorResponse 
 {
-	private int updatedColor;
+	int updateColor;
 }

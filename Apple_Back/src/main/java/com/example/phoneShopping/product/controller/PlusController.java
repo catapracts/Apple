@@ -80,7 +80,7 @@ public class PlusController
 			@ApiResponse(responseCode = "404", description="존재하지 않는 정보입니다.")
 	})
 	@PreAuthorize("isAuthenticated()")
-	@GetMapping("/{plusSeq}")
+	@GetMapping("/getOne/{plusSeq}")
 	public Plus findByIdPlus(
 			@Parameter(name = "plusSeq", description = "특정 추가 금액 정보 조회에 사용할 ID값", example = "5", required = true)
 			@PathVariable(value = "plusSeq") int plusSeq)
@@ -98,7 +98,7 @@ public class PlusController
 			@ApiResponse(responseCode = "405", description="수정 실패, 모든 정보를 입력했는지 확인하세요")
 	})
 	@PreAuthorize("isAuthenticated()")
-	@PatchMapping("/{plusSeq}")
+	@PatchMapping("/update/{plusSeq}")
 	public ResponseEntity<UpdatePlusResponse> updatePlus(@RequestBody UpdatePlusRequest req)
 	{
 		System.out.println("Plus 정보 수정");
@@ -113,7 +113,7 @@ public class PlusController
 			@ApiResponse(responseCode = "405", description="삭제 실패, 다시 입력해주세요")
 	})
 	@PreAuthorize("isAuthenticated()")
-	@DeleteMapping("/{plusSeq}")
+	@DeleteMapping("/delete/{plusSeq}")
 	public ResponseEntity<DeletePlusResponse> deletePlus(
 			@Parameter(name = "plusSeq", description = "특정 추가 금액 정보 삭제에 사용할 ID값", example = "6", required = true)
 			@PathVariable(value = "plusSeq") int plusSeq)

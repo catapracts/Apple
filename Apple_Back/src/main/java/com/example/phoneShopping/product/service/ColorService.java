@@ -64,13 +64,12 @@ public class ColorService
 		return list;
 	}
 	
-	@Transactional(readOnly=true)
+	@Transactional
 	public Color findByIdColor(int color_seq) 
 	{
 		System.out.println("findByIdColor동작");
 		dao.findByIdColor(color_seq);
-		System.out.println(dao.findByIdColor(color_seq).getColorSeq());
-		System.out.println(dao.findByIdColor(color_seq).getColor());
+
 		return dao.findByIdColor(color_seq);
 	}
 	

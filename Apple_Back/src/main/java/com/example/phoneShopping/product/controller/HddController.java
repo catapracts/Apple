@@ -79,7 +79,8 @@ public class HddController
 			@ApiResponse(responseCode = "404", description="존재하지 않는 정보입니다.")
 	})
 	@PreAuthorize("isAuthenticated()")
-	@GetMapping("/{hddSeq}")
+
+	@GetMapping("/getOne/{hddSeq}")
 	public Hdd findByIdHdd(
 			@Parameter(name = "hddSeq", description = "특정 용량 정보 조회에 사용할 ID값", example = "5", required = true)
 			@PathVariable(value = "hddSeq") int hddSeq)
@@ -97,7 +98,8 @@ public class HddController
 			@ApiResponse(responseCode = "405", description="수정 실패, 모든 정보를 입력했는지 확인하세요")
 	})
 	@PreAuthorize("isAuthenticated()")
-	@PatchMapping("/{hddSeq}")
+
+	@PatchMapping("/update/{hddSeq}")
 	public ResponseEntity<UpdateHddResponse> updateHdd(@RequestBody UpdateHddRequest req)
 	{
 		System.out.println("Hdd 정보 수정");
@@ -112,7 +114,7 @@ public class HddController
 			@ApiResponse(responseCode = "405", description="삭제 실패, 다시 입력해주세요")
 	})
 	@PreAuthorize("isAuthenticated()")
-	@DeleteMapping("/{hddSeq}")
+	@DeleteMapping("/delete/{hddSeq}")
 	public ResponseEntity<DeleteHddResponse> deleteHdd(
 			@Parameter(name = "hddSeq", description = "특정 용량 삭제에 사용할 ID값", example = "6", required = true)
 			@PathVariable(value = "hddSeq") int hddSeq)

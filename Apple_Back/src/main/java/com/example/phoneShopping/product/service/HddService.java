@@ -65,14 +65,12 @@ public class HddService
 		return list;
 	}
 	
+
 	@Transactional(readOnly=true)
 	public Hdd findByIdHdd(int hddSeq) 
 	{
 		System.out.println("findByIdHdd동작");
 		dao.findByIdHdd(hddSeq);
-		System.out.println(dao.findByIdHdd(hddSeq).getHddSeq());
-		System.out.println(dao.findByIdHdd(hddSeq).getCapacity());
-		System.out.println(dao.findByIdHdd(hddSeq).getPlusSeq());
 		return dao.findByIdHdd(hddSeq);
 	}
 	

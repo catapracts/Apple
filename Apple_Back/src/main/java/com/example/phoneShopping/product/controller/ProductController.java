@@ -5,7 +5,10 @@ import java.util.List;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -105,7 +108,7 @@ public class ProductController {
 			@ApiResponse(responseCode = "405", description="수정 실패, 모든 정보를 입력했는지 확인하세요")
 	})
 	@PreAuthorize("isAuthenticated()")
-	@GetMapping("/update/{prodSeq}")
+	@PatchMapping("/update/{prodSeq}")
 	public ResponseEntity<UpdateProductResponse> updateProduct (
 			@RequestBody UpdateProductRequest req) 
 	{
@@ -122,10 +125,11 @@ public class ProductController {
 			@ApiResponse(responseCode = "405", description="삭제 실패, 다시 입력해주세요")
 	})
 	@PreAuthorize("isAuthenticated()")
-	@GetMapping("/delete/{prodSeq}")
+	@DeleteMapping("/delete/{prodSeq}")
 	public ResponseEntity<DeleteProductResponse> deleteProduct(
 			@Parameter(name = "prodSeq", description = "특정 상품 정보 조회에 사용할 ID값", example = "19번째", required = true)
 			@PathVariable(value = "prodSeq") String prodSeq) 
+
 	{
 		System.out.println("상품 정보 제거");
 		System.out.println(prodSeq);
