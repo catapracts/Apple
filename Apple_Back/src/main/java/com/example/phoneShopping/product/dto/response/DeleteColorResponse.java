@@ -11,5 +11,5 @@ import lombok.Setter;
 @NoArgsConstructor
 public class DeleteColorResponse 
 {
-	private int deleteRecordCount;
+	private int deleteColor;
 }

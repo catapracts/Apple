@@ -110,8 +110,13 @@
 }
 
 .mypage_td {
+    padding: 20px 10px 10px 0px;
     width: 50%;
     padding-right: 15px;
+}
+
+.mypage_view{
+    padding-left: 20px;
 }
 
 .mypage_form {

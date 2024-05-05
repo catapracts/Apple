@@ -170,8 +170,8 @@ function Admin_product_create() {
 
     // 해당 부분 관리자만 가능하게 해야함
     useEffect(() => {
-        if (!auth) {
-            alert("로그인 한 사용자만 게시글을 작성할 수 있습니다!");
+        if (!auth == 'admin') {
+            alert("관리자만 접근 가능합니다.");
             navigate(-1);
         }
     }, []);

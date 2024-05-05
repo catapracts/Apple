@@ -14,9 +14,13 @@ import TestCartProductUpdate from "../cart/TestCartProductUpdate";
 
 
 import Admin_product from "../admin/Admin_product"
+import Admin_product_detail from "../admin/Admin_product_detail"
 import Admin_product_create from "../admin/Admin_product_create"
-import Admin_color_create from "../admin/Admin_product_create"
 import Admin_product_update from "../admin/Admin_product_update"
+import Admin_hdd_update from "../admin/Admin_hdd_update"
+import Admin_color_update from "../admin/Admin_color_update"
+import Admin_plus_update from "../admin/Admin_plus_update"
+
 import Admin_payment from "../admin/Admin_payment"
 import Admin_payment_detail from "../admin/Admin_payment_detail"
 import Admin_member from "../admin/Admin_member"
@@ -87,12 +91,16 @@ function Router() {
 
 				<Route path="/admin/product" element={<Admin_product />}></Route>
 				<Route path="/admin/product/create" element={<Admin_product_create />}></Route>
-				<Route path="/admin/color/create" element={<Admin_product_create />}></Route>
-				<Route path="/admin/product/update" element={<Admin_product_update />}></Route>
+				<Route path="/admin/product/getOne/:prodSeq" element={<Admin_product_detail />}></Route>
+				<Route path="/admin/product/update/:prodSeq" element={<Admin_product_update />}></Route>
+				<Route path="/admin/hdd/update/:hddSeq" element={<Admin_hdd_update />}></Route>
+				<Route path="/admin/color/update/:colorSeq" element={<Admin_color_update />}></Route>
+				<Route path="/admin/plus/update/:plusSeq" element={<Admin_plus_update />}></Route>
+
 				<Route path="/admin/payment" element={<Admin_payment />}></Route>
 				<Route path="/admin/payment/1" element={<Admin_payment_detail />}></Route>
 				<Route path="/admin/member" element={<Admin_member />}></Route>
-				<Route path="/admin/member/1" element={<Admin_member_detail />}></Route>
+				<Route path="/admin/member/:memId" element={<Admin_member_detail />}></Route>
 				<Route path="/store/" element={<Store />}></Route>
 				<Route path="/store_detail/1" element={<Store_Detail_1 />}></Route>
 				<Route path="/store_detail/2" element={<Store_Detail_2 />}></Route>

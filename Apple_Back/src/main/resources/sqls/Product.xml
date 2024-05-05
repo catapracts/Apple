@@ -10,18 +10,18 @@ values(#{prodSeq}, #{prodName}, #{prodPrice}, #{prodCnt}, #{hddSeq}, #{colorSeq}
 
 <!-- 상품 상세 GET -->
 <select id="findByIdProduct" parameterType="String" resultType="com.example.phoneShopping.product.domain.Product">
-select prodSeq from product where prodSeq=#{prodSeq}
+select * from product where prodSeq=#{prodSeq}
 </select>
 
 <!-- 상품 목록 GET -->
 <select id="findAllProduct" resultType="com.example.phoneShopping.product.domain.Product">
-select * from product;
+select * from product
 </select>
 	
 <!-- 상품 수정 PATCH -->
 <update id="updateProduct" parameterType="com.example.phoneShopping.product.dto.param.UpdateProductParam">
-update product set(prodSeq, prodName, prodPrice, prodCnt, hddSeq, colorSeq)
-=(#{prodSeq}, #{prodName}, #{prodPrice}, #{prodCnt}, #{hddSeq}, #{colorSeq})
+update product set prodSeq=#{prodSeq}, prodName=#{prodName}, prodPrice=#{prodPrice}, prodCnt=#{prodCnt}, hddSeq=#{hddSeq}, colorSeq=#{colorSeq}
+where prodSeq=#{prodSeq}
 </update>
 	
 <!-- 상품 삭제 DELETE -->

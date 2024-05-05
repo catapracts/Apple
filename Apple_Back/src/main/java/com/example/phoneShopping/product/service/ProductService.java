@@ -51,17 +51,8 @@ public class ProductService
 	public Product findByIdProduct(String prodSeq) 
 	{
 		System.out.println("findByIdProduct 동작");
-		System.out.println(prodSeq);
-		Product prod = dao.findByIdProduct(prodSeq);
-		dao.findByIdProduct(prodSeq).getProdSeq(); 
-		dao.findByIdProduct(prodSeq).getProdName(); 
-		dao.findByIdProduct(prodSeq).getProdPrice();
-		dao.findByIdProduct(prodSeq).getProdCnt();
-		dao.findByIdProduct(prodSeq).getHddSeq();
-		dao.findByIdProduct(prodSeq).getColorSeq();
 		
-		return prod;
-
+		return dao.findByIdProduct(prodSeq);
 	}
 	
 	
