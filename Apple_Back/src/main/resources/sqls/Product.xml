@@ -20,8 +20,7 @@ select * from product
 	
 <!-- 상품 수정 PATCH -->
 <update id="updateProduct" parameterType="com.example.phoneShopping.product.dto.param.UpdateProductParam">
-update product set prodSeq=#{prodSeq}, prodName=#{prodName}, prodPrice=#{prodPrice}, prodCnt=#{prodCnt}, hddSeq=#{hddSeq}, colorSeq=#{colorSeq}
-where prodSeq=#{prodSeq}
+update product set prodName=#{prodName}, prodPrice=#{prodPrice}, prodCnt=#{prodCnt}, hddSeq=#{hddSeq}, colorSeq=#{colorSeq} where prodSeq=#{prodSeq}
 </update>
 	
 <!-- 상품 삭제 DELETE -->

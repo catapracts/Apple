@@ -65,12 +65,12 @@ public class PlusService
 		return list;
 	}
 	
+
 	@Transactional
 	public Plus findByIdPlus(int plusSeq) 
 	{
 		System.out.println("findByIdPlus동작");
 		dao.findByIdPlus(plusSeq);
-
 		return dao.findByIdPlus(plusSeq);
 	}
 	
@@ -102,6 +102,12 @@ public class PlusService
 	{
 		System.out.println("deletePlus동작");
 		int number = dao.deletePlus(plusSeq);
+
+		if(number == 0)
+		{
+			System.out.println("삭제 실패, 정보가 존재하지 않습니다.");
+		}
+
 		return new DeletePlusResponse(number);
 	}
 }

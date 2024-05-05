@@ -65,12 +65,12 @@ public class HddService
 		return list;
 	}
 	
-	@Transactional
+
+	@Transactional(readOnly=true)
 	public Hdd findByIdHdd(int hddSeq) 
 	{
 		System.out.println("findByIdHdd동작");
 		dao.findByIdHdd(hddSeq);
-
 		return dao.findByIdHdd(hddSeq);
 	}
 	
@@ -91,7 +91,7 @@ public class HddService
 		
 		if(result==0)
 		{
-			throw new HddException("Color 수정 실패", HttpStatus.INTERNAL_SERVER_ERROR);
+			throw new HddException("Hdd 수정 실패", HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		
 		return result;
@@ -102,6 +102,10 @@ public class HddService
 	{
 		System.out.println("deleteHdd동작");
 		int number = dao.deleteHdd(hddSeq);
+		if(number == 0)
+		{
+			System.out.println("삭제 실패, 정보가 존재하지 않습니다.");
+		}
 		return new DeleteHddResponse(number);
 	}
 }
