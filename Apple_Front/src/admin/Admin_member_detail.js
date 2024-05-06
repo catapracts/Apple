@@ -51,7 +51,7 @@ function Admin_member_detail() {
 	/* Address 1개 조회 */
 	const findByIdAddress = async () => {
 
-		await axios.get(`http://localhost:3000/address/${1}`, {params : {memId : auth ? auth : ""}})
+		await axios.get(`http://localhost:3000/address/${0}`, {params : {memId : auth ? auth : ""}})
 			.then((resp) => {
 				console.log("[Mypage.js] findByIdAddress() success :D");
                 console.log(resp.data);
@@ -66,7 +66,7 @@ function Admin_member_detail() {
 	/* Card 1개 조회 */
 	const findByIdCard = async () => {
 
-		await axios.get(`http://localhost:3000/card/${1}`, {params : {memId : auth ? auth : ""}})
+		await axios.get(`http://localhost:3000/card/${0}`, {params : {memId : auth ? auth : ""}})
 			.then((resp) => {
 				console.log("[Mypage.js] findByIdCard() success :D");
                 console.log(resp.data);
