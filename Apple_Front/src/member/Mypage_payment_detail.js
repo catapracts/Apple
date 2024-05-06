@@ -4,9 +4,9 @@ import { useState, useEffect, useContext } from "react";
 import { AuthContext } from "../context/AuthProvider";
 
 import Button from "../common/Button";
-import './Admin.css';
+import './Member.css';
 
-function Admin_payment() {
+function Mypage_payment_detail_1() {
 
     const { auth, setAuth } = useContext(AuthContext);
 
@@ -16,6 +16,7 @@ function Admin_payment() {
     const [info, setInfo] = useState([]);
     const [address, setAddress] = useState([]);
     const [payment, setPayment] = useState([]);
+    const [paySeq, setPaySeq] = useState(payment.patSeq);
     const [paymentProduct, setPaymentProduct] = useState([]);
     const [product, setProduct] = useState([]);
     const [card, setCard] = useState([]);
@@ -26,12 +27,12 @@ function Admin_payment() {
         await axios
             .get(`http://localhost:3000/user/${`himedia`}`, {params: { memId: auth ? auth : "" }})
             .then((resp) => {
-                console.log("[Admin_member_detail.js] findByIdMember() success :D");
+                console.log("[Mypage_payment_detail.js] findByIdMember() success :D");
                 console.log(resp.data);
                 setMember(resp.data);
             })
             .catch((err) => {
-                console.log("[Admin_member_detail.js] findByIdMember() error :<");
+                console.log("[Mypage_payment_detail.js] findByIdMember() error :<");
                 console.log(err);
             });
     };
@@ -39,14 +40,14 @@ function Admin_payment() {
      /* Info 1개 조회 */
 	const findByIdInfo = async () => {
 
-		await axios.get(`http://localhost:3000/info/${1}`, {params : {memId : auth ? auth : ""}})
+		await axios.get(`http://localhost:3000/info/${2}`, {params : {memId : auth ? auth : ""}})
 			.then((resp) => {
-				console.log("[Mypage.js] findByIdInfo() success :D");
+				console.log("[Mypage_payment_detail.js] findByIdInfo() success :D");
                 console.log(resp.data);
                 setInfo(resp.data)
 
 			}).catch((err) => {	
-				console.log("[Mypage.js] findByIdInfo() error :<");
+				console.log("[Mypage_payment_detail.js] findByIdInfo() error :<");
 				console.log(err);
 			});
 	}
@@ -56,12 +57,12 @@ function Admin_payment() {
 
 		await axios.get(`http://localhost:3000/address/${1}`, {params : {memId : auth ? auth : ""}})
 			.then((resp) => {
-				console.log("[Mypage.js] findByIdAddress() success :D");
+				console.log("[Mypage_payment_detail.js] findByIdAddress() success :D");
                 console.log(resp.data);
                 setAddress(resp.data)
 
 			}).catch((err) => {	
-				console.log("[Mypage.js] findByIdAddress() error :<");
+				console.log("[Mypage_payment_detail.js] findByIdAddress() error :<");
 				console.log(err);
 			});
 	}
@@ -71,12 +72,12 @@ function Admin_payment() {
 
 		await axios.get(`http://localhost:3000/card/${1}`, {params : {memId : auth ? auth : ""}})
 			.then((resp) => {
-				console.log("[Mypage.js] findByIdCard() success :D");
+				console.log("[Mypage_payment_detail.js] findByIdCard() success :D");
                 console.log(resp.data);
                 setCard(resp.data)
 
 			}).catch((err) => {	
-				console.log("[Mypage.js] findByIdCard() error :<");
+				console.log("[Mypage_payment_detail.js] findByIdCard() error :<");
 				console.log(err);
 			});
 	}
@@ -86,12 +87,12 @@ function Admin_payment() {
 
 		await axios.get(`http://localhost:3000/payment/getOnePayment/${1}`, {params : {memId : auth ? auth : ""}})
 			.then((resp) => {
-				console.log("[Admin_payment_detail.js] findByIdPayment() success :D");
+				console.log("[Mypage_payment_detail.js] findByIdPayment() success :D");
                 console.log(resp.data);
                 setPayment(resp.data)
 
 			}).catch((err) => {	
-				console.log("[Admin_payment_detail.js] findByIdPayment() error :<");
+				console.log("[Mypage_payment_detail.js] findByIdPayment() error :<");
 				console.log(err);
 			});
 	}
@@ -101,13 +102,13 @@ function Admin_payment() {
 
 		await axios.get(`http://localhost:3000/admin/product/getOne/${`i15b256`}`)
 		.then((resp) => {
-			console.log("[Admin_product_detail.js] findByIdProduct() success :D");
+			console.log("[Admin_proMypage_payment_detailduct_detail.js] findByIdProduct() success :D");
 			console.log(resp.data);
             setProduct(resp.data);
 
 		})
 		.catch((err) => {
-			console.log("[Admin_product_detail.js] findByIdProduct() error :<");
+			console.log("[Mypage_payment_detail.js] findByIdProduct() error :<");
 			console.log(err);
 		});
 	}
@@ -115,14 +116,14 @@ function Admin_payment() {
 	/* paymentProduct 1개 조회 */
 	const findByIdPaymentProduct = async () => {
 
-		await axios.get(`http://localhost:3000/payment/product/${1}`, {params : {memId : auth ? auth : ""}})
+		await axios.get(`http://localhost:3000/payment/product/${2}`, {params : {memId : auth ? auth : ""}})
 			.then((resp) => {
-				console.log("[Admin_payment_detail.js] findByIdPaymentProduct() success :D");
+				console.log("[Mypage_payment_detail.js] findByIdPaymentProduct() success :D");
                 console.log(resp.data);
                 setPaymentProduct(resp.data)
 
 			}).catch((err) => {	
-				console.log("[Admin_payment_detail.js] findByIdPaymentProduct() error :<");
+				console.log("[Mypage_payment_detail.js] findByIdPaymentProduct() error :<");
 				console.log(err);
 			});
 	}
@@ -154,7 +155,7 @@ function Admin_payment() {
                                     <tr>
                                         <th className="payment_detail_th">회원 ID</th>
                                         <td className="payment_detail_td">
-                                        <span className="mypage_view">{member.memId}</span>
+                                            <span className="mypage_view">{member.memId}</span>
                                         </td>
                                     </tr>
                                     <tr>
@@ -298,4 +299,4 @@ function Admin_payment() {
     );
 }
 
-export default Admin_payment;
+export default Mypage_payment_detail_1;

@@ -19,7 +19,7 @@ function Mypage() {
 	/* 회원 1개 조회 */
 	const findByIdMember = async () => {
 
-		await axios.get(`http://localhost:3000/user/${auth}`, {params : {memId : auth ? auth : ""}})
+		await axios.get(`http://localhost:3000/user/${`himedia`}`, {params : {memId : auth ? auth : ""}})
 			.then((resp) => {
 				console.log("[Mypage.js] findByIdMember() success :D");
                 console.log(resp.data);
@@ -34,7 +34,7 @@ function Mypage() {
 	/* Info 1개 조회 */
 	const findByIdInfo = async () => {
 
-		await axios.get(`http://localhost:3000/info/${1}`, {params : {memId : auth ? auth : ""}})
+		await axios.get(`http://localhost:3000/info/${2}`, {params : {memId : auth ? auth : ""}})
 			.then((resp) => {
 				console.log("[Mypage.js] findByIdInfo() success :D");
                 console.log(resp.data);
@@ -83,6 +83,34 @@ function Mypage() {
 		findByIdCard();
 	}, []);
 
+	const updateMember = {
+		memId : member.memId,
+		memPw : member.memPw, 
+		checkMemPw : member.checkMemPw
+	}
+
+	const updateInfo = {
+		infoSeq : info.infoSeq,
+		infoName : info.infoName, 
+		infoBirth : info.infoBirth,
+		infoGender : info.infoGender,
+		infoPhone : info.infoPhone
+	}
+
+	const updateAddress = {
+		addrSeq: address.addrSeq,
+		addrZip: address.addrZip,
+		addrDetail: address.addrDetail,	
+	}
+
+	const updateCard = {
+		cardSeq : card.cardSeq,
+		cardComp : card.cardComp, 
+		cardNum : card.cardNum,
+		cardDate : card.cardDate,
+		cardCvc : card.cardCvc
+	}
+
     return (
 		<div>
 			<div className="container">
@@ -91,7 +119,7 @@ function Mypage() {
 						<h1 className="mypage_title">마이페이지</h1>
 					</div>
 					<div className="d-flex justify-content-between">						
-						<div className="mypage_part1 col-6">
+						<div className="col-6">
 							<div>
 								<h2 className="mypage_subtitle">계정</h2>
 							</div>
@@ -113,7 +141,7 @@ function Mypage() {
 							</div>
 						</div>
 
-						<div className="mypage_part2 col-6">
+						<div className="col-6 mypage_part2">
 							<div>
 								<h2 className="mypage_subtitle">회원 정보</h2>
 							</div>
@@ -149,7 +177,7 @@ function Mypage() {
 					</div>
 
 					<div className="d-flex justify-content-between">
-						<div className="mypage_part3 col-6">				
+						<div className="col-6">				
 							<div>
 								<h2 className="mypage_subtitle">배송지 관리</h2>
 							</div>
@@ -183,7 +211,7 @@ function Mypage() {
 							</div>
 						</div>
 
-						<div className="mypage_part4 col-6">
+						<div className="col-6 mypage_part3">
 							<div>
 								<h2 className="mypage_subtitle">결제 관리</h2>
 							</div>
@@ -226,7 +254,10 @@ function Mypage() {
 					<div className="d-flex justify-content-center">
 					    <Button size={"default"} color={"none"} text={"뒤로가기"}
 							onClick={() => {navigate(-1)}}></Button>
-						<Button size={"default"} color={"blue"}text={"수정하기"}></Button>		{/* 값을 전부 입력하고 버튼을 누르면, join이라는 함수를 실행한다. */}
+						<Link to="/mypage/update/2"
+                            state={{ member: updateMember, info: updateInfo, address: updateAddress, card: updateCard}} >
+                            <Button size={"default"} color={"blue"} text={"수정하기"} ></Button>
+                        </Link>
 					</div>
 				</div>
 			</div>

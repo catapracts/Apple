@@ -77,8 +77,9 @@ public class PaymentService
 	public Payment findByIdPayment(int paySeq) 
 	{
 		System.out.println("findByIdPayment동작");
-
-		return dao.findByIdPayment(paySeq);
+		Payment payment = dao.findByIdPayment(paySeq);
+		System.out.println(payment);
+		return payment;
 	}
 	
 	@Transactional
