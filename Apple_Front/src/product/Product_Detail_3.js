@@ -33,7 +33,7 @@ function Product_Detail_3() {
 							onClick={() => {navigate('/store_detail/3')}}></Button>
 					</div>
 					<div className="d-flex justify-content-center">
-						<h1 className="product_detail3_price">￦1,550,000부터</h1>
+						<h1 className="product_detail3_price">￦1,250,000부터</h1>
 					</div>
 				</div>
 

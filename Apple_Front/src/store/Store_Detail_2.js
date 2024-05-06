@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import React, { useState, useContext } from "react";
 import { useNavigate } from 'react-router-dom';
 import './Store.css';
-import i15 from '../img/iphone_iphone15_large.png';
+import i15pro from '../img/iphone_iphone15pro_large.png';
 import Button from '../common/Button';
 import lineup1 from '../img/iphone_iphone15promax.png';
 import lineup2 from '../img/iphone_iphone15pro.png';
@@ -26,19 +26,19 @@ function Store_Detail_2() {
     const navigate = useNavigate();
 
     return (
-        <div>
-            <div className="wide_container">
+        <div className="store_detail_bg">
+            <div className="container">
                 <div className="store_detail_part1">
                     <div>
                         <h1 className="store_detail_title">iPhone 15 Pro 구매하기</h1>
-                        <p className="store_detail_subtitle">1,500,000 부터</p>
+                        <p className="store_detail_subtitle">1,550,000 부터</p>
 
                     </div>
                 </div>
 
                 <div className="store_detail_part2 d-flex justify-content-between">
                     <div className="store_detail_left">
-                        <img src={i15} alt="" className="store_detail_left_img" />
+                        <img src={i15pro} alt="" className="store_detail_left_img" />
                     </div>
                     <div className="store_detail_right">
                         <div className="store_detail_name">
@@ -88,7 +88,7 @@ function Store_Detail_2() {
                     </div>
                 </div>
 
-                <div className="store_detail_part3">
+                <div className="store_detail_part2">
                     <div className="store_detail_part3_1 d-flex justify-content-between">
                         <h1 className="store_detail_part3_title">라인업 살펴보기</h1>
                     </div>

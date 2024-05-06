@@ -20,7 +20,7 @@ function Header() {
   				<Link to="/"><img src={Logo} alt="" className="headerLogo"/></Link>
   				<Link to="/store">스토어</Link>
 				
-  				<Link to="/payment_test">결제</Link>
+  				{/* <Link to="/payment_test">결제</Link> */}
   				
 				<Link to="/product">iPhone</Link>
 				<div class="dropdown">
@@ -43,7 +43,7 @@ function Header() {
 								aria-expanded="false"> {auth}님 로그인 중
 							</div>
 							<div className="dropdown-menu" aria-labelledby='navbarDropdown'>
-								<Link className="dropdown-item" to="/mypage" >마이페이지</Link>
+								<Link className="dropdown-item" to={{ pathname: `/mypage/${auth}`}}>마이페이지</Link>
 								<Link className="dropdown-item" to="/mypage/payment">결제 내역</Link>
 							</div>
 						</div>

@@ -20,21 +20,10 @@ function TestCardUpdate() {
     const [cardCvc, setCardCvc] = useState(card.cardCvc);
 
 
-	const changeCardComp = (event) => {
-		setCardComp(event.target.value);
-	}
-
-	const changeCardNum = (event) => {
-		setCardNum(event.target.value);
-	}
-
-    const changeCardDate = (event) => {
-		setCardDate(event.target.value);
-	}
-
-    const changeCardCvc = (event) => {
-		setCardCvc(event.target.value);
-	}
+	const changeCardComp = (event) => {setCardComp(event.target.value);}
+	const changeCardNum = (event) => {setCardNum(event.target.value);}
+    const changeCardDate = (event) => {setCardDate(event.target.value);}
+    const changeCardCvc = (event) => {setCardCvc(event.target.value);}
 
 	const updateCard = async () => {
 

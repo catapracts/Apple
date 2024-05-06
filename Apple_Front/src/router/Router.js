@@ -35,12 +35,13 @@ import Store_Detail_2 from "../store/Store_Detail_2"
 import Store_Detail_3 from "../store/Store_Detail_3"
 
 import Payment from "../payment/Payment"
-import Payment_test from "../payment/Payment_test"
+import Payment_backup from "../payment/Payment_backup"
 import Payment_success from "../payment/Payment_success"
 
 import Mypage from "../member/Mypage"
+import Mypage_update from "../member/Mypage_update"
 import Mypage_payment from "../member/Mypage_payment"
-import Mypage_payment_detail_1 from "../member/Mypage_payment_detail_1"
+import Mypage_payment_detail from "../member/Mypage_payment_detail"
 
 import Join from "../member/Join"
 import Login from "../member/Login"
@@ -112,14 +113,16 @@ function Router() {
 				<Route path="/store_detail/1" element={<Store_Detail_1 />}></Route>
 				<Route path="/store_detail/2" element={<Store_Detail_2 />}></Route>
 				<Route path="/store_detail/3" element={<Store_Detail_3 />}></Route>
+
 				<Route path="/payment/" element={<Payment />}></Route>
-				<Route path="/payment_test" element={<Payment_test />}></Route>
-				<Route path="/payment/success" element={<Payment_success />}></Route>
+				<Route path="/payment_backup" element={<Payment_backup />}></Route>
+				<Route path="/payment_success" element={<Payment_success />}></Route>
 
 
-				<Route path="/mypage" element={<Mypage />}></Route>
+				<Route path="/mypage/:memId" element={<Mypage />}></Route>
+				<Route path="/mypage/update/2" element={<Mypage_update />}></Route>
 				<Route path="/mypage/payment" element={<Mypage_payment />}></Route>
-				<Route path="/mypage/payment_detail/1" element={<Mypage_payment_detail_1 />}></Route>
+				<Route path="/mypage/payment/:paySeq" element={<Mypage_payment_detail />}></Route>
 				<Route path="/product" element={<Product />}></Route>
 
 

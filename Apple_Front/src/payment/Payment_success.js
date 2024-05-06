@@ -9,6 +9,10 @@ function Payment_success() {
 
 	const navigate = useNavigate();
 
+	const today = new Date();
+	const formattedDate = `${today.getFullYear()}년 ${today.getMonth() + 1}월 ${today.getDate()+2}일`;
+
+
     return (
 		<div>
 			<div className="container">
@@ -17,25 +21,25 @@ function Payment_success() {
 						<h1 className="payment_success_title"> 구매해주셔서 감사합니다. </h1>
 					</div>
 					<div>
-						<h1 className="payment_success_subtitle">오늘 +3일 이내에 배송됩니다.</h1>
+						<h1 className="payment_success_subtitle">{formattedDate} 이내에 배송됩니다.</h1>
 					</div>
 					
 					<hr />
 					
 					<div className="payment_success_part_1 d-flex justify-content-between">
 						<div>
-							<h1 className="payment_success_detail">iphone 15 pro max</h1>
+							<h1 className="payment_success_detail">iPhone15</h1>
 							<h1 className="payment_success_detail">256G</h1>
-							<h1 className="payment_success_detail">실버</h1>
+							<h1 className="payment_success_detail">블루</h1>
 						</div>
 						<div>
-							<h1 className="payment_success_detail">￦ 1,900,000</h1>
+							<h1 className="payment_success_detail">￦ 1,250,000</h1>
 						</div>
 						<div>
 							<h1 className="payment_success_detail">무료 배송</h1>
 						</div>
 						<div>
-							<h1 className="payment_success_detail">도착 예정일 : 오늘 +3일</h1>
+							<h1 className="payment_success_detail">도착 예정일 : {formattedDate}</h1>
 						</div>
 					</div>
 

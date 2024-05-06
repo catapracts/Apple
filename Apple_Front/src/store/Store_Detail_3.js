@@ -27,11 +27,11 @@ function Store_Detail_3() {
 
     return (
         <div>
-            <div className="wide_container">
+            <div className="container">
                 <div className="store_detail_part1">
                     <div>
                         <h1 className="store_detail_title">iPhone 15 구매하기</h1>
-                        <p className="store_detail_subtitle">1,500,000 부터</p>
+                        <p className="store_detail_subtitle">1,250,000 부터</p>
 
                     </div>
                 </div>
@@ -88,7 +88,7 @@ function Store_Detail_3() {
                     </div>
                 </div>
 
-                <div className="store_detail_part3">
+                <div className="store_detail_part2">
                     <div className="store_detail_part3_1 d-flex justify-content-between">
                         <h1 className="store_detail_part3_title">라인업 살펴보기</h1>
                     </div>

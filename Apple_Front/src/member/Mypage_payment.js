@@ -1,11 +1,14 @@
 import axios from "axios";
 import React, { useState, useContext, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/AuthProvider";
+
 import Button from '../common/Button';
 import './Member.css';
 
 function Mypage_payment() {
 
+    const { auth, setAuth } = useContext(AuthContext);
     const [paymentList, setPaymentList] = useState([]);
     
     const navigate = useNavigate();
@@ -69,17 +72,18 @@ function Mypage_payment() {
 function TableRow_payment(props) {
 
     const payment = props.obj;
+    const { auth, setAuth } = useContext(AuthContext);
 
     return (
         <tr>
             {
             <>
                 <td className="product_td">
-                    <Link to={{ pathname: `/payment/${payment.paySeq}`}}>
+                    <Link to={{ pathname: `/mypage/payment/1`}}>
                         <span className="">{payment.paySeq}</span>
                     </Link>
                 </td>
-                <td className="product_td">{payment.memSeq}</td>
+                <td className="product_td">{auth}</td>
                 <td className="product_td">{payment.payDate}</td>
                 <td className="product_td">{payment.payStatus}</td>
             </>

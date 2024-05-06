@@ -39,7 +39,7 @@ function Store() {
 							<div className="store_list_text">
 								<p className="store_list_title">iPhone 15 Pro Max</p>
 								<p className="store_list_subtitle">궁극의 iPhone.</p>
-								<p className="store_list_price">￦ 1,550,000 부터</p>
+								<p className="store_list_price">￦ 1,900,000 부터</p>
 							</div>
 							<div className="store_list_button">
 								<Button size={"small"} color={"blue"}text={"더 알아보기"}
@@ -91,7 +91,7 @@ function Store() {
 							<div className="store_list_text">
 								<p className="store_list_title">iPhone 15 Pro</p>
 								<p className="store_list_subtitle">막강한 성능</p>
-								<p className="store_list_price">￦ 1,250,000 부터</p>
+								<p className="store_list_price">￦ 1,550,000 부터</p>
 							</div>
 							<div className="store_list_button">
 								<Button size={"small"} color={"blue"}text={"더 알아보기"}
@@ -143,7 +143,7 @@ function Store() {
 							<div className="store_list_text">
 								<p className="store_list_title">iPhone 15</p>
 								<p className="store_list_subtitle">여전한 놀라움.</p>
-								<p className="store_list_price">￦ 1,090,000 부터</p>
+								<p className="store_list_price">￦ 1,250,000 부터</p>
 							</div>
 							<div className="store_list_button">
 								<Button size={"small"} color={"blue"}text={"더 알아보기"}
