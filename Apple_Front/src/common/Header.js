@@ -26,8 +26,7 @@ function Header() {
 				<div class="dropdown">
 					<div className="dropdown-toggle nav_hover" id="navbarDropdown"
 						role="button" data-toggle="dropdown" aria-haspopup="true"
-						aria-expanded="false">iPhone
-    				</div>
+						aria-expanded="false">Series</div>
     				<div className="dropdown-menu" aria-labelledby='navbarDropdown'>
       					<Link className="dropdown-item" to="/product_detail/1">iPhone 15 pro max</Link>
       					<Link className="dropdown-item" to="/product_detail/2">iPhone 15 pro</Link>
@@ -44,7 +43,7 @@ function Header() {
 								aria-expanded="false"> {auth}님 로그인 중
 							</div>
 							<div className="dropdown-menu" aria-labelledby='navbarDropdown'>
-								<Link className="dropdown-item" to="/mypage" >회원 정보 수정</Link>
+								<Link className="dropdown-item" to="/mypage" >마이페이지</Link>
 								<Link className="dropdown-item" to="/mypage/payment">결제 내역</Link>
 							</div>
 						</div>

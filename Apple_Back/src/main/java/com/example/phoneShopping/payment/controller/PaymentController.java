@@ -173,7 +173,7 @@ public class PaymentController
 			@ApiResponse(responseCode = "404", description="존재하지 않는 정보입니다.")
 	})
 	@PreAuthorize("isAuthenticated()")
-	@GetMapping("/{payiSeq}")
+	@GetMapping("/product/{payiSeq}")
 	public PaymentProduct findByIdPaymentProduct(
 			@Parameter(name = "payiSeq", description = "특정 결제 정보 상품 조회에 사용할 ID값", example = "5", required = true)
 			@PathVariable(value = "payiSeq") int payiSeq)
@@ -191,7 +191,7 @@ public class PaymentController
 			@ApiResponse(responseCode = "405", description="수정 실패, 모든 정보를 입력했는지 확인하세요")
 	})
 	@PreAuthorize("isAuthenticated()")
-	@PatchMapping("/{payiSeq}")
+	@PatchMapping("/product/{payiSeq}")
 	public ResponseEntity<UpdatePaymentProductResponse> updatePaymentProduct(@RequestBody UpdatePaymentProductRequest req)
 	{
 		System.out.println("PaymentProduct 정보 수정");
@@ -206,7 +206,7 @@ public class PaymentController
 			@ApiResponse(responseCode = "405", description="삭제 실패, 다시 입력해주세요")
 	})
 	@PreAuthorize("isAuthenticated()")
-	@DeleteMapping("/{payiSeq}")
+	@DeleteMapping("/product/{payiSeq}")
 	public ResponseEntity<DeletePaymentProductResponse> deletePaymentProduct(
 			@Parameter(name = "payiSeq", description = "결제 상품 정보 삭제에 사용할 ID값", example = "6", required = true)
 			@PathVariable(value = "payiSeq") int payiSeq)

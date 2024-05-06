@@ -105,7 +105,7 @@ function Router() {
 				<Route path="/admin/plus/update/:plusSeq" element={<Admin_plus_update />}></Route>
 
 				<Route path="/admin/payment" element={<Admin_payment />}></Route>
-				<Route path="/admin/payment/1" element={<Admin_payment_detail />}></Route>
+				<Route path="/payment/:paySeq" element={<Admin_payment_detail />}></Route>
 				<Route path="/admin/member" element={<Admin_member />}></Route>
 				<Route path="/admin/member/:memId" element={<Admin_member_detail />}></Route>
 				<Route path="/store/" element={<Store />}></Route>

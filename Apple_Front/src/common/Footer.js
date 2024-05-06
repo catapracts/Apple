@@ -46,7 +46,7 @@ function Footer() {
                     <Link to="/login"><li>로그인</li></Link>
                   </>
               }
-              <Link to="/TestFindAll"><li>회원 전체 조회 실험</li></Link>
+              {/* <Link to="/TestFindAll"><li>회원 전체 조회 실험</li></Link> */}
             </ul>
           </div>
         </div>
