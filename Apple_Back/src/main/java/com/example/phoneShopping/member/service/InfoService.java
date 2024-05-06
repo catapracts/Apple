@@ -48,9 +48,8 @@ public class InfoService
 		System.out.println("\n\n");
 		CreateInfoParam param = new CreateInfoParam(req);
 
-				
-		
 		Integer result = dao.createInfo(param);
+		
 		if(result==0)
 		{
 			throw new InfoException("카드 등록 실패", HttpStatus.INTERNAL_SERVER_ERROR);

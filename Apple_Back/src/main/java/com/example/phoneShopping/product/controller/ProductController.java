@@ -8,7 +8,6 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -127,7 +126,7 @@ public class ProductController {
 	@PreAuthorize("isAuthenticated()")
 	@DeleteMapping("/delete/{prodSeq}")
 	public ResponseEntity<DeleteProductResponse> deleteProduct(
-			@Parameter(name = "prodSeq", description = "특정 상품 정보 조회에 사용할 ID값", example = "19번째", required = true)
+			@Parameter(name = "prodSeq", description = "특정 상품 정보 조회에 사용할 ID값", example = "19th", required = true)
 			@PathVariable(value = "prodSeq") String prodSeq) 
 
 	{

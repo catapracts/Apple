@@ -1,5 +1,6 @@
 package com.example.phoneShopping.member.dto.response;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,7 +10,9 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Schema(description = "Delete Address response")
 public class DeleteAddressResponse 
 {
-	private int deleteRecordCount;
+	@Schema(description = "Address Delete성공 시 response, 반환값 = Integer(1 : 성공, 0 : 실패)")
+	private int deleteAddress;
 }

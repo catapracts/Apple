@@ -16,7 +16,7 @@ public class UpdateProductRequest
 {
 	// 상품 일련번호
 	@NotBlank
-	@Schema(description = "DB내에 존재하는 아이디 확인, 실제 변경X", example = "19번째")
+	@Schema(description = "DB내에 존재하는 아이디 확인, 실제 변경X", example = "19th")
 	private String prodSeq;
 	
 	// 상품 이름

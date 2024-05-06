@@ -41,8 +41,7 @@ public class HddController
 	
 	
 	@Operation(summary = "createHdd() - 용량 정보 생성 API ", 
-			description = "용량 정보를 생성하는 method <br>"
-					+ "용량에 따라 가격이 변하는 것을 표현")
+			description = "용량 정보를 생성하는 method")
 	@ApiResponses(value = {
 			@ApiResponse(responseCode = "200", description="용량 정보 생성 완료", content={@Content(schema = @Schema(implementation = CreateHddResponse.class))}),
 			@ApiResponse(responseCode = "404", description="모든 항목 입력은 필수입니다."),
@@ -82,7 +81,7 @@ public class HddController
 
 	@GetMapping("/getOne/{hddSeq}")
 	public Hdd findByIdHdd(
-			@Parameter(name = "hddSeq", description = "특정 용량 정보 조회에 사용할 ID값", example = "5", required = true)
+			@Parameter(name = "hddSeq", description = "특정 용량 정보 조회에 사용할 ID값", example = "3", required = true)
 			@PathVariable(value = "hddSeq") int hddSeq)
 	{
 		System.out.println("Hdd 정보 1개 출력");
@@ -116,7 +115,7 @@ public class HddController
 	@PreAuthorize("isAuthenticated()")
 	@DeleteMapping("/delete/{hddSeq}")
 	public ResponseEntity<DeleteHddResponse> deleteHdd(
-			@Parameter(name = "hddSeq", description = "특정 용량 삭제에 사용할 ID값", example = "6", required = true)
+			@Parameter(name = "hddSeq", description = "특정 용량 삭제에 사용할 ID값", example = "3", required = true)
 			@PathVariable(value = "hddSeq") int hddSeq)
 	{
 		System.out.println("Hdd 정보 제거");

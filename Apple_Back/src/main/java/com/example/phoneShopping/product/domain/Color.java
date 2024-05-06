@@ -1,5 +1,6 @@
 package com.example.phoneShopping.product.domain;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,10 +10,14 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Schema(description = "Color Domain")
 public class Color
 {
-	int colorSeq;	// 용량별 추가금액 구분
-	String color;		// 추가 금액
+	@Schema(description = "색상 구분 번호(자동 생성)")
+	int colorSeq;
+	
+	@Schema(description = "색상")
+	String color;
 	
 	public Color(String color)
 	{

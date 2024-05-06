@@ -17,7 +17,7 @@ public class CreateProductRequest
 
 	// 상품 일련번호
 	@NotBlank
-	@Schema(description = "상품 일련번호, 직접 등록", example = "19번째")
+	@Schema(description = "상품 일련번호, 직접 등록", example = "19th")
 	private String prodSeq;
 	
 	// 상품 이름
