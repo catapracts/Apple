@@ -42,8 +42,7 @@ public class PlusController
 	
 	
 	@Operation(summary = "createPlus() - 추가 금액 정보 생성 API ", 
-			description = "추가 금액 정보를 생성하는 method <br>"
-					+ "회원이 계정 정보(id/pw)만 가진채 회원가입이 되었기에 상품을 주문하기 위해 추가 정보를 입력하기 위한 과정")
+			description = "하드 용량에 따라 추가 금액 정보를 생성하는 method")
 	@ApiResponses(value = {
 			@ApiResponse(responseCode = "200", description="추가 금액 정보 생성 완료", content={@Content(schema = @Schema(implementation = CreatePlusResponse.class))}),
 			@ApiResponse(responseCode = "404", description="모든 항목 입력은 필수입니다."),
@@ -82,7 +81,7 @@ public class PlusController
 	@PreAuthorize("isAuthenticated()")
 	@GetMapping("/getOne/{plusSeq}")
 	public Plus findByIdPlus(
-			@Parameter(name = "plusSeq", description = "특정 추가 금액 정보 조회에 사용할 ID값", example = "5", required = true)
+			@Parameter(name = "plusSeq", description = "특정 추가 금액 정보 조회에 사용할 ID값", example = "3", required = true)
 			@PathVariable(value = "plusSeq") int plusSeq)
 	{
 		System.out.println("Plus 정보 1개 출력");
@@ -115,7 +114,7 @@ public class PlusController
 	@PreAuthorize("isAuthenticated()")
 	@DeleteMapping("/delete/{plusSeq}")
 	public ResponseEntity<DeletePlusResponse> deletePlus(
-			@Parameter(name = "plusSeq", description = "특정 추가 금액 정보 삭제에 사용할 ID값", example = "6", required = true)
+			@Parameter(name = "plusSeq", description = "특정 추가 금액 정보 삭제에 사용할 ID값", example = "3", required = true)
 			@PathVariable(value = "plusSeq") int plusSeq)
 	{
 		System.out.println("Plus 정보 제거");

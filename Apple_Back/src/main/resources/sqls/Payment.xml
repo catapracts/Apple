@@ -38,7 +38,7 @@ SELECT * FROM PAYMENTPRODUCT WHERE payiSeq=#{payiSeq}
 
 
 <insert id="createPaymentProduct" parameterType="com.example.phoneShopping.payment.dto.param.CreatePaymentProductParam">
-INSERT INTO PAYMENTPRODUCT(payiSeq, paySeq, prodSeq, payiPrice, payiCnt) VALUES(#{payiSeq}, #{paySeq}, #{prodSeq}, #{payiPrice}, #{payiCount})
+INSERT INTO PAYMENTPRODUCT(paySeq, prodSeq, payiPrice, payiCnt) VALUES(#{paySeq}, #{prodSeq}, #{payiPrice}, #{payiCount})
 </insert>
 
 

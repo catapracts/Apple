@@ -1,5 +1,6 @@
 package com.example.phoneShopping.payment.domain;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,13 +10,23 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Schema(description = "Payment Product Domain")
 public class PaymentProduct 
 {
-	private int payiSeq;	// 결제 상품 번호
-	private String prodSeq;	// 결제 상품
-	private int paySeq;	// 결제 내역
-	private int payiPrice;	// 결제 가격
-	private int payiCount;	// 결제 개수
+	@Schema(description = "결제 상품 구분 번호")
+	private int payiSeq;
+	
+	@Schema(description = "결제할 상품 번호")
+	private String prodSeq;
+	
+	@Schema(description = "결제 번호")
+	private int paySeq;
+	
+	@Schema(description = "결제할 상품 가격")
+	private int payiPrice;
+	
+	@Schema(description = "결제할 상품의 갯수")
+	private int payiCount;
 	
 	public PaymentProduct(int paySeq, String prodSeq, int payiPrice, int payiCount)
 	{
@@ -25,6 +36,7 @@ public class PaymentProduct
 		this.payiCount=payiCount;
 	}
 
+	@Schema(description = "전체 가격을 계산하는 method")
     public int getTotalPrice()
     {
         return payiPrice*payiCount;
