@@ -63,7 +63,7 @@ function Admin_member_detail() {
 			});
 	}
 
-	/* Address 1개 조회 */
+	/* Card 1개 조회 */
 	const findByIdCard = async () => {
 
 		await axios.get(`http://localhost:3000/card/${1}`, {params : {memId : auth ? auth : ""}})
