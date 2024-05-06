@@ -14,10 +14,11 @@ import lombok.Setter;
 @Schema(description = "Hdd Create Request")
 public class CreateHddRequest 
 {
+	@NotBlank
 	int hddSeq;	// HDD 구분
 	
 	@NotBlank
-	@Schema(description = "Create HDD용량", example = "2")
+	@Schema(description = "Create HDD용량", example = "1")
 	int capacity;	// HDD 용량
 	
 	@NotBlank

@@ -2,6 +2,7 @@ package com.example.phoneShopping.payment.domain;
 
 import java.time.LocalDateTime;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,12 +12,20 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Schema(description = "Payment Domain")
 public class Payment 
 {
-	private int paySeq;	// 결제 번호
-	private int memSeq;	// 결제자
-	private LocalDateTime payDate;	// 결제일
-	private int payStatus;	// 결제 상태
+	@Schema(description = "결제 번호(자동 생성)")
+	private int paySeq;
+	
+	@Schema(description = "결제자")
+	private int memSeq;
+	
+	@Schema(description = "결제 시간")
+	private LocalDateTime payDate;
+	
+	@Schema(description = "결제 상태(1 : 결제완료, 0 : 환불)")
+	private int payStatus;
 
 	public Payment(int memSeq, LocalDateTime payDate, int payStatus)
 	{

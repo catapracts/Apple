@@ -38,9 +38,11 @@ public class HddService
 	private void createHddMethod(CreateHddRequest req)
 	{
 		System.out.println("createHdd동작");
-		CreateHddParam param = new CreateHddParam(req.getHddSeq(), req.getCapacity(), req.getPlusSeq());
+		CreateHddParam param = new CreateHddParam(req);
 		
 		Integer result = dao.createHdd(param);
+		
+		System.out.println(result);
 		
 		if(result==0)
 		{

@@ -1,5 +1,7 @@
 package com.example.phoneShopping.product.dto.param;
 
+import com.example.phoneShopping.product.dto.request.CreateHddRequest;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,9 +17,9 @@ public class CreateHddParam
 	int capacity;	// HDD 용량
 	int plusSeq;	// HDD용량에 따른 추가 금액
 	
-	public CreateHddParam(int capacity, int plusSeq)
+	public CreateHddParam(CreateHddRequest req)
 	{
-		this.capacity=capacity;
-		this.plusSeq=plusSeq;
+		this.capacity=req.getCapacity();
+		this.plusSeq=req.getPlusSeq();
 	}
 }

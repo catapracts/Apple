@@ -13,7 +13,7 @@ import lombok.Setter;
 @Schema(description = "Payment Product Update Request")
 public class UpdatePaymentProductRequest 
 {
-	@Schema(description = "DB내에 존재하는 아이디 확인, 실제 변경X", example = "6")
+	@Schema(description = "DB내에 존재하는 아이디 확인, 실제 변경X", example = "7")
 	private int payiSeq;	// 결제 상품 번호
 	
 	@Schema(description = "Update 결제 상품", example = "i15b512")

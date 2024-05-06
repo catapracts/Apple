@@ -15,7 +15,6 @@ SELECT * FROM INFO WHERE infoSeq=#{infoSeq}
 
 <insert id="createInfo" parameterType="com.example.phoneShopping.member.dto.param.CreateInfoParam">
 INSERT INTO INFO(infoName, infoBirth, infoGender, infoPhone) VALUES(#{infoName}, #{infoBirth}, #{infoGender}, #{infoPhone})
-
 </insert>
 
 

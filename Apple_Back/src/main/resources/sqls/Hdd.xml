@@ -15,8 +15,7 @@ SELECT * FROM HDD WHERE hddSeq=#{hddSeq}
 </select>
 
 
-<insert id="createHdd" parameterType="com.example.phoneShopping.product.dto.param.CreateHddParam"
-useGeneratedKeys="true" keyProperty="hdd_seq">
+<insert id="createHdd" parameterType="com.example.phoneShopping.product.dto.param.CreateHddParam">
 INSERT INTO HDD(capacity, plusSeq) VALUES(#{capacity}, #{plusSeq})
 </insert>
 

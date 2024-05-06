@@ -15,7 +15,7 @@ import lombok.Setter;
 public class UpdateHddRequest 
 {
 	@NotBlank
-	@Schema(description = "DB내에 존재하는 아이디 확인, 실제 변경X", example = "6")
+	@Schema(description = "DB내에 존재하는 아이디 확인, 실제 변경X", example = "3")
 	int hddSeq;	// HDD 구분
 	
 	@NotBlank

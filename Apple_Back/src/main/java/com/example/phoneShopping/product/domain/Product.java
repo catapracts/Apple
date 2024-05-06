@@ -1,5 +1,6 @@
 package com.example.phoneShopping.product.domain;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,28 +12,24 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class Product 
+@Schema(description = "Product Domain")
+public class Product
 {
-	// 상품 일련번호
-//	private String prod_seq;
+	@Schema(description = "상품 일련번호")
 	private String prodSeq;
-	// 상품 이름
-//	private String prod_name;
+
+	@Schema(description = "상품 이름")
 	private String prodName;
-	// 상품 가격
-//	private int prod_price;
+
+	@Schema(description = "상품 가격")
 	private int prodPrice;
-	// 재고
-//	private int prod_cnt;
+
+	@Schema(description = "상품 재고")
 	private int prodCnt;
 	
-	// 옵션 1 : 용량 - FK
-//	private int hdd_seq;
+	@Schema(description = "상품의 디스크 크기(용량)")
 	private int hddSeq;
 	
-	// 옵션 2 : 색상 - FK
-//	private int color_seq;
+	@Schema(description = "상품의 색상")
 	private int colorSeq;
-	
-	
 }
