@@ -14,16 +14,15 @@
 
 
 # 🛠개발 환경
-|tool, service, SW이름|버전|
+|사용 환경|Version|
 |----|----|
-|SpringBoot|3.2.4|
+|Spring Boot|3.2.4|
 |MySQL Workbench|8.0.3|
-|React|18.2.0|
-|GitHub, GitLab||
-|Jenkins||
-|Docker||
-|Kubernetes||
-|Elasticsearch|Test : v7, Service : v8|
+|Visual Studio Code|1.89.0|
+
+
+|SW|버전|
+|----|----|
 |lombok|1.18.30|
 |Swagger(docs)|2.0.2|
 |Spring Security|6.2.3|
@@ -35,7 +34,23 @@
 |jUnit|5.10.2|
 
 
+|사용 언어|설명|
+|----|----|
+|Spring|BE구현|
+|React|FE구현 / 18.2.0|
+|Axios|FE, BE Mapping|
 
+
+|CI/CD|설명|
+|----|----|
+|GitHub, GitLab|프로젝트 Upload|
+|Jenkins|프로젝트 자동배포|
+|Docker|Docker Image 저장소|
+|Kubernetes|Docker Image 배포 및 트래픽 관리|
+|Elasticsearch|Data가공하여 정보 분석 / Test : v7, Service : v8|
+
+
+<br/><br/>
 # 🖋사용 언어
 * HTML5, CSS, Javascript
 * SQL 
