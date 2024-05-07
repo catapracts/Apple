@@ -101,38 +101,59 @@
  * Login.js(로그인)
  * Logout.js(로그아웃)
  * Join.js(회원가입)
- * MyPage.js(마이페이지)
- * Card.js
- * Address.js
+ * MyPage.js(마이페이지 - 회원관련 전체 정보 조회)
+ * MyPage_Update.js(마이페이지 - 회원관련 정보 수정)
+ * MyPage_payment.js(마이페이지 - 결제관련 정보 전체 조회)
+ * MyPage_payment_detail.js(마이페이지 - 결제관련 정보 상세 조회)
 <br/><br/>
  
- 2. common
-  * Header.js
-  * Footer.js
-  * Main.js
+ 2. context
+  * AuthProvider.js(회원 로그인 인증 처리)
+  * HttpHeaderProvider.js(JWT Header 처리)
+  * ScrollToTop.js(화면 스크롤 조작 시 설정)
 <br/><br/>
  
 3. store
   * Store.js(스토어 메인 페이지)
-  * Store_Detail.js(스토어 상세 페이지)
+  * Store_Detail_1.js(스토어 상세 페이지 - 상품1 설명 페이지)
+  * Store_Detail_2.js(스토어 상세 페이지 - 상품2 설명 페이지)
+  * Store_Detail_3.js(스토어 상세 페이지 - 상품3 설명 페이지)
 <br/><br/>
 
  4. product
   * Product.js(상품 메인 페이지)
-  * Product_Detail.js(상품 상세 페이지)
+  * Product_Detail_1.js(상품1 결제 전 옵션 선택 페이지)
+  * Product_Detail_2.js(상품2 결제 전 옵션 선택 페이지)
+  * Product_Detail_3.js(상품3 결제 전 옵션 선택 페이지)
 <br/><br/>
  
-5. component
-  * Button.js
-  * Payment.js(결제 페이지)
-  * Payment_Detail.js(결제 상세 페이지)
-  * Cart.js(장바구니 페이지)
-  * Caart_Detail.js(장바구니 상세 페이지)
+5. common
+  * Button.js(페이지에 사용할 버튼 설정)
+  * Footer.js(페이지 맨 아래 sitemap등 설정)
+  * Header.js(페이지 맨 위 nav bar등 설정)
+  * Home.js(페이지 접속시 나타나는 처음 화면)
+  * Main.js(모든 component들 표시하는 페이지)
 <br/><br/>
 
 6. admin
- * Admin_aside.js(관리자 페이지 왼쪽 부분)
- * Admin.js(관리자 페이지 중앙 부분)
+ * Admin_color_detail.js(관리자 페이지 - 상품 색상 상세 조회)
+ * Admin_color_update.js(관리자 페이지 - 상품 색상 수정)
+ * Admin_hdd_detail.js(관리자 페이지 - 상품 용량 상세 조회)
+ * Admin_hdd_update.js(관리자 페이지 - 상품 용량 수정)
+ * Admin_member_detail.js(관리자 페이지 - 회원 상세 조회)
+ * Admin_member.js(관리자 페이지 - 회원 전체 조회)
+ * Admin_payment_detail.js(관리자 페이지 - 결제 상세 조회)
+ * Admin_payment.js(관리자 페이지 - 결제 전체 조회)
+ * Admin_plus_detail.js(관리자 페이지 - 상품 용량별 추가 금액 상세 조회)
+ * Admin_plus_update.js(관리자 페이지 - 상품 용량별 추가 금액 수정)
+ * Admin_product_create.js(관리자 페이지 - 상품 정보 생성)
+ * Admin_product_update.js(관리자 페이지 - 상품 정보 수정)
+ * Admin_product_detail.js(관리자 페이지 - 상품 정보 상세 조회)
+ * Admin_product.js(관리자 페이지 - 상품 정보 전체 조회)
+<br/><br/>
+
+7. router
+ * router.js(component들을 mapping한 파일)
 <br/><br/>
 
 
