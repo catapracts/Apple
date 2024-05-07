@@ -377,11 +377,11 @@ function Admin_product_create() {
                                 navigate(-1);
                             }}
                         ></Button>
-                        <Button
+                        {/* <Button
                             size={"default"}
                             color={"blue"}
                             text={"등록하기"}
-                        ></Button>
+                        ></Button> */}
                     </div>
                 </div>
             </div>
