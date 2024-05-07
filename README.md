@@ -72,30 +72,27 @@
 
 # 👨‍💻개발 인원
 ## 정상엽(팀장)
-* 프로젝트 총괄
-* BE 개발 환경 세팅
-* 문서화 작업 총괄
-* DB 정규화
-* API 문서 작성 총괄
-* 형상 관리 총괄
-* BE : Member관련 Domain(Member, Address, Info, Card), Cart관련 Domain(Cart, Cart Product) 구현 / Spring 개발환경 구현
-* FE : Member Domain, Cart관련 Domain, Payment관련 Domain 간 FE/BE연동 / JWT, 보안 인증 구현
-* ERD, 프로젝트 기획 가이드 초안 제작, Domain별 API문서 제작
+* 프로젝트, 형상 관리, API 문서 작성 총괄
+* FE, BE 개발 환경 세팅
+* ERD 작성 / DB 정규화 / ERD, 프로젝트 기획 가이드 제작
+* BE : Member관련 Domain(Member, Address, Info, Card), Cart관련 Domain(Cart, Cart Product) 구현 / Spring 개발환경(Config, SpringSecurity, JWT) 구현
+* FE : Member 파트, Context, Router 파트 제작 / Member, Cart관련 Domain간 FE/BE연동
+* API 문서 작성 (Member, Cart Domain)
 <br/><br/>
 
 
 ## 제지운
 * BE : Product관련 Domain(Product, Hdd, Color, Plus) 구현
-* FE : Front 디자인 전체, Product관련 Domain간 FE/BE연동
-* 문서화 작업 제작(발표 PPT)
-* Product관련 API 문서 작성
+* FE : common, product, admin 파트 제작 / Front 디자인 전체, Product관련 Domain간 FE/BE연동
+* 문서화 작업 제작(발표 PPT), 시연 영상 제작
+* API 문서 작성(Product Domain)
 <br/><br/>
 
 
 ## 김기백
 * BE : Payment관련 Domain(Payment, Payment Product) 구현
-* FE : Payment관련 Domain간 FE/BE연동
-* Payment관련 API 문서 작성
+* FE : Payment 파트, store 파트 제작 / Payment관련 Domain간 FE/BE연동
+* API 문서 작성 (Payment Domain)
 <br/><br/>
 
 
